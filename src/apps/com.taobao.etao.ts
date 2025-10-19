@@ -58,8 +58,8 @@ export default defineGkdApp({
           matches: [
             '[text^="打开消息通知"] + FrameLayout > [text="去开启"] < FrameLayout + ImageView[clickable=true]',
           ],
-          snapshotUrls: ['https://i.gkd.li/i/12684351'],
-          activityIds: ['.mine.MetaXMineActivity'],
+          snapshotUrls: 'https://i.gkd.li/i/12684351',
+          activityIds: '.mine.MetaXMineActivity',
         },
       ],
     },

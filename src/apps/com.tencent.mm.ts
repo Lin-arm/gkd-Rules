@@ -1,8 +1,3 @@
-/*
- * @Date: 2025-10-19 14:01:17
- * @LastEditors: Lin
- * @LastEditTime: 2025-10-19 14:04:29
- */
 import { defineGkdApp } from '@gkd-kit/define';
 
 export default defineGkdApp({
