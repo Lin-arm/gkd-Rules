@@ -6,3 +6,5 @@ await checkApiVersion();
 checkSubscription(subscription);
 
 export default subscription;
+
+//执行本脚本命令： pnpm exec tsx scripts/check.ts
