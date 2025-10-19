@@ -1,6 +1,6 @@
 # GKD_Subscription-X
 
-还没想好写什么
+超小众的偏向功能类的GKD规则。
 
 ## 订阅
 
@@ -9,7 +9,7 @@
 - npmmirror源（国内镜像，推荐大陆用户使用）
 
 ```txt
-暂无
+https://fastly.jsdelivr.net/gh/Lin-arm/GKD_Subscription-X@main/dist/gkd.json5
 ```
 
 - GitHub源
