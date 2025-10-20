@@ -170,6 +170,7 @@ export default defineGkdApp({
       desc: '点击 立即捐步',
       rules: [
         {
+          actionCd: 3000,
           matches: [
             '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
           ],

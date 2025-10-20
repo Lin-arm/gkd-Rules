@@ -2,6 +2,12 @@
 
 超小众的偏向功能类的GKD规则。
 
+- 当前版本: v--VERSION--
+
+- 当前订阅文件已适配 --APP_SIZE-- 个应用，共有 --GROUP_SIZE-- 应用规则组，--GLOBALGROUP_SIZE-- 全局规则组
+
+- 具体有多小众请查看 [适配 APP 列表](./dist/README.md)
+
 ## 订阅
 
 复制以下任意一个链接到 GKD 即可使用本订阅规则
@@ -17,12 +23,6 @@ https://fastly.jsdelivr.net/gh/Lin-arm/GKD_Subscription-X@main/dist/gkd.json5
 ```txt
 https://raw.githubusercontent.com/Lin-arm/GKD_Subscription-X/main/dist/gkd.json5
 ```
-- 当前版本: v--VERSION--
-
-- 当前订阅文件已适配 --APP_SIZE-- 个应用，共有 --GROUP_SIZE-- 应用规则组，--GLOBALGROUP_SIZE-- 全局规则组
-
-- 查看 [适配 APP 列表](./dist/README.md)
-
 
 ## 其他
 
