@@ -7,7 +7,7 @@ export default defineGkdApp({
     {
       key: 1,
       name: '🧩抖快-启动页AD-跳过',
-      desc: '小程序',
+      desc: '小程序-抖快工具',
       rules: [
         {
           matches: ['TextView[text="跳过"][visibleToUser=true]'],
