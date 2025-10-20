@@ -362,6 +362,21 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 1601,
+      name: '📡直播间-中途结束-返回键',
+      desc: '直播中途结束->退出',
+      rules: [
+        {
+          action: 'back',
+          actionCd: 15000,
+          matches: ['[text="直播已结束"][visibleToUser=true]'],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23006131'],
+          activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
+        },
+      ],
+    },
+    {
       key: 17,
       name: '📡直播间-红包弹窗-x掉',
       desc: '①天降红包 ②团购红包',
