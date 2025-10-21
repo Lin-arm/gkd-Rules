@@ -392,6 +392,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22699956',
             'https://i.gkd.li/i/22705915',
             'https://i.gkd.li/i/22781366',
+            'https://i.gkd.li/i/23011158',
             // 已排除误触 https://i.gkd.li/i/22988215
           ],
           activityIds: [
@@ -399,6 +400,7 @@ export default defineGkdApp({
             'com.kuaishou.live.core.basic.activity.LivePlayActivity',
             'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
           ],
         },
       ],
