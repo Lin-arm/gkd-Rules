@@ -57,6 +57,7 @@ export default defineGkdApp({
       desc: '乐园弹窗->点击 开宝箱',
       rules: [
         {
+          actionCd: 3000,
           matches: [
             '[text="恭喜获得奖励"] +(2,3) [text^="立即开宝箱"][visibleToUser=true]',
           ],
@@ -76,6 +77,7 @@ export default defineGkdApp({
       desc: '点击 x掉',
       rules: [
         {
+          actionCd: 3000,
           matches: ['[text="立即兑换奖励"] + [text=""][visibleToUser=true]'],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22983810',
@@ -306,13 +308,14 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text^="感谢你" || text^="恭喜获得"] +(2,3) View > TextView[text=""][visibleToUser=true]',
+            '[text^="感谢你拯救了过期" || text^="恭喜获得"] +(2,3) View > TextView[text=""][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22981776',
             'https://i.gkd.li/i/22981779',
             'https://i.gkd.li/i/22981791',
+            // 排除 text^="感谢你" 误触页: https://i.gkd.li/i/23064639
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',

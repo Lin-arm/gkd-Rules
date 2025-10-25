@@ -379,12 +379,12 @@ export default defineGkdApp({
     {
       key: 17,
       name: '📡直播间-红包弹窗-x掉',
-      desc: '①天降红包 ②团购红包',
+      desc: '①天降红包 ②团购红包 ③主播新人券',
       rules: [
         {
           key: 1,
           matches: [
-            'FrameLayout[vid="krn_content_container"] >(4,5,6) @ImageView[width=104][height=104][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+            'FrameLayout[vid="krn_content_container"] >(4,5,6,7) @ImageView[width=104][height=104][visibleToUser=true] < [index=parent.childCount.minus(1)]',
           ],
           fastQuery: true,
           snapshotUrls: [
@@ -393,6 +393,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22705915',
             'https://i.gkd.li/i/22781366',
             'https://i.gkd.li/i/23011158',
+            'https://i.gkd.li/i/23141501',
             // 已排除误触 https://i.gkd.li/i/22988215
           ],
           activityIds: [
@@ -491,9 +492,12 @@ export default defineGkdApp({
           key: 4,
           action: 'back',
           actionCd: 3000,
-          matches: 'Button[text="待领取"][visibleToUser=true]',
+          matches: 'Button[text="待领取" || text="已领取"][visibleToUser=true]',
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22783122',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22783122',
+            'https://i.gkd.li/i/23141489',
+          ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
@@ -531,7 +535,8 @@ export default defineGkdApp({
       desc: '领饲料球',
       rules: [
         {
-          actionCd: 5000,
+          matchDelay: 3000,
+          actionMaximum: 1,
           matches: [
             '[text="可领取"] - * > [text="+100粒"][visibleToUser=true]',
           ],
@@ -549,11 +554,17 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 120,
-          matchDelay: 3000,
+          matchDelay: 5000,
           actionCd: 6000,
-          matches: ['View[id="foodBottomIcon"] < * + View[visibleToUser=true]'],
+          matches: [
+            '[text="赚饲料"][visibleToUser=false]',
+            'View[id="foodBottomIcon"] < * + View[visibleToUser=true]',
+          ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22908125',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22908125',
+            // 排除误触 https://i.gkd.li/i/22850836
+          ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
@@ -575,7 +586,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          matches: ['ImageView[id$="back_btn_trans"][visibleToUser=true]'],
+          matches: 'ImageView[id$="back_btn_trans"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22658642',
           activityIds: [
