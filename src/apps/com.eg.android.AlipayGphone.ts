@@ -88,6 +88,44 @@ export default defineGkdApp({
     },
     {
       key: 6,
+      name: '🌲森林&🐤养鸡-逛街-已完成-返回键',
+      desc: '已完成逛15s街任务->按下返回键',
+      rules: [
+        {
+          action: 'back',
+          matchDelay: 300,
+          actionCd: 5000,
+          matches: [
+            '[text="森林市集" || text="一起逛街咯"] + * > [text="已完成 可领奖励"][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23238379',
+            'https://i.gkd.li/i/23238829',
+          ],
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 7,
+      name: '🐤养鸡-抽抽乐🎰-饲料换机会-确认',
+      desc: '90g饲料换机会 弹窗->点击确认',
+      rules: [
+        {
+          matches: [
+            '[text^="消耗90g饲料"] + * > [text="确认兑换"][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23238643',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 8,
       name: '🐤养鸡-抽抽乐🎰-抽中弹窗-知道啦',
       desc: '弹窗恭喜抽中->点击 知道啦',
       rules: [
@@ -103,7 +141,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 7,
+      key: 9,
       name: '🐤养鸡-家庭👪-早安-弹窗确认',
       desc: '点击 确认发送',
       rules: [
@@ -119,7 +157,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 8,
+      key: 10,
       name: '🐤养鸡-家庭👪-成功道早安弹窗-x掉',
       desc: '点击 x掉',
       rules: [
@@ -135,7 +173,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 9,
+      key: 11,
       name: '🐤养鸡-家庭👪-顶梁柱弹窗-确认',
       desc: '点击 确认',
       rules: [
@@ -151,7 +189,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 10,
+      key: 12,
       name: '🐤养鸡-家庭👪-去捐步',
       desc: '运动做公益(抽屉)->去捐步',
       rules: [
@@ -167,7 +205,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 11,
+      key: 13,
       name: '🐤养鸡-家庭👪-捐步',
       desc: '点击 立即捐步',
       rules: [
@@ -184,7 +222,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 12,
+      key: 14,
       name: '🐤养鸡-家庭👪-捐步-返回键',
       desc: '捐步成功->弹窗->按下返回键', // ❌zfb_10.7.16.8000暂不生效
       rules: [
@@ -201,7 +239,21 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 13,
+      key: 15,
+      name: '🐤养鸡-领饲料-已满-知道了',
+      desc: '饲料袋已满 弹窗->点击知道了',
+      rules: [
+        {
+          matches: '[text="饲料袋已满"] +3 [text="知道了"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23238168',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 16,
       name: '🌲森林-寻宝🎁-帮ta助力',
       desc: '弹窗-帮ta助力',
       rules: [
@@ -217,7 +269,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 14,
+      key: 17,
       name: '🌲森林-寻宝🎁-助力成功-x掉',
       desc: '弹窗-x掉',
       rules: [
@@ -233,18 +285,20 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 15,
+      key: 18,
       name: '🌲森林-寻宝🎁-已完成任务-自动领取',
-      desc: '①已邀助力 ②已逛市集 ③已兑换机会',
+      desc: '①已邀助力 ②已逛市集 ③已兑换机会 ④已玩游戏',
       rules: [
         {
           matches: [
-            '[text="邀请好友助力得机会" || text="去森林市集逛一逛" || text="消耗活力值得机会"] < * + * > [text="领取"][visibleToUser=true]',
+            '[text^="邀请好友" || text^="去森林市集" || text^="消耗活力值" || text^="玩一玩" || text$="限定装扮"] < * + * > [text="领取"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22950418',
             'https://i.gkd.li/i/23013833',
+            'https://i.gkd.li/i/23236056',
+            'https://i.gkd.li/i/23239118',
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -252,7 +306,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 16,
+      key: 19,
       name: '🌲森林-寻宝🎁-自动签到',
       desc: '寻宝-点击签到',
       rules: [
@@ -268,7 +322,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 17,
+      key: 20,
       name: '🌲森林-寻宝🎁-弹窗-确认兑换',
       desc: '活力值兑换抽奖机会->确认',
       rules: [
@@ -284,7 +338,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 18,
+      key: 21,
       name: '🌲森林-寻宝🎁-自动抽奖',
       desc: '寻宝->点击立即抽奖',
       enable: false,
@@ -302,7 +356,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 19,
+      key: 22,
       name: '🌲森林-寻宝🎁抽奖弹窗-再抽or知道了',
       desc: '抽奖->弹窗->点击 再抽or知道了',
       rules: [
@@ -323,7 +377,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 20,
+      key: 23,
       name: '🌲森林-活力值奖励-立即领取',
       desc: '已完成活力值任务->立即领取',
       rules: [
@@ -339,7 +393,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 21,
+      key: 24,
       name: '🌲森林-真爱树-攒能量',
       desc: '真爱树弹窗->点击攒能量',
       enable: false,
@@ -357,7 +411,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 22,
+      key: 25,
       name: '🌲森林-好友页-浇水弹窗-送给ta',
       desc: '自动确认浇水(⚠❗开启前请先设好浇多少g)',
       enable: false,
@@ -374,7 +428,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 23,
+      key: 26,
       name: '⛪新村-加速任务-已完成-自动领取',
       desc: '该任务已完成->点击 去领取',
       rules: [
@@ -393,7 +447,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 24,
+      key: 27,
       name: '🌾农场-施肥-丰收礼包-领取',
       desc: '施肥n次领肥料->待领取弹窗->点击 立即领取',
       rules: [
@@ -409,7 +463,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 25,
+      key: 28,
       name: '🌾农场-丰收礼包已领取-x掉',
       desc: 'x掉弹窗',
       rules: [
@@ -425,7 +479,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 26,
+      key: 29,
       name: '🎮小游戏-申请发消息-取消',
       desc: '弹窗-取消',
       rules: [
@@ -434,9 +488,14 @@ export default defineGkdApp({
             'Button[text="取消"][id$="negativeBtn"][visibleToUser=true]',
           ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/22981739',
-          activityIds:
+          snapshotUrls: [
+            'https://i.gkd.li/i/22981739',
+            'https://i.gkd.li/i/23238549',
+          ],
+          activityIds: [
             'com.alipay.android.phone.messageboxstatic.extension.ProcessTransActivity',
+            'com.alipay.android.phone.mbox.biz.legacy.sbs.ui.MBoxProcessTransActivity',
+          ],
         },
       ],
     },
