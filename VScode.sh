@@ -11,6 +11,6 @@ pnpm exec tsx scripts/build.ts
 # 提交github
 git add .
 
-git commit -m "🧧v9 更新了啥"
+git commit -m "v10 更新了啥"
 
 git push

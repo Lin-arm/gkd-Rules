@@ -7,12 +7,12 @@ export default defineGkdApp({
     {
       key: 1,
       name: '🧩抖快-启动页AD-跳过',
-      desc: '小程序-抖快工具',
+      desc: '小程序-抖快工具(无水印下载视频)',
       rules: [
         {
           matches: ['TextView[text="跳过"][visibleToUser=true]'],
           fastQuery: true,
-          snapshotUrls: ['https://i.gkd.li/i/22950301'],
+          snapshotUrls: 'https://i.gkd.li/i/22950301',
           activityIds: '.plugin.appbrand.ui.AppBrandUI00',
         },
       ],

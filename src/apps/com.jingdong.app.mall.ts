@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '快手极速版 to 京东',
+      name: '快手极速版to京东-跳回',
       desc: '点击跳转回快极',
       rules: [
         {

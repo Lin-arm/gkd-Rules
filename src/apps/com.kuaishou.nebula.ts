@@ -335,14 +335,14 @@ export default defineGkdApp({
     {
       key: 17,
       name: '📡直播间-红包弹窗-x掉',
-      desc: '①天降红包 ②团购红包 ③主播新人券',
+      desc: '①天降红包 ②团购红包 ③主播新人券 ④双11券',
       rules: [
         {
           key: 1,
           matches: [
             'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8) @ImageView[width=104][height=104 || height=103][visibleToUser=true] < [index=parent.childCount.minus(1)]',
           ],
-          fastQuery: true,
+          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22660173',
             'https://i.gkd.li/i/22699956',
@@ -352,6 +352,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23141501',
             'https://i.gkd.li/i/23141694',
             'https://i.gkd.li/i/23143270',
+            'https://i.gkd.li/i/23290583',
             // 已排除误触 https://i.gkd.li/i/22988215
           ],
           activityIds: [
@@ -443,7 +444,7 @@ export default defineGkdApp({
           matches: [
             '[index=parent.childCount.minus(2)] > [text="流畅" || text="高清"][visibleToUser=true]',
           ],
-          fastQuery: false,
+          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/22660590',
             'https://i.gkd.li/i/22705855',
@@ -527,7 +528,7 @@ export default defineGkdApp({
           matchDelay: 3000,
           actionMaximum: 1,
           matches: [
-            '[text="可领取"] - * > [text="+100粒"][visibleToUser=true]',
+            '[text="可领取" || text="已结束"] - * > [text="+100粒"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22883176',
@@ -678,6 +679,26 @@ export default defineGkdApp({
           matches: 'TextView[text="今日签到"][visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22865238',
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+    {
+      key: 34,
+      name: '睡觉-领补贴',
+      desc: '点击看广告领补贴',
+      rules: [
+        {
+          matchDelay: 1000,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          matches:
+            '[text$="领睡觉补贴" || text$="领起床补贴"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23290616',
+            'https://i.gkd.li/i/23290617',
+          ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],

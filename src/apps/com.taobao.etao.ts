@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 3,
-      name: 'app跳转-打开',
+      name: '签到-做任务-app跳转-打开',
       desc: '打开xxx应用',
       rules: [
         {
@@ -21,8 +21,8 @@ export default defineGkdApp({
     },
     {
       key: 4,
-      name: '🧧领取现金奖励',
-      desc: '点击领取',
+      name: '签到-🧧领取现金奖励',
+      desc: '已做任务->点击领取',
       rules: [
         {
           actionCd: 1500,
@@ -37,8 +37,8 @@ export default defineGkdApp({
     },
     {
       key: 5,
-      name: '🧧领取现金奖励-下',
-      desc: '点击领取',
+      name: '签到-🧧领取现金奖励-下',
+      desc: '已做任务->点击领取',
       rules: [
         {
           actionCd: 1500,

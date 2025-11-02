@@ -17,5 +17,21 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '每日福利-自动看广告',
+      desc: '点击去完成',
+      enable: false,
+      rules: [
+        {
+          matches: [
+            '[text="激励任务" || text^="做任务" || text^="完成"] < * + [text="去完成"][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23290942',
+          activityIds: 'com.qidian.QDReader.ui.activity.QDBrowserActivity',
+        },
+      ],
+    },
   ],
 });

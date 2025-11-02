@@ -291,7 +291,7 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text^="邀请好友" || text^="去森林市集" || text^="消耗活力值" || text^="玩一玩" || text$="限定装扮"] < * + * > [text="领取"][visibleToUser=true]',
+            '[text^="邀请好友" || text^="去森林市集" || text^="消耗活力值" || text^="玩一玩" || text$="限定装扮" || text^="去看视频" || text^="去得故宫"] < * + * > [text="领取"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
@@ -299,6 +299,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23013833',
             'https://i.gkd.li/i/23236056',
             'https://i.gkd.li/i/23239118',
+            'https://i.gkd.li/i/23290903',
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -396,7 +397,6 @@ export default defineGkdApp({
       key: 24,
       name: '🌲森林-真爱树-攒能量',
       desc: '真爱树弹窗->点击攒能量',
-      enable: false,
       rules: [
         {
           actionMaximum: 1,
@@ -449,7 +449,7 @@ export default defineGkdApp({
     {
       key: 27,
       name: '🌾农场-施肥-丰收礼包-领取',
-      desc: '施肥n次领肥料->待领取弹窗->点击 立即领取',
+      desc: '施肥n次领肥料->待领取弹窗->点击 领取',
       rules: [
         {
           matches: [
@@ -496,6 +496,80 @@ export default defineGkdApp({
             'com.alipay.android.phone.messageboxstatic.extension.ProcessTransActivity',
             'com.alipay.android.phone.mbox.biz.legacy.sbs.ui.MBoxProcessTransActivity',
           ],
+        },
+      ],
+    },
+    {
+      key: 30,
+      name: '🙋‍♂️扫码加好友-辅助①',
+      desc: '扫出森林主页->点击 加好友',
+      enable: false,
+      rules: [
+        {
+          matchDelay: 1000,
+          matches: [
+            '[text$="的蚂蚁森林"][id$="textView_title"]',
+            'Button + Button[text=""][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23279949',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 31,
+      name: '🙋‍♂️扫码加好友-辅助②',
+      desc: '进用户主页->点击 加好友',
+      enable: false,
+      rules: [
+        {
+          actionCd: 1500,
+          matches: [
+            'ViewGroup[childCount=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23280044',
+            // 防误触(免验证直接通过的) https://i.gkd.li/i/23280202
+          ],
+          activityIds:
+            'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
+        },
+      ],
+    },
+    {
+      key: 32,
+      name: '🙋‍♂️扫码加好友-辅助③',
+      desc: '①x掉捎话弹窗 ②返回键',
+      enable: false,
+      activityIds: [
+        'com.alipay.mobile.socialcontactsdk.contact.ui.FriendVerifyNewActivity_',
+        'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
+      ],
+      rules: [
+        {
+          key: 1,
+          matches: [
+            '[text="给Ta捎句话吧"] - * > [id$="closeButton"] > [text=""][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23280089',
+            'https://i.gkd.li/i/23280173',
+          ],
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          action: 'back',
+          matchDelay: 500,
+          matches: [
+            'ViewGroup[childCount>=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23280150',
         },
       ],
     },
