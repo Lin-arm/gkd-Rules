@@ -67,24 +67,28 @@ export default defineGkdApp({
       key: 5,
       name: '任务页-弹窗-X掉',
       desc: '添加组件,去绑卡,邀好友 弹窗',
+      activityIds: [
+        'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
       rules: [
         {
-          anyMatches: [
-            'View[text^="添加组件"] <<2 View - View[text=""][childCount=1]',
-            'Button[text="去绑卡"] -7 View < View - View[text=""][childCount=1] > Image',
-            'View[text^="限时邀"] - Image <<2 View - View > Image',
-          ],
+          key: 1,
+          matches:
+            '[text^="添加组件" || text^="限时邀" || text^="去分享视频"] <<(2,3) * - [text=""][childCount=1] > Image',
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22671674',
-            'https://i.gkd.li/i/22672698',
             'https://i.gkd.li/i/22907854',
             'https://i.gkd.li/i/22850433',
+            'https://i.gkd.li/i/23300823',
           ],
-          activityIds: [
-            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
-            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-          ],
+        },
+        {
+          key: 2,
+          matches: '[text="去绑卡"] -7 * < * - [text=""][childCount=1] > Image',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/22672698',
         },
       ],
     },
@@ -393,14 +397,26 @@ export default defineGkdApp({
     {
       key: 19,
       name: '📡直播间-关注弹窗-x',
-      desc: 'x掉',
+      desc: '①x掉 ②返回键',
       rules: [
         {
+          key: 1,
           matches: [
             '[text="立即关注"] -3 [id$="anchor_close"][visibleToUser=true]',
           ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22659582',
+          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        },
+        {
+          key: 2,
+          action: 'back',
+          actionCd: 2000,
+          matches: [
+            '[text$="看了这么久，帮我点个关注吧！"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23300455',
           activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         },
       ],
@@ -431,6 +447,21 @@ export default defineGkdApp({
           ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23235749',
+          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        },
+      ],
+    },
+    {
+      key: 2101,
+      name: '📡直播间-右侧边栏-关闭',
+      desc: '关闭',
+      rules: [
+        {
+          matches: [
+            '[vid="photo_feed_side_bar_close_view"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23300668',
           activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         },
       ],
@@ -528,7 +559,7 @@ export default defineGkdApp({
           matchDelay: 3000,
           actionMaximum: 1,
           matches: [
-            '[text="可领取" || text="已结束"] - * > [text="+100粒"][visibleToUser=true]',
+            '[text="可领取" || text="已结束"] - * > [text$="粒"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22883176',

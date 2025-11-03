@@ -291,7 +291,7 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text^="邀请好友" || text^="去森林市集" || text^="消耗活力值" || text^="玩一玩" || text$="限定装扮" || text^="去看视频" || text^="去得故宫"] < * + * > [text="领取"][visibleToUser=true]',
+            '[text^="邀请好友" || text^="去森林市集" || text^="消耗活力值" || text^="玩一玩" || text$="限定装扮" || text^="去看视频" || text*="故宫"] < * + * > [text="领取"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
@@ -521,19 +521,32 @@ export default defineGkdApp({
     {
       key: 31,
       name: '🙋‍♂️扫码加好友-辅助②',
-      desc: '进用户主页->点击 加好友',
+      desc: '进用户主页->点击 加好友,②返回键',
       enable: false,
       rules: [
         {
+          key: 1,
           actionCd: 1500,
+          actionMaximum: 2,
+          resetMatch: 'match',
           matches: [
             'ViewGroup[childCount=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/23280044',
-            // 防误触(免验证直接通过的) https://i.gkd.li/i/23280202
+          snapshotUrls: ['https://i.gkd.li/i/23280044'],
+          activityIds:
+            'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          action: 'back',
+          matchDelay: 500,
+          matches: [
+            'ViewGroup[childCount>=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
           ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23280202', // 含免验证直接通过的,按返回键
           activityIds:
             'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
         },

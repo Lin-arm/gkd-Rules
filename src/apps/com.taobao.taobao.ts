@@ -39,5 +39,22 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '🌾农场-弹窗-x掉',
+      desc: '恭喜获得施肥大礼包',
+      rules: [
+        {
+          matches:
+            '[text="恭喜获得施肥大礼包"] < * + Button[text="关闭"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23300544',
+          activityIds: [
+            'com.taobao.themis.container.app.TMSActivity',
+            'com.taobao.browser.BrowserActivity',
+          ],
+        },
+      ],
+    },
   ],
 });

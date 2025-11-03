@@ -24,6 +24,7 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
+          actionCd: 1500,
           matches: [
             '[text="激励任务" || text^="做任务" || text^="完成"] < * + [text="去完成"][visibleToUser=true]',
           ],
