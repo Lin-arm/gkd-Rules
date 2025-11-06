@@ -227,12 +227,25 @@ export default defineGkdApp({
       desc: '捐步成功->弹窗->按下返回键', // ❌zfb_10.7.16.8000暂不生效
       rules: [
         {
+          key: 1,
           action: 'back',
           matches: [
             '[text="将支付宝公益添加到首页"] + [text="知道了"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22931262',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          matchDelay: 500,
+          matches: [
+            '[text="今日已完成捐步"] < * <5 * - * > [text="关闭"][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23381801',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
@@ -290,6 +303,7 @@ export default defineGkdApp({
       desc: '①已邀助力 ②已逛市集 ③已兑换机会 ④已玩游戏',
       rules: [
         {
+          actionCd: 1500,
           matches: [
             '[text^="邀请好友" || text^="去森林市集" || text^="消耗活力值" || text^="玩一玩" || text$="限定装扮" || text^="去看视频" || text*="故宫"] < * + * > [text="领取"][visibleToUser=true]',
           ],
@@ -401,10 +415,13 @@ export default defineGkdApp({
         {
           actionMaximum: 1,
           matches: [
-            '[text="为我们的真爱树攒能量"] +3 [text="攒能量"][visibleToUser=true]',
+            '[text="攒能量不影响排行榜"] -2 [text="攒能量"][visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22988030',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22988030',
+            'https://i.gkd.li/i/23393231',
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
@@ -429,6 +446,49 @@ export default defineGkdApp({
     },
     {
       key: 26,
+      name: '🌲森林-集市-完成任务-领取',
+      desc: '完成天猫集市任务-领15g能量',
+      rules: [
+        {
+          matches: [
+            '[text="天猫森林集市"]',
+            '[text^="任务已完成"][text$="立即领取"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23394530',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 27,
+      name: '🌲森林-集市-弹窗-x掉',
+      desc: '①首购红包 ②膨胀红包',
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      rules: [
+        {
+          key: 1,
+          matches: [
+            '[text="天猫森林集市"]',
+            '[text="点击领取"] <7 * + TextView[text=""][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23394640',
+        },
+        {
+          key: 2,
+          matches: [
+            '[text="天猫森林集市"]',
+            '[text="立即膨胀"] + * > Image[text=""][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23394780',
+        },
+      ],
+    },
+    {
+      key: 28,
       name: '⛪新村-加速任务-已完成-自动领取',
       desc: '该任务已完成->点击 去领取',
       rules: [
@@ -447,7 +507,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 27,
+      key: 29,
       name: '🌾农场-施肥-丰收礼包-领取',
       desc: '施肥n次领肥料->待领取弹窗->点击 领取',
       rules: [
@@ -463,7 +523,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 28,
+      key: 30,
       name: '🌾农场-丰收礼包已领取-x掉',
       desc: 'x掉弹窗',
       rules: [
@@ -479,7 +539,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 29,
+      key: 31,
       name: '🎮小游戏-申请发消息-取消',
       desc: '弹窗-取消',
       rules: [
@@ -500,12 +560,23 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 30,
+      key: 32,
       name: '🙋‍♂️扫码加好友-辅助①',
       desc: '扫出森林主页->点击 加好友',
       enable: false,
       rules: [
         {
+          key: 1,
+          action: 'none', // 前置条件，防 key 2 误触
+          matches:
+            '[text="扫码"][id$="scan_bottom_view_text"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23393349',
+          activityIds: 'com.alipay.mobile.scan.as.main.MainCaptureActivity',
+        },
+        {
+          key: 2,
+          preKeys: [1],
           matchDelay: 1000,
           matches: [
             '[text$="的蚂蚁森林"][id$="textView_title"]',
@@ -519,8 +590,8 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 31,
-      name: '🙋‍♂️扫码加好友-辅助②',
+      key: 33,
+      name: '🙋‍♂️扫码加好友-辅助② (❗概率误触)',
       desc: '进用户主页->点击 加好友,②返回键',
       enable: false,
       rules: [
@@ -553,7 +624,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 32,
+      key: 34,
       name: '🙋‍♂️扫码加好友-辅助③',
       desc: '①x掉捎话弹窗 ②返回键',
       enable: false,

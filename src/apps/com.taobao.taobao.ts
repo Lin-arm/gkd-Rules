@@ -41,14 +41,35 @@ export default defineGkdApp({
     },
     {
       key: 3,
+      name: '🌾农场-肥料袋-领取肥料',
+      desc: '右边肥料袋-点击领取',
+      rules: [
+        {
+          matches: '[text$="肥料，点击领取"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23393987',
+          activityIds: [
+            'com.taobao.themis.container.app.TMSActivity',
+            'com.taobao.browser.BrowserActivity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 4,
       name: '🌾农场-弹窗-x掉',
       desc: '恭喜获得施肥大礼包',
       rules: [
         {
-          matches:
+          anyMatches: [
             '[text="恭喜获得施肥大礼包"] < * + Button[text="关闭"][visibleToUser=true]',
+            '[text="从淘宝首页进入农场"] <2 * + * > Button[text="关闭"][visibleToUser=true]',
+          ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23300544',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23300544',
+            'https://i.gkd.li/i/23393863',
+          ],
           activityIds: [
             'com.taobao.themis.container.app.TMSActivity',
             'com.taobao.browser.BrowserActivity',

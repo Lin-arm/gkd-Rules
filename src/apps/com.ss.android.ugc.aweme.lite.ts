@@ -25,5 +25,65 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '🤳看广告-已看完-退出',
+      desc: '已成功领取奖励',
+      rules: [
+        {
+          matches: [
+            '[text="广告"] + [text^="领取成功，关闭"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23394121'],
+          activityIds: ['com.ss.android.excitingvideo.ExcitingVideoActivity'],
+        },
+      ],
+    },
+    {
+      key: 3,
+      name: '🤳看广告-退出弹窗-再看',
+      desc: '再看一个',
+      rules: [
+        {
+          matches: [
+            '[text^="再看一个"] +6 [text="领取奖励"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23394181'],
+          activityIds: ['com.ss.android.excitingvideo.ExcitingVideoActivity'],
+        },
+      ],
+    },
+    {
+      key: 4,
+      name: '🤳看广告-误入app下载页-返回',
+      desc: '点击返回',
+      rules: [
+        {
+          matches: ['[vid="iv_back"][desc="返回"][visibleToUser=true]'],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23394270'],
+          activityIds: [
+            'com.bytedance.ies.android.rifle.container.RifleContainerActivity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 5,
+      name: '🤳看广告-弹窗-评价收金币',
+      desc: '累计获得奖励弹窗-点击评价',
+      rules: [
+        {
+          matches: [
+            '[text="恭喜累计获得奖励"] +3 [text="评价并收下金币"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23394382'],
+          activityIds: ['com.ss.android.ugc.aweme.main.MainActivity'],
+        },
+      ],
+    },
   ],
 });

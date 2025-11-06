@@ -1,0 +1,281 @@
+import { defineGkdApp } from '@gkd-kit/define';
+
+export default defineGkdApp({
+  id: 'com.smile.gifmaker',
+  name: '快手',
+  groups: [
+    {
+      key: 4,
+      name: '📺视频页-长按直播-不感兴趣',
+      desc: '点击不感兴趣',
+      rules: [
+        {
+          actionCd: 2000,
+          matchDelay: 1700,
+          matches: '[text^="不感兴趣" && vid="item_title"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23386995',
+          activityIds: 'com.yxcorp.gifshow.HomeActivity',
+        },
+      ],
+    },
+    {
+      key: 7,
+      name: '逛街-退出弹窗-放弃',
+      desc: '点击返回',
+      rules: [
+        {
+          matches:
+            '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23382590',
+          activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
+        },
+      ],
+    },
+    {
+      key: 9,
+      name: '🤳看广告-已看完-退出',
+      desc: '已成功领取奖励',
+      rules: [
+        {
+          actionDelay: 1500,
+          matches: [
+            '[text^="已成功"] + [id="com.smile.gifmaker.commercial_neo:id/video_countdown_end_icon"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23382541'],
+          activityIds: [
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.plugin.search.SearchActivity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 10,
+      name: '🤳看广告-退出弹窗-下载领奖-放弃',
+      desc: '弹窗-下载并体验20秒-放弃奖励',
+      rules: [
+        {
+          actionDelay: 1500,
+          matches: [
+            '[text^="下载并体验"] < * +2 * > [text="放弃奖励"][id$="award_video_close_dialog_abandon_button"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23387069',
+          activityIds: [
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+            'com.yxcorp.plugin.search.SearchActivity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 1001,
+      name: '🤳看广告-额外获取xx金币',
+      desc: '点击额外获取xx金币(跳转app)',
+      enable: false,
+      rules: [
+        {
+          actionDelay: 1500,
+          matches: [
+            '[vid="ad_download_text"][text^="点击额外获取"][text$="金币"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23394927'],
+          activityIds: [
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+            'com.yxcorp.plugin.search.SearchActivity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 12,
+      name: '🤳看广告-退出弹窗-再看',
+      desc: '再看一个',
+      rules: [
+        {
+          matches:
+            '[text^="再看一个"] +3 [text="领取奖励"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23382561'],
+          activityIds: [
+            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+          ],
+        },
+      ],
+    },
+    {
+      key: 14,
+      name: '📡直播间-退出弹窗-退出',
+      desc: '退出直播间',
+      rules: [
+        {
+          matches: 'TextView[text^="退出"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23395007'],
+          activityIds: [
+            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+          ],
+        },
+      ],
+    },
+    {
+      key: 15,
+      name: '📡直播间-看完-返回键',
+      desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
+      rules: [
+        {
+          action: 'back',
+          actionCd: 3000,
+          matches: 'TextView[text="已领取"][vid="neo_count_down_text"]',
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23386908'],
+          activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
+        },
+      ],
+    },
+    {
+      key: 19,
+      name: '📡直播间-关注弹窗-x',
+      desc: '①x掉 ②返回键',
+      rules: [
+        {
+          key: 1,
+          matches: [
+            '[text="立即关注"] -3 [id$="anchor_close"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        },
+        {
+          key: 2,
+          action: 'back',
+          actionCd: 2000,
+          matches: [
+            '[text$="看了这么久，帮我点个关注吧！"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23383026',
+          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        },
+      ],
+    },
+    {
+      key: 21,
+      name: '📡直播间-预约直播弹窗-x',
+      desc: 'x掉',
+      rules: [
+        {
+          matches: [
+            '@ImageView[width=52][height=52] <<2 * <2 * <2 * < [vid="krn_content_container"]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23382944',
+          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        },
+      ],
+    },
+    {
+      key: 22,
+      name: '📡直播间-清晰度-高清',
+      desc: '设清晰度为 流畅or高清',
+      rules: [
+        {
+          matches: [
+            '[index=parent.childCount.minus(2)] > [text="流畅" || text="高清"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23383071'],
+          activityIds: [
+            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 30,
+      name: '🎮小游戏-退出弹窗-x掉',
+      desc: '弹窗->点击 知道了',
+      rules: [
+        {
+          matches: 'TextView[text="知道了"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23382865'],
+          activityIds: [
+            'com.kwai.frog.game.engine.adapter.engine.base.KRT11Activity',
+            'com.kwai.frog.game.engine.adapter.engine.base.KRT12Activity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 32,
+      name: '🎮小游戏-获取用户资料弹窗-允许',
+      desc: '点击允许',
+      rules: [
+        {
+          matches: [
+            '[vid="button_layout" || vid="bottom"] > [text="允许"][vid="confirm_btn" || vid="grant"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23382908'],
+          activityIds: 'com.yxcorp.login.authorization.AuthActivity',
+        },
+      ],
+    },
+    {
+      key: 35,
+      name: '走路赚金币-领金币',
+      desc: '点击领取xxx金币',
+      rules: [
+        {
+          matchDelay: 1000,
+          actionMaximum: 1,
+          resetMatch: 'match',
+          matches:
+            '[text="今日步数"] < * <4 * + * >2 Button[text^="领取"][text$="金币"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23382648',
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+    {
+      key: 36,
+      name: '饭点-领补贴',
+      desc: '①饭补 ②弹窗 ③待补签 ④左下角看广告',
+      rules: [
+        {
+          actionCd: 5000,
+          anyMatches: [
+            '[text="看广告领饭补"][visibleToUser=true]',
+            '[text="看视频最高可得"] +2 [text="金币"][visibleToUser=true]',
+            '[text^="+" || text$="金币"] + [text$="待补签"][visibleToUser=true]',
+            '[text="领金币"] <3 * + @TextView[text="看广告"] + Image',
+          ],
+          fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23382637',
+            'https://i.gkd.li/i/23382759',
+          ],
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+  ],
+});
