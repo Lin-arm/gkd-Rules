@@ -239,16 +239,30 @@ export default defineGkdApp({
     {
       key: 1002,
       name: '🤳看广告-误入拼多多页-返回',
-      desc: '打开拼多多APP or 手机登录',
+      desc: '点击返回',
       rules: [
         {
           matches: [
-            '[text^="打开拼多多" || text="手机登录"]',
             '[vid="title_tv"][text="登录"] + [vid="left_btn"][visibleToUser=true]',
           ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23421971',
           activityIds: 'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
+        },
+      ],
+    },
+    {
+      key: 1003,
+      name: '🤳看广告-误入xx下载页-返回键',
+      desc: '按下返回键',
+      rules: [
+        {
+          action: 'back',
+          actionDelay: 1000,
+          matches: ['[text^="下载" && text$="立得奖励"][visibleToUser=true]'],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23431442',
+          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
         },
       ],
     },
@@ -735,21 +749,24 @@ export default defineGkdApp({
       key: 30,
       name: '🎮小游戏-退出弹窗-x掉',
       desc: '弹窗->点击 知道了',
+      activityIds: [
+        'com.kwai.frog.game.engine.adapter.engine.base.KRT11Activity',
+        'com.kwai.frog.game.engine.adapter.engine.base.KRT12Activity',
+      ],
       rules: [
         {
-          anyMatches: [
-            'TextView[text="知道了"][visibleToUser=true]',
-            '[text="以后再说"][visibleToUser=true]',
-          ],
+          key: 1,
+          matches: 'TextView[text="知道了"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/22864991',
             'https://i.gkd.li/i/22865094',
           ],
-          activityIds: [
-            'com.kwai.frog.game.engine.adapter.engine.base.KRT11Activity',
-            'com.kwai.frog.game.engine.adapter.engine.base.KRT12Activity',
-          ],
+        },
+        {
+          key: 2,
+          matches: '[text="以后再说"][visibleToUser=true]',
+          fastQuery: true,
         },
       ],
     },
