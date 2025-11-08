@@ -451,7 +451,7 @@ export default defineGkdApp({
     {
       key: 26,
       name: '🌲森林-集市-完成任务-领取',
-      desc: '天猫集市任务-领15g能量(❌未生效)',
+      desc: '天猫集市任务-领15g能量(❗需开shizuku强制点击)',
       rules: [
         {
           action: 'clickNode',

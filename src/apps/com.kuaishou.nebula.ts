@@ -284,7 +284,7 @@ export default defineGkdApp({
       desc: '任务列表-开宝箱-进去看广告',
       rules: [
         {
-          actionCd: 10000,
+          actionCd: 5000,
           anyMatches: [
             '[text^="点可领"][text$="金币"][visibleToUser=true]',
             '[text="开宝箱奖励已到账"] +4 [text^="去看广告得"][text$="金币"][visibleToUser=true]',
