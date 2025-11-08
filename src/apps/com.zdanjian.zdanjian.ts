@@ -11,15 +11,19 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text*="分辨率不匹配" || text*="已经开启自动精灵"]',
+            '[text*="分辨率不匹配" || text*="已经开启自动精灵" || text^="请先在系统设置"]',
             '[text="确定"][vid="Dialog.BtnOk"][visibleToUser=true]',
           ],
           fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23421073',
             'https://i.gkd.li/i/23421179',
+            'https://i.gkd.li/i/23429823',
           ],
-          activityIds: '.activities.script.LocalScriptDetailActivity',
+          activityIds: [
+            '.activities.script.LocalScriptDetailActivity',
+            '.activities.home.HomeActivity',
+          ],
         },
       ],
     },

@@ -8,6 +8,7 @@ export default defineGkdApp({
       key: 1,
       name: '插数据线连接电脑-USB提示-取消',
       desc: 'USB用于xxx -取消',
+      enable: false,
       rules: [
         {
           matches: [
