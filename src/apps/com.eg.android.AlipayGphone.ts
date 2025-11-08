@@ -206,14 +206,13 @@ export default defineGkdApp({
       key: 13,
       name: '🐤养鸡-家庭👪-捐步',
       desc: '点击 立即捐步',
-      actionCd: 3000,
       rules: [
         {
+          actionCd: 3000,
           matches: [
-            '[text="行走捐"]',
-            'Button[text="立即捐步"][visibleToUser=true]',
+            '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
           ],
-          fastQuery: true,
+          fastQuery: false, // 用 true 真机不触发
           snapshotUrls: 'https://i.gkd.li/i/22931136',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -229,7 +228,7 @@ export default defineGkdApp({
           key: 1,
           action: 'back',
           matches: ['[text="行走捐"]', '[text="知道了"][visibleToUser=true]'],
-          fastQuery: true,
+          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22931262',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -460,7 +459,7 @@ export default defineGkdApp({
             '[text="天猫森林集市"]',
             '@[text="15g"] <2 * + [text="可领取"]',
           ],
-          fastQuery: true,
+          fastQuery: false,
           snapshotUrls: ['https://i.gkd.li/i/23413420'],
           activityIds: [
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
