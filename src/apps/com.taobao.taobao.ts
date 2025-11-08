@@ -58,17 +58,19 @@ export default defineGkdApp({
     {
       key: 4,
       name: '🌾农场-弹窗-x掉',
-      desc: '恭喜获得施肥大礼包',
+      desc: '①施肥大礼包 ②首页进入 ③明天提醒',
       rules: [
         {
           anyMatches: [
             '[text="恭喜获得施肥大礼包"] < * + Button[text="关闭"][visibleToUser=true]',
             '[text="从淘宝首页进入农场"] <2 * + * > Button[text="关闭"][visibleToUser=true]',
+            '[text="提醒我明天领"] + Button[text=""][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23300544',
             'https://i.gkd.li/i/23393863',
+            'https://i.gkd.li/i/23413567',
           ],
           activityIds: [
             'com.taobao.themis.container.app.TMSActivity',

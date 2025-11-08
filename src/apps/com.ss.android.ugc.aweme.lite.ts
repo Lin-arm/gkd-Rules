@@ -85,5 +85,21 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 6,
+      name: '视频页-青少年弹窗-x掉',
+      desc: '启动时的青少年弹窗-关闭',
+      rules: [
+        {
+          anyMatches: [
+            '[text="青少年模式"] < * + [desc="关闭"][visibleToUser=true]',
+            '[text="青少年模式"] +3 * > [text="关闭"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23427881'],
+          activityIds: ['com.ss.android.ugc.aweme.main.MainActivity'],
+        },
+      ],
+    },
   ],
 });

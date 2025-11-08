@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '🐤养鸡-小组件弹窗-x掉',
+      name: '🌲🐤小组件弹窗-x掉',
       desc: '恭喜获得小组件优先体验权',
       rules: [
         {
@@ -15,6 +15,28 @@ export default defineGkdApp({
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22923315',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 6,
+      name: '🌲🐤-逛街-已完成-返回键',
+      desc: '已完成逛15s街任务->按下返回键',
+      rules: [
+        {
+          action: 'back',
+          matchDelay: 300,
+          actionCd: 5000,
+          matches: [
+            '[text="森林市集" || text="一起逛街咯"] + * > [text="已完成 可领奖励"][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23238379',
+            'https://i.gkd.li/i/23238829',
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
@@ -87,28 +109,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 6,
-      name: '🌲森林&🐤养鸡-逛街-已完成-返回键',
-      desc: '已完成逛15s街任务->按下返回键',
-      rules: [
-        {
-          action: 'back',
-          matchDelay: 300,
-          actionCd: 5000,
-          matches: [
-            '[text="森林市集" || text="一起逛街咯"] + * > [text="已完成 可领奖励"][visibleToUser=true]',
-          ],
-          fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/23238379',
-            'https://i.gkd.li/i/23238829',
-          ],
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
-        },
-      ],
-    },
-    {
       key: 7,
       name: '🐤养鸡-抽抽乐🎰-饲料换机会-确认',
       desc: '90g饲料换机会 弹窗->点击确认',
@@ -147,7 +147,7 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text="亲密度+1"] + TextView[text="确认发送"][visibleToUser=true]',
+            '[text="亲密度+1"] + [text="确认发送"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938526',
@@ -162,9 +162,7 @@ export default defineGkdApp({
       desc: '点击 x掉',
       rules: [
         {
-          matches: [
-            '[text="复制口令邀请查看传话内容"] < View +2 TextView[visibleToUser=true]',
-          ],
+          matches: ['[text$="传话内容"] < * +2 TextView[visibleToUser=true]'],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938583',
           activityIds:
@@ -179,7 +177,7 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text$="安排你的小鸡干活了"] -2 View > [text="确认"][visibleToUser=true]',
+            '[text$="安排你的小鸡干活了"] -2 * > [text="确认"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22961775',
@@ -208,13 +206,14 @@ export default defineGkdApp({
       key: 13,
       name: '🐤养鸡-家庭👪-捐步',
       desc: '点击 立即捐步',
+      actionCd: 3000,
       rules: [
         {
-          actionCd: 3000,
           matches: [
-            '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
+            '[text="行走捐"]',
+            'Button[text="立即捐步"][visibleToUser=true]',
           ],
-          fastQuery: false,
+          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22931136',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -229,10 +228,8 @@ export default defineGkdApp({
         {
           key: 1,
           action: 'back',
-          matches: [
-            '[text="将支付宝公益添加到首页"] + [text="知道了"][visibleToUser=true]',
-          ],
-          fastQuery: false,
+          matches: ['[text="行走捐"]', '[text="知道了"][visibleToUser=true]'],
+          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22931262',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -242,10 +239,14 @@ export default defineGkdApp({
           preKeys: [1],
           matchDelay: 500,
           matches: [
-            '[text="今日已完成捐步"] < * <5 * - * > [text="关闭"][visibleToUser=true]',
+            '[text="今日已完成捐步"]',
+            '[text="一起运动做公益"] +2 [text="关闭"][visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23381801',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23381801',
+            'https://i.gkd.li/i/23414325',
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
@@ -257,9 +258,13 @@ export default defineGkdApp({
       desc: '饲料袋已满 弹窗->点击知道了',
       rules: [
         {
-          matches: '[text="饲料袋已满"] +3 [text="知道了"][visibleToUser=true]',
+          matches:
+            '[text="去帮好友喂食"] + [text="知道了"][visibleToUser=true]',
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23238168',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23238168',
+            'https://i.gkd.li/i/23414417',
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
@@ -447,17 +452,19 @@ export default defineGkdApp({
     {
       key: 26,
       name: '🌲森林-集市-完成任务-领取',
-      desc: '完成天猫集市任务-领15g能量',
+      desc: '天猫集市任务-领15g能量(❌未生效)',
       rules: [
         {
+          action: 'clickNode',
           matches: [
             '[text="天猫森林集市"]',
-            '[text^="任务已完成"][text$="立即领取"][visibleToUser=true]',
+            '@[text="15g"] <2 * + [text="可领取"]',
           ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23394530',
-          activityIds:
+          snapshotUrls: ['https://i.gkd.li/i/23413420'],
+          activityIds: [
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          ],
         },
       ],
     },
