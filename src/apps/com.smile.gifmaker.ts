@@ -285,10 +285,14 @@ export default defineGkdApp({
           actionCd: 6000,
           matches: [
             '[text="赚饲料"][visibleToUser=false]',
+            '[text!="签到提醒"][text!="连签大奖"][text.length=4][visibleToUser=true]',
             'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23419014',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23419014',
+            // 误触页2 https://i.gkd.li/i/23433012
+          ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],

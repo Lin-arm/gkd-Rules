@@ -670,13 +670,15 @@ export default defineGkdApp({
           actionCd: 6000,
           matches: [
             '[text="赚饲料"][visibleToUser=false]',
+            '[text!="签到提醒"][text!="连签大奖"][text.length=4][visibleToUser=true]',
             'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22908125',
             'https://i.gkd.li/i/23381066',
-            // 排除误触 https://i.gkd.li/i/22850836
+            // 排除误触1 https://i.gkd.li/i/22850836
+            // 误触页2(快手) https://i.gkd.li/i/23433012
           ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
