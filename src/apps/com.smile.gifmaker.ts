@@ -95,6 +95,24 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 1002,
+      name: '🤳看广告-误入拼多多页-返回',
+      desc: '点击返回',
+      rules: [
+        {
+          matches: [
+            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝"] + [vid="left_btn"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23439913',
+            'https://i.gkd.li/i/23439943',
+          ],
+          activityIds: 'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
+        },
+      ],
+    },
+    {
       key: 11,
       name: '🤳任务页-自动看广告',
       desc: '任务列表-3.5秒点进去看广告',
@@ -270,6 +288,32 @@ export default defineGkdApp({
           actionCd: 3000,
           matches: 'Button[text="待领取" || text="已领取"][visibleToUser=true]',
           fastQuery: false,
+        },
+      ],
+    },
+    {
+      key: 24,
+      name: '🦆养鸭-今日签到弹窗',
+      desc: '①立即签到 ②x掉',
+      rules: [
+        {
+          key: 1,
+          actionMaximum: 1,
+          matches: [
+            '[text="签到提醒"] < * - [text="立即签到"][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23433226',
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 2,
+          matches: [
+            '[text^="明日签到"] <<3 * - * < * - * > Image[width=76 || width=77][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23433012',
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
     },

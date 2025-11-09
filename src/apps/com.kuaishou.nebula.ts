@@ -243,7 +243,7 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[vid="title_tv"][text="登录"] + [vid="left_btn"][visibleToUser=true]',
+            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝"] + [vid="left_btn"][visibleToUser=true]',
           ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23421971',
