@@ -208,6 +208,32 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 17,
+      name: '📡直播间-红包弹窗-x掉',
+      desc: '①天降红包 ②团购红包 ③主播新人券 ④双11券',
+      rules: [
+        {
+          matches: [
+            'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8) @ImageView[width=104][height=104 || height=103][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+          ],
+          fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23450509',
+            'https://i.gkd.li/i/23450530',
+            // 已排除误触(参考快极) https://i.gkd.li/i/22988215
+          ],
+          activityIds: [
+            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+          ],
+        },
+      ],
+    },
+    {
       key: 19,
       name: '📡直播间-关注弹窗-x',
       desc: '①x掉 ②返回键',
