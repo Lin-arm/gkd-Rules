@@ -518,11 +518,15 @@ export default defineGkdApp({
       desc: '施肥n次领肥料->待领取弹窗->点击 领取',
       rules: [
         {
-          matches: [
+          anyMatches: [
             '[text="丰收礼包待领取"] +3 [text="立即领取"][visibleToUser=true]',
+            '[text="立即领肥"][visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23014157',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23014157',
+            'https://i.gkd.li/i/23440796',
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
@@ -535,10 +539,13 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text="丰收礼包已领取"] +5 [text="关闭"][visibleToUser=true]',
+            '[text="丰收礼包已领取"] +(4,5) [text="关闭"][visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23014209',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23014209',
+            'https://i.gkd.li/i/23440721',
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },

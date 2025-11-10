@@ -7,7 +7,7 @@ export default defineGkdApp({
     {
       key: 1,
       name: '无障碍-危险警告-确定',
-      desc: '①✔已知晓风险 ②确定',
+      desc: '10秒后 ①✔已知晓风险 ②确定',
       rules: [
         {
           key: 1,

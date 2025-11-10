@@ -298,7 +298,9 @@ export default defineGkdApp({
       desc: '任务列表-开宝箱-进去看广告',
       rules: [
         {
-          actionCd: 5000,
+          matchDelay: 500,
+          actionMaximum: 3,
+          resetMatch: 'match',
           anyMatches: [
             '[text^="点可领"][text$="金币"][visibleToUser=true]',
             '[text="开宝箱奖励已到账"] +4 [text^="去看广告得"][text$="金币"][visibleToUser=true]',
@@ -344,11 +346,15 @@ export default defineGkdApp({
       desc: '下方 惊喜红包弹窗-x掉',
       rules: [
         {
+          actionMaximum: 1,
           matches: [
             '@ImageView < [desc="close_view"] <2 [desc="container_view"] <<3 [id="com.kuaishou.nebula.commercial_neo:id/award_video_card_container"]',
           ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23213280',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23213280',
+            // 误触页 https://i.gkd.li/i/23450320
+          ],
           activityIds: [
             'com.yxcorp.gifshow.detail.PhotoDetailActivity',
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
