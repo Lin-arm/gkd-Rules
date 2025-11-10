@@ -351,10 +351,8 @@ export default defineGkdApp({
             '@ImageView < [desc="close_view"] <2 [desc="container_view"] <<3 [id="com.kuaishou.nebula.commercial_neo:id/award_video_card_container"]',
           ],
           fastQuery: true,
-          snapshotUrls: [
-            'https://i.gkd.li/i/23213280',
-            // 误触页 https://i.gkd.li/i/23450320
-          ],
+          snapshotUrls: ['https://i.gkd.li/i/23213280'],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23450320',
           activityIds: [
             'com.yxcorp.gifshow.detail.PhotoDetailActivity',
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
@@ -448,8 +446,8 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23141694',
             'https://i.gkd.li/i/23143270',
             'https://i.gkd.li/i/23290583',
-            // 已排除误触 https://i.gkd.li/i/22988215
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/22988215',
           activityIds: [
             'com.yxcorp.gifshow.detail.PhotoDetailActivity',
             'com.kuaishou.live.core.basic.activity.LivePlayActivity',
@@ -683,8 +681,10 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/22908125',
             'https://i.gkd.li/i/23381066',
-            // 排除误触1 https://i.gkd.li/i/22850836
-            // 误触页2(快手) https://i.gkd.li/i/23433012
+          ],
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/22850836',
+            'https://i.gkd.li/i/23433012', // 误触页(快手)
           ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
@@ -820,10 +820,8 @@ export default defineGkdApp({
           matches:
             'TextView[text="今日签到"][index=parent.childCount.minus(1)][visibleToUser=true]',
           fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/22865238',
-            // 养鸭误触页 https://i.gkd.li/i/23380995
-          ],
+          snapshotUrls: 'https://i.gkd.li/i/22865238',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23380995',
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],

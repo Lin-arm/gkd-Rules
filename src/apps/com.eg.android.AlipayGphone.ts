@@ -413,8 +413,8 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22981776',
             'https://i.gkd.li/i/22981779',
             'https://i.gkd.li/i/22981791',
-            // 排除 text^="感谢你" 误触页: https://i.gkd.li/i/23064639
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23064639', // 排除 text^="感谢你"
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },

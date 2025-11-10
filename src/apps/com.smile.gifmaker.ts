@@ -220,8 +220,8 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/23450509',
             'https://i.gkd.li/i/23450530',
-            // 已排除误触(参考快极) https://i.gkd.li/i/22988215
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/22988215', // 误触(参考快极)
           activityIds: [
             'com.yxcorp.gifshow.detail.PhotoDetailActivity',
             'com.kuaishou.live.core.basic.activity.LivePlayActivity',
@@ -315,9 +315,7 @@ export default defineGkdApp({
           matches:
             'Button[text="待领取" || text="已领取"][height!=64][visibleToUser=true]',
           fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/23452401', // 误触页
-          ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23452401', // 误触页
         },
       ],
     },
@@ -363,10 +361,8 @@ export default defineGkdApp({
             'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/23419014',
-            // 误触页2 https://i.gkd.li/i/23433012
-          ],
+          snapshotUrls: 'https://i.gkd.li/i/23419014',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23433012', // 误触页2
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
@@ -474,10 +470,8 @@ export default defineGkdApp({
           matches:
             'TextView[text="今日签到"][index=parent.childCount.minus(1)][visibleToUser=true]',
           fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/23420512',
-            // 参考快极误触页 https://i.gkd.li/i/23380995
-          ],
+          snapshotUrls: 'https://i.gkd.li/i/23420512',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23380995', // 参考快极误触页
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
