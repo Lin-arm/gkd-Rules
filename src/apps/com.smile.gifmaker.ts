@@ -312,8 +312,12 @@ export default defineGkdApp({
           key: 4,
           action: 'back',
           actionCd: 3000,
-          matches: 'Button[text="待领取" || text="已领取"][visibleToUser=true]',
+          matches:
+            'Button[text="待领取" || text="已领取"][height!=64][visibleToUser=true]',
           fastQuery: false,
+          snapshotUrls: [
+            'https://i.gkd.li/i/23452401', // 误触页
+          ],
         },
       ],
     },
@@ -364,6 +368,45 @@ export default defineGkdApp({
             // 误触页2 https://i.gkd.li/i/23433012
           ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+    {
+      key: 27,
+      name: '🦆养鸭-赚饲料-搜索or看广告',
+      desc: '①点击去搜索or观看 ②误进商品页-返回',
+      rules: [
+        {
+          key: 1,
+          actionDelay: 2500,
+          matches: [
+            '[text="搜索并浏览30秒" || text="看精彩广告"] <<2 * + [text="去搜索" || text="去观看"][visibleToUser=true]',
+          ],
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23452441',
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 2,
+          matches: 'ImageView[id$="back_btn_trans"][visibleToUser=true]',
+          fastQuery: true,
+          activityIds:
+            'com.kuaishou.merchant.transaction.detail.detailv2.MerchantDetailV2Activity',
+        },
+      ],
+    },
+    {
+      key: 28,
+      name: '🦆养鸭-搜索-31秒返回',
+      desc: '等31秒后点击返回',
+      actionDelay: 31000,
+      rules: [
+        {
+          matches:
+            'FrameLayout[vid="kem_activity_task_pendant"] >2 ImageView[vid="pendant_bg"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23452718',
+          activityIds: 'com.yxcorp.plugin.search.SearchActivity',
         },
       ],
     },
