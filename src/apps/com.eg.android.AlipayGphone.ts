@@ -76,35 +76,27 @@ export default defineGkdApp({
     {
       key: 4,
       name: '🐤养鸡-乐园🎈-开宝箱',
-      desc: '乐园弹窗->点击 开宝箱',
+      desc: '乐园弹窗->点击 ①开宝箱 ②x掉',
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
+          key: 1,
           actionCd: 3000,
-          matches: [
+          matches:
             '[text="恭喜获得奖励"] +(2,3) [text^="立即开宝箱"][visibleToUser=true]',
-          ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22983795',
             'https://i.gkd.li/i/22984046',
           ],
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
-      ],
-    },
-    {
-      key: 5,
-      name: '🐤养鸡-乐园🎈-已开宝箱-x掉',
-      desc: '点击 x掉',
-      rules: [
         {
+          key: 2,
+          preKeys: [1],
           actionCd: 3000,
-          matches: ['[text="立即兑换奖励"] + [text=""][visibleToUser=true]'],
+          matches: '[text="立即兑换奖励"] + [text=""][visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22983810',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
       ],
     },
@@ -168,30 +160,20 @@ export default defineGkdApp({
     {
       key: 9,
       name: '🐤养鸡-家庭👪-早安-弹窗确认',
-      desc: '点击 确认发送',
+      desc: '点击 ①确认发送 ②x掉',
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
-          matches: [
-            '[text="亲密度+1"] + [text="确认发送"][visibleToUser=true]',
-          ],
+          key: 1,
+          matches: '[text="亲密度+1"] + [text="确认发送"][visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938526',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
-      ],
-    },
-    {
-      key: 10,
-      name: '🐤养鸡-家庭👪-成功道早安弹窗-x掉',
-      desc: '点击 x掉',
-      rules: [
         {
-          matches: ['[text$="传话内容"] < * +2 TextView[visibleToUser=true]'],
+          key: 2,
+          matches: '[text$="传话内容"] < * +2 TextView[visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938583',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
       ],
     },
@@ -214,65 +196,43 @@ export default defineGkdApp({
     {
       key: 12,
       name: '🐤养鸡-家庭👪-去捐步',
-      desc: '运动做公益(抽屉)->去捐步',
-      rules: [
-        {
-          matches: [
-            'View[index=parent.childCount.minus(1)] > [text="去捐步数"][visibleToUser=true]',
-          ],
-          fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22939273',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
-        },
-      ],
-    },
-    {
-      key: 13,
-      name: '🐤养鸡-家庭👪-捐步',
-      desc: '点击 立即捐步',
-      rules: [
-        {
-          actionCd: 3000,
-          matches: [
-            '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
-          ],
-          fastQuery: false, // 用 true 真机不触发
-          snapshotUrls: 'https://i.gkd.li/i/22931136',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
-        },
-      ],
-    },
-    {
-      key: 14,
-      name: '🐤养鸡-家庭👪-捐步-返回键',
-      desc: '捐步成功->弹窗->按下返回键', // ❌zfb_10.7.16.8000暂不生效
+      desc: '①去捐步 ②立即捐步 ③知道了(返回键) ④x掉',
+      activityIds: ['com.alipay.mobile.nebulax.xriver.activity.XRiverActivity'],
       rules: [
         {
           key: 1,
-          action: 'back',
-          matches: ['[text="行走捐"]', '[text="知道了"][visibleToUser=true]'],
+          matches:
+            'View[index=parent.childCount.minus(1)] > [text="去捐步数"][visibleToUser=true]',
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22931262',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          snapshotUrls: 'https://i.gkd.li/i/22939273',
         },
         {
           key: 2,
-          preKeys: [1],
+          actionCd: 3000,
+          matches:
+            '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
+          fastQuery: false, // 用 true 真机不触发
+          snapshotUrls: 'https://i.gkd.li/i/22931136',
+        },
+        {
+          key: 3,
+          preKeys: [2],
+          action: 'back',
+          matches: '[text="行走捐"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/22931262',
+        },
+        {
+          key: 4,
+          preKeys: [3],
           matchDelay: 500,
-          matches: [
-            '[text="今日已完成捐步"]',
+          matches:
             '[text="一起运动做公益"] +2 [text="关闭"][visibleToUser=true]',
-          ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23381801',
             'https://i.gkd.li/i/23414325',
           ],
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
       ],
     },
@@ -297,32 +257,22 @@ export default defineGkdApp({
     {
       key: 16,
       name: '🌲森林-寻宝🎁-帮ta助力',
-      desc: '弹窗-帮ta助力',
+      desc: '弹窗-①帮ta助力 ②x掉',
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
-          matches: [
+          key: 1,
+          matches:
             '[text^="好友"] +2 TextView[text="帮ta助力"][visibleToUser=true]',
-          ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22941634',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
-      ],
-    },
-    {
-      key: 17,
-      name: '🌲森林-寻宝🎁-助力成功-x掉',
-      desc: '弹窗-x掉',
-      rules: [
         {
-          matches: [
+          key: 2,
+          matches:
             '[text="送你1次抽奖机会"] - [text="助力成功"] - * < * + TextView[visibleToUser=true]',
-          ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938650',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
       ],
     },
