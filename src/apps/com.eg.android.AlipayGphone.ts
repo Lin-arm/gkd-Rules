@@ -109,6 +109,31 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 501,
+      name: '🐤养鸡-做美食-食材店-领取',
+      desc: '爱心食材店 ①领10g食材 ②返回键',
+      rules: [
+        {
+          key: 1,
+          matches: '[text="领10g食材"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23450712',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+        {
+          key: 2,
+          action: 'back',
+          matches:
+            '[text="领取每日限量食材"] + [text="已领取"][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23450722',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
       key: 7,
       name: '🐤养鸡-抽抽乐🎰-饲料换机会-确认',
       desc: '90g饲料换机会 弹窗->点击确认',
