@@ -63,13 +63,14 @@ export default defineGkdApp({
         {
           anyMatches: [
             '[text="恭喜获得施肥大礼包"] < * + Button[text="关闭"][visibleToUser=true]',
-            '[text="从淘宝首页进入农场"] <2 * + * > Button[text="关闭"][visibleToUser=true]',
+            '[text^="恭喜领到" || text^="从淘宝首页"] <(1,2) * + * > Button[text="关闭"][visibleToUser=true]',
             '[text="提醒我明天领"] + Button[text=""][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23300544',
             'https://i.gkd.li/i/23393863',
+            'https://i.gkd.li/i/23468858',
             'https://i.gkd.li/i/23413567',
           ],
           activityIds: [

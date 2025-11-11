@@ -364,7 +364,10 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22981779',
             'https://i.gkd.li/i/22981791',
           ],
-          excludeSnapshotUrls: 'https://i.gkd.li/i/23064639', // 排除 text^="感谢你"
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/23064639', // 排除 text^="感谢你"
+            'https://i.gkd.li/i/22983810', // 与 养鸡-乐园-开宝箱 key2 等效了
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
