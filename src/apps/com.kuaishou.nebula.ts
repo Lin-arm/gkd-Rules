@@ -70,6 +70,7 @@ export default defineGkdApp({
       activityIds: [
         'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+        'com.yxcorp.gifshow.HomeActivity',
       ],
       rules: [
         {
@@ -86,9 +87,15 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          matches: '[text="去绑卡"] -7 * < * - [text=""][childCount=1] > Image',
+          matches: [
+            '[text="去绑卡"] -7 * < * - [text=""][childCount=1] > Image',
+            '[text="去绑卡"] <7 * - * < * - [text=""][childCount=1] > Image',
+          ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22672698',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22672698',
+            'https://i.gkd.li/i/23468984',
+          ],
         },
       ],
     },
@@ -344,6 +351,7 @@ export default defineGkdApp({
       key: 13,
       name: '🤳看广告-惊喜弹窗-x掉',
       desc: '下方 惊喜红包弹窗-x掉',
+      enable: false,
       rules: [
         {
           actionMaximum: 1,
