@@ -225,7 +225,7 @@ export default defineGkdApp({
         {
           key: 4,
           preKeys: [3],
-          matchDelay: 500,
+          matchDelay: 700,
           matches:
             '[text="一起运动做公益"] +2 [text="关闭"][visibleToUser=true]',
           fastQuery: false,

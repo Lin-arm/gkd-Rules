@@ -350,7 +350,7 @@ export default defineGkdApp({
     {
       key: 13,
       name: '🤳看广告-惊喜弹窗-x掉',
-      desc: '下方 惊喜红包弹窗-x掉',
+      desc: '下方 惊喜红包弹窗-x掉(❗误触)',
       enable: false,
       rules: [
         {
@@ -700,14 +700,14 @@ export default defineGkdApp({
     },
     {
       key: 27,
-      name: '🦆养鸭-赚饲料-搜索or看广告',
-      desc: '①点击去搜索or观看 ②误进商品页-返回',
+      name: '🦆养鸭-赚饲料-任务',
+      desc: '①领奖 ②去搜索or观看 ③误进商品页-返回',
       rules: [
         {
           key: 1,
           actionDelay: 2500,
           matches: [
-            '[text="搜索并浏览30秒" || text="看精彩广告"] <<2 * + [text="去搜索" || text="去观看"][visibleToUser=true]',
+            '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22850836',
