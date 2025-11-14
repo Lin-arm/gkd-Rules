@@ -87,7 +87,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          matches: [
+          anyMatches: [
             '[text="去绑卡"] -7 * < * - [text=""][childCount=1] > Image',
             '[text="去绑卡"] <7 * - * < * - [text=""][childCount=1] > Image',
           ],
@@ -228,13 +228,14 @@ export default defineGkdApp({
         {
           actionDelay: 1500,
           matches: [
-            '[vid="ad_download_text"][text^="点击额外获取"][text$="金币"][visibleToUser=true]',
+            '[vid="ad_download_text"][text^="点击额外获取" || text^="i 打开并体验"][text$="金币"][visibleToUser=true]',
           ],
           fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23392746',
-            // 排除 https://i.gkd.li/i/23392869
+            'https://i.gkd.li/i/23476308',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23392869',
           activityIds: [
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
             'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
@@ -495,26 +496,31 @@ export default defineGkdApp({
       key: 19,
       name: '📡直播间-关注弹窗-x',
       desc: '①x掉 ②返回键',
+      activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
       rules: [
         {
           key: 1,
-          matches: [
+          matches:
             '[text="立即关注"] -3 [id$="anchor_close"][visibleToUser=true]',
-          ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22659582',
-          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         },
         {
           key: 2,
           action: 'back',
           actionCd: 2000,
-          matches: [
-            '[text$="看了这么久，帮我点个关注吧！"][visibleToUser=true]',
-          ],
+          matches: '[text$="看了这么久，帮我点个关注吧！"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23300455',
-          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        },
+        {
+          key: 3,
+          action: 'back',
+          actionCd: 2000,
+          matches:
+            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_profile_bottom_bar_container"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23542497',
         },
       ],
     },
@@ -627,6 +633,7 @@ export default defineGkdApp({
       key: 24,
       name: '🦆养鸭-今日签到弹窗',
       desc: '①立即签到 ②x掉',
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
           key: 1,
@@ -636,20 +643,18 @@ export default defineGkdApp({
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22871644',
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
         {
           key: 2,
-          // preKeys: [1],
           matches: [
-            '[text^="明日签到"] <<3 * - * < * - * > Image[width=76 || width=77][visibleToUser=true]',
+            '[text^="明日签到" || text^="恭喜获得"] <<3 * - * < * - * > Image[width=76 || width=77][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22871789',
             'https://i.gkd.li/i/23427798',
+            'https://i.gkd.li/i/23542661',
           ],
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
     },
