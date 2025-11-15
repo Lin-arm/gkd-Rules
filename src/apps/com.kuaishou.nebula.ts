@@ -601,6 +601,7 @@ export default defineGkdApp({
       key: 23,
       name: '🦆养鸭-弹窗',
       desc: '①明天来喂鸭 ②继续喂养 ③饲料雨End ④抓鸭签到, ⑤抓鸭签到返回键',
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
           key: 1,
@@ -615,7 +616,6 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22783039',
             'https://i.gkd.li/i/23422233',
           ],
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
         {
           key: 4,
@@ -629,7 +629,6 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23141489',
             'https://i.gkd.li/i/23422249',
           ],
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
     },
@@ -642,9 +641,8 @@ export default defineGkdApp({
         {
           key: 1,
           actionMaximum: 1,
-          matches: [
+          matches:
             '[text="签到提醒"] < * - [text="立即签到"][visibleToUser=true]',
-          ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22871644',
         },
