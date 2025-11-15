@@ -360,6 +360,7 @@ export default defineGkdApp({
       desc: '抽奖->弹窗->点击 再抽or知道了',
       rules: [
         {
+          excludeMatches: 'WebView[text="光盘打卡" || text="蚂蚁庄园"]',
           matches: [
             '[text^="感谢你拯救了过期" || text^="恭喜获得"] +(2,3) View > TextView[text=""][visibleToUser=true]',
           ],

@@ -353,13 +353,11 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 120,
-          matchDelay: 5000,
+          matchDelay: 4000,
           actionCd: 6000,
-          matches: [
-            '[text="赚饲料"][visibleToUser=false]',
-            '[text!="签到提醒"][text!="连签大奖"][text.length=4][visibleToUser=true]',
-            'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
-          ],
+          excludeMatches:
+            '[text="赚饲料" || text="签到提醒"][visibleToUser=true]',
+          matches: 'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23419014',
           excludeSnapshotUrls: 'https://i.gkd.li/i/23433012', // 误触页2

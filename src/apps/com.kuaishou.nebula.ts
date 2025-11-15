@@ -228,6 +228,7 @@ export default defineGkdApp({
       rules: [
         {
           actionDelay: 1500,
+          excludeMatches: '[vid="ad_download_text"][text^="i 下载"]',
           matches: [
             '[vid="ad_download_text"][text^="点击额外获取" || text^="i 打开并体验"][text$="金币"][visibleToUser=true]',
           ],
@@ -357,6 +358,8 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 1,
+          excludeMatches:
+            '([vid="ad_download_progress_click_progress"]) || ([text^="已成功"])',
           matches: [
             '@ImageView < [desc="close_view"] <2 [desc="container_view"] <<3 [id="com.kuaishou.nebula.commercial_neo:id/award_video_card_container"]',
           ],
@@ -685,13 +688,11 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 120,
-          matchDelay: 5000,
+          matchDelay: 4000,
           actionCd: 6000,
-          matches: [
-            '[text="赚饲料"][visibleToUser=false]',
-            '[text!="签到提醒"][text!="连签大奖"][text.length=4][visibleToUser=true]',
-            'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
-          ],
+          excludeMatches:
+            '[text="赚饲料" || text="签到提醒"][visibleToUser=true]',
+          matches: 'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22908125',
