@@ -25,3 +25,7 @@ git commit -m "v10 更新了啥"
 # git commit -m "feat: 全屏广告-提现后-借贷弹窗-x掉"
 
 git push
+
+
+# 从github拉取并合并
+git pull origin main

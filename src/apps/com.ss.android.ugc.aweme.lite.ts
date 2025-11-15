@@ -32,10 +32,13 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text="广告"] + [text^="领取成功，关闭"][visibleToUser=true]',
+            '[text="广告"] +(1,3) [text^="领取成功，关闭"][visibleToUser=true]',
           ],
           fastQuery: true,
-          snapshotUrls: ['https://i.gkd.li/i/23394121'],
+          snapshotUrls: [
+            'https://i.gkd.li/i/23394121',
+            'https://i.gkd.li/i/23562150',
+          ],
           activityIds: ['com.ss.android.excitingvideo.ExcitingVideoActivity'],
         },
       ],
@@ -47,10 +50,13 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[text^="再看一个"] +6 [text="领取奖励"][visibleToUser=true]',
+            '[text^="再看一个"] +(6,13) [text="领取奖励"][visibleToUser=true]',
           ],
           fastQuery: true,
-          snapshotUrls: ['https://i.gkd.li/i/23394181'],
+          snapshotUrls: [
+            'https://i.gkd.li/i/23394181',
+            'https://i.gkd.li/i/23562162',
+          ],
           activityIds: ['com.ss.android.excitingvideo.ExcitingVideoActivity'],
         },
       ],
