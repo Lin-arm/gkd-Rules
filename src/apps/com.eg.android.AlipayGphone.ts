@@ -131,6 +131,7 @@ export default defineGkdApp({
       desc: '90g饲料换机会 弹窗->点击确认',
       rules: [
         {
+          matchRoot: true, // 试着解决睡死不触发
           matches: [
             '[text^="消耗90g饲料"] + * > [text="确认兑换"][visibleToUser=true]',
           ],
@@ -262,6 +263,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          matchRoot: true,
           matches:
             '[text^="好友"] +2 TextView[text="帮ta助力"][visibleToUser=true]',
           fastQuery: false,
@@ -322,6 +324,7 @@ export default defineGkdApp({
       desc: '活力值兑换抽奖机会->确认',
       rules: [
         {
+          matchRoot: true,
           matches: [
             '[text$="兑1次抽奖机会"] < * + * > [text="确认兑换"][visibleToUser=true]',
           ],
@@ -478,6 +481,7 @@ export default defineGkdApp({
       desc: '该任务已完成->点击 去领取',
       rules: [
         {
+          matchRoot: true,
           matches: [
             '[text^="+"][text$="/时"] + [text$="领取"][visibleToUser=true]',
           ],

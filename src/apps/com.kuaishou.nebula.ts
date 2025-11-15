@@ -181,6 +181,7 @@ export default defineGkdApp({
       desc: '已成功领取奖励',
       rules: [
         {
+          matchRoot: true,
           actionDelay: 1500,
           matches: [
             '[text^="已成功"] + [id="com.kuaishou.nebula.commercial_neo:id/video_countdown_end_icon"][visibleToUser=true]',
