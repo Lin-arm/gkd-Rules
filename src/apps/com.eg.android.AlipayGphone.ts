@@ -27,6 +27,7 @@ export default defineGkdApp({
       rules: [
         {
           action: 'back',
+          matchRoot: true,
           matchDelay: 300,
           actionCd: 5000,
           matches: [
@@ -225,7 +226,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
-          preKeys: [2],
+          preKeys: [2, 3],
           matchDelay: 700,
           matches:
             '[text="一起运动做公益"] +2 [text="关闭"][visibleToUser=true]',
@@ -286,7 +287,7 @@ export default defineGkdApp({
         {
           actionCd: 1500,
           matches: [
-            '[text^="邀请好友" || text^="去森" || text*="活力值" || text^="玩一玩" || text^="去试玩" || text$="限定装扮" || text^="去看" || text*="故宫"] < * + * > [text="领取"][visibleToUser=true]',
+            '[text^="邀请好友" || text^="去" || text*="活力值" || text^="玩一玩" || text$="限定装扮" || text*="故宫"] < * + * > [text="领取"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
@@ -536,9 +537,12 @@ export default defineGkdApp({
         {
           key: 3,
           matches:
-            'Image[width=866][height=1138] <<2 * + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
+            'Image[width=866] <<2 * + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23550292',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23550292',
+            'https://i.gkd.li/i/23557965',
+          ],
         },
       ],
     },

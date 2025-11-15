@@ -714,11 +714,11 @@ export default defineGkdApp({
           key: 1,
           actionDelay: 2500,
           matches: [
-            // '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][visibleToUser=true]',
-            '[text^="搜索并" || text="看精彩广告"] <<2 * + [text="去搜索" || text="去观看"][visibleToUser=true]',
+            '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>781][visibleToUser=true]',
           ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22850836',
+          snapshotUrls: 'https://i.gkd.li/i/23558181',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23558030', // [left=781]
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
         {
