@@ -224,7 +224,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
-          preKeys: [3],
+          preKeys: [2],
           matchDelay: 700,
           matches:
             '[text="一起运动做公益"] +2 [text="关闭"][visibleToUser=true]',
@@ -284,7 +284,7 @@ export default defineGkdApp({
         {
           actionCd: 1500,
           matches: [
-            '[text^="邀请好友" || text^="去森林市集" || text^="消耗活力值" || text^="玩一玩" || text$="限定装扮" || text^="去看视频" || text*="故宫"] < * + * > [text="领取"][visibleToUser=true]',
+            '[text^="邀请好友" || text^="去森" || text*="活力值" || text^="玩一玩" || text^="去试玩" || text$="限定装扮" || text^="去看" || text*="故宫"] < * + * > [text="领取"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
@@ -293,6 +293,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23236056',
             'https://i.gkd.li/i/23239118',
             'https://i.gkd.li/i/23290903',
+            'https://i.gkd.li/i/23548619',
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -512,20 +513,28 @@ export default defineGkdApp({
     },
     {
       key: 30,
-      name: '🌾农场-丰收礼包已领取-x掉',
-      desc: 'x掉弹窗',
+      name: '🌾农场-弹窗-x掉',
+      desc: '①丰收礼包 ②恭喜获得 ③去快手逛逛',
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
+          key: 1,
           matches: [
-            '[text="丰收礼包已领取"] +(4,5) [text="关闭"][visibleToUser=true]',
+            '[text="丰收礼包已领取" || text="恭喜获得"] +(4,5) [text="关闭"][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23014209',
             'https://i.gkd.li/i/23440721',
+            'https://i.gkd.li/i/23548285',
           ],
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+        {
+          key: 3,
+          matches:
+            'Image[width=866][height=1138] <<2 * + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23550292',
         },
       ],
     },
