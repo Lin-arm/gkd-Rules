@@ -10,7 +10,10 @@ export default defineGkdApp({
       desc: '点击知道了',
       rules: [
         {
-          matches: ['TextView[text="知道了"][visibleToUser=true]'],
+          matches: [
+            // '@TextView[text="知道了"] <<n [vid="webViewContainer"]',
+            'TextView[text="知道了"][visibleToUser=true]',
+          ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22909666',
           activityIds: 'com.qidian.QDReader.ui.activity.QDBrowserActivity',
@@ -25,11 +28,16 @@ export default defineGkdApp({
       rules: [
         {
           actionCd: 1500,
-          matches: [
-            '[text="激励任务" || text^="做任务" || text^="完成"] < * + [text="去完成"][visibleToUser=true]',
+          anyMatches: [
+            '[text="激励任务" || text^="做任务" || text^="完成"] < * + [text="去完成"][visibleToUser=true]', // 422
+            '[text="激励任务" || text^="做任务" || text*="完成"] +(2,3,4) [text="去完成"][visibleToUser=true]', // 420,428
           ],
           fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/23290942',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23290942',
+            'https://i.gkd.li/i/23561866',
+            'https://i.gkd.li/i/23561912',
+          ],
           activityIds: 'com.qidian.QDReader.ui.activity.QDBrowserActivity',
         },
       ],

@@ -665,7 +665,7 @@ export default defineGkdApp({
       desc: '领饲料球',
       rules: [
         {
-          matchDelay: 3000,
+          matchDelay: 1000,
           actionMaximum: 1,
           resetMatch: 'match',
           matches: [
@@ -708,7 +708,7 @@ export default defineGkdApp({
     {
       key: 27,
       name: '🦆养鸭-赚饲料-任务',
-      desc: '①领奖 ②去搜索or观看 ③误进商品页-返回',
+      desc: '①领奖 ②去搜索or观看',
       rules: [
         {
           key: 1,
@@ -722,13 +722,22 @@ export default defineGkdApp({
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
         {
-          key: 2,
+          key: 3, // ③误进商品页-返回
           matches: 'ImageView[id$="back_btn_trans"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22658642',
-          activityIds: [
+          activityIds:
             'com.kuaishou.merchant.transaction.detail.detailv2.MerchantDetailV2Activity',
-          ],
+        },
+        {
+          key: 4, // ④误进直播间-关闭
+          preKeys: [1],
+          matches:
+            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_close_place_holder"]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23561481',
+          activityIds:
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
         },
       ],
     },
