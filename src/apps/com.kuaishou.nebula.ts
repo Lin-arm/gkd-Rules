@@ -59,7 +59,10 @@ export default defineGkdApp({
           matches: '[text^="不感兴趣" && vid="item_title"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22908240',
-          activityIds: 'com.yxcorp.gifshow.HomeActivity',
+          activityIds: [
+            'com.yxcorp.gifshow.HomeActivity',
+            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+          ],
         },
       ],
     },
@@ -181,10 +184,9 @@ export default defineGkdApp({
       desc: '已成功领取奖励',
       rules: [
         {
-          matchRoot: true,
           actionDelay: 1500,
           matches: [
-            '[text^="已成功"] + [id="com.kuaishou.nebula.commercial_neo:id/video_countdown_end_icon"][visibleToUser=true]',
+            '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',
           ],
           fastQuery: true,
           snapshotUrls: [
@@ -534,9 +536,8 @@ export default defineGkdApp({
       desc: 'x掉',
       rules: [
         {
-          matches: [
+          matches:
             '@ImageView[visibleToUser=true] < * - [text$="为您推荐优选职位"]',
-          ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23211116',
           activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
@@ -663,9 +664,11 @@ export default defineGkdApp({
     {
       key: 25,
       name: '🦆养鸭-领饲料球',
-      desc: '领饲料球',
+      desc: '①领饲料球 ②x掉',
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
+          key: 1,
           matchDelay: 1000,
           actionMaximum: 1,
           resetMatch: 'match',
@@ -674,7 +677,13 @@ export default defineGkdApp({
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22883176',
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          matches: 'Image[text=""][width=77 || height=77][clickable=true]',
+          fastQuery: false,
+          snapshotUrls: 'https://i.gkd.li/i/23567580',
         },
       ],
     },
@@ -711,7 +720,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          actionDelay: 2500,
+          actionDelay: 500,
           matches: [
             '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>781][visibleToUser=true]',
           ],

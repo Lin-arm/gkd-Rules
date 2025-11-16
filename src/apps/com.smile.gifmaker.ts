@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 4,
-      name: '📺视频页-长按直播-不感兴趣',
+      name: '📺视频页-长按直播or广告-不感兴趣',
       desc: '点击不感兴趣',
       rules: [
         {
@@ -14,8 +14,14 @@ export default defineGkdApp({
           matchDelay: 1700,
           matches: '[text^="不感兴趣" && vid="item_title"][visibleToUser=true]',
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23386995',
-          activityIds: 'com.yxcorp.gifshow.HomeActivity',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23386995',
+            'https://i.gkd.li/i/23567782',
+          ],
+          activityIds: [
+            'com.yxcorp.gifshow.HomeActivity',
+            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+          ],
         },
       ],
     },
@@ -41,7 +47,7 @@ export default defineGkdApp({
         {
           actionDelay: 1500,
           matches: [
-            '[text^="已成功"] + [id="com.smile.gifmaker.commercial_neo:id/video_countdown_end_icon"][visibleToUser=true]',
+            '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',
           ],
           fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/23382541'],
@@ -260,6 +266,20 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 20,
+      name: '📡直播间-招工弹窗-x',
+      desc: 'x掉',
+      rules: [
+        {
+          matches:
+            '@ImageView[visibleToUser=true] < * - [text$="为您推荐优选职位"]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23567767',
+          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        },
+      ],
+    },
+    {
       key: 21,
       name: '📡直播间-预约直播弹窗-x',
       desc: 'x掉',
@@ -372,7 +392,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          actionDelay: 2500,
+          actionDelay: 500,
           matches: [
             '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>782][visibleToUser=true]',
           ],

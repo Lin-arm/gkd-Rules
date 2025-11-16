@@ -94,7 +94,6 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
-          actionCd: 3000,
           matches: '[text="立即兑换奖励"] + [text=""][visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22983810',
@@ -203,10 +202,12 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          excludeMatches: '[text="今日已完成捐步"]',
           matches:
             'View[index=parent.childCount.minus(1)] > [text="去捐步数"][visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22939273',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23381801',
         },
         {
           key: 2,
@@ -244,12 +245,15 @@ export default defineGkdApp({
       desc: '饲料袋已满 弹窗->点击知道了',
       rules: [
         {
-          matches:
-            '[text="去帮好友喂食"] + [text="知道了"][visibleToUser=true]',
+          matches: [
+            '[text="饲料袋已满"]',
+            '[text="知道了" || text="确认"][visibleToUser=true]',
+          ],
           fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23238168',
             'https://i.gkd.li/i/23414417',
+            'https://i.gkd.li/i/23567547',
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
