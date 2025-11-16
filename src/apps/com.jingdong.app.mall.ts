@@ -19,11 +19,13 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22872007',
             'https://i.gkd.li/i/22939003',
             'https://i.gkd.li/i/22938990',
+            'https://i.gkd.li/i/23562959', // 无截图
           ],
           activityIds: [
             'com.jd.lib.babel.view.activity.BabelActivity',
             'com.jd.lib.productdetail.ProductDetailPopActivity',
             '.WebActivity',
+            'com.jd.lib.login.LoginActivity',
           ],
         },
       ],

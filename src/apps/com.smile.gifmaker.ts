@@ -367,25 +367,35 @@ export default defineGkdApp({
     },
     {
       key: 27,
-      name: '🦆养鸭-赚饲料-搜索or看广告',
-      desc: '①点击去搜索or观看 ②误进商品页-返回',
+      name: '🦆养鸭-赚饲料-任务',
+      desc: '①领奖 ②去搜索or观看',
       rules: [
         {
           key: 1,
           actionDelay: 2500,
           matches: [
-            '[text="搜索并浏览30秒" || text="看精彩广告"] <<2 * + [text="去搜索" || text="去观看"][visibleToUser=true]',
+            '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>782][visibleToUser=true]',
           ],
           fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23452441',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23563084', // [left=782]
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
         {
-          key: 2,
+          key: 3, // ③误进商品页-返回
           matches: 'ImageView[id$="back_btn_trans"][visibleToUser=true]',
           fastQuery: true,
           activityIds:
             'com.kuaishou.merchant.transaction.detail.detailv2.MerchantDetailV2Activity',
+        },
+        {
+          key: 4, // ④误进直播间-关闭
+          preKeys: [1],
+          matches:
+            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_close_place_holder"]',
+          fastQuery: true,
+          activityIds:
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
         },
       ],
     },

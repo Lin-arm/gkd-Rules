@@ -28,9 +28,10 @@ export default defineGkdApp({
           matches: '[id="video"] >(1,2) [text="去完成"][visibleToUser=true]',
           fastQuery: false,
           snapshotUrls: [
-            'https://i.gkd.li/i/23290942',
-            'https://i.gkd.li/i/23561866',
-            'https://i.gkd.li/i/23561912',
+            'https://i.gkd.li/i/23290942', // 422
+            'https://i.gkd.li/i/23565148', // 422
+            'https://i.gkd.li/i/23561866', // 420
+            'https://i.gkd.li/i/23561912', // 428
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23562885',
           activityIds: 'com.qidian.QDReader.ui.activity.QDBrowserActivity',
