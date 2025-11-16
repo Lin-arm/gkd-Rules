@@ -70,73 +70,27 @@ export default defineGkdApp({
       key: 5,
       name: '任务页-弹窗-X掉',
       desc: '添加组件,去绑卡,邀好友 弹窗',
-      activityIds: [
-        'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
-        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-        'com.yxcorp.gifshow.HomeActivity',
-      ],
       rules: [
         {
-          key: 1,
-          matches:
-            '[text^="添加组件" || text^="限时邀" || text^="去分享视频"] <<(2,3) * - [text=""][childCount=1] > Image',
-          fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/22671674',
-            'https://i.gkd.li/i/22907854',
-            'https://i.gkd.li/i/22850433',
-            'https://i.gkd.li/i/23300823',
-          ],
-        },
-        {
-          key: 2,
-          anyMatches: [
-            '[text="去绑卡"] -7 * < * - [text=""][childCount=1] > Image',
-            '[text="去绑卡"] <7 * - * < * - [text=""][childCount=1] > Image',
-          ],
-          fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/22672698',
-            'https://i.gkd.li/i/23468984',
-          ],
-        },
-      ],
-    },
-    {
-      key: 6,
-      name: '任务页-打卡弹窗-X掉',
-      desc: '①每日打卡弹窗 ②退出',
-      enable: false,
-      rules: [
-        {
-          key: 1,
+          excludeMatches: '[text="开宝箱奖励已到账"]',
           matches: [
-            '[text="huge_sign_marketing_popup"] < * - [text=""][childCount=1] > Image',
+            '[text="任务中心"]',
+            '[text=""][clickable=false][childCount=1] > Image[width>=76 && width<=80][height>=74 && height<=80][clickable=true]',
           ],
           fastQuery: false,
           snapshotUrls: [
-            'https://i.gkd.li/i/22672607',
-            'https://i.gkd.li/i/22871818',
-            'https://i.gkd.li/i/22691430',
+            'https://i.gkd.li/i/23468984', //去绑卡 A
+            'https://i.gkd.li/i/22672607', //每日打卡 A
+            'https://i.gkd.li/i/22907854', //限时邀好友 B
+            'https://i.gkd.li/i/23300823', //去分享视频 B
+            'https://i.gkd.li/i/22671674', //添加组件 C
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23427912',
           activityIds: [
-            'com.yxcorp.gifshow.HomeActivity',
-            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
-            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+            'com.yxcorp.gifshow.HomeActivity', // A
+            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
+            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity', // C
           ],
-        },
-        {
-          key: 2,
-          actionMaximum: 3,
-          actionCd: 5000,
-          matchDelay: 1000,
-          action: 'back',
-          matches: [
-            '[text^="完成365天打卡"] - * <<2 * - * >3 [text="更多"] < * - * >3 Image',
-          ],
-          fastQuery: false,
-          snapshotUrls: 'https://i.gkd.li/i/22702263',
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
     },
