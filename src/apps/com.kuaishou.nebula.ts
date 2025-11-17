@@ -229,12 +229,13 @@ export default defineGkdApp({
           actionCd: 10000,
           matchDelay: 3500,
           matches:
-            '@[text="看广告得金币"][left=165][visibleToUser=true] + [text="coin"]',
+            '@[text="看广告得金币"][left=165][visibleToUser=true] +3 [text^="单日最高"]',
           snapshotUrls: [
             'https://i.gkd.li/i/22883404',
             'https://i.gkd.li/i/22882988',
             'https://i.gkd.li/i/22907324',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23585391',
           activityIds: [
             'com.yxcorp.gifshow.HomeActivity',
             'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
