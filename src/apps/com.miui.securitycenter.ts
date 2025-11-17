@@ -2,7 +2,7 @@ import { defineGkdApp } from '@gkd-kit/define';
 
 export default defineGkdApp({
   id: 'com.miui.securitycenter',
-  name: '手机管家',
+  name: '(小米)手机管家',
   groups: [
     {
       key: 1,

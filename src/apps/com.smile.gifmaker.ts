@@ -26,20 +26,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 7,
-      name: '逛街-退出弹窗-放弃',
-      desc: '点击返回',
-      rules: [
-        {
-          matches:
-            '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23382590',
-          activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
-        },
-      ],
-    },
-    {
       key: 9,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',
@@ -482,7 +468,7 @@ export default defineGkdApp({
     },
     {
       key: 33,
-      name: '去金币购-签到',
+      name: '去金币购-签到💰',
       desc: '点击今日签到',
       rules: [
         {
@@ -495,8 +481,45 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 7,
+      name: '逛街赚金币-自动领💰,退',
+      desc: '①领金币 ③返回键 ④弹窗-放弃',
+      activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
+      rules: [
+        {
+          key: 1,
+          matches:
+            '@[text^="+"][text$="0"] + [text="打开快手"][visibleToUser=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23582148',  //参考快极
+        },
+        {
+          key: 2,
+          preKeys: [1], // 先点key1,再点key2 就会领两样金币
+          matches:
+            '@[text^="+"][text$="0"] + [text="点击领取"][visibleToUser=true]',
+          fastQuery: true,
+        },
+        {
+          key: 3,
+          action: 'back',
+          excludeMatches: '@[text!="+10"] + [text="浏览领取"]', // 若是10金币,直接退出
+          matches: '[text="明天签到"]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23582306',
+        },
+        {
+          key: 4,
+          matches:
+            '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23382590',
+        },
+      ],
+    },
+    {
       key: 34,
-      name: '睡觉-领补贴',
+      name: '💤睡觉-领补贴',
       desc: '点击看广告领补贴',
       rules: [
         {
@@ -512,7 +535,7 @@ export default defineGkdApp({
     },
     {
       key: 35,
-      name: '走路赚金币-领金币',
+      name: '🚶‍♂️走路赚金币-领金币',
       desc: '点击领取xxx金币',
       rules: [
         {
@@ -528,7 +551,7 @@ export default defineGkdApp({
     },
     {
       key: 36,
-      name: '饭点-领补贴',
+      name: '🍚饭点-领补贴',
       desc: '①饭补 ②弹窗 ③待补签 ④左下角看广告',
       rules: [
         {

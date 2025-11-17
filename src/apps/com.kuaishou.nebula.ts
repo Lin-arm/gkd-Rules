@@ -773,7 +773,7 @@ export default defineGkdApp({
     },
     {
       key: 33,
-      name: '去金币购-签到',
+      name: '去金币购-签到💰',
       desc: '点击今日签到',
       rules: [
         {
@@ -787,7 +787,7 @@ export default defineGkdApp({
     },
     {
       key: 7,
-      name: '逛街赚金币-自动领,退',
+      name: '逛街赚金币-自动领💰,退',
       desc: '①领金币 ③返回键 ④弹窗-放弃',
       activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
       rules: [
@@ -825,7 +825,7 @@ export default defineGkdApp({
     },
     {
       key: 34,
-      name: '睡觉-领补贴',
+      name: '💤睡觉-领补贴',
       desc: '点击看广告领补贴',
       rules: [
         {
@@ -844,7 +844,7 @@ export default defineGkdApp({
     },
     {
       key: 35,
-      name: '走路赚金币-领金币',
+      name: '🚶‍♂️走路赚金币-领金币',
       desc: '点击领取xxx金币',
       rules: [
         {
@@ -860,7 +860,7 @@ export default defineGkdApp({
     },
     {
       key: 36,
-      name: '饭点-领补贴',
+      name: '🍚饭点-领补贴',
       desc: '①饭补 ②弹窗 ③待补签 ④左下角看广告',
       rules: [
         {
