@@ -27,6 +27,22 @@ export default defineGkdApp({
     },
     {
       key: 2,
+      name: '视频页-青少年弹窗-x掉',
+      desc: '启动时的青少年弹窗-关闭',
+      rules: [
+        {
+          anyMatches: [
+            '[text="青少年模式"] < * + [desc="关闭"][visibleToUser=true]',
+            '[text="青少年模式"] +3 * > [text="关闭"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: ['https://i.gkd.li/i/23427881'],
+          activityIds: ['com.ss.android.ugc.aweme.main.MainActivity'],
+        },
+      ],
+    },
+    {
+      key: 3,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',
       rules: [
@@ -44,7 +60,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 3,
+      key: 4,
       name: '🤳看广告-退出弹窗-再看',
       desc: '再看一个',
       rules: [
@@ -62,7 +78,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 4,
+      key: 5,
       name: '🤳看广告-误入app下载页-返回',
       desc: '点击返回',
       rules: [
@@ -77,7 +93,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 5,
+      key: 6,
       name: '🤳看广告-弹窗-评价收金币',
       desc: '累计获得奖励弹窗-点击评价',
       rules: [
@@ -87,22 +103,6 @@ export default defineGkdApp({
           ],
           fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/23394382'],
-          activityIds: ['com.ss.android.ugc.aweme.main.MainActivity'],
-        },
-      ],
-    },
-    {
-      key: 6,
-      name: '视频页-青少年弹窗-x掉',
-      desc: '启动时的青少年弹窗-关闭',
-      rules: [
-        {
-          anyMatches: [
-            '[text="青少年模式"] < * + [desc="关闭"][visibleToUser=true]',
-            '[text="青少年模式"] +3 * > [text="关闭"][visibleToUser=true]',
-          ],
-          fastQuery: true,
-          snapshotUrls: ['https://i.gkd.li/i/23427881'],
           activityIds: ['com.ss.android.ugc.aweme.main.MainActivity'],
         },
       ],

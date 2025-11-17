@@ -24,7 +24,7 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          actionCd: 1500,
+          actionCd: 1500, // 配合QD模块,免看广告领奖励 使用
           matches: '[id="video"] >(1,2) [text="去完成"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23290942', // 422
