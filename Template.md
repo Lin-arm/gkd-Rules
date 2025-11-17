@@ -1,6 +1,13 @@
 # GKD_Subscription-X
 
-超小众的偏向功能类的GKD规则。
+小众的偏向功能类脚本类的GKD规则。
+
+目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/GKD_Subscription-X/issues)提交快照文件或链接,我将尽力适配。
+
+另外 订阅后请进`应用规则`里，再逐个进app里斟酌是否需要关闭某条规则, 本订阅的规则大部分默认是开着的。
+
+本订阅仅供学习交流使用，请勿做非法用途
+
 
 - 当前版本: v--VERSION--
 
@@ -32,4 +39,4 @@ https://raw.githubusercontent.com/Lin-arm/GKD_Subscription-X/main/dist/gkd.json5
 
 - 使用 [GKD网页审查工具增强脚本](https://github.com/adproqwq/MakeGKDInspectBetter) 可以高度自定义从网页复制出来的规则，提高规则编写效率
 
-- 需要完整点的规则订阅请移步 [AIsouler/GKD_subscription](https://github.com/AIsouler/GKD_subscription)
+- 本订阅基本只更新`功能类`的规则, 如需`跳广告类`的规则订阅请移步 [AIsouler/GKD_subscription](https://github.com/AIsouler/GKD_subscription) 
