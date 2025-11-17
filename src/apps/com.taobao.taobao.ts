@@ -11,7 +11,6 @@ export default defineGkdApp({
       rules: [
         {
           matches: '[text$="肥料 领取"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23240421',
             'https://i.gkd.li/i/23263684',
@@ -30,7 +29,6 @@ export default defineGkdApp({
       rules: [
         {
           matches: '[text^="兔兔挖肥料"][text$="可领取"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23263684',
           activityIds: [
             'com.taobao.themis.container.app.TMSActivity',
@@ -46,7 +44,6 @@ export default defineGkdApp({
       rules: [
         {
           matches: '[text$="肥料，点击领取"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23393987',
           activityIds: [
             'com.taobao.themis.container.app.TMSActivity',
@@ -66,7 +63,6 @@ export default defineGkdApp({
             '[text^="恭喜领到" || text^="从淘宝首页"] <(1,2) * + * > Button[text="关闭"][visibleToUser=true]',
             '[text="提醒我明天领"] + Button[text=""][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23300544',
             'https://i.gkd.li/i/23393863',

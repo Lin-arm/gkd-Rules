@@ -26,7 +26,6 @@ export default defineGkdApp({
           matches: [
             'FrameLayout[index=parent.childCount.minus(1)] >3 ImageView[width>=80][width<=99][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22944255',
             'https://i.gkd.li/i/22947362',
@@ -57,7 +56,6 @@ export default defineGkdApp({
       rules: [
         {
           matches: ['[desc^="已完成"] -2 ImageView[visibleToUser=true]'],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22947257',
           activityIds:
             '.plugin.sns.ad.landingpage.ui.activity.DynamicCanvasPageUI',

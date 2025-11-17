@@ -13,7 +13,6 @@ export default defineGkdApp({
           matches: [
             '[text="恭喜获得小组件优先体验权"] - * > Image[visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22923315',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -33,7 +32,6 @@ export default defineGkdApp({
           matches: [
             '[text="森林市集" || text="一起逛街咯"] + * > [text="已完成 可领奖励"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23238379',
             'https://i.gkd.li/i/23238829',
@@ -50,7 +48,6 @@ export default defineGkdApp({
       rules: [
         {
           matches: ['[text^="七天内不收取"] + TextView[visibleToUser=true]'],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22923502',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -67,7 +64,6 @@ export default defineGkdApp({
           matches: [
             '[text="为好友小鸡种一块麦田"] +4 [text="确认"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22973904',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -85,7 +81,6 @@ export default defineGkdApp({
           actionCd: 3000,
           matches:
             '[text="恭喜获得奖励"] +(2,3) [text^="立即开宝箱"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22983795',
             'https://i.gkd.li/i/22984046',
@@ -95,7 +90,6 @@ export default defineGkdApp({
           key: 2,
           preKeys: [1],
           matches: '[text="立即兑换奖励"] + [text=""][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22983810',
         },
       ],
@@ -108,7 +102,6 @@ export default defineGkdApp({
         {
           key: 1,
           matches: '[text="领10g食材"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23450712',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -118,7 +111,6 @@ export default defineGkdApp({
           action: 'back',
           matches:
             '[text="领取每日限量食材"] + [text="已领取"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23450722',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -135,7 +127,6 @@ export default defineGkdApp({
           matches: [
             '[text^="消耗90g饲料"] + * > [text="确认兑换"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23238643',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -151,7 +142,6 @@ export default defineGkdApp({
           matches: [
             'Dialog >3 [text="知道啦"][index=parent.childCount.minus(2)][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22974073',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -167,13 +157,11 @@ export default defineGkdApp({
         {
           key: 1,
           matches: '[text="亲密度+1"] + [text="确认发送"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938526',
         },
         {
           key: 2,
           matches: '[text$="传话内容"] < * +2 TextView[visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938583',
         },
       ],
@@ -187,7 +175,6 @@ export default defineGkdApp({
           matches: [
             '[text$="安排你的小鸡干活了"] -2 * > [text="确认"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22961775',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -205,7 +192,6 @@ export default defineGkdApp({
           excludeMatches: '[text="今日已完成捐步"]',
           matches:
             'View[index=parent.childCount.minus(1)] > [text="去捐步数"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22939273',
           excludeSnapshotUrls: 'https://i.gkd.li/i/23381801',
         },
@@ -214,7 +200,6 @@ export default defineGkdApp({
           actionCd: 3000,
           matches:
             '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
-          fastQuery: false, // 用 true 真机不触发
           snapshotUrls: 'https://i.gkd.li/i/22931136',
         },
         {
@@ -222,7 +207,6 @@ export default defineGkdApp({
           preKeys: [2],
           action: 'back',
           matches: '[text="行走捐"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22931262',
         },
         {
@@ -231,7 +215,6 @@ export default defineGkdApp({
           matchDelay: 700,
           matches:
             '[text="一起运动做公益"] +2 [text="关闭"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23381801',
             'https://i.gkd.li/i/23414325',
@@ -249,7 +232,6 @@ export default defineGkdApp({
             '[text="饲料袋已满"]',
             '[text="知道了" || text="确认"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23238168',
             'https://i.gkd.li/i/23414417',
@@ -271,14 +253,12 @@ export default defineGkdApp({
           matchRoot: true,
           matches:
             '[text^="好友"] +2 TextView[text="帮ta助力"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22941634',
         },
         {
           key: 2,
           matches:
             '[text="送你1次抽奖机会"] - [text="助力成功"] - * < * + TextView[visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22938650',
         },
       ],
@@ -293,7 +273,6 @@ export default defineGkdApp({
           matches: [
             '[text^="邀请好友" || text^="去" || text*="活力值" || text^="玩一玩" || text$="限定装扮" || text*="故宫"] < * + * > [text="领取"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22950418',
             'https://i.gkd.li/i/23013833',
@@ -313,10 +292,8 @@ export default defineGkdApp({
       desc: '寻宝-点击签到',
       rules: [
         {
-          matches: [
+          matches:
             '[text="每日签到"] < * + * > [text="签到"][visibleToUser=true]',
-          ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23013576',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -330,10 +307,8 @@ export default defineGkdApp({
       rules: [
         {
           matchRoot: true,
-          matches: [
+          matches:
             '[text$="兑1次抽奖机会"] < * + * > [text="确认兑换"][visibleToUser=true]',
-          ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23013746',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -348,10 +323,8 @@ export default defineGkdApp({
       rules: [
         {
           actionCd: 1200,
-          matches: [
+          matches:
             '[text="次机会"] - [text!="0"] - [text="还有"] - [text=""][visibleToUser=true]',
-          ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22983825',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -368,7 +341,6 @@ export default defineGkdApp({
           matches: [
             '[text^="感谢你拯救了过期" || text^="恭喜获得"] +(2,3) View > TextView[text=""][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22981776',
             'https://i.gkd.li/i/22981779',
@@ -389,10 +361,8 @@ export default defineGkdApp({
       desc: '已完成活力值任务->立即领取',
       rules: [
         {
-          matches: [
+          matches:
             '[text$="活力值"] + * > [text="立即领取"][visibleToUser=true]',
-          ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22987992',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -406,10 +376,8 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 1,
-          matches: [
+          matches:
             '[text="攒能量不影响排行榜"] -2 [text="攒能量"][visibleToUser=true]',
-          ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22988030',
             'https://i.gkd.li/i/23393231',
@@ -429,7 +397,6 @@ export default defineGkdApp({
           matches: [
             '[text^="提醒TA来收"] + [text="浇水送祝福"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22973598',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -447,7 +414,6 @@ export default defineGkdApp({
             '[text="天猫森林集市"]',
             '@[text="15g"] <2 * + [text="可领取"]',
           ],
-          fastQuery: false,
           snapshotUrls: ['https://i.gkd.li/i/23413420'],
           activityIds: [
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
@@ -491,7 +457,6 @@ export default defineGkdApp({
           matches: [
             '[text^="+"][text$="/时"] + [text$="领取"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22984031',
             'https://i.gkd.li/i/23013871',
@@ -511,7 +476,6 @@ export default defineGkdApp({
             '[text="丰收礼包待领取"] +3 [text="立即领取"][visibleToUser=true]',
             '[text="立即领肥"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23014157',
             'https://i.gkd.li/i/23440796',
@@ -532,7 +496,6 @@ export default defineGkdApp({
           matches: [
             '[text="丰收礼包已领取" || text="恭喜获得"] +(4,5) [text="关闭"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23014209',
             'https://i.gkd.li/i/23440721',
@@ -543,7 +506,6 @@ export default defineGkdApp({
           key: 3,
           matches:
             'Image[width=866] <<2 * + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23550292',
             'https://i.gkd.li/i/23557965',
@@ -616,7 +578,6 @@ export default defineGkdApp({
           matches: [
             'ViewGroup[childCount=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: ['https://i.gkd.li/i/23280044'],
           activityIds:
             'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
@@ -629,7 +590,6 @@ export default defineGkdApp({
           matches: [
             'ViewGroup[childCount>=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23280202', // 含免验证直接通过的,按返回键
           activityIds:
             'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
@@ -651,7 +611,6 @@ export default defineGkdApp({
           matches: [
             '[text="给Ta捎句话吧"] - * > [id$="closeButton"] > [text=""][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23280089',
             'https://i.gkd.li/i/23280173',
@@ -665,7 +624,6 @@ export default defineGkdApp({
           matches: [
             'ViewGroup[childCount>=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23280150',
         },
       ],

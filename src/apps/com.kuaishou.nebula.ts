@@ -77,10 +77,11 @@ export default defineGkdApp({
             '[text="任务中心"]',
             '[text=""][clickable=false][childCount=1] > Image[width>=76 && width<=80][height>=74 && height<=80][clickable=true]',
           ],
-          fastQuery: false,
+          // fastQuery: false,  // false为默认,不必写
           snapshotUrls: [
             'https://i.gkd.li/i/23468984', //去绑卡 A
             'https://i.gkd.li/i/22672607', //每日打卡 A
+            'https://i.gkd.li/i/23574778', //瓜分百亿金币 A
             'https://i.gkd.li/i/22907854', //限时邀好友 B
             'https://i.gkd.li/i/23300823', //去分享视频 B
             'https://i.gkd.li/i/22671674', //添加组件 C
@@ -138,7 +139,8 @@ export default defineGkdApp({
       desc: '已成功领取奖励',
       rules: [
         {
-          actionDelay: 1500,
+          // actionDelay: 1500,
+          forcedTime: 5000,
           matches: [
             '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',
           ],
@@ -240,11 +242,8 @@ export default defineGkdApp({
         {
           actionCd: 10000,
           matchDelay: 3500,
-          anyMatches: [
-            '[text="看广告得金币"] < * + * > [text="领福利"][visibleToUser=true]',
-            '[text="看广告得金币"] < * + [text="领福利"][visibleToUser=true]',
-          ],
-          fastQuery: false,
+          matches:
+            '@[text="看广告得金币"][left=165][visibleToUser=true] + [text="coin"]',
           snapshotUrls: [
             'https://i.gkd.li/i/22883404',
             'https://i.gkd.li/i/22882988',
@@ -261,26 +260,25 @@ export default defineGkdApp({
     {
       key: 1101,
       name: '🤳任务页-自动开宝箱',
-      desc: '任务列表-开宝箱-进去看广告',
+      desc: '①开宝箱 ②去看广告',
+      activityIds: [
+        'com.yxcorp.gifshow.HomeActivity',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+        'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+      ],
       rules: [
         {
-          matchDelay: 500,
-          actionMaximum: 3,
-          resetMatch: 'match',
-          anyMatches: [
-            '[text^="点可领"][text$="金币"][visibleToUser=true]',
-            '[text="开宝箱奖励已到账"] +4 [text^="去看广告得"][text$="金币"][visibleToUser=true]',
-          ],
-          fastQuery: false,
-          snapshotUrls: [
-            'https://i.gkd.li/i/23427892',
-            'https://i.gkd.li/i/23427912',
-          ],
-          activityIds: [
-            'com.yxcorp.gifshow.HomeActivity',
-            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
-          ],
+          key: 1,
+          matches: '[text^="点可领"][text$="金币"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23427892',
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          matchDelay: 1500,
+          matches:
+            '[text^="去看广告得"][text$="金币"][focusable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23427912',
         },
       ],
     },
@@ -404,7 +402,6 @@ export default defineGkdApp({
           matches: [
             'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8) @ImageView[width=104][height=104 || height=103][visibleToUser=true] < [index=parent.childCount.minus(1)]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22660173',
             'https://i.gkd.li/i/22699956',
@@ -563,7 +560,6 @@ export default defineGkdApp({
           matches: [
             'Button[text="明天来喂鸭" || text="继续喂养" || text="愉快收下" || text^="领今日奖励"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22672386',
             'https://i.gkd.li/i/22691480',
@@ -575,10 +571,8 @@ export default defineGkdApp({
         {
           key: 4,
           action: 'back',
-          actionCd: 3000,
           matches:
             'Button[text^="待领取" || text^="已领取"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22783122',
             'https://i.gkd.li/i/23141489',
@@ -598,7 +592,6 @@ export default defineGkdApp({
           actionMaximum: 1,
           matches:
             '[text="签到提醒"] < * - [text="立即签到"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22871644',
         },
         {
@@ -606,7 +599,6 @@ export default defineGkdApp({
           matches: [
             '[text^="明日签到" || text^="恭喜获得"] <<3 * - * < * - * > Image[width=76 || width=77][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22871789',
             'https://i.gkd.li/i/23427798',
@@ -626,17 +618,14 @@ export default defineGkdApp({
           matchDelay: 1000,
           actionMaximum: 1,
           resetMatch: 'match',
-          matches: [
+          matches:
             '[text="可领取" || text="已结束"] - * > [text$="粒"][visibleToUser=true]',
-          ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22883176',
         },
         {
           key: 2,
-          preKeys: [1],
+          preKeys: [1], // 必须限制,否则误触
           matches: 'Image[text=""][width=77 || height=77][clickable=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23567580',
         },
       ],
@@ -649,12 +638,10 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 120,
-          matchDelay: 4000,
           actionCd: 6000,
           excludeMatches:
             '[text="赚饲料" || text="签到提醒"][visibleToUser=true]',
           matches: 'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/22908125',
             'https://i.gkd.li/i/23381066',
@@ -674,11 +661,11 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          actionDelay: 500,
+          matchDelay: 500,
+          forcedTime: 5000,
           matches: [
             '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>781][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23558181',
           excludeSnapshotUrls: 'https://i.gkd.li/i/23558030', // [left=781]
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -806,7 +793,6 @@ export default defineGkdApp({
         {
           matches:
             'TextView[text="今日签到"][index=parent.childCount.minus(1)][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22865238',
           excludeSnapshotUrls: 'https://i.gkd.li/i/23380995',
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -824,7 +810,6 @@ export default defineGkdApp({
           resetMatch: 'app',
           matches:
             '[text$="领睡觉补贴" || text$="领起床补贴"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23290616',
             'https://i.gkd.li/i/23290617',
@@ -844,7 +829,6 @@ export default defineGkdApp({
           resetMatch: 'match',
           matches:
             '[text="今日步数"] < * <4 * + * >2 Button[text^="领取"][text$="金币"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23381371',
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
@@ -863,7 +847,6 @@ export default defineGkdApp({
             '[text^="+" || text$="金币"] + [text$="待补签"][visibleToUser=true]',
             '[text="领金币"] <3 * + @TextView[text="看广告"] + Image',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23381525',
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },

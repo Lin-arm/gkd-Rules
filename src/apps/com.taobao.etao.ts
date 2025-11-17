@@ -29,7 +29,6 @@ export default defineGkdApp({
           matches: [
             '[text="现金"] - * < * - * < * + [text="领取"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/22974322',
           activityIds: 'com.taobao.sns.activity.ISWebViewActivity',
         },
@@ -46,7 +45,6 @@ export default defineGkdApp({
           matches: [
             '@View -2 [text="恭喜你！可以领取现金啦"][visibleToUser=true]',
           ],
-          fastQuery: false,
           snapshotUrls: 'https://i.gkd.li/i/23213435',
           activityIds: 'com.taobao.sns.activity.ISWebViewActivity',
         },

@@ -26,7 +26,6 @@ export default defineGkdApp({
         {
           actionCd: 1500,
           matches: '[id="video"] >(1,2) [text="去完成"][visibleToUser=true]',
-          fastQuery: false,
           snapshotUrls: [
             'https://i.gkd.li/i/23290942', // 422
             'https://i.gkd.li/i/23565148', // 422
