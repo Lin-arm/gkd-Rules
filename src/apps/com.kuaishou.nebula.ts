@@ -96,20 +96,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 7,
-      name: '逛街-退出弹窗-放弃',
-      desc: '点击返回',
-      rules: [
-        {
-          matches:
-            '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/22658647',
-          activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
-        },
-      ],
-    },
-    {
       key: 8,
       name: '📘小说-领奖',
       desc: '①领奖 ②X掉弹窗',
@@ -796,6 +782,44 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/22865238',
           excludeSnapshotUrls: 'https://i.gkd.li/i/23380995',
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+    {
+      key: 7,
+      name: '逛街赚金币-自动领,退',
+      desc: '①领金币 ③返回键 ④弹窗-放弃',
+      activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
+      rules: [
+        {
+          key: 1,
+          matches:
+            '@[text^="+"][text$="0"] + [text="打开快手"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23582148',
+        },
+        {
+          key: 2,
+          preKeys: [1], // 先点key1,再点key2 就会领两样金币
+          matches:
+            '@[text^="+"][text$="0"] + [text="点击领取"][visibleToUser=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23582148',
+        },
+        {
+          key: 3,
+          action: 'back',
+          excludeMatches: '@[text!="+10"] + [text="浏览领取"]', // 若是10金币,直接退出
+          matches: '[text="明天签到"]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23582306',
+        },
+        {
+          key: 4,
+          matches:
+            '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/22658647',
         },
       ],
     },
