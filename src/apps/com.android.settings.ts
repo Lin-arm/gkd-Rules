@@ -7,7 +7,7 @@ export default defineGkdApp({
     {
       key: 1,
       name: '插数据线连接电脑-USB提示-取消',
-      desc: 'USB用于xxx -取消',
+      desc: '(小米📱)USB用于xxx -取消',
       enable: false,
       rules: [
         {
@@ -18,6 +18,23 @@ export default defineGkdApp({
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23428639',
           activityIds: '.connecteddevice.usb.UsbModeChooserActivity',
+        },
+      ],
+    },
+    {
+      key: 2,
+      name: '自动精灵-获取无障碍-允许',
+      desc: '(真我📱)弹窗-点击 允许',
+      enable: false,
+      rules: [
+        {
+          matches: [
+            '[vid="title"][text*="自动精灵"]',
+            '[text="允许"][clickable=true][focusable=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23588703',
+          activityIds: '.SubSettings',
         },
       ],
     },

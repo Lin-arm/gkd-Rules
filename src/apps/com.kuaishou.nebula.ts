@@ -70,8 +70,14 @@ export default defineGkdApp({
       key: 5,
       name: '任务页-弹窗-X掉',
       desc: '添加组件,去绑卡,邀好友 弹窗',
+      activityIds: [
+        'com.yxcorp.gifshow.HomeActivity', // A
+        'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity', // C
+      ],
       rules: [
         {
+          key: 1,
           excludeMatches: '[text="开宝箱奖励已到账"]',
           matches: [
             '[text="任务中心"]',
@@ -87,11 +93,12 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22671674', //添加组件 C
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23427912',
-          activityIds: [
-            'com.yxcorp.gifshow.HomeActivity', // A
-            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
-            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity', // C
-          ],
+        },
+        {
+          key: 2,
+          matches:
+            '[text="任务完成奖励"] -2 [width>=76 && width<=85][height>=74 && height<=88][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23588323', //看视频赚金币 领奖弹窗
         },
       ],
     },
@@ -173,13 +180,15 @@ export default defineGkdApp({
         {
           actionDelay: 1500,
           excludeMatches: '[vid="ad_download_text"][text^="i 下载"]',
-          matches: [
+          anyMatches: [
             '[vid="ad_download_text"][text^="点击额外获取" || text^="i 打开并体验"][text$="金币"][visibleToUser=true]',
+            '[text^="打开并体验"][text$="额外得"]',
           ],
           fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23392746',
             'https://i.gkd.li/i/23476308',
+            'https://i.gkd.li/i/23588212',
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23392869',
           activityIds: [
@@ -262,7 +271,7 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
-          matchDelay: 1500,
+          matchDelay: 3500,
           matches:
             '[text^="去看广告得"][text$="金币"][focusable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23427912',
@@ -294,7 +303,7 @@ export default defineGkdApp({
     {
       key: 13,
       name: '🤳看广告-惊喜弹窗-x掉',
-      desc: '下方 惊喜红包弹窗-x掉(❗误触)',
+      desc: '下方 惊喜红包弹窗-x掉',
       enable: false,
       rules: [
         {

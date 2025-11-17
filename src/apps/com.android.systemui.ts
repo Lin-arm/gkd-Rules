@@ -16,8 +16,8 @@ export default defineGkdApp({
           ],
           fastQuery: true,
           snapshotUrls: [
-            'https://i.gkd.li/i/23381954',
-            'https://i.gkd.li/i/23382378',
+            'https://i.gkd.li/i/23381954', //小米📱
+            'https://i.gkd.li/i/23382378', //华为📱
           ],
           activityIds: '.media.MediaProjectionPermissionActivity',
         },
@@ -42,7 +42,7 @@ export default defineGkdApp({
     {
       key: 3,
       name: '插数据线连接电脑-USB提示-返回键',
-      desc: 'USB用于xxx -返回键', // realme手机
+      desc: '(真我📱)USB用于xxx -返回键',
       enable: false,
       rules: [
         {

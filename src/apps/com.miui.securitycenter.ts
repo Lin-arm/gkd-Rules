@@ -8,6 +8,8 @@ export default defineGkdApp({
       key: 1,
       name: '无障碍-危险警告-确定',
       desc: '10秒后 ①✔已知晓风险 ②确定',
+      activityIds:
+        'com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity',
       rules: [
         {
           key: 1,
@@ -19,8 +21,6 @@ export default defineGkdApp({
           ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23421337',
-          activityIds:
-            'com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity',
         },
         {
           key: 2,
@@ -28,8 +28,6 @@ export default defineGkdApp({
           matches: ['[text="确定"][vid="intercept_warn_allow"]'],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23421337',
-          activityIds:
-            'com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity',
         },
       ],
     },
