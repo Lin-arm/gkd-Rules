@@ -18,6 +18,20 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 101,
+      name: '启动页-365天打卡-返回键', // zfb新村跳转快极时出现
+      desc: '重选商品(弹窗)-返回键',
+      rules: [
+        {
+          action: 'back',
+          actionCd: 2000,
+          matches: '[text="重新选择商品"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23606935',
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+    {
       key: 2,
       name: '📺视频页-好评弹窗-x掉',
       desc: '点击x掉',
