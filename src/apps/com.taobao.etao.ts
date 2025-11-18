@@ -5,6 +5,23 @@ export default defineGkdApp({
   name: '一淘',
   groups: [
     {
+      key: 1,
+      name: '首页-更新弹窗-取消',
+      desc: '点击取消',
+      rules: [
+        {
+          // versionCode: { include: 975 },
+          matches: [
+            '[text="更新提示"][id="android:id/alertTitle"]',
+            'Button[text="取消"][clickable=true][focusable=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23607482',
+          activityIds: '.app.homev4.HomeV4Activity',
+        },
+      ],
+    },
+    {
       key: 3,
       name: '签到-做任务-app跳转-打开',
       desc: '打开xxx应用',

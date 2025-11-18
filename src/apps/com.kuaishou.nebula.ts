@@ -551,6 +551,8 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          actionMaximum: 1,
+          resetMatch: 'match',
           matches:
             '@[clickable=true][focusable=true] > [text="清晰度"][vid="live_bottom_bar_item_title_text_view"]',
           fastQuery: true,
