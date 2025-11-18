@@ -26,6 +26,49 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 5,
+      name: '任务页-弹窗-X掉',
+      desc: '添加组件,去绑卡,邀好友,看视频 弹窗',
+      activityIds: [
+        'com.yxcorp.gifshow.HomeActivity', // A
+        'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity', // C
+      ],
+      rules: [
+        {
+          key: 1,
+          excludeMatches: '[text="开宝箱奖励已到账"]',
+          matches: [
+            '[text="任务中心"]',
+            '[text=""][clickable=false][childCount=1] > Image[width>=76 && width<=80][height>=74 && height<=80][clickable=true]',
+          ],
+          // snapshotUrls: [                  //参考快极的,注释掉
+          //   'https://i.gkd.li/i/23468984', //去绑卡 A
+          //   'https://i.gkd.li/i/22672607', //每日打卡 A
+          //   'https://i.gkd.li/i/23574778', //瓜分百亿金币 A
+          //   'https://i.gkd.li/i/22907854', //限时邀好友 B
+          //   'https://i.gkd.li/i/23300823', //去分享视频 B
+          //   'https://i.gkd.li/i/22671674', //添加组件 C
+          // ],
+          // excludeSnapshotUrls: 'https://i.gkd.li/i/23427912',
+        },
+        {
+          key: 2,
+          matches:
+            '[text^="任务完成奖励"] -2 [width>=76 && width<=87][height>=74 && height<=88][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23606147', //看视频赚金币 领奖弹窗
+        },
+        {
+          key: 3,
+          matches: [
+            '[text="任务中心"]',
+            '[text=""][width=118][height=118][clickable=true][visibleToUser=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/23606310', //继续看视频赚更多(弹窗)
+        },
+      ],
+    },
+    {
       key: 9,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',

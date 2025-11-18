@@ -97,8 +97,11 @@ export default defineGkdApp({
         {
           key: 2,
           matches:
-            '[text="任务完成奖励"] -2 [width>=76 && width<=85][height>=74 && height<=88][clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/23588323', //看视频赚金币 领奖弹窗
+            '[text^="任务完成奖励"] -2 [width>=76 && width<=87][height>=74 && height<=88][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23588323', //看视频赚金币 领奖弹窗
+            'https://i.gkd.li/i/23606147', //快手的
+          ],
         },
       ],
     },
@@ -132,7 +135,7 @@ export default defineGkdApp({
       desc: '已成功领取奖励',
       rules: [
         {
-          // actionDelay: 1500,
+          actionDelay: 1500,
           forcedTime: 5000,
           matches: [
             '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',

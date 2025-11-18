@@ -10,8 +10,8 @@ export default defineGkdApp({
       desc: '点击知道了',
       rules: [
         {
-          matches: ['@TextView[text="知道了"] <<n [vid="webViewContainer"]'],
-          fastQuery: true,
+          matches:
+            'TextView[text="知道了"][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22909666',
           activityIds: 'com.qidian.QDReader.ui.activity.QDBrowserActivity',
         },
