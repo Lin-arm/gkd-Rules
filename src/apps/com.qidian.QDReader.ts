@@ -25,6 +25,8 @@ export default defineGkdApp({
       rules: [
         {
           actionCd: 1500, // 配合QD模块,免看广告领奖励 使用
+          excludeAllMatches:
+            '[text*="验证"][focusable=true][visibleToUser=true]', // 排除验证弹窗(遇则停)
           matches: '[id="video"] >(1,2) [text="去完成"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23290942', // 422
@@ -32,7 +34,10 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23561866', // 420
             'https://i.gkd.li/i/23561912', // 428
           ],
-          excludeSnapshotUrls: 'https://i.gkd.li/i/23562885',
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/23562885',
+            'https://i.gkd.li/i/23610102', // 422 验证弹窗
+          ],
           activityIds: 'com.qidian.QDReader.ui.activity.QDBrowserActivity',
         },
       ],
