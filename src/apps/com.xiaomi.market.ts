@@ -1,0 +1,23 @@
+import { defineGkdApp } from '@gkd-kit/define';
+
+export default defineGkdApp({
+  id: 'com.xiaomi.market',
+  name: '(小米)应用商店',
+  groups: [
+    {
+      key: 1,
+      name: '快极🤳看广告-弹窗-前往应用商店',
+      desc: '打开可领额外金币-弹窗-前往',
+      enable: false,
+      rules: [
+        {
+          matches:
+            '[vid="tvDiscoverMoreApps"][text^="前往应用商店"][clickable=true][focusable=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23607930',
+          activityIds: '.ui.detail.AppDetailCardActivity',
+        },
+      ],
+    },
+  ],
+});
