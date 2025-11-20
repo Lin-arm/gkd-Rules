@@ -206,7 +206,9 @@ export default defineGkdApp({
           key: 3,
           preKeys: [2],
           action: 'back',
-          matches: '[text="行走捐"][visibleToUser=true]',
+          matchRoot: true,
+          matches: '[text="行走捐"][id$="textView_title"]',
+          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22931262',
         },
         {

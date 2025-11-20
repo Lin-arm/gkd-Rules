@@ -261,7 +261,10 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22882988',
             'https://i.gkd.li/i/22907324',
           ],
-          excludeSnapshotUrls: 'https://i.gkd.li/i/23585391',
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/23585391',
+            'https://i.gkd.li/i/23642264', //未加载完成?
+          ],
           activityIds: [
             'com.yxcorp.gifshow.HomeActivity',
             'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
@@ -363,6 +366,7 @@ export default defineGkdApp({
             'com.kuaishou.live.core.basic.activity.LivePlayActivity',
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
             'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
           ],
         },
       ],
@@ -386,6 +390,14 @@ export default defineGkdApp({
       key: 16,
       name: '📡直播间-中途结束-返回键',
       desc: '①返回键 ②弹窗放弃',
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
       rules: [
         {
           key: 1,
@@ -394,14 +406,12 @@ export default defineGkdApp({
           matches: ['[text="直播已结束"][visibleToUser=true]'],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23006131',
-          activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
         },
         {
           key: 2,
           matches: ['[text="换一个"] -2 [text="放弃奖励"][visibleToUser=true]'],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23421843',
-          activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
         },
       ],
     },
@@ -455,9 +465,11 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/22982128',
           activityIds: [
             'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
             'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
           ],
         },
       ],
@@ -466,7 +478,14 @@ export default defineGkdApp({
       key: 19,
       name: '📡直播间-关注弹窗-x',
       desc: '①x掉 ②返回键',
-      activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
       rules: [
         {
           key: 1,
@@ -547,6 +566,8 @@ export default defineGkdApp({
         'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
         'com.kuaishou.live.core.basic.activity.LivePlayActivity',
         'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
       ],
       rules: [
         {
@@ -554,9 +575,12 @@ export default defineGkdApp({
           actionMaximum: 1,
           resetMatch: 'match',
           matches:
-            '@[clickable=true][focusable=true] > [text="清晰度"][vid="live_bottom_bar_item_title_text_view"]',
+            '@[clickable=true][focusable=true] > [text="清晰度" || text="自动"]',
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23607208',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23607208',
+            'https://i.gkd.li/i/23642513',
+          ],
         },
         {
           key: 2,
@@ -619,13 +643,15 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          preKeys: [1],
           matches: [
-            '[text^="明日签到" || text^="恭喜获得"] <<3 * - * < * - * > Image[width=76 || width=77][visibleToUser=true]',
+            '[text*="日签到" || text^="恭喜获得"] <<3 * - * < * - * > Image[width=76 || width=77][visibleToUser=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/22871789',
             'https://i.gkd.li/i/23427798',
             'https://i.gkd.li/i/23542661',
+            'https://i.gkd.li/i/23642766',
           ],
         },
       ],
