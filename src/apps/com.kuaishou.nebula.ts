@@ -645,7 +645,7 @@ export default defineGkdApp({
           key: 2,
           preKeys: [1],
           matches: [
-            '[text*="日签到" || text^="恭喜获得"] <<3 * - * < * - * > Image[width=76 || width=77][visibleToUser=true]',
+            'Image[width=76 || width=77][height=77 || height=78][clickable=true][visibleToUser=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/22871789',

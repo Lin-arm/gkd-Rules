@@ -22,6 +22,21 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 2,
+      name: '签到-自动签到',
+      desc: '点击签到',
+      rules: [
+        {
+          matchDelay: 1000,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          matches: '[text="签到"] - View[childCount=3] > Image[index=0]',
+          snapshotUrls: 'https://i.gkd.li/i/23643957',
+          activityIds: ['com.taobao.sns.activity.ISWebViewActivity'],
+        },
+      ],
+    },
+    {
       key: 3,
       name: '签到-做任务-app跳转-打开',
       desc: '打开xxx应用',
