@@ -150,7 +150,7 @@ export default defineGkdApp({
       rules: [
         {
           actionDelay: 1500,
-          forcedTime: 31000,
+          forcedTime: 31000, // 防睡死不触发(test)
           matches: [
             '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',
           ],
@@ -909,6 +909,31 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23290617',
           ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+    {
+      key: 3501,
+      name: '浏览ks商城30s后-领金币',
+      desc: '点击去领取',
+      activityIds: 'com.yxcorp.gifshow.HomeActivity',
+      rules: [
+        {
+          key: 1,
+          matches: '[text="去领取"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23655591',
+            'https://i.gkd.li/i/23655619',
+          ],
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          matches: [
+            '[text="已完成"]',
+            'ViewGroup > ImageView[width=94][height=94][visibleToUser=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/23655648',
         },
       ],
     },
