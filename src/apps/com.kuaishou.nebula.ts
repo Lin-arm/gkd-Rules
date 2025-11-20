@@ -692,7 +692,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          matchDelay: 1000,
+          matchDelay: 3000,
           actionMaximum: 1,
           resetMatch: 'match',
           matches:
@@ -941,11 +941,13 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          excludeMatches: '[text="任务中心"]',
           matches: '[text="去领取"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23655591',
             'https://i.gkd.li/i/23655619',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23658912',
         },
         {
           key: 2,
