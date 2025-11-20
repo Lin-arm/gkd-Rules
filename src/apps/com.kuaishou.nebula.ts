@@ -277,7 +277,7 @@ export default defineGkdApp({
     {
       key: 1101,
       name: '🤳任务页-自动开宝箱',
-      desc: '①开宝箱 ②去看广告',
+      desc: '①开宝箱 ②(弹窗)去看广告',
       activityIds: [
         'com.yxcorp.gifshow.HomeActivity',
         'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
@@ -291,11 +291,32 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          preKeys: [1],
-          matchDelay: 3500,
+          // preKeys: [1],
+          // matchDelay: 3500,
           matches:
             '[text^="去看广告得"][text$="金币"][focusable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23427912',
+        },
+      ],
+    },
+    {
+      key: 1102,
+      name: '🤳看广告-点1次静音',
+      desc: 'app内切换界面后重置',
+      enable: false,
+      rules: [
+        {
+          actionMaximum: 1,
+          resetMatch: 'match',
+          matches:
+            '[id="com.kuaishou.nebula.commercial_neo:id/award_video_operate_audio_btn"][clickable=true][focusable=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23213280',
+          activityIds: [
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.plugin.search.SearchActivity',
+          ],
         },
       ],
     },
