@@ -150,7 +150,7 @@ export default defineGkdApp({
       rules: [
         {
           actionDelay: 1500,
-          forcedTime: 5000,
+          forcedTime: 31000,
           matches: [
             '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',
           ],
@@ -199,13 +199,14 @@ export default defineGkdApp({
           excludeMatches: '[vid="ad_download_text"][text^="i 下载"]',
           anyMatches: [
             '[vid="ad_download_text"][text^="点击额外获取" || text^="i 打开并体验"][text$="金币"][visibleToUser=true]',
-            '[text^="打开并体验"][text$="额外得"]',
+            '[text^="打开并体验" && text$="额外得" || text="点击额外获取"]', //13.2.10.9610
           ],
           fastQuery: true,
           snapshotUrls: [
-            'https://i.gkd.li/i/23392746',
-            'https://i.gkd.li/i/23476308',
-            'https://i.gkd.li/i/23588212',
+            'https://i.gkd.li/i/23392746', //12.8.20.8680
+            'https://i.gkd.li/i/23476308', //12.8.20.8680
+            'https://i.gkd.li/i/23588212', //13.2.10.9610
+            'https://i.gkd.li/i/23654193', //13.2.10.9610
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23392869',
           activityIds: [
@@ -419,6 +420,14 @@ export default defineGkdApp({
       key: 17,
       name: '📡直播间-红包弹窗-x掉',
       desc: '①天降红包 ②团购红包 ③主播新人券 ④双11券',
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+      ],
       rules: [
         {
           key: 1,
@@ -437,14 +446,12 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23290583',
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/22988215',
-          activityIds: [
-            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-          ],
+        },
+        {
+          key: 2,
+          matches:
+            '[vid="red_packet_container_view"] +2 ImageView[vid="close_view"][clickable=true][focusable=true]',
+          // snapshotUrls: 'https://i.gkd.li/i/23654976', // (参考快手)口令红包 未中奖
         },
       ],
     },
@@ -743,9 +750,9 @@ export default defineGkdApp({
       key: 28,
       name: '🦆养鸭-搜索-31秒返回',
       desc: '等31秒后点击返回',
-      actionDelay: 31000,
       rules: [
         {
+          actionDelay: 31000,
           matches: [
             'FrameLayout[vid="kem_activity_task_pendant"] >2 ImageView[vid="pendant_bg"][visibleToUser=true]',
           ],
@@ -759,11 +766,11 @@ export default defineGkdApp({
       key: 29,
       name: '🔍搜索页-自动点击搜索',
       desc: '1.5秒后点击搜索',
-      actionMaximum: 1,
-      actionDelay: 1500,
-      actionCd: 4000,
       rules: [
         {
+          actionMaximum: 1,
+          actionDelay: 1500,
+          actionCd: 4000,
           matches: [
             '[text="搜索"][vid="right_button" || vid="right_tv"][visibleToUser=true]',
           ],
