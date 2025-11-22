@@ -189,6 +189,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          actionCd: 5000,
           excludeMatches: '[text="今日已完成捐步"]',
           matches:
             'View[index=parent.childCount.minus(1)] > [text="去捐步数"][visibleToUser=true]',
@@ -392,7 +393,7 @@ export default defineGkdApp({
     {
       key: 25,
       name: '🌲森林-好友页-浇水弹窗-送给ta',
-      desc: '自动确认浇水(⚠❗开启前请先设好浇多少g)',
+      desc: '自动确认浇水(⚠️开启前请先设好浇多少g)',
       enable: false,
       rules: [
         {

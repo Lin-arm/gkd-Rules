@@ -899,11 +899,13 @@ export default defineGkdApp({
         },
         {
           key: 3,
+          preKeys: [2],
           action: 'back',
           excludeMatches: '@[text!="+10"] + [text="浏览领取"]', // 若是10金币,直接退出
           matches: '[text="明天签到"]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23582306',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23689548', // 120金币
         },
         {
           key: 4,
@@ -942,7 +944,7 @@ export default defineGkdApp({
         {
           key: 1,
           excludeMatches: '[text="任务中心"]',
-          matches: '[text="去领取"][visibleToUser=true]',
+          matches: '[text="去领取"][clickable=false][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23655591',
             'https://i.gkd.li/i/23655619',
@@ -954,9 +956,12 @@ export default defineGkdApp({
           preKeys: [1],
           matches: [
             '[text="已完成"]',
-            'ViewGroup > ImageView[width=94][height=94][visibleToUser=true]',
+            'ViewGroup > ImageView[width=94][height=93 || height=94][visibleToUser=true]',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/23655648',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23655648',
+            'https://i.gkd.li/i/23689450',
+          ],
         },
       ],
     },

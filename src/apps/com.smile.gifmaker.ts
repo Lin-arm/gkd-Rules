@@ -133,17 +133,27 @@ export default defineGkdApp({
       key: 1002,
       name: '🤳看广告-误入拼多多页-返回',
       desc: '点击返回',
+      activityIds: 'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
       rules: [
         {
+          key: 1,
           matches: [
-            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝"] + [vid="left_btn"][visibleToUser=true]',
+            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝"] + [vid="left_btn"][clickable=true][focusable=true]',
           ],
           fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23439913',
             'https://i.gkd.li/i/23439943',
           ],
-          activityIds: 'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
+        },
+        {
+          key: 2,
+          matches: [
+            '@[text="应用介绍" || text="快手极速版"] -n * <<4 [vid="webView"]',
+            '[vid="left_btn"][clickable=true][focusable=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23689657',
         },
       ],
     },
