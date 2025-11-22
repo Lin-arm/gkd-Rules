@@ -7,9 +7,13 @@ export default defineGkdApp({
     {
       key: 1,
       name: '启动页-视频广告页-返回',
-      desc: 'app跳转ks时出现',
+      desc: 'app跳转ks时出现(❗有误触)',
+      enable: false,
       rules: [
         {
+          actionMaximum: 1,
+          matchTime: 3500,
+          resetMatch: 'app',
           matches: 'ImageView[vid="left_btn"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22658635',
@@ -23,6 +27,9 @@ export default defineGkdApp({
       desc: '重选商品(弹窗)-返回键',
       rules: [
         {
+          actionMaximum: 1,
+          matchTime: 3500,
+          resetMatch: 'app',
           action: 'back',
           actionCd: 2000,
           matches: '[text="重新选择商品"][clickable=true]',
@@ -769,17 +776,35 @@ export default defineGkdApp({
     },
     {
       key: 28,
-      name: '🦆养鸭-搜索-31秒返回',
-      desc: '等31秒后点击返回',
+      name: '🔍搜索-倒计时结束-返回x2',
+      desc: '按返回键2次',
+      activityIds: 'com.yxcorp.plugin.search.SearchActivity',
       rules: [
         {
-          actionDelay: 31000,
-          matches: [
-            'FrameLayout[vid="kem_activity_task_pendant"] >2 ImageView[vid="pendant_bg"][visibleToUser=true]',
-          ],
+          key: 1,
+          action: 'none',
+          matches: '[vid="pendant_task_status"][text$=":01"]', // 倒计时01秒
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23689726',
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          actionDelay: 1500,
+          action: 'back',
+          matches:
+            '[vid="kem_activity_task_pendant"] >2 [vid="pendant_bg"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22850681',
-          activityIds: 'com.yxcorp.plugin.search.SearchActivity',
+        },
+        {
+          key: 3,
+          preKeys: [2],
+          action: 'back',
+          matchDelay: 200,
+          matches: '[text="搜索"][vid="right_button" || vid="right_tv"]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/22702438',
         },
       ],
     },

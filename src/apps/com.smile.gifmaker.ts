@@ -458,16 +458,35 @@ export default defineGkdApp({
     },
     {
       key: 28,
-      name: '🦆养鸭-搜索-31秒返回',
-      desc: '等31秒后点击返回',
-      actionDelay: 31000,
+      name: '🔍搜索-倒计时结束-返回x2',
+      desc: '按返回键2次',
+      activityIds: 'com.yxcorp.plugin.search.SearchActivity',
       rules: [
         {
+          key: 1,
+          action: 'none',
+          matches: '[vid="pendant_task_status"][text$=":01"]', // 倒计时01秒
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23689726',  // 参考快极
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          actionDelay: 1500,
+          action: 'back',
           matches:
-            'FrameLayout[vid="kem_activity_task_pendant"] >2 ImageView[vid="pendant_bg"][visibleToUser=true]',
+            '[vid="kem_activity_task_pendant"] >2 [vid="pendant_bg"][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23452718',
-          activityIds: 'com.yxcorp.plugin.search.SearchActivity',
+        },
+        {
+          key: 3,
+          preKeys: [2],
+          action: 'back',
+          matchDelay: 200,
+          matches: '[text="搜索"][vid="right_button" || vid="right_tv"]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/22702438',
         },
       ],
     },
@@ -475,11 +494,11 @@ export default defineGkdApp({
       key: 29,
       name: '🔍搜索页-自动点击搜索',
       desc: '1.5秒后点击搜索',
-      actionMaximum: 1,
-      actionDelay: 1500,
-      actionCd: 4000,
       rules: [
         {
+          actionMaximum: 1,
+          actionDelay: 1500,
+          actionCd: 4000,
           matches: [
             '[text="搜索"][vid="right_button" || vid="right_tv"][visibleToUser=true]',
           ],
