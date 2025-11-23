@@ -702,9 +702,12 @@ export default defineGkdApp({
           matchDelay: 3000,
           actionMaximum: 1,
           resetMatch: 'match',
+          excludeMatches:
+            '[text="赚饲料" || text="签到提醒"][visibleToUser=true]',
           matches:
             '[text="可领取" || text="已结束"] - * > [text$="粒"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22883176',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23695360',
         },
         {
           key: 2,
@@ -755,18 +758,11 @@ export default defineGkdApp({
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
         {
-          key: 3, // ③误进商品页-返回
-          matches: 'ImageView[id$="back_btn_trans"][visibleToUser=true]',
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/22658642',
-          activityIds:
-            'com.kuaishou.merchant.transaction.detail.detailv2.MerchantDetailV2Activity',
-        },
-        {
-          key: 4, // ④误进直播间-关闭
+          key: 4, // ④误进直播间-返回键
           preKeys: [1],
+          action: 'back',
           matches:
-            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_close_place_holder"]',
+            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_slide_container"]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23561481',
           activityIds:
@@ -815,6 +811,7 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 1,
+          resetMatch: 'match',
           actionDelay: 1500,
           actionCd: 4000,
           matches: [

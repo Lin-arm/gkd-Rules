@@ -497,6 +497,7 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 1,
+          resetMatch: 'match',
           actionDelay: 1500,
           actionCd: 4000,
           matches: [

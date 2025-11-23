@@ -189,7 +189,8 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          actionCd: 5000,
+          actionMaximum: 1, // 易误触key4
+          resetMatch: 'match',
           excludeMatches: '[text="今日已完成捐步"]',
           matches:
             'View[index=parent.childCount.minus(1)] > [text="去捐步数"][visibleToUser=true]',
