@@ -12,11 +12,14 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[vid="alertTitle"][text="USB 用于"]',
-            '[text="取消"][visibleToUser=true]',
+            '[vid="alertTitle" || id="miui:id/alertTitle" || text="USB 用于"]',
+            '[text="取消"][clickable=true][focusable=true]',
           ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23428639',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23428639', // 设置v12
+            'https://i.gkd.li/i/23696166', // 设置v11
+          ],
           activityIds: '.connecteddevice.usb.UsbModeChooserActivity',
         },
       ],
