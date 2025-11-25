@@ -5,6 +5,13 @@ export default defineGkdApp({
   name: '快手极速版',
   groups: [
     {
+      key: 0,
+      name: '📢说明',
+      desc: '(点击查看详情) 目前在用的快极版本有两个: 🔸v13.2.10.9610 🔸v12.8.20.8680 ,如果你用其他版本的快极,估计有些规则不生效,如遇失效或误触请截取快照拿到github反馈',
+      enable: false,
+      rules: [],
+    },
+    {
       key: 1,
       name: '启动页-视频广告页-返回',
       desc: 'app跳转ks时出现(❗有误触)',
@@ -27,9 +34,6 @@ export default defineGkdApp({
       desc: '重选商品(弹窗)-返回键',
       rules: [
         {
-          actionMaximum: 1,
-          matchTime: 3500,
-          resetMatch: 'app',
           action: 'back',
           actionCd: 2000,
           matches: '[text="重新选择商品"][clickable=true]',
@@ -99,7 +103,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          excludeMatches: '[text="开宝箱奖励已到账"]',
+          excludeMatches: '[text^="去看广告得"] -4 [text="开宝箱奖励已到账"]',
           matches: [
             '[text="任务中心"]',
             '[text=""][clickable=false][childCount=1] > Image[width>=76 && width<=80][height>=74 && height<=80][clickable=true]',
@@ -109,6 +113,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23468984', //去绑卡 A
             'https://i.gkd.li/i/22672607', //每日打卡 A
             'https://i.gkd.li/i/23574778', //瓜分百亿金币 A
+            'https://i.gkd.li/i/23749900', //开宝箱奖励已到账-看视频 A
             'https://i.gkd.li/i/22907854', //限时邀好友 B
             'https://i.gkd.li/i/23300823', //去分享视频 B
             'https://i.gkd.li/i/22671674', //添加组件 C
@@ -121,7 +126,7 @@ export default defineGkdApp({
             '[text^="任务完成奖励"] -2 [width>=76 && width<=87][height>=74 && height<=88][clickable=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23588323', //看视频赚金币 领奖弹窗
-            'https://i.gkd.li/i/23606147', //快手的
+            // 'https://i.gkd.li/i/23606147', //快手的
           ],
         },
       ],
@@ -781,7 +786,10 @@ export default defineGkdApp({
           action: 'none',
           matches: '[vid="pendant_task_status"][text$=":01"]', // 倒计时01秒
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23689726',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23689726',
+            'https://i.gkd.li/i/23748508',
+          ],
         },
         {
           key: 2,
@@ -965,13 +973,18 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          excludeMatches: '[text="任务中心"]',
-          matches: '[text="去领取"][clickable=false][visibleToUser=true]',
+          // excludeMatches: '[text="任务中心"]',
+          matches: [
+            '[vid="textView"][desc="商城"][visibleToUser=true]',
+            '[text="去领取"][clickable=false][visibleToUser=true]',
+          ],
+          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23655591',
             'https://i.gkd.li/i/23655619',
+            'https://i.gkd.li/i/23749982', //含 [text="任务中心"]
           ],
-          excludeSnapshotUrls: 'https://i.gkd.li/i/23658912',
+          // excludeSnapshotUrls: 'https://i.gkd.li/i/23658912',
         },
         {
           key: 2,

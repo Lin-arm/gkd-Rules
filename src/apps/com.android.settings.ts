@@ -12,7 +12,7 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            '[vid="alertTitle" || id="miui:id/alertTitle" || text="USB 用于"]',
+            '[vid="alertTitle" || id="miui:id/alertTitle"][text="USB 用于"]',
             '[text="取消"][clickable=true][focusable=true]',
           ],
           fastQuery: true,

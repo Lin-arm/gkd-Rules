@@ -138,12 +138,13 @@ export default defineGkdApp({
         {
           key: 1,
           matches: [
-            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝"] + [vid="left_btn"][clickable=true][focusable=true]',
+            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝" || text="渠道五"] + [vid="left_btn"][clickable=true][focusable=true]',
           ],
           fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23439913',
             'https://i.gkd.li/i/23439943',
+            'https://i.gkd.li/i/23748402', //渠道五
           ],
         },
         {
@@ -247,6 +248,34 @@ export default defineGkdApp({
           fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/23386908'],
           activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
+        },
+      ],
+    },
+    {
+      key: 16,
+      name: '📡直播间-中途结束-返回键',
+      desc: '①返回键 ②弹窗放弃',
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
+      rules: [
+        {
+          key: 1,
+          action: 'back',
+          actionCd: 15000,
+          matches: ['[text="直播已结束"][visibleToUser=true]'],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23748189',
+        },
+        {
+          key: 2,
+          matches: ['[text="换一个"] -2 [text="放弃奖励"][visibleToUser=true]'],
+          fastQuery: true,
         },
       ],
     },
