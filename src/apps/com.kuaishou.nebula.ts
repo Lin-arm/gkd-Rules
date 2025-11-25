@@ -36,7 +36,9 @@ export default defineGkdApp({
         {
           action: 'back',
           actionCd: 2000,
-          matches: '[text="重新选择商品"][clickable=true]',
+          excludeMatches: '[text="任务中心"]',
+          matches:
+            '[text^="完成365天打卡" || text="重新选择商品"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23606935',
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
@@ -411,12 +413,32 @@ export default defineGkdApp({
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
       rules: [
         {
+          key: 1,
           action: 'back',
           actionCd: 3000,
           matches: 'TextView[text="已领取"][vid="neo_count_down_text"]',
           fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/22705740'],
           activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
+        },
+        {
+          key: 2, // 去金币购 看的3次直播
+          action: 'none',
+          matches: '[vid="pendant_task_status"][text$="00:01"]', // 倒计时01秒
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23750524',
+          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        },
+        {
+          key: 3,
+          preKeys: [2],
+          actionDelay: 1500,
+          action: 'back',
+          matches:
+            '[vid="kem_activity_task_pendant"] >2 [vid="pendant_bg"][visibleToUser=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23750524',
+          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
         },
       ],
     },
@@ -493,6 +515,14 @@ export default defineGkdApp({
       name: '📡直播间-主播争霸赛-返回键',
       desc: '弹窗-返回键',
       enable: false,
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
       rules: [
         {
           action: 'back',
@@ -503,14 +533,6 @@ export default defineGkdApp({
           ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22982128',
-          activityIds: [
-            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-          ],
         },
       ],
     },
@@ -586,14 +608,20 @@ export default defineGkdApp({
       key: 2101,
       name: '📡直播间-右侧边栏-关闭',
       desc: '关闭',
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
       rules: [
         {
-          matches: [
-            '[vid="photo_feed_side_bar_close_view"][visibleToUser=true]',
-          ],
+          matches:
+            '[vid="photo_feed_side_bar_close_view"][clickable=true][focusable=true][visibleToUser=true]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23300668',
-          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         },
       ],
     },
@@ -710,8 +738,11 @@ export default defineGkdApp({
           excludeMatches:
             '[text="赚饲料" || text="签到提醒"][visibleToUser=true]',
           matches:
-            '[text="可领取" || text="已结束"] - * > [text$="粒"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/22883176',
+            '[text="可领取" || text="已结束"] - * >(1,2) [text$="粒"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22883176',
+            'https://i.gkd.li/i/23750724',
+          ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23695360',
         },
         {

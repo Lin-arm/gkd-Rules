@@ -11,10 +11,15 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          matches:
+          anyMatches: [
             '[vid="tvDiscoverMoreApps"][text^="前往应用商店"][clickable=true][focusable=true]',
+            '[vid="viewDetail"][text="应用详情"][clickable=true][focusable=true]',
+          ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23607930',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23607930',
+            'https://i.gkd.li/i/23750274',
+          ],
           activityIds: '.ui.detail.AppDetailCardActivity',
         },
       ],

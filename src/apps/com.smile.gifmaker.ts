@@ -5,6 +5,13 @@ export default defineGkdApp({
   name: '快手',
   groups: [
     {
+      key: 0,
+      name: '📢说明',
+      desc: '(点击查看详情) 目前在用的快手版本: 🔸v12.10.10.39116 ,大部分规则都是从`快手极速版`那里搬过来的,如遇失效或误触请截取快照拿到github反馈',
+      enable: false,
+      rules: [],
+    },
+    {
       key: 4,
       name: '📺视频页-长按直播or广告-不感兴趣',
       desc: '点击不感兴趣',
@@ -242,12 +249,32 @@ export default defineGkdApp({
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
       rules: [
         {
+          key: 1,
           action: 'back',
           actionCd: 3000,
           matches: 'TextView[text="已领取"][vid="neo_count_down_text"]',
           fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/23386908'],
           activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
+        },
+        {
+          key: 2, // 去金币购 看的3次直播
+          action: 'none',
+          matches: '[vid="pendant_task_status"][text$="00:01"]', // 倒计时01秒
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23750524',  // 参考快极
+          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        },
+        {
+          key: 3,
+          preKeys: [2],
+          actionDelay: 1500,
+          action: 'back',
+          matches:
+            '[vid="kem_activity_task_pendant"] >2 [vid="pendant_bg"][visibleToUser=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23750524',
+          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
         },
       ],
     },
