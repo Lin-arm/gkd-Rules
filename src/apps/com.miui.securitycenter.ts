@@ -6,28 +6,18 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '无障碍-危险警告-确定',
-      desc: '10秒后 ①✔已知晓风险 ②确定',
-      activityIds:
-        'com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity',
+      name: '应用信息页-开自启动-确定',
+      desc: '弹窗-确定',
+      enable: false,
       rules: [
         {
-          key: 1,
-          actionMaximum: 1,
-          matchDelay: 9500,
-          resetMatch: 'app',
           matches: [
-            '[text^="我已知晓可能存在的风险"] - [vid="check_box"][visibleToUser=true]',
+            '[vid="message"][text^="开启自启动后"]',
+            '[text="确定"][clickable=true]',
           ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23421337',
-        },
-        {
-          key: 2,
-          preKeys: [1],
-          matches: ['[text="确定"][vid="intercept_warn_allow"]'],
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23421337',
+          snapshotUrls: 'https://i.gkd.li/i/23764176',
+          activityIds: 'com.miui.appmanager.ApplicationsDetailsActivity',
         },
       ],
     },
