@@ -175,16 +175,29 @@ export default defineGkdApp({
     },
     {
       key: 11,
-      name: '🐤养鸡-家庭👪-顶梁柱弹窗-确认',
-      desc: '点击 确认',
+      name: '🐤养鸡-家庭👪-弹窗-确认',
+      desc: '①顶梁柱or请客 ②喂食 ③睡觉',
+      enable: false,
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
-          matches: [
-            '[text$="安排你的小鸡干活了"] -2 * > [text="确认"][visibleToUser=true]',
+          key: 1, // 顶梁柱,请客
+          matches: '[text^="提醒Ta"] -2 * > @[text="确认"] + [text^="亲密度+"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22961775',
+            'https://i.gkd.li/i/23762991',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/22961775',
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+        {
+          key: 2, // 喂食
+          matches:
+            '[text^="确认"][text$="亲密度+1"][clickable=true][focusable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23762732',
+        },
+        {
+          key: 3, // 睡觉
+          matches: '[text^="亲密度+"] + [text="去睡觉"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23762886',
         },
       ],
     },
