@@ -94,6 +94,45 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 401,
+      name: '📺❗脚本刷视频-误入页面-返回键',
+      desc: '仅在用脚本自动刷视频时打开,其余时间🈲用',
+      enable: false,
+      fastQuery: true,
+      priorityTime: 5000,
+      activityIds: 'com.yxcorp.gifshow.HomeActivity',
+      rules: [
+        {
+          key: 1,
+          action: 'back',
+          matches: [
+            '[vid="profile_feed_title" || vid="share_panel" || vid="tab_text" && text*="评论" || vid="webView"][visibleToUser=true]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/23777346', //视频页-她的作品(右侧边栏)
+            'https://i.gkd.li/i/23777882', //视频页-分享(下方弹窗)
+            'https://i.gkd.li/i/23777756', //视频页-评论区
+            'https://i.gkd.li/i/22883404', //其他 webView (任务中心)
+          ],
+        },
+        {
+          key: 2,
+          action: 'back',
+          matches:
+            '@SlidingPaneLayout[childCount=1] < [vid="home_activity_root"]',
+          snapshotUrls: 'https://i.gkd.li/i/23778737', //视频页-左边工具栏
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23778837', //正常刷视频页  [childCount=2]
+        },
+        {
+          key: 444, //进入非视频页,直接返回
+          action: 'back',
+          matches: '[id="android:id/content"][visibleToUser=true]',
+          excludeActivityIds: 'com.yxcorp.gifshow.HomeActivity',
+          activityIds: [],
+        },
+      ],
+    },
+    {
       key: 5,
       name: '任务页-弹窗-X掉',
       desc: '添加组件,去绑卡,邀好友 弹窗',
@@ -233,16 +272,24 @@ export default defineGkdApp({
     },
     {
       key: 1002,
-      name: '🤳看广告-误入拼多多页-返回',
+      name: '🤳看广告-误入xx页-返回',
       desc: '点击返回',
       rules: [
         {
+          matchDelay: 3500,
           matches: [
-            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝"] + [vid="left_btn"][visibleToUser=true]',
+            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝" || text="正在打开..."]',
+            '[vid="left_btn"][clickable=true][visibleToUser=true]',
           ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23421971',
-          activityIds: 'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23421971',
+            'https://i.gkd.li/i/23764542',
+          ],
+          activityIds: [
+            'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
+            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+          ],
         },
       ],
     },
@@ -945,6 +992,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          actionDelay: 1500,
           matches:
             '@[text^="+"][text$="0"] + [text="打开快手"][visibleToUser=true]',
           fastQuery: true,

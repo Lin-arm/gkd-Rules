@@ -195,7 +195,11 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/23762732',
         },
         {
-          key: 3, // 睡觉
+          key: 3, // 睡觉,点不了,用相对坐标
+          position: {
+            left: 'width * 0.5625',
+            top: 'width * 2.3438',
+          },
           matches: '[text^="亲密度+"] + [text="去睡觉"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23762886',
         },
