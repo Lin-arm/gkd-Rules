@@ -247,13 +247,13 @@ export default defineGkdApp({
       key: 15,
       name: '📡直播间-看完-返回键',
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
+      fastQuery: true,
       rules: [
         {
           key: 1,
           action: 'back',
           actionCd: 3000,
           matches: 'TextView[text="已领取"][vid="neo_count_down_text"]',
-          fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/23386908'],
           activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
         },
@@ -261,20 +261,22 @@ export default defineGkdApp({
           key: 2, // 去金币购 看的3次直播
           action: 'none',
           matches: '[vid="pendant_task_status"][text$="00:01"]', // 倒计时01秒
-          fastQuery: true,
-          // snapshotUrls: 'https://i.gkd.li/i/23750524',  // 参考快极
-          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+          snapshotUrls: 'https://i.gkd.li/i/23790334',
+          activityIds: [
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+          ],
         },
         {
           key: 3,
           preKeys: [2],
-          actionDelay: 1500,
+          actionDelay: 1100,
           action: 'back',
-          matches:
-            '[vid="kem_activity_task_pendant"] >2 [vid="pendant_bg"][visibleToUser=true]',
-          fastQuery: true,
-          // snapshotUrls: 'https://i.gkd.li/i/23750524',
-          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+          matches: '[vid="live_play_root_container"]',
+          activityIds: [
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+          ],
         },
       ],
     },

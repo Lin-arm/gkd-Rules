@@ -39,21 +39,26 @@ export default defineGkdApp({
         },
       ],
     },
-    {
-      key: 3,
-      name: '插数据线连接电脑-USB提示-返回键',
-      desc: '(真我📱)USB用于xxx -返回键',
-      enable: false,
-      rules: [
-        {
-          action: 'back',
-          matches: ['[vid="usb_select_title_tv"][text="USB 用于"]'],
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23574876',
-          activityIds:
-            'com.oplus.settings.feature.homepage.OplusSettingsHomepageActivity',
-        },
-      ],
-    },
+    // {
+    //   key: 3,
+    //   name: '插数据线连接电脑-USB提示-返回键',
+    //   desc: '(真我📱)USB用于xxx -返回键',
+    //   enable: false,
+    //   rules: [
+    //     {
+    //       action: 'back', //不生效
+    //       matches: ['[vid="usb_select_title_tv"][text="USB 用于"]'],
+    //       fastQuery: true,
+    //       snapshotUrls: [
+    //         'https://i.gkd.li/i/23823175',
+    //         'https://i.gkd.li/i/23574876',
+    //       ],
+    //       activityIds: [
+    //         'li.songe.gkd.MainActivity',  //其他app的界面
+    //         'com.oplus.settings.feature.homepage.OplusSettingsHomepageActivity',
+    //       ],
+    //     },
+    //   ],
+    // },
   ],
 });

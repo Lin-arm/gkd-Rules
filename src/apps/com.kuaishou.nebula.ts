@@ -473,19 +473,26 @@ export default defineGkdApp({
           action: 'none',
           matches: '[vid="pendant_task_status"][text$="00:01"]', // 倒计时01秒
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23750524',
-          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23750524',
+            'https://i.gkd.li/i/23823031',
+          ],
+          activityIds: [
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+          ],
         },
         {
           key: 3,
           preKeys: [2],
           actionDelay: 1500,
           action: 'back',
-          matches:
-            '[vid="kem_activity_task_pendant"] >2 [vid="pendant_bg"][visibleToUser=true]',
+          matches: '[vid="live_play_root_container"]',
           fastQuery: true,
-          // snapshotUrls: 'https://i.gkd.li/i/23750524',
-          activityIds: 'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+          activityIds: [
+            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+          ],
         },
       ],
     },
