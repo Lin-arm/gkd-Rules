@@ -324,7 +324,7 @@ export default defineGkdApp({
         {
           key: 1,
           matches: [
-            'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8) @ImageView[width=104][height=104 || height=103][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+            'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8,9) @ImageView[width=104][height=104 || height=103][visibleToUser=true] < [index=parent.childCount.minus(1)]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/23450509',
@@ -568,6 +568,22 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 2901,
+      name: '🔍搜索页-开定位-以后再说',
+      desc: '弹窗开定位-以后再说',
+      rules: [
+        {
+          matches: [
+            '[vid="title"][text="开启定位服务"]',
+            '[vid="negative"][text="以后再说"][clickable=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23907535',
+          activityIds: 'com.yxcorp.plugin.search.SearchActivity',
+        },
+      ],
+    },
+    {
       key: 30,
       name: '🎮小游戏-退出弹窗-x掉',
       desc: '弹窗->点击 ①知道了 ②以后再说',
@@ -621,7 +637,7 @@ export default defineGkdApp({
     {
       key: 7,
       name: '逛街赚金币-自动领💰,退',
-      desc: '①领金币 ③返回键 ④弹窗-放弃',
+      desc: '①领金币(需冻结快极) ③返回键 ④弹窗-放弃',
       activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
       rules: [
         {
