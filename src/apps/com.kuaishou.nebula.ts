@@ -1173,5 +1173,40 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 37,
+      name: '🧍‍♂️用户资料页-拉黑一条龙',
+      desc: '(❗慎用)①更多 ②弹窗拉黑 ③确认 ④已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
+      enable: false,
+      fastQuery: true,
+      activityIds: 'com.yxcorp.gifshow.profile.activity.UserProfileActivity',
+      rules: [
+        {
+          key: 1, //用户资料页-点击右上角'更多'
+          matchDelay: 1500,
+          matches:
+            '[vid="more_btn"][desc="更多"][clickable=true][focusable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23910759',
+        },
+        {
+          key: 2,
+          matches: '[vid="bottom_operation_item_text"][text="拉黑"]',
+          snapshotUrls: 'https://i.gkd.li/i/23910599',
+        },
+        {
+          key: 3,
+          preKeys: [2],
+          matches: '[vid="positive"][text="确认拉黑"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23910626',
+        },
+        {
+          key: 4, //已拉黑-返回键
+          preKeys: [3],
+          action: 'back',
+          matches: '[vid="tv_empty_desc"][text="已拉黑"]',
+          snapshotUrls: 'https://i.gkd.li/i/23910639',
+        },
+      ],
+    },
   ],
 });
