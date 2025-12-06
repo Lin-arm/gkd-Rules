@@ -1,21 +1,34 @@
-# GKD_Subscription-X
+<!-- PROJECT LOGO -->
+<div align="center">
+  <svg width="80" height="80" viewBox="0 0 100 100">
+      <text x="50" y="75" font-size="80" text-anchor="middle">🦜</text>
+  </svg>
 
-小众的偏向功能类脚本类的GKD规则。
+  <h1 align="center" style="border-bottom: none; border-width: 0;">GKD_Subscription-X</h1>
 
-目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/GKD_Subscription-X/issues)提交快照文件或链接,我将尽力适配。
+  <p align="center">
+    小众的偏向功能类脚本类的GKD规则。
+    <br />
+    <br />
+  </p>
+</div>
+
+---
+
+&emsp;&emsp;目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/GKD_Subscription-X/issues)提交快照文件或链接,我将尽力适配。
 
 另外 订阅后请进`应用规则`里，再逐个进app里斟酌是否需要关闭某条规则, 本订阅的规则大部分默认是开着的。
 
 本订阅仅供学习交流使用，请勿做非法用途
 
 
-- 当前版本: v23
+- 当前版本: v24
 
-- 当前订阅文件已适配 17 个应用，共有 141 应用规则组，0 全局规则组
+- 当前订阅文件已适配 17 个应用，共有 145 应用规则组，0 全局规则组
 
 - 具体有多小众请查看 [适配 APP 列表](./dist/README.md)
 
-## 订阅
+## 🚀订阅
 
 复制以下任意一个链接到 GKD 即可使用本订阅规则
 
@@ -31,7 +44,7 @@ https://fastly.jsdelivr.net/gh/Lin-arm/GKD_Subscription-X@main/dist/gkd.json5
 https://raw.githubusercontent.com/Lin-arm/GKD_Subscription-X/main/dist/gkd.json5
 ```
 
-## 其他
+## 🌈其他
 
 - 在 [GKD官网](https://gkd.li/) 查看 [GKD基础使用教程](https://gkd.li/guide/) 、[常见问题](https://gkd.li/guide/faq) 以及 [API文档](https://gkd.li/api/)
 
