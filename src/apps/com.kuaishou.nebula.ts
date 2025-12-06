@@ -180,9 +180,14 @@ export default defineGkdApp({
       rules: [
         {
           matchDelay: 2500,
-          matches:
+          anyMatches: [
             '[text^="待领"][text$="金币"] +2 TextView[text="立即领取"][index=2]',
-          snapshotUrls: 'https://i.gkd.li/i/23907888',
+            '[text^="待领"][text$="金币立即领取"][visibleToUser=true]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/23907888',
+            'https://i.gkd.li/i/23979731',
+          ],
           activityIds: [
             'com.yxcorp.gifshow.HomeActivity', // A
             'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
@@ -959,6 +964,22 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22702438',
             'https://i.gkd.li/i/23381126',
           ],
+          activityIds: 'com.yxcorp.plugin.search.SearchActivity',
+        },
+      ],
+    },
+    {
+      key: 2901,
+      name: '🔍搜索页-开定位-以后再说',
+      desc: '弹窗开定位-以后再说',
+      rules: [
+        {
+          matches: [
+            '[vid="title"][text="开启定位服务"]',
+            '[vid="negative"][text="以后再说"][clickable=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23979856',
           activityIds: 'com.yxcorp.plugin.search.SearchActivity',
         },
       ],
