@@ -176,7 +176,7 @@ export default defineGkdApp({
     {
       key: 11,
       name: '🐤养鸡-家庭👪-弹窗-确认',
-      desc: '①顶梁柱or请客 ②喂食 ③睡觉',
+      desc: '①顶梁柱or请客 ②③喂食 ④睡觉',
       enable: false,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
@@ -189,13 +189,19 @@ export default defineGkdApp({
           ],
         },
         {
-          key: 2, // 喂食
+          key: 2, // 喂食 +
           matches:
             '[text^="确认"][text$="亲密度+1"][clickable=true][focusable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23762732',
         },
         {
-          key: 3, // 睡觉,点不了,用相对坐标
+          key: 3, // 喂食
+          matches:
+            '[text$="投喂了你的小鸡哦"] <<2 * +2 [text="确认"][clickable=true][focusable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23978998',
+        },
+        {
+          key: 4, // 睡觉,点不了,用相对坐标
           position: {
             left: 'width * 0.5019',
             top: 'width * 1.2630',
@@ -235,9 +241,12 @@ export default defineGkdApp({
           preKeys: [2],
           action: 'back',
           actionDelay: 500,
-          matches: '[text="行走捐"][id$="textView_title"]',
+          matches: '[text="行走捐" || text="支付宝公益"][id$="textView_title"]',
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/22931262',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22931262',
+            'https://i.gkd.li/i/23978873', // key2 双击了才会进的页面
+          ],
         },
         {
           key: 4,
@@ -406,12 +415,29 @@ export default defineGkdApp({
       rules: [
         {
           actionMaximum: 1,
+          resetMatch: 'match',
           matches:
             '[text="攒能量不影响排行榜"] -2 [text="攒能量"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/22988030',
             'https://i.gkd.li/i/23393231',
           ],
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 2401,
+      name: '🌲森林-真爱树-奖励-放背包',
+      desc: '真爱奖励弹窗->点击暂放背包',
+      rules: [
+        {
+          actionMaximum: 1,
+          resetMatch: 'match',
+          matches:
+            '[text$="我们的真爱树”"] +n [text=""][clickable=true][index=parent.childCount.minus(2)]',
+          snapshotUrls: 'https://i.gkd.li/i/23979608',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
@@ -545,12 +571,13 @@ export default defineGkdApp({
         {
           key: 1,
           matches: [
-            '[text="丰收礼包已领取" || text="恭喜获得"] +(4,5) [text="关闭"][visibleToUser=true]',
+            '[text*="丰收礼包" || text="恭喜获得"] +(4,5) [text="关闭"][visibleToUser=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/23014209',
             'https://i.gkd.li/i/23440721',
             'https://i.gkd.li/i/23548285',
+            'https://i.gkd.li/i/23979020', //还差n次领丰收礼包
           ],
         },
         {
