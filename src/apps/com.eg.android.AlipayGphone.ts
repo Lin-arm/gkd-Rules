@@ -197,8 +197,8 @@ export default defineGkdApp({
         {
           key: 3, // 睡觉,点不了,用相对坐标
           position: {
-            left: 'width * 0.5625',
-            top: 'width * 2.3438',
+            left: 'width * 0.5019',
+            top: 'width * 1.2630',
           },
           matches: '[text^="亲密度+"] + [text="去睡觉"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23762886',
@@ -223,7 +223,9 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          actionCd: 3000,
+          // actionCd: 3000,  //有时候不生效
+          actionMaximum: 1, //易重复点击 key2
+          resetMatch: 'match',
           matches:
             '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22931136',
@@ -232,7 +234,7 @@ export default defineGkdApp({
           key: 3,
           preKeys: [2],
           action: 'back',
-          matchRoot: true,
+          actionDelay: 500,
           matches: '[text="行走捐"][id$="textView_title"]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/22931262',
@@ -491,6 +493,27 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 2801,
+      name: '⛪新村-解锁新村',
+      desc: '①去看看 ②愿意帮助',
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      rules: [
+        {
+          key: 1,
+          matches:
+            'WebView[text="蚂蚁新村"] >3 Button[text="去看看"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23978812',
+        },
+        {
+          key: 2, // 我愿意帮助她们
+          preKeys: [1],
+          matches:
+            '[text^="本村任务"] +2 [text=""][clickable=true][focusable=false]',
+          snapshotUrls: 'https://i.gkd.li/i/23978826',
         },
       ],
     },

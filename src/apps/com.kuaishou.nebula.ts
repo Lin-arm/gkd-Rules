@@ -1145,7 +1145,7 @@ export default defineGkdApp({
         {
           key: 2, // 弹窗,点击开心收下(坐标)
           preKeys: [1],
-          matchDelay: 1000,
+          actionDelay: 2000,
           position: {
             left: 'width * 0.4945',
             top: 'width * 1.3142',
@@ -1175,19 +1175,21 @@ export default defineGkdApp({
     },
     {
       key: 37,
-      name: '🧍‍♂️用户资料页-拉黑一条龙',
-      desc: '(❗慎用)①更多 ②弹窗拉黑 ③确认 ④已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
+      name: '🧍‍♂️用户资料页-拉黑',
+      desc: '❗②弹窗拉黑 ③确认 ④已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
       enable: false,
       fastQuery: true,
       activityIds: 'com.yxcorp.gifshow.profile.activity.UserProfileActivity',
       rules: [
-        {
-          key: 1, //用户资料页-点击右上角'更多'
-          matchDelay: 1500,
-          matches:
-            '[vid="more_btn"][desc="更多"][clickable=true][focusable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/23910759',
-        },
+        // {
+        //   key: 1, //用户资料页-点击右上角'更多'
+        //   matchDelay: 1500,
+        //   actionMaximum: 1,
+        //   resetMatch: 'match',
+        //   matches:
+        //     '[vid="more_btn"][desc="更多"][clickable=true][focusable=true]',
+        //   snapshotUrls: 'https://i.gkd.li/i/23910759',
+        // },
         {
           key: 2,
           matches: '[vid="bottom_operation_item_text"][text="拉黑"]',
