@@ -95,7 +95,7 @@ export default defineGkdApp({
     },
     {
       key: 401,
-      name: '📺❗脚本刷视频-误入页面-返回键',
+      name: '📺脚本❗刷视频-误入页面-返回键', //保持在刷视频页
       desc: '仅在用脚本自动刷视频时打开,其余时间🈲用',
       enable: false,
       fastQuery: true,
@@ -129,6 +129,20 @@ export default defineGkdApp({
           matches: '[id="android:id/content"][visibleToUser=true]',
           excludeActivityIds: 'com.yxcorp.gifshow.HomeActivity',
           activityIds: [],
+        },
+      ],
+    },
+    {
+      key: 402,
+      name: '📺脚本❗刷广告-重启快极-进任务中心',
+      desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
+      enable: false,
+      rules: [
+        {
+          matches: '[vid="redFloat"][clickable=true]', //视频页-点击红包浮窗
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23989148',
+          activityIds: 'com.yxcorp.gifshow.HomeActivity',
         },
       ],
     },
