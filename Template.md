@@ -1,16 +1,13 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <svg width="80" height="80" viewBox="0 0 100 100">
-      <text x="50" y="75" font-size="80" text-anchor="middle">🦜</text>
-  </svg>
+
+  <!-- https://www.emojiall.com/zh-hans -->
+  <img src="https://www.emojiall.com/en/header-svg/%F0%9F%A6%9C.svg" alt="鹦鹉图标" width="80" height="80">
 
   <h1 align="center" style="border-bottom: none; border-width: 0;">GKD_Subscription-X</h1>
 
-  <p align="center">
-    小众的偏向功能类脚本类的GKD规则。
-    <br />
-    <br />
-  </p>
+  <p align="center">小众的偏向功能类脚本类的GKD规则。</p>
+  <br/><br/>
 </div>
 
 ---

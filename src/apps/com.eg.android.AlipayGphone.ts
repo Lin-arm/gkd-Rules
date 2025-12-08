@@ -430,7 +430,7 @@ export default defineGkdApp({
     {
       key: 2401,
       name: '🌲森林-真爱树-奖励-放背包',
-      desc: '真爱奖励弹窗->点击暂放背包',
+      desc: '弹窗->点击暂放背包(有些不生效)',
       rules: [
         {
           actionMaximum: 1,
@@ -531,12 +531,15 @@ export default defineGkdApp({
         {
           key: 1,
           matches:
-            'WebView[text="蚂蚁新村"] >3 Button[text="去看看"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/23978812',
+            'WebView[text="蚂蚁新村"] >(3,4,5) Button[text="去看看"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23978812', //3
+            'https://i.gkd.li/i/24033641', //4
+          ],
         },
         {
           key: 2, // 我愿意帮助她们
-          preKeys: [1],
+          // preKeys: [1],
           matches:
             '[text^="本村任务"] +2 [text=""][clickable=true][focusable=false]',
           snapshotUrls: 'https://i.gkd.li/i/23978826',

@@ -784,24 +784,39 @@ export default defineGkdApp({
     {
       key: 23,
       name: '🦆养鸭-弹窗',
-      desc: '①明天来喂鸭 ②继续喂养 ③饲料雨End ④抓鸭签到, ⑤抓鸭签到返回键',
+      desc: '①签到 ②明天来喂鸭 ③继续喂养 ④饲料雨End, ⑤抓鸭签到 ⑥抓鸭签到返回键',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
           key: 1,
           matches: [
-            'Button[text="明天来喂鸭" || text="继续喂养" || text="愉快收下" || text^="领今日奖励"][visibleToUser=true]',
+            'Button[text="立即签到" || text="明天来喂鸭" || text^="继续喂" || text="愉快收下" || text^="领今日奖励"][visibleToUser=true]',
           ],
           snapshotUrls: [
+            'https://i.gkd.li/i/22871644', //每日签到
             'https://i.gkd.li/i/22672386',
             'https://i.gkd.li/i/22691480',
             'https://i.gkd.li/i/22907925',
             'https://i.gkd.li/i/22783039',
             'https://i.gkd.li/i/23422233',
+            'https://i.gkd.li/i/24035024', //继续喂鸭
           ],
         },
         {
-          key: 4,
+          key: 2, //每日签到-已签到-x掉
+          preKeys: [1],
+          matches: [
+            'Image[width=76 || width=77][height=77 || height=78][clickable=true][visibleToUser=true]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/22871789',
+            'https://i.gkd.li/i/23427798',
+            'https://i.gkd.li/i/23542661',
+            'https://i.gkd.li/i/23642766',
+          ],
+        },
+        {
+          key: 6, //抓鸭签到返回
           action: 'back',
           matches:
             'Button[text^="待领取" || text^="已领取"][visibleToUser=true]',
@@ -814,37 +829,9 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 24,
-      name: '🦆养鸭-今日签到弹窗',
-      desc: '①立即签到 ②x掉',
-      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
-      rules: [
-        {
-          key: 1,
-          actionMaximum: 1,
-          matches:
-            '[text="签到提醒"] < * - [text="立即签到"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/22871644',
-        },
-        {
-          key: 2,
-          preKeys: [1],
-          matches: [
-            'Image[width=76 || width=77][height=77 || height=78][clickable=true][visibleToUser=true]',
-          ],
-          snapshotUrls: [
-            'https://i.gkd.li/i/22871789',
-            'https://i.gkd.li/i/23427798',
-            'https://i.gkd.li/i/23542661',
-            'https://i.gkd.li/i/23642766',
-          ],
-        },
-      ],
-    },
-    {
       key: 25,
-      name: '🦆养鸭-领饲料球',
-      desc: '①领饲料球 ②x掉',
+      name: '🦆养鸭-自动喂鸭',
+      desc: '①领饲料球 ③6秒喂1次鸭',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
@@ -868,15 +855,8 @@ export default defineGkdApp({
           matches: 'Image[text=""][width=77 || height=77][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23567580',
         },
-      ],
-    },
-    {
-      key: 26,
-      name: '🦆养鸭-自动喂鸭',
-      desc: '6秒点一次喂鸭',
-      enable: false,
-      rules: [
         {
+          key: 3,
           actionMaximum: 120,
           actionCd: 6000,
           excludeMatches:
@@ -890,17 +870,22 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22850836',
             'https://i.gkd.li/i/23433012', // 误触页(快手)
           ],
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
     },
     {
       key: 27,
       name: '🦆养鸭-赚饲料-任务',
-      desc: '①领奖 ②去搜索or观看',
+      desc: '①去签到 ②领奖or去搜索or观看',
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
           key: 1,
+          matches: 'Button[text="去签到"][left>781][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24035851',
+        },
+        {
+          key: 2,
           matchDelay: 500,
           forcedTime: 5000,
           matches: [
@@ -908,18 +893,18 @@ export default defineGkdApp({
           ],
           snapshotUrls: 'https://i.gkd.li/i/23558181',
           excludeSnapshotUrls: 'https://i.gkd.li/i/23558030', // [left=781]
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
         {
           key: 4, // ④误进直播间-返回键
-          preKeys: [1],
+          preKeys: [2],
           action: 'back',
           matches:
             '[id="com.kuaishou.nebula.live_audience_plugin:id/live_slide_container"]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23561481',
-          activityIds:
+          activityIds: [
             'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+          ],
         },
       ],
     },
