@@ -9,7 +9,7 @@ export default defineGkdSubscription({
   version: 0,
   author: 'Lin-arm',
   checkUpdateUrl: './gkd.version.json5',
-  supportUri: 'https://github.com/Lin-arm/GKD_Subscription-X',
+  supportUri: 'https://github.com/Lin-arm/gkd-Rules',
   categories,
   globalGroups,
   apps: await batchImportApps(`${import.meta.dirname}/apps`),
