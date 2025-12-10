@@ -1,16 +1,13 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <svg width="80" height="80" viewBox="0 0 100 100">
-      <text x="50" y="75" font-size="80" text-anchor="middle">🦜</text>
-  </svg>
+
+  <!-- https://www.emojiall.com/zh-hans -->
+  <img src="https://www.emojiall.com/en/header-svg/%F0%9F%A6%9C.svg" alt="鹦鹉图标" width="80" height="80">
 
   <h1 align="center" style="border-bottom: none; border-width: 0;">GKD_Subscription-X</h1>
 
-  <p align="center">
-    小众的偏向功能类脚本类的GKD规则。
-    <br />
-    <br />
-  </p>
+  <p align="center">小众的偏向功能类脚本类的GKD规则。</p>
+  <br/><br/>
 </div>
 
 ---
@@ -22,9 +19,9 @@
 本订阅仅供学习交流使用，请勿做非法用途
 
 
-- 当前版本: v24
+- 当前版本: v25
 
-- 当前订阅文件已适配 17 个应用，共有 145 应用规则组，0 全局规则组
+- 当前订阅文件已适配 17 个应用，共有 142 应用规则组，0 全局规则组
 
 - 具体有多小众请查看 [适配 APP 列表](./dist/README.md)
 
