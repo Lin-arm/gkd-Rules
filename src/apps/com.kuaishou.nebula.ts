@@ -828,6 +828,23 @@ export default defineGkdApp({
         },
       ],
     },
+    // {
+    //   key: 24,
+    //   name: '🦆养鸭-饲料雨(test)',
+    //   desc: '每晚8~10点',
+    //   rules: [
+    //     {
+    //       actionCd: 150,  //真机测试1秒左右才点击1次😢
+    //       position: {     //往下偏移
+    //         left: 'width * 0.5000',
+    //         top: 'width * 2.0000',  //上下范围大概 1.6~2.4 倍
+    //       },
+    //       matches: 'Image[text="饲料"][width>=159 && width<=163]',
+    //       snapshotUrls: 'https://i.gkd.li/i/24078870',
+    //       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+    //     },
+    //   ],
+    // },
     {
       key: 25,
       name: '🦆养鸭-自动喂鸭',
@@ -840,7 +857,7 @@ export default defineGkdApp({
           actionMaximum: 1,
           resetMatch: 'match',
           excludeMatches:
-            '[text="赚饲料" || text="签到提醒"][visibleToUser=true]',
+            '[text="赚饲料" || text="签到提醒" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
           matches:
             '[text="可领取" || text="已结束"] - * >(1,2) [text$="粒"][visibleToUser=true]',
           snapshotUrls: [
@@ -860,7 +877,7 @@ export default defineGkdApp({
           actionMaximum: 120,
           actionCd: 6000,
           excludeMatches:
-            '[text="赚饲料" || text="签到提醒"][visibleToUser=true]',
+            '[text="赚饲料" || text="签到提醒" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
           matches: 'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/22908125',
@@ -869,6 +886,7 @@ export default defineGkdApp({
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/22850836',
             'https://i.gkd.li/i/23433012', // 误触页(快手)
+            'https://i.gkd.li/i/24078870', //饲料雨
           ],
         },
       ],
