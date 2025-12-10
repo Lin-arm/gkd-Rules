@@ -497,8 +497,8 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          matches: 'Button[text="去签到"][left>781][visibleToUser=true]',
-          // snapshotUrls: 'https://i.gkd.li/i/24035851', //快极
+          matches: 'Button[text="去签到"][left>782][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24083685',
         },
         {
           key: 2,

@@ -4,7 +4,7 @@
   <!-- https://www.emojiall.com/zh-hans -->
   <img src="https://www.emojiall.com/en/header-svg/%F0%9F%A6%9C.svg" alt="鹦鹉图标" width="80" height="80">
 
-  <h1 align="center" style="border-bottom: none; border-width: 0;">GKD_Subscription-X</h1>
+  <h1 align="center" style="border-bottom: none; border-width: 0;">gkd-Rules</h1>
 
   <p align="center">小众的偏向功能类脚本类的GKD规则。</p>
   <br/><br/>
@@ -12,7 +12,7 @@
 
 ---
 
-&emsp;&emsp;目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/GKD_Subscription-X/issues)提交快照文件或链接,我将尽力适配。
+&emsp;&emsp;目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/gkd-Rules/issues)提交快照文件或链接,我将尽力适配。
 
 另外 订阅后请进`应用规则`里，再逐个进app里斟酌是否需要关闭某条规则, 本订阅的规则大部分默认是开着的。
 
@@ -32,13 +32,13 @@
 - npmmirror源（国内镜像，推荐大陆用户使用）
 
 ```txt
-https://fastly.jsdelivr.net/gh/Lin-arm/GKD_Subscription-X@main/dist/gkd.json5
+https://fastly.jsdelivr.net/gh/Lin-arm/gkd-Rules@main/dist/gkd.json5
 ```
 
 - GitHub源
 
 ```txt
-https://raw.githubusercontent.com/Lin-arm/GKD_Subscription-X/main/dist/gkd.json5
+https://raw.githubusercontent.com/Lin-arm/gkd-Rules/main/dist/gkd.json5
 ```
 
 ## 🌈其他
