@@ -29,7 +29,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 101,
+      key: 2,
       name: '启动页-365天打卡-返回键', // zfb新村跳转快极时出现
       desc: '重选商品(弹窗)-返回键',
       rules: [
@@ -45,7 +45,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 2,
+      key: 3,
       name: '📺视频页-好评弹窗-x掉',
       desc: '点击x掉',
       rules: [
@@ -59,7 +59,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 3,
+      key: 4,
       name: '📺视频页-xx-不感兴趣',
       desc: '①快手热榜 ②每日打卡',
       rules: [
@@ -76,7 +76,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 4,
+      key: 5,
       name: '📺视频页-长按直播-不感兴趣',
       desc: '点击不感兴趣',
       rules: [
@@ -94,7 +94,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 401,
+      key: 6,
       name: '📺脚本❗刷视频-误入页面-返回键', //保持在刷视频页
       desc: '仅在用脚本自动刷视频时打开,其余时间🈲用',
       enable: false,
@@ -133,7 +133,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 402,
+      key: 7,
       name: '📺脚本❗刷广告-重启快极-进任务中心',
       desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
       enable: false,
@@ -147,7 +147,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 5,
+      key: 8,
       name: '任务页-弹窗-X掉',
       desc: '添加组件,去绑卡,邀好友 弹窗',
       activityIds: [
@@ -187,7 +187,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 501,
+      key: 9,
       name: '任务页-刷视频赚金币-领取',
       desc: '有待领金币-立即领取',
       enable: false,
@@ -211,7 +211,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 502,
+      key: 10,
       name: '❗网络错误-点击重试',
       desc: '任务页加载出错',
       rules: [
@@ -226,7 +226,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 8,
+      key: 11,
       name: '📘小说-领奖',
       desc: '①领奖 ②X掉弹窗',
       fastQuery: true,
@@ -248,7 +248,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 9,
+      key: 12,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',
       rules: [
@@ -273,7 +273,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 10,
+      key: 13,
       name: '🤳看广告-退出弹窗-下载领奖-放弃',
       desc: '弹窗-下载并体验20秒-放弃奖励',
       rules: [
@@ -293,7 +293,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1001,
+      key: 14,
       name: '🤳看广告-额外获取xx金币',
       desc: '点击额外获取xx金币(跳转app)',
       enable: false,
@@ -322,7 +322,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1002,
+      key: 15,
       name: '🤳看广告-误入xx页-返回',
       desc: '点击返回',
       fastQuery: true,
@@ -353,7 +353,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1003,
+      key: 16,
       name: '🤳看广告-误入xx下载页-返回键',
       desc: '按下返回键',
       rules: [
@@ -368,7 +368,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 11,
+      key: 17,
       name: '🤳任务页-自动看广告',
       desc: '任务列表-3.5秒点进去看广告',
       rules: [
@@ -395,7 +395,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1101,
+      key: 18,
       name: '🤳任务页-自动开宝箱',
       desc: '①开宝箱 ②(弹窗)去看广告',
       activityIds: [
@@ -420,7 +420,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1102,
+      key: 19,
       name: '🤳看广告-点1次静音',
       desc: 'app内切换界面后重置',
       enable: false,
@@ -441,7 +441,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 12,
+      key: 20,
       name: '🤳看广告-退出弹窗-再看',
       desc: '再看一个',
       rules: [
@@ -463,7 +463,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 13,
+      key: 21,
       name: '🤳看广告-惊喜弹窗-x掉',
       desc: '下方 惊喜红包弹窗-x掉',
       enable: false,
@@ -487,7 +487,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 14,
+      key: 22,
       name: '📡直播间-退出弹窗-退出',
       desc: '退出直播间',
       rules: [
@@ -514,7 +514,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 15,
+      key: 23,
       name: '📡直播间-看完-返回键',
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
       fastQuery: true,
@@ -550,7 +550,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 16,
+      key: 24,
       name: '📡直播间-中途结束-返回键',
       desc: '①返回键 ②弹窗放弃',
       activityIds: [
@@ -579,7 +579,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 17,
+      key: 25,
       name: '📡直播间-红包弹窗-x掉',
       desc: '①天降红包 ②团购红包 ③主播新人券 ④双11券',
       activityIds: [
@@ -619,7 +619,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 18,
+      key: 26,
       name: '📡直播间-主播争霸赛-返回键',
       desc: '弹窗-返回键',
       enable: false,
@@ -645,7 +645,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 19,
+      key: 27,
       name: '📡直播间-关注弹窗-x',
       desc: '①x掉 ②返回键',
       activityIds: [
@@ -684,7 +684,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 20,
+      key: 28,
       name: '📡直播间-招工弹窗-x',
       desc: 'x掉',
       rules: [
@@ -698,7 +698,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 21,
+      key: 29,
       name: '📡直播间-预约直播弹窗-x',
       desc: 'x掉',
       rules: [
@@ -713,7 +713,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 2101,
+      key: 30,
       name: '📡直播间-右侧边栏-关闭',
       desc: '关闭',
       activityIds: [
@@ -734,7 +734,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 22,
+      key: 31,
       name: '📡直播间-清晰度-高清',
       desc: '设清晰度为 流畅or高清',
       fastQuery: true,
@@ -775,7 +775,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 23,
+      key: 32,
       name: '🦆养鸭-弹窗',
       desc: '①签到 ②明天来喂鸭 ③继续喂养 ④饲料雨End, ⑤抓鸭签到 ⑥抓鸭签到返回键',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -839,7 +839,7 @@ export default defineGkdApp({
     //   ],
     // },
     {
-      key: 25,
+      key: 33,
       name: '🦆养鸭-自动喂鸭',
       desc: '①领饲料球 ③6秒喂1次鸭',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -885,7 +885,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 27,
+      key: 34,
       name: '🦆养鸭-赚饲料-任务',
       desc: '①去签到 ②领奖or去搜索or观看',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -920,7 +920,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 28,
+      key: 35,
       name: '🔍搜索-倒计时结束-返回x2',
       desc: '按返回键2次',
       activityIds: 'com.yxcorp.plugin.search.SearchActivity',
@@ -957,7 +957,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 29,
+      key: 36,
       name: '🔍搜索页-自动点击搜索',
       desc: '1.5秒后点击搜索',
       rules: [
@@ -979,7 +979,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 2901,
+      key: 37,
       name: '🔍搜索页-开定位-以后再说',
       desc: '弹窗开定位-以后再说',
       rules: [
@@ -995,7 +995,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 30,
+      key: 38,
       name: '🎮小游戏-退出弹窗-x掉',
       desc: '弹窗->点击 知道了',
       fastQuery: true,
@@ -1019,7 +1019,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 31,
+      key: 39,
       name: '🎮小游戏-退出-返回',
       desc: '点击 < ',
       rules: [
@@ -1033,7 +1033,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 32,
+      key: 40,
       name: '🎮小游戏-获取用户资料弹窗-允许',
       desc: '点击允许',
       rules: [
@@ -1052,7 +1052,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 33,
+      key: 41,
       name: '去金币购-签到💰',
       desc: '点击今日签到',
       rules: [
@@ -1066,7 +1066,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 7,
+      key: 42,
       name: '逛街赚金币-自动领💰,退',
       desc: '①领金币(需冻结ks) ③返回键 ④弹窗-放弃',
       activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
@@ -1104,7 +1104,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 34,
+      key: 43,
       name: '💤睡觉-领补贴',
       desc: '点击看广告领补贴',
       rules: [
@@ -1123,7 +1123,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 3501,
+      key: 44,
       name: '浏览ks商城30s后-领金币',
       desc: '点击去领取',
       activityIds: 'com.yxcorp.gifshow.HomeActivity',
@@ -1158,7 +1158,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 35,
+      key: 45,
       name: '🚶‍♂️走路赚金币-领金币',
       desc: '点击领取xxx金币',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -1186,7 +1186,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 36,
+      key: 46,
       name: '🍚饭点-领补贴',
       desc: '①饭补 ②弹窗 ③待补签 ④左下角看广告',
       rules: [
@@ -1204,7 +1204,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 37,
+      key: 47,
       name: '🧍‍♂️用户资料页-拉黑',
       desc: '❗②弹窗拉黑 ③确认 ④已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
       enable: false,

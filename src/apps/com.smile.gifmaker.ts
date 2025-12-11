@@ -12,7 +12,7 @@ export default defineGkdApp({
       rules: [],
     },
     {
-      key: 4,
+      key: 1,
       name: '📺视频页-长按直播or广告-不感兴趣',
       desc: '点击不感兴趣',
       rules: [
@@ -33,7 +33,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 401,
+      key: 2,
       name: '📺脚本❗刷视频-误入页面-返回键', //保持在刷视频页
       desc: '仅在用脚本自动刷视频时打开,其余时间🈲用',
       enable: false,
@@ -72,7 +72,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 402,
+      key: 3,
       name: '📺脚本❗刷广告-重启快极-进任务中心',
       desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
       enable: false,
@@ -86,7 +86,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 5,
+      key: 4,
       name: '任务页-弹窗-X掉',
       desc: '添加组件,去绑卡,邀好友,看视频 弹窗',
       activityIds: [
@@ -120,7 +120,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 501,
+      key: 5,
       name: '任务页-刷视频赚金币-领取',
       desc: '有待领金币-立即领取',
       enable: false,
@@ -144,7 +144,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 502,
+      key: 6,
       name: '❗网络错误-点击重试',
       desc: '任务页加载出错',
       rules: [
@@ -160,7 +160,7 @@ export default defineGkdApp({
     },
 
     {
-      key: 9,
+      key: 7,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',
       rules: [
@@ -181,7 +181,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 10,
+      key: 8,
       name: '🤳看广告-退出弹窗-下载领奖-放弃',
       desc: '弹窗-下载并体验20秒-放弃奖励',
       rules: [
@@ -201,7 +201,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1001,
+      key: 9,
       name: '🤳看广告-额外获取xx金币',
       desc: '点击额外获取xx金币(跳转app)',
       enable: false,
@@ -224,7 +224,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1002,
+      key: 10,
       name: '🤳看广告-误入xx页-返回',
       desc: '点击返回',
       activityIds: 'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
@@ -274,7 +274,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1101,
+      key: 12,
       name: '🤳任务页-自动开宝箱',
       desc: '任务列表-开宝箱-进去看广告',
       rules: [
@@ -294,7 +294,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1102,
+      key: 13,
       name: '🤳看广告-点1次静音',
       desc: 'app内切换界面后重置',
       enable: false,
@@ -315,7 +315,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 12,
+      key: 14,
       name: '🤳看广告-退出弹窗-再看',
       desc: '再看一个',
       rules: [
@@ -333,7 +333,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 14,
+      key: 15,
       name: '📡直播间-退出弹窗-退出',
       desc: '退出直播间',
       rules: [
@@ -352,7 +352,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 15,
+      key: 16,
       name: '📡直播间-看完-返回键',
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
       fastQuery: true,
@@ -385,7 +385,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 16,
+      key: 17,
       name: '📡直播间-中途结束-返回键',
       desc: '①返回键 ②弹窗放弃',
       activityIds: [
@@ -413,7 +413,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 17,
+      key: 18,
       name: '📡直播间-红包弹窗-x掉',
       desc: '①天降红包 ②团购红包 ③主播新人券 ④双11券',
       activityIds: [
@@ -500,7 +500,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 2101,
+      key: 22,
       name: '📡直播间-右侧边栏-关闭',
       desc: '关闭',
       activityIds: [
@@ -521,7 +521,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 22,
+      key: 23,
       name: '📡直播间-清晰度-高清',
       desc: '设清晰度为 流畅or高清',
       fastQuery: true,
@@ -558,7 +558,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 23,
+      key: 24,
       name: '🦆养鸭-弹窗',
       desc: '①签到 ②明天来喂鸭 ③继续喂养 ④饲料雨End, ⑤抓鸭签到 ⑥抓鸭签到返回键',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -632,7 +632,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 27,
+      key: 26,
       name: '🦆养鸭-赚饲料-任务',
       desc: '①去签到 ②领奖or去搜索or观看',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -666,7 +666,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 28,
+      key: 27,
       name: '🔍搜索-倒计时结束-返回x2',
       desc: '按返回键2次',
       activityIds: 'com.yxcorp.plugin.search.SearchActivity',
@@ -700,7 +700,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 29,
+      key: 28,
       name: '🔍搜索页-自动点击搜索',
       desc: '1.5秒后点击搜索',
       rules: [
@@ -719,7 +719,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 2901,
+      key: 29,
       name: '🔍搜索页-开定位-以后再说',
       desc: '弹窗开定位-以后再说',
       rules: [
@@ -802,7 +802,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 7,
+      key: 34,
       name: '逛街赚金币-自动领💰,退',
       desc: '①领金币(需冻结快极) ③返回键 ④弹窗-放弃',
       activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
@@ -839,7 +839,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 34,
+      key: 35,
       name: '💤睡觉-领补贴',
       desc: '点击看广告领补贴',
       rules: [
@@ -855,7 +855,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 35,
+      key: 36,
       name: '🚶‍♂️走路赚金币-领金币',
       desc: '点击领取xxx金币',
       activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -883,7 +883,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 36,
+      key: 37,
       name: '🍚饭点-领补贴',
       desc: '①饭补 ②弹窗 ③待补签 ④左下角看广告',
       rules: [
@@ -900,6 +900,34 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23382759',
           ],
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+      ],
+    },
+    {
+      key: 38,
+      name: '🧍‍♂️用户资料页-拉黑',
+      desc: '❗②弹窗拉黑 ③确认 ④已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
+      enable: false,
+      fastQuery: true,
+      activityIds: 'com.yxcorp.gifshow.profile.activity.UserProfileActivity',
+      rules: [
+        {
+          key: 2,
+          matches: '[vid="bottom_operation_item_text"][text="拉黑"]',
+          // snapshotUrls: 'https://i.gkd.li/i/23910599',
+        },
+        {
+          key: 3,
+          preKeys: [2],
+          matches: '[vid="positive"][text="确认拉黑"][clickable=true]',
+          // snapshotUrls: 'https://i.gkd.li/i/23910626',
+        },
+        {
+          key: 4, //已拉黑-返回键
+          preKeys: [3],
+          action: 'back',
+          matches: '[vid="tv_empty_desc"][text="已拉黑"]',
+          // snapshotUrls: 'https://i.gkd.li/i/23910639',
         },
       ],
     },
