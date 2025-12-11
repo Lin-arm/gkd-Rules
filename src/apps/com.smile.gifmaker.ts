@@ -33,6 +33,59 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 401,
+      name: '📺脚本❗刷视频-误入页面-返回键', //保持在刷视频页
+      desc: '仅在用脚本自动刷视频时打开,其余时间🈲用',
+      enable: false,
+      fastQuery: true,
+      priorityTime: 5000,
+      activityIds: 'com.yxcorp.gifshow.HomeActivity',
+      rules: [
+        {
+          key: 1,
+          action: 'back',
+          matches: [
+            '[vid="profile_feed_title" || vid="share_panel" || vid="tab_text" && text*="评论" || vid="webView"][visibleToUser=true]',
+          ],
+          // snapshotUrls: [
+          //   'https://i.gkd.li/i/23777346', //视频页-她的作品(右侧边栏)
+          //   'https://i.gkd.li/i/23777882', //视频页-分享(下方弹窗)
+          //   'https://i.gkd.li/i/23777756', //视频页-评论区
+          //   'https://i.gkd.li/i/22883404', //其他 webView (任务中心)
+          // ],
+        },
+        {
+          key: 2,
+          action: 'back',
+          matches:
+            '@SlidingPaneLayout[childCount=1] < [vid="home_activity_root"]',
+          // snapshotUrls: 'https://i.gkd.li/i/23778737', //视频页-左边工具栏
+          // excludeSnapshotUrls: 'https://i.gkd.li/i/23778837', //正常刷视频页  [childCount=2]
+        },
+        {
+          key: 444, //进入非视频页,直接返回
+          action: 'back',
+          matches: '[id="android:id/content"][visibleToUser=true]',
+          excludeActivityIds: 'com.yxcorp.gifshow.HomeActivity',
+          activityIds: [],
+        },
+      ],
+    },
+    {
+      key: 402,
+      name: '📺脚本❗刷广告-重启快极-进任务中心',
+      desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
+      enable: false,
+      rules: [
+        {
+          matches: '[vid="redFloat"][clickable=true]', //视频页-点击红包浮窗
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23989148',
+          activityIds: 'com.yxcorp.gifshow.HomeActivity',
+        },
+      ],
+    },
+    {
       key: 5,
       name: '任务页-弹窗-X掉',
       desc: '添加组件,去绑卡,邀好友,看视频 弹窗',
@@ -49,15 +102,6 @@ export default defineGkdApp({
             '[text="任务中心"]',
             '[text=""][clickable=false][childCount=1] > Image[width>=76 && width<=80][height>=74 && height<=80][clickable=true]',
           ],
-          // snapshotUrls: [                  //参考快极的,注释掉
-          //   'https://i.gkd.li/i/23468984', //去绑卡 A
-          //   'https://i.gkd.li/i/22672607', //每日打卡 A
-          //   'https://i.gkd.li/i/23574778', //瓜分百亿金币 A
-          //   'https://i.gkd.li/i/22907854', //限时邀好友 B
-          //   'https://i.gkd.li/i/23300823', //去分享视频 B
-          //   'https://i.gkd.li/i/22671674', //添加组件 C
-          // ],
-          // excludeSnapshotUrls: 'https://i.gkd.li/i/23427912',
         },
         {
           key: 2,
@@ -76,12 +120,53 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 501,
+      name: '任务页-刷视频赚金币-领取',
+      desc: '有待领金币-立即领取',
+      enable: false,
+      rules: [
+        {
+          matchDelay: 2500,
+          anyMatches: [
+            '[text^="待领"][text$="金币"] +2 TextView[text="立即领取"][index=2]',
+            '[text^="待领"][text$="金币立即领取"][visibleToUser=true]',
+          ],
+          // snapshotUrls: [
+          //   'https://i.gkd.li/i/23907888',
+          //   'https://i.gkd.li/i/23979731',
+          // ],
+          activityIds: [
+            'com.yxcorp.gifshow.HomeActivity', // A
+            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
+            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity', // C
+          ],
+        },
+      ],
+    },
+    {
+      key: 502,
+      name: '❗网络错误-点击重试',
+      desc: '任务页加载出错',
+      rules: [
+        {
+          actionCd: 3500,
+          matches: '[vid="retry_btn"][text="点击重试"][clickable=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23907716',
+          activityIds:
+            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+        },
+      ],
+    },
+
+    {
       key: 9,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',
       rules: [
         {
           actionDelay: 1500,
+          forcedTime: 31000,
           matches: [
             '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',
           ],
@@ -123,8 +208,10 @@ export default defineGkdApp({
       rules: [
         {
           actionDelay: 1500,
-          matches: [
-            '[vid="ad_download_text"][text^="点击额外获取"][text$="金币"][visibleToUser=true]',
+          excludeMatches: '[vid="ad_download_text"][text^="i 下载"]',
+          anyMatches: [
+            '[vid="ad_download_text"][text^="点击额外获取" || text^="i 打开并体验"][text$="金币"][visibleToUser=true]',
+            '[text^="打开并体验" && text$="额外得" || text="点击额外获取"]', //13.2.10.9610
           ],
           fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/23394927'],
@@ -138,7 +225,7 @@ export default defineGkdApp({
     },
     {
       key: 1002,
-      name: '🤳看广告-误入拼多多页-返回',
+      name: '🤳看广告-误入xx页-返回',
       desc: '点击返回',
       activityIds: 'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
       rules: [
@@ -207,6 +294,27 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 1102,
+      name: '🤳看广告-点1次静音',
+      desc: 'app内切换界面后重置',
+      enable: false,
+      rules: [
+        {
+          actionMaximum: 1,
+          resetMatch: 'match',
+          matches:
+            '[id="com.smile.gifmaker.commercial_neo:id/award_video_operate_audio_btn"][clickable=true][focusable=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23213280',
+          activityIds: [
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+            'com.yxcorp.plugin.search.SearchActivity',
+          ],
+        },
+      ],
+    },
+    {
       key: 12,
       name: '🤳看广告-退出弹窗-再看',
       desc: '再看一个',
@@ -248,6 +356,10 @@ export default defineGkdApp({
       name: '📡直播间-看完-返回键',
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
       fastQuery: true,
+      activityIds: [
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+      ],
       rules: [
         {
           key: 1,
@@ -262,10 +374,6 @@ export default defineGkdApp({
           action: 'none',
           matches: '[vid="pendant_task_status"][text$="00:01"]', // 倒计时01秒
           snapshotUrls: 'https://i.gkd.li/i/23790334',
-          activityIds: [
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-          ],
         },
         {
           key: 3,
@@ -273,10 +381,6 @@ export default defineGkdApp({
           actionDelay: 1100,
           action: 'back',
           matches: '[vid="live_play_root_container"]',
-          activityIds: [
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-          ],
         },
       ],
     },
@@ -396,22 +500,60 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 2101,
+      name: '📡直播间-右侧边栏-关闭',
+      desc: '关闭',
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
+      rules: [
+        {
+          matches:
+            '[vid="photo_feed_side_bar_close_view"][clickable=true][focusable=true][visibleToUser=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/23300668',
+        },
+      ],
+    },
+    {
       key: 22,
       name: '📡直播间-清晰度-高清',
       desc: '设清晰度为 流畅or高清',
+      fastQuery: true,
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
       rules: [
         {
-          matches: [
+          key: 1,
+          actionMaximum: 1,
+          resetMatch: 'match',
+          excludeMatches:
+            '@[clickable=true][focusable=true] > [text="流畅" || text="高清"]', //已经是'高清'
+          matches:
+            '@[clickable=true][focusable=true] > [text="清晰度" || text="自动"]',
+          // snapshotUrls: [
+          //   'https://i.gkd.li/i/23607208',
+          //   'https://i.gkd.li/i/23642513',
+          // ],
+          // excludeSnapshotUrls: 'https://i.gkd.li/i/23908016',
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          matches:
             '[index=parent.childCount.minus(2)] > [text="流畅" || text="高清"][visibleToUser=true]',
-          ],
-          fastQuery: true,
-          snapshotUrls: ['https://i.gkd.li/i/23383071'],
-          activityIds: [
-            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-          ],
+          snapshotUrls: 'https://i.gkd.li/i/23383071',
         },
       ],
     },
@@ -596,21 +738,37 @@ export default defineGkdApp({
       key: 30,
       name: '🎮小游戏-退出弹窗-x掉',
       desc: '弹窗->点击 ①知道了 ②以后再说',
+      fastQuery: true,
+      activityIds: [
+        'com.kwai.frog.game.engine.adapter.engine.base.KRT11Activity',
+        'com.kwai.frog.game.engine.adapter.engine.base.KRT12Activity',
+      ],
       rules: [
         {
-          anyMatches: [
-            'TextView[text="知道了"][visibleToUser=true]',
-            '[text="以后再说"][visibleToUser=true]',
-          ],
-          fastQuery: true,
+          key: 1,
+          matches: 'TextView[text="知道了"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23382865',
             'https://i.gkd.li/i/23419122',
           ],
-          activityIds: [
-            'com.kwai.frog.game.engine.adapter.engine.base.KRT11Activity',
-            'com.kwai.frog.game.engine.adapter.engine.base.KRT12Activity',
-          ],
+        },
+        {
+          key: 2,
+          matches: '[text="以后再说"][visibleToUser=true]',
+        },
+      ],
+    },
+    {
+      key: 31,
+      name: '🎮小游戏-退出-返回',
+      desc: '点击 < ',
+      rules: [
+        {
+          matches: '[text="我的小游戏"] - * >3 ImageView[visibleToUser=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/22865063',
+          activityIds:
+            'com.yxcorp.gifshow.minigame.sogame.home.SoGameNewListActivity',
         },
       ],
     },
@@ -700,15 +858,27 @@ export default defineGkdApp({
       key: 35,
       name: '🚶‍♂️走路赚金币-领金币',
       desc: '点击领取xxx金币',
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
+          key: 1,
           matchDelay: 1000,
           actionMaximum: 1,
           resetMatch: 'match',
           matches:
             '[text="今日步数"] < * <4 * + * >2 Button[text^="领取"][text$="金币"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23382648',
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 2, // 弹窗,点击开心收下(坐标)
+          preKeys: [1],
+          actionDelay: 2000,
+          position: {
+            left: 'width * 0.4945',
+            top: 'width * 1.3142',
+          },
+          matches: '[text="今日步数"]',
+          // snapshotUrls: 'https://i.gkd.li/i/23907270',
         },
       ],
     },

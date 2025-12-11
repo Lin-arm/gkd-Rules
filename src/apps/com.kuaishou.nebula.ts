@@ -517,13 +517,17 @@ export default defineGkdApp({
       key: 15,
       name: '📡直播间-看完-返回键',
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
+      fastQuery: true,
+      activityIds: [
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+      ],
       rules: [
         {
           key: 1,
           action: 'back',
           actionCd: 3000,
           matches: 'TextView[text="已领取"][vid="neo_count_down_text"]',
-          fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/22705740'],
           activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
         },
@@ -531,14 +535,9 @@ export default defineGkdApp({
           key: 2, // 去金币购 看的3次直播
           action: 'none',
           matches: '[vid="pendant_task_status"][text$="00:01"]', // 倒计时01秒
-          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23750524',
             'https://i.gkd.li/i/23823031',
-          ],
-          activityIds: [
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
           ],
         },
         {
@@ -547,11 +546,6 @@ export default defineGkdApp({
           actionDelay: 1500,
           action: 'back',
           matches: '[vid="live_play_root_container"]',
-          fastQuery: true,
-          activityIds: [
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-          ],
         },
       ],
     },
@@ -743,6 +737,7 @@ export default defineGkdApp({
       key: 22,
       name: '📡直播间-清晰度-高清',
       desc: '设清晰度为 流畅or高清',
+      fastQuery: true,
       activityIds: [
         'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
@@ -760,7 +755,6 @@ export default defineGkdApp({
             '@[clickable=true][focusable=true] > [text="流畅" || text="高清"]', //已经是'高清'
           matches:
             '@[clickable=true][focusable=true] > [text="清晰度" || text="自动"]',
-          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23607208',
             'https://i.gkd.li/i/23642513',
@@ -772,7 +766,6 @@ export default defineGkdApp({
           preKeys: [1],
           matches:
             '[index=parent.childCount.minus(2)] > [text="流畅" || text="高清"][visibleToUser=true]',
-          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/22660590',
             'https://i.gkd.li/i/22705855',
@@ -1005,6 +998,7 @@ export default defineGkdApp({
       key: 30,
       name: '🎮小游戏-退出弹窗-x掉',
       desc: '弹窗->点击 知道了',
+      fastQuery: true,
       activityIds: [
         'com.kwai.frog.game.engine.adapter.engine.base.KRT11Activity',
         'com.kwai.frog.game.engine.adapter.engine.base.KRT12Activity',
@@ -1013,7 +1007,6 @@ export default defineGkdApp({
         {
           key: 1,
           matches: 'TextView[text="知道了"][visibleToUser=true]',
-          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/22864991',
             'https://i.gkd.li/i/22865094',
@@ -1022,7 +1015,6 @@ export default defineGkdApp({
         {
           key: 2,
           matches: '[text="以后再说"][visibleToUser=true]',
-          fastQuery: true,
         },
       ],
     },
