@@ -41,5 +41,23 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '每日福利-阅读得积分-领取',
+      desc: '点击领积分(❗遮挡可开shizuku强制点击)',
+      activityIds: '.ui.activity.QDBrowserActivity',
+      rules: [
+        {
+          key: 1,
+          action: 'clickNode', //配合shizuku,挡住也能点击
+          matches: '[id="read"] >(1,2) [text="领积分"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24100818',
+        },
+        {
+          key: 2,
+          matches: '[id="read"] >(1,2) [text="领积分"][visibleToUser=true]',
+        },
+      ],
+    },
   ],
 });
