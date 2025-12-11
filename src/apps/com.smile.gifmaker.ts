@@ -565,6 +565,8 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          excludeMatches:
+            '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
           matches: [
             'Button[text="立即签到" || text="明天来喂鸭" || text^="继续喂" || text="愉快收下" || text^="领今日奖励"][visibleToUser=true]',
           ],
@@ -601,7 +603,7 @@ export default defineGkdApp({
           actionMaximum: 1,
           resetMatch: 'match',
           excludeMatches:
-            '[text="赚饲料" || text="签到提醒" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
+            '[text="赚饲料" || text="签到提醒" || text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
           matches:
             '[text="可领取" || text="已结束"] - * >(1,2) [text$="粒"][visibleToUser=true]',
           // snapshotUrls: [
@@ -621,7 +623,7 @@ export default defineGkdApp({
           actionMaximum: 120,
           actionCd: 6000,
           excludeMatches:
-            '[text="赚饲料" || text="签到提醒" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
+            '[text="赚饲料" || text="签到提醒" || text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
           matches: 'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23419014',
           excludeSnapshotUrls: [
@@ -639,12 +641,16 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          excludeMatches:
+            '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
           matches: 'Button[text="去签到"][left>782][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/24083685',
         },
         {
           key: 2,
           matchDelay: 500,
+          excludeMatches:
+            '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
           matches: [
             '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>782][visibleToUser=true]',
           ],
