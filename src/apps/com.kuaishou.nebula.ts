@@ -686,6 +686,27 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 1901,
+      name: '📡直播间-主播拍了拍我-返回键',
+      desc: '按下 返回键',
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
+      rules: [
+        {
+          action: 'back',
+          matches: '[text^="主播拍了拍我"][visibleToUser=true]',
+          fastQuery: true,
+          // snapshotUrls: 'https://i.gkd.li/i/24127641', //参考快手
+        },
+      ],
+    },
+    {
       key: 28,
       name: '📡直播间-招工弹窗-x',
       desc: 'x掉',
