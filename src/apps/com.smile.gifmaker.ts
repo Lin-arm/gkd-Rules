@@ -126,15 +126,15 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
+          actionMaximum: 3,
+          resetMatch: 'match',
           matchDelay: 2500,
           anyMatches: [
             '[text^="待领"][text$="金币"] +2 TextView[text="立即领取"][index=2]',
             '[text^="待领"][text$="金币立即领取"][visibleToUser=true]',
+            '[text$="金币立即领取"][visibleToUser=true]',
           ],
-          // snapshotUrls: [
-          //   'https://i.gkd.li/i/23907888',
-          //   'https://i.gkd.li/i/23979731',
-          // ],
+          snapshotUrls: 'https://i.gkd.li/i/24102971',
           activityIds: [
             'com.yxcorp.gifshow.HomeActivity', // A
             'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
@@ -658,7 +658,7 @@ export default defineGkdApp({
           excludeSnapshotUrls: 'https://i.gkd.li/i/23563084', // [left=782]
         },
         {
-          key: 4, // ④误进直播间-返回键
+          key: 3, // ③误进直播间-返回键
           preKeys: [2],
           action: 'back',
           matches:
@@ -668,6 +668,15 @@ export default defineGkdApp({
           activityIds: [
             'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
           ],
+        },
+        {
+          key: 4, // ④误进看视频页-返回键
+          preKeys: [2],
+          action: 'back',
+          matches: '[vid="nasa_slide_play_view_pager_layout"]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/24123496',
+          activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
         },
       ],
     },

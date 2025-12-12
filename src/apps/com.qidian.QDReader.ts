@@ -20,7 +20,7 @@ export default defineGkdApp({
     {
       key: 2,
       name: '每日福利-自动看广告',
-      desc: '点击去完成',
+      desc: '点击去完成(❗配合QD模块用)',
       enable: false,
       rules: [
         {
