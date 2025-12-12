@@ -6,18 +6,13 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '视频页-分享-复制链接-x掉',
-      desc: '已复制-x掉',
+      name: '视频页-更新弹窗-以后再说',
+      desc: '不更新',
       rules: [
         {
-          matches: [
-            '[text^="链接已复制"] + ImageView[vid="m5e"][visibleToUser=true]',
-          ],
+          matches: ['[text="以后再说"][clickable=true][focusable=true]'],
           fastQuery: true,
-          snapshotUrls: [
-            'https://i.gkd.li/i/22944102',
-            'https://i.gkd.li/i/22945101',
-          ],
+          snapshotUrls: 'https://i.gkd.li/i/24126015',
           activityIds: [
             'com.ss.android.ugc.aweme.detail.ui.DetailActivity',
             'com.ss.android.ugc.aweme.main.MainActivity',
@@ -38,6 +33,27 @@ export default defineGkdApp({
           fastQuery: true,
           snapshotUrls: ['https://i.gkd.li/i/23427881'],
           activityIds: ['com.ss.android.ugc.aweme.main.MainActivity'],
+        },
+      ],
+    },
+    {
+      key: 103,
+      name: '视频页-分享-复制链接-x掉',
+      desc: '已复制-x掉',
+      rules: [
+        {
+          matches: [
+            '[text^="链接已复制"] + ImageView[vid="m5e"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: [
+            'https://i.gkd.li/i/22944102',
+            'https://i.gkd.li/i/22945101',
+          ],
+          activityIds: [
+            'com.ss.android.ugc.aweme.detail.ui.DetailActivity',
+            'com.ss.android.ugc.aweme.main.MainActivity',
+          ],
         },
       ],
     },

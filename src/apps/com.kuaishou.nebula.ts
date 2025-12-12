@@ -1017,10 +1017,7 @@ export default defineGkdApp({
       name: '🎮小游戏-退出弹窗-x掉',
       desc: '弹窗->点击 知道了',
       fastQuery: true,
-      activityIds: [
-        'com.kwai.frog.game.engine.adapter.engine.base.KRT11Activity',
-        'com.kwai.frog.game.engine.adapter.engine.base.KRT12Activity',
-      ],
+      activityIds: 'com.kwai.frog.game.engine.adapter.engine.base.', //小游戏Activity前缀
       rules: [
         {
           key: 1,

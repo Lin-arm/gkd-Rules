@@ -632,17 +632,13 @@ export default defineGkdApp({
         {
           actionCd: 500,
           matches:
-            'TextView[text=""][clickable=true][(width>75 && width<85 && height>75 && height<85) || (width>30 && width<40 && height>30 && height<40)]',
+            'TextView[text=""][(width>75 && width<85 && height>75 && height<85) || (width>30 && width<40 && height>30 && height<40)]',
           snapshotUrls: [
             'https://i.gkd.li/i/24094533', //大弹窗
             'https://i.gkd.li/i/24094570', //小浮窗
           ],
-          activityIds: [
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite1',
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite2',
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite3',
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite4',
-          ],
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$',
         },
       ],
     },
