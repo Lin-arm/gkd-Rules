@@ -593,7 +593,7 @@ export default defineGkdApp({
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/23433226', //每日签到
-            'https://i.gkd.li/i/23419216',
+            'https://i.gkd.li/i/23419216', //继续喂
           ],
         },
         {
@@ -624,9 +624,9 @@ export default defineGkdApp({
           actionMaximum: 1,
           resetMatch: 'match',
           excludeMatches:
-            '[text="赚饲料" || text="签到提醒" || text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
+            '[text="赚饲料" || text="签到提醒" || text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0) || text="今日饲料雨收获"][visibleToUser=true]',
           matches:
-            '[text="可领取" || text="已结束"] - * >(1,2) [text$="粒"][visibleToUser=true]',
+            '[id="app"][parent.childCount=1] >(7,8,9) [text="可领取" || text="已结束"] - * >(1,2) [text$="粒"][visibleToUser=true]',
           // snapshotUrls: [
           //   'https://i.gkd.li/i/22883176',
           //   'https://i.gkd.li/i/23750724',
@@ -644,12 +644,13 @@ export default defineGkdApp({
           actionMaximum: 120,
           actionCd: 6000,
           excludeMatches:
-            '[text="赚饲料" || text="签到提醒" || text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]',
-          matches: 'View[id="foodBottomIcon"] < * + [visibleToUser=true]',
+            '[text="赚饲料" || text="签到提醒" || text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0) || text="今日饲料雨收获"][visibleToUser=true]',
+          matches:
+            '[id="app"][parent.childCount=1] >(6,7,8) View[id="foodBottomIcon"] < * + [visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23419014',
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/23433012',
-            'https://i.gkd.li/i/24078870', //饲料雨(快极)
+            'https://i.gkd.li/i/24078870', //饲料雨(快极)  [id="app"][parent.childCount=1]
           ],
         },
       ],
