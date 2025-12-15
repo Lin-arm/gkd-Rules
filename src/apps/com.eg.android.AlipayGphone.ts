@@ -489,7 +489,8 @@ export default defineGkdApp({
     {
       key: 24,
       name: '🌲森林-集市-弹窗-x掉',
-      desc: '①首购红包 ②膨胀红包',
+      desc: '①首购红包 ②膨胀红包 ③专享补贴',
+      fastQuery: true,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
@@ -498,7 +499,6 @@ export default defineGkdApp({
             '[text="天猫森林集市"]',
             '[text="点击领取"] <7 * + TextView[text=""][visibleToUser=true]',
           ],
-          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23394640',
         },
         {
@@ -507,8 +507,15 @@ export default defineGkdApp({
             '[text="天猫森林集市"]',
             '[text="立即膨胀"] + * > Image[text=""][visibleToUser=true]',
           ],
-          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23394780',
+        },
+        {
+          key: 3,
+          matches: [
+            '[text="天猫森林集市"]',
+            '[text^="天猫专享补贴"] < * > TextView[text="残忍放弃"]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/24157391',
         },
       ],
     },

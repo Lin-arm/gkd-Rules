@@ -545,7 +545,7 @@ export default defineGkdApp({
         {
           key: 3,
           preKeys: [2],
-          actionDelay: 1500,
+          actionDelay: 2500,
           action: 'back',
           matches: '[vid="live_play_root_container"]',
         },
