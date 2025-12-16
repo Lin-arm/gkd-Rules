@@ -137,12 +137,19 @@ export default defineGkdApp({
       name: '📺脚本❗刷广告-重启快极-进任务中心',
       desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
       enable: false,
+      activityIds: 'com.yxcorp.gifshow.HomeActivity',
       rules: [
         {
+          key: 1,
           matches: '[vid="redFloat"][clickable=true]', //视频页-点击红包浮窗
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23989148',
-          activityIds: 'com.yxcorp.gifshow.HomeActivity',
+        },
+        {
+          key: 2,
+          matches:
+            '[id="android:id/content"] >5 ViewGroup[width>135 && width<140][height>135 && height<140]',
+          snapshotUrls: 'https://i.gkd.li/i/24164538',
         },
       ],
     },
@@ -521,8 +528,12 @@ export default defineGkdApp({
       desc: '直播记时结束->已领取(金币)->退出', // ❗若不生效,注意Animator缩放动画时长不能设为0
       fastQuery: true,
       activityIds: [
-        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
       ],
       rules: [
         {
@@ -586,11 +597,11 @@ export default defineGkdApp({
       desc: '①天降红包 ②团购红包 ③主播新人券 ④双11券',
       activityIds: [
         'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
         'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
         'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
         'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
       ],
       rules: [
         {
@@ -836,6 +847,7 @@ export default defineGkdApp({
         {
           key: 6, //抓鸭签到返回
           action: 'back',
+          excludeMatches: '[text="今日步数"]',
           matches:
             'Button[text^="待领取" || text^="已领取"][visibleToUser=true]',
           snapshotUrls: [
@@ -843,6 +855,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23141489',
             'https://i.gkd.li/i/23422249',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/24194609',
         },
       ],
     },
@@ -1214,7 +1227,7 @@ export default defineGkdApp({
         {
           key: 2, // 弹窗,点击开心收下(坐标)
           preKeys: [1],
-          actionDelay: 2000,
+          actionDelay: 2500,
           position: {
             left: 'width * 0.4945',
             top: 'width * 1.3142',

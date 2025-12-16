@@ -594,6 +594,7 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/23433226', //每日签到
             'https://i.gkd.li/i/23419216', //继续喂
+            // 'https://i.gkd.li/i/24163296', //明天来喂鸭 无法点击
           ],
         },
         {

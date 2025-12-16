@@ -11,6 +11,7 @@ export default defineGkdApp({
       activityIds: [
         'com.taobao.themis.container.app.TMSActivity',
         'com.taobao.browser.BrowserActivity',
+        'com.taobao.tao.welcome.Welcome',
       ],
       rules: [
         {
@@ -24,7 +25,10 @@ export default defineGkdApp({
         {
           key: 2,
           matches: '[text^="兔兔挖肥料"][text$="可领取"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/23263684',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23263684',
+            'https://i.gkd.li/i/24163618',
+          ],
         },
         {
           key: 3,
@@ -52,6 +56,7 @@ export default defineGkdApp({
           activityIds: [
             'com.taobao.themis.container.app.TMSActivity',
             'com.taobao.browser.BrowserActivity',
+            'com.taobao.tao.welcome.Welcome',
           ],
         },
       ],

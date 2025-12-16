@@ -19,8 +19,12 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/23607930',
             'https://i.gkd.li/i/23750274',
+            'https://i.gkd.li/i/24164123', //B
           ],
-          activityIds: '.ui.detail.AppDetailCardActivity',
+          activityIds: [
+            '.ui.detail.AppDetailCardActivity',
+            '.ui.detail.AppDetailMiniCardActivity', //B
+          ],
         },
       ],
     },
