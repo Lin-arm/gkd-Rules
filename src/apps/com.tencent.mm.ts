@@ -62,5 +62,20 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 5,
+      name: '🧩短视频广告-已获得奖励-x掉',
+      desc: '出现 已获得奖励-x掉',
+      rules: [
+        {
+          matches: [
+            'TextView[text="已获得奖励"]',
+            '@LinearLayout[clickable=true][focusable=true][index=0] + FrameLayout[desc="浮窗"]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/24204085',
+          activityIds: '.plugin.finder.ui.FinderShareFeedRelUI',
+        },
+      ],
+    },
   ],
 });
