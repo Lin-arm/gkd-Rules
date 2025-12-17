@@ -137,19 +137,24 @@ export default defineGkdApp({
       name: '📺脚本❗刷广告-重启快极-进任务中心',
       desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
       enable: false,
+      fastQuery: true,
       activityIds: 'com.yxcorp.gifshow.HomeActivity',
       rules: [
         {
           key: 1,
           matches: '[vid="redFloat"][clickable=true]', //视频页-点击红包浮窗
-          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23989148',
         },
         {
           key: 2,
-          matches:
-            '[id="android:id/content"] >5 ViewGroup[width>135 && width<140][height>135 && height<140]',
-          snapshotUrls: 'https://i.gkd.li/i/24164538',
+          matches: [
+            '[vid="nasa_groot_view_pager"]',
+            '[id="android:id/content"] >5 ImageView + ViewGroup[width>120 && width<140][height>120 && height<140]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/24164538',
+            'https://i.gkd.li/i/24194816',
+          ],
         },
       ],
     },
@@ -228,9 +233,14 @@ export default defineGkdApp({
           actionCd: 3500,
           matches: '[vid="retry_btn"][text="点击重试"][clickable=true]',
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23907716',
-          activityIds:
+          snapshotUrls: [
+            'https://i.gkd.li/i/24195125',
+            'https://i.gkd.li/i/23907716',
+          ],
+          activityIds: [
+            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
             'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+          ],
         },
       ],
     },
@@ -499,10 +509,19 @@ export default defineGkdApp({
       key: 22,
       name: '📡直播间-退出弹窗-退出',
       desc: '退出直播间',
+      fastQuery: true,
+      activityIds: [
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+      ],
       rules: [
         {
+          key: 1,
           matches: 'TextView[text^="退出"][visibleToUser=true]',
-          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/22658742',
             'https://i.gkd.li/i/22781433',
@@ -511,14 +530,20 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22700047',
             'https://i.gkd.li/i/23210943',
           ],
-          activityIds: [
-            'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-            'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-            'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-            'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-          ],
+        },
+        {
+          key: 2,
+          name: '直播中途结束-返回键',
+          action: 'back',
+          actionCd: 15000,
+          matches: ['[text="直播已结束"][visibleToUser=true]'],
+          snapshotUrls: 'https://i.gkd.li/i/23006131',
+        },
+        {
+          key: 3,
+          name: '直播中途结束-弹窗放弃',
+          matches: ['[text="换一个"] -2 [text="放弃奖励"][visibleToUser=true]'],
+          snapshotUrls: 'https://i.gkd.li/i/23421843',
         },
       ],
     },
@@ -564,8 +589,9 @@ export default defineGkdApp({
     },
     {
       key: 24,
-      name: '📡直播间-中途结束-返回键',
-      desc: '①返回键 ②弹窗放弃',
+      name: '📡直播间-关注弹窗-x',
+      desc: '①x掉 ②返回键',
+      fastQuery: true,
       activityIds: [
         'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
@@ -577,17 +603,24 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          action: 'back',
-          actionCd: 15000,
-          matches: ['[text="直播已结束"][visibleToUser=true]'],
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23006131',
+          matches:
+            '[text="立即关注"] -3 [id$="anchor_close"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/22659582',
         },
         {
           key: 2,
-          matches: ['[text="换一个"] -2 [text="放弃奖励"][visibleToUser=true]'],
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23421843',
+          action: 'back',
+          actionCd: 2000,
+          matches: '[text$="看了这么久，帮我点个关注吧！"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23300455',
+        },
+        {
+          key: 3,
+          action: 'back',
+          actionCd: 2000,
+          matches:
+            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_profile_bottom_bar_container"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23542497',
         },
       ],
     },
@@ -633,34 +666,10 @@ export default defineGkdApp({
     },
     {
       key: 26,
-      name: '📡直播间-主播争霸赛-返回键',
-      desc: '弹窗-返回键',
+      name: '📡直播间-弹窗',
+      desc: '①主播争霸赛 ②拍了拍我 ③招工 ④预约直播 ⑤右侧边栏 ⑥邀加语音聊天',
       enable: false,
-      activityIds: [
-        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-      ],
-      rules: [
-        {
-          action: 'back',
-          actionCd: 2000,
-          matches: [
-            '[text^="助力主播登榜"]',
-            '[text="黑马榜"][visibleToUser=true]',
-          ],
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/22982128',
-        },
-      ],
-    },
-    {
-      key: 27,
-      name: '📡直播间-关注弹窗-x',
-      desc: '①x掉 ②返回键',
+      fastQuery: true,
       activityIds: [
         'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
@@ -672,98 +681,49 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          matches:
-            '[text="立即关注"] -3 [id$="anchor_close"][visibleToUser=true]',
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/22659582',
+          name: '主播争霸赛-返回',
+          action: 'back',
+          actionCd: 2000,
+          matches: [
+            '[text^="助力主播登榜"]',
+            '[text="黑马榜"][visibleToUser=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/22982128',
         },
         {
           key: 2,
+          name: '主播拍了拍我-返回',
           action: 'back',
-          actionCd: 2000,
-          matches: '[text$="看了这么久，帮我点个关注吧！"][visibleToUser=true]',
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23300455',
+          matches: '[text^="主播拍了拍我"][visibleToUser=true]',
+          // snapshotUrls: 'https://i.gkd.li/i/24127641', //参考快手
         },
         {
           key: 3,
-          action: 'back',
-          actionCd: 2000,
-          matches:
-            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_profile_bottom_bar_container"][visibleToUser=true]',
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23542497',
-        },
-      ],
-    },
-    {
-      key: 1901,
-      name: '📡直播间-主播拍了拍我-返回键',
-      desc: '按下 返回键',
-      activityIds: [
-        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-      ],
-      rules: [
-        {
-          action: 'back',
-          matches: '[text^="主播拍了拍我"][visibleToUser=true]',
-          fastQuery: true,
-          // snapshotUrls: 'https://i.gkd.li/i/24127641', //参考快手
-        },
-      ],
-    },
-    {
-      key: 28,
-      name: '📡直播间-招工弹窗-x',
-      desc: 'x掉',
-      rules: [
-        {
+          name: '招工弹窗-x',
           matches:
             '@ImageView[visibleToUser=true] < * - [text$="为您推荐优选职位"]',
-          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23211116',
-          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         },
-      ],
-    },
-    {
-      key: 29,
-      name: '📡直播间-预约直播弹窗-x',
-      desc: 'x掉',
-      rules: [
         {
-          matches: [
+          key: 4,
+          name: '预约直播弹窗-x',
+          matches:
             '@ImageView[width=52][height=52] <<2 * <2 * <2 * < [vid="krn_content_container"]',
-          ],
-          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23235749',
-          activityIds: 'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         },
-      ],
-    },
-    {
-      key: 30,
-      name: '📡直播间-右侧边栏-关闭',
-      desc: '关闭',
-      activityIds: [
-        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-      ],
-      rules: [
         {
+          key: 5,
+          name: '右侧边栏-关闭',
           matches:
             '[vid="photo_feed_side_bar_close_view"][clickable=true][focusable=true][visibleToUser=true]',
-          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23300668',
+        },
+        {
+          key: 6,
+          name: '邀请加入语音派对-x',
+          matches:
+            '[id="com.kuaishou.nebula.live_audience_plugin:id/live_voice_party_audience_being_invited_bottom_panel_close"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24203582',
         },
       ],
     },
@@ -1263,29 +1223,20 @@ export default defineGkdApp({
       fastQuery: true,
       activityIds: 'com.yxcorp.gifshow.profile.activity.UserProfileActivity',
       rules: [
-        // {
-        //   key: 1, //用户资料页-点击右上角'更多'
-        //   matchDelay: 1500,
-        //   actionMaximum: 1,
-        //   resetMatch: 'match',
-        //   matches:
-        //     '[vid="more_btn"][desc="更多"][clickable=true][focusable=true]',
-        //   snapshotUrls: 'https://i.gkd.li/i/23910759',
-        // },
         {
-          key: 2,
+          key: 1,
           matches: '[vid="bottom_operation_item_text"][text="拉黑"]',
           snapshotUrls: 'https://i.gkd.li/i/23910599',
         },
         {
-          key: 3,
-          preKeys: [2],
+          key: 2,
+          preKeys: [1],
           matches: '[vid="positive"][text="确认拉黑"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23910626',
         },
         {
-          key: 4, //已拉黑-返回键
-          preKeys: [3],
+          key: 3, //已拉黑-返回键
+          preKeys: [2],
           action: 'back',
           matches: '[vid="tv_empty_desc"][text="已拉黑"]',
           snapshotUrls: 'https://i.gkd.li/i/23910639',

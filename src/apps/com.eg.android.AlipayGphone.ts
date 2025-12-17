@@ -599,7 +599,7 @@ export default defineGkdApp({
     {
       key: 28,
       name: '🌾农场-弹窗-x掉',
-      desc: '①丰收礼包 ②恭喜获得 ③去快手逛逛',
+      desc: '①丰收礼包 ②恭喜获得 ③去快手 ④小游戏',
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
@@ -623,6 +623,14 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23550292', //去快手逛逛再得肥+1200
             'https://i.gkd.li/i/23557965', //去快手逛逛再得肥+1200
           ],
+        },
+        {
+          key: 4,
+          matches: [
+            '[text^="还差"][text$="次领肥料"]',
+            'Image[width=812] + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/24203073', //去玩小游戏赚取海量肥料
         },
       ],
     },
