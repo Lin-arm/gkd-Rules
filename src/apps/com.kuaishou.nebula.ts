@@ -388,7 +388,7 @@ export default defineGkdApp({
     },
     {
       key: 17,
-      name: '🤳任务页-自动看广告',
+      name: '🤳看广告-自动看广告',
       desc: '任务列表-3.5秒点进去看广告',
       rules: [
         {
@@ -415,7 +415,7 @@ export default defineGkdApp({
     },
     {
       key: 18,
-      name: '🤳任务页-自动开宝箱',
+      name: '🤳看广告-自动开宝箱',
       desc: '①开宝箱 ②(弹窗)去看广告',
       activityIds: [
         'com.yxcorp.gifshow.HomeActivity',
