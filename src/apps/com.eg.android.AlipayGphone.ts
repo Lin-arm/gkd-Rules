@@ -65,6 +65,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '中转页-正在跳转',
           action: 'none',
           matches: 'TextView[text="正在跳转"][id$="textView_title"]',
           snapshotUrls: 'https://i.gkd.li/i/24279023', // '打开淘宝' 中转页
@@ -74,6 +75,7 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
+          name: '中转页-白页',
           matches:
             '[id="com.alipay.mobile.antui:id/back_button"][desc="返回"][checkable=false]',
           snapshotUrls: 'https://i.gkd.li/i/24279030', //中转白页
@@ -141,6 +143,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '开宝箱',
           actionCd: 3000,
           matches:
             '[text="恭喜获得奖励"] +(2,3) [text^="立即开宝箱"][visibleToUser=true]',
@@ -151,6 +154,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          name: '立即兑换奖励-x掉',
           preKeys: [1],
           matches: '[text="立即兑换奖励"] + [text=""][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22983810',
@@ -164,6 +168,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '领10g食材',
           matches: '[text="领10g食材"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23450712',
           activityIds:
@@ -171,6 +176,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          name: '已领取-返回键',
           action: 'back',
           matches:
             '[text="领取每日限量食材"] + [text="已领取"][visibleToUser=true]',
@@ -186,7 +192,7 @@ export default defineGkdApp({
       desc: '90g饲料换机会 弹窗->点击确认',
       rules: [
         {
-          matchRoot: true, // 试着解决睡死不触发
+          // matchRoot: true, // 试着解决睡死不触发
           matches: [
             '[text^="消耗90g饲料"] + * > [text="确认兑换"][visibleToUser=true]',
           ],
@@ -237,7 +243,8 @@ export default defineGkdApp({
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
-          key: 1, // 顶梁柱,请客
+          key: 1,
+          name: '顶梁柱or请客',
           matches: '[text^="提醒Ta"] -2 * > @[text="确认"] + [text^="亲密度+"]',
           snapshotUrls: [
             'https://i.gkd.li/i/22961775',
@@ -245,19 +252,22 @@ export default defineGkdApp({
           ],
         },
         {
-          key: 2, // 喂食 +
+          key: 2,
+          name: '喂食-亲密度+1',
           matches:
             '[text^="确认"][text$="亲密度+1"][clickable=true][focusable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23762732',
         },
         {
-          key: 3, // 喂食
+          key: 3,
+          name: '喂食',
           matches:
             '[text$="投喂了你的小鸡哦"] <<2 * +2 [text="确认"][clickable=true][focusable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23978998',
         },
         {
           key: 4, // 睡觉,点不了,用相对坐标
+          name: '去睡觉',
           position: {
             left: 'width * 0.5019',
             top: 'width * 1.2630',
@@ -275,6 +285,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '去捐步',
           actionMaximum: 1, // 易误触key4
           resetMatch: 'match',
           excludeMatches: '[text="今日已完成捐步"]',
@@ -285,6 +296,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          name: '立即捐步',
           // actionCd: 3000,  //有时候不生效
           actionMaximum: 1, //易重复点击 key2
           resetMatch: 'match',
@@ -295,6 +307,7 @@ export default defineGkdApp({
         {
           key: 3,
           preKeys: [2],
+          name: '(弹窗)知道了-返回键',
           action: 'back',
           actionDelay: 500,
           matches: '[text="行走捐" || text="支付宝公益"][id$="textView_title"]',
@@ -306,6 +319,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
+          name: 'x掉',
           preKeys: [2, 3],
           matchDelay: 700,
           matches:
@@ -345,6 +359,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '帮ta助力',
           matchRoot: true,
           matches:
             '[text^="好友"] +2 TextView[text="帮ta助力"][visibleToUser=true]',
@@ -352,6 +367,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          name: '助力成功-x掉',
           matches:
             '[text="送你1次抽奖机会"] - [text="助力成功"] - * < * + TextView[visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22938650',
@@ -527,6 +543,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '首购红包-x掉',
           matches: [
             '[text="天猫森林集市"]',
             '[text="点击领取"] <7 * + TextView[text=""][visibleToUser=true]',
@@ -535,6 +552,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          name: '膨胀红包-x掉',
           matches: [
             '[text="天猫森林集市"]',
             '[text="立即膨胀"] + * > Image[text=""][visibleToUser=true]',
@@ -543,6 +561,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
+          name: '专享补贴or添加首页-放弃',
           matches: [
             '[text="天猫森林集市"]',
             '[text$="可用" || text="后失效"] + TextView[text="残忍放弃"][index=parent.childCount.minus(2)]',
@@ -596,6 +615,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '去看看',
           matches:
             'WebView[text="蚂蚁新村"] >(3,4,5) Button[text="去看看"][visibleToUser=true]',
           snapshotUrls: [
@@ -604,7 +624,8 @@ export default defineGkdApp({
           ],
         },
         {
-          key: 2, // 我愿意帮助她们
+          key: 2,
+          name: '我愿意帮助她们',
           preKeys: [1],
           matches: '[text^="本村任务"] +2 [text=""]',
           snapshotUrls: [
@@ -641,6 +662,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '丰收礼包or恭喜获得-x掉',
           matches: [
             '[text*="丰收礼包" || text^="恭喜获得"] +(4,5) [text="关闭"][visibleToUser=true]',
           ],
@@ -654,6 +676,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
+          name: '去快手逛逛-x掉',
           matches:
             'Image[width=866] <<2 * + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
           snapshotUrls: [
@@ -663,6 +686,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
+          name: '去玩小游戏-x掉',
           matches: [
             '[text^="还差"][text$="次领肥料"]',
             'Image[width=812] + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
@@ -718,6 +742,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '扫码界面',
           action: 'none', // 前置条件，防 key 2 误触
           matches:
             '[text="扫码"][id$="scan_bottom_view_text"][visibleToUser=true]',
@@ -728,6 +753,7 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
+          name: '用户森林主页-加好友',
           matchDelay: 1000,
           matches: [
             '[text$="的蚂蚁森林"][id$="textView_title"]',
@@ -751,6 +777,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '用户主页-加好友',
           actionCd: 1500,
           actionMaximum: 2,
           resetMatch: 'match',
@@ -764,6 +791,7 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
+          name: '加好友后-返回键',
           action: 'back',
           matchDelay: 500,
           matches: [
@@ -787,6 +815,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: 'x掉捎话弹窗',
           matches: [
             '[text="给Ta捎句话吧"] - * > [id$="closeButton"] > [text=""][visibleToUser=true]',
           ],
@@ -798,6 +827,7 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
+          name: '返回键',
           action: 'back',
           matchDelay: 500,
           matches: [
