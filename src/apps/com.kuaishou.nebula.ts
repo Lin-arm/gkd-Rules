@@ -270,8 +270,14 @@ export default defineGkdApp({
       key: 12,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',
+      activityIds: [
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.plugin.search.SearchActivity',
+      ],
       rules: [
         {
+          key: 1,
           actionDelay: 1500,
           forcedTime: 31000, // 防睡死不触发(test)
           matches: [
@@ -283,11 +289,14 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22662987',
             'https://i.gkd.li/i/23211038',
           ],
-          activityIds: [
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-            'com.yxcorp.plugin.search.SearchActivity',
+        },
+        {
+          key: 2,
+          matches: [
+            '[vid="ad_download_text"][text="立即下载"]',
+            '[id="com.kuaishou.nebula.commercial_neo:id/video_close_icon"][clickable=true][focusable=true]',
           ],
+          snapshotUrls: 'https://i.gkd.li/i/24279152',
         },
       ],
     },
@@ -369,20 +378,14 @@ export default defineGkdApp({
           matches: '[vid="left_btn"][clickable=true][visibleToUser=true]', //返回
           snapshotUrls: 'https://i.gkd.li/i/23908857',
         },
-      ],
-    },
-    {
-      key: 16,
-      name: '🤳看广告-误入xx下载页-返回键',
-      desc: '按下返回键',
-      rules: [
         {
+          key: 3,
+          name: 'xx下载页-返回键',
           action: 'back',
           actionDelay: 1000,
-          matches: ['[text^="下载" && text$="立得奖励"][visibleToUser=true]'],
-          fastQuery: true,
+          matches: '[text^="下载" && text$="立得奖励"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23431442',
-          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
+          activityIds: ['com.kwai.kds.krn.api.page.KwaiRnActivity'],
         },
       ],
     },
@@ -567,7 +570,6 @@ export default defineGkdApp({
           actionCd: 3000,
           matches: 'TextView[text="已领取"][vid="neo_count_down_text"]',
           snapshotUrls: ['https://i.gkd.li/i/22705740'],
-          activityIds: ['com.yxcorp.gifshow.detail.PhotoDetailActivity'],
         },
         {
           key: 2, // 去金币购 看的3次直播
@@ -908,7 +910,10 @@ export default defineGkdApp({
           matches: [
             '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>781][visibleToUser=true]',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/23558181',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23558181',
+            // 'https://i.gkd.li/i/24279125', //未生效
+          ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23558030', // [left=781]
         },
         {

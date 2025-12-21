@@ -9,7 +9,14 @@ export default defineGkdApp({
       name: '📢说明',
       desc: '(点击查看详情) 🔵目前在用的支付宝版本有两个: 🔸v10.7.76.8100 🔸v10.7.16.8000 ,如果你用其他版本的支付宝,估计有些规则不生效,如遇失效或误触请截取快照拿到github反馈. 🔵另外,这些规则大都是在模块(芝麻糊、芝麻粒-tk等)不做这些任务的时候,用gkd来减少手动操作的,如果模块能做的任务,请关掉这些任务对应的gkd规则,开多了会费电. ',
       enable: false,
-      rules: [],
+      rules: [
+        {
+          // snapshotUrls: [     //临时存放一些快照
+          //   'https://i.gkd.li/i/24279063', //zfb滑块拼图验证
+          //   'https://i.gkd.li/i/24279064', //zfb滑块拼图验证2(淘宝)
+          // ],
+        },
+      ],
     },
     {
       key: 1,
@@ -47,6 +54,31 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+      ],
+    },
+    {
+      key: 201,
+      name: '🐤⛪任务-中转白页-返回',
+      desc: '从第其他app跳转回来zfb ->中转白页',
+      fastQuery: true,
+      rules: [
+        {
+          key: 1,
+          action: 'none',
+          matches: 'TextView[text="正在跳转"][id$="textView_title"]',
+          snapshotUrls: 'https://i.gkd.li/i/24279023', // '打开淘宝' 中转页
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          matches:
+            '[id="com.alipay.mobile.antui:id/back_button"][desc="返回"][checkable=false]',
+          snapshotUrls: 'https://i.gkd.li/i/24279030', //中转白页
+          activityIds:
+            'com.alipay.mobile.wallet.promo.ui.page.AppDetailsActivity',
         },
       ],
     },
@@ -239,7 +271,7 @@ export default defineGkdApp({
       key: 12,
       name: '🐤养鸡-家庭👪-去捐步',
       desc: '①去捐步 ②立即捐步 ③知道了(返回键) ④x掉',
-      activityIds: ['com.alipay.mobile.nebulax.xriver.activity.XRiverActivity'],
+      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
           key: 1,
@@ -489,7 +521,7 @@ export default defineGkdApp({
     {
       key: 24,
       name: '🌲森林-集市-弹窗-x掉',
-      desc: '①首购红包 ②膨胀红包 ③专享补贴',
+      desc: '①首购红包 ②膨胀红包 ③专享补贴 ④添加首页',
       fastQuery: true,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
@@ -513,9 +545,12 @@ export default defineGkdApp({
           key: 3,
           matches: [
             '[text="天猫森林集市"]',
-            '[text^="天猫专享补贴"] < * > TextView[text="残忍放弃"]',
+            '[text$="可用" || text="后失效"] + TextView[text="残忍放弃"][index=parent.childCount.minus(2)]',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/24157391',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24157391', //专享补贴
+            'https://i.gkd.li/i/24278961', //添加小程序到首页
+          ],
         },
       ],
     },
@@ -570,10 +605,12 @@ export default defineGkdApp({
         },
         {
           key: 2, // 我愿意帮助她们
-          // preKeys: [1],
-          matches:
-            '[text^="本村任务"] +2 [text=""][clickable=true][focusable=false]',
-          snapshotUrls: 'https://i.gkd.li/i/23978826',
+          preKeys: [1],
+          matches: '[text^="本村任务"] +2 [text=""]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23978826',
+            'https://i.gkd.li/i/24269075',
+          ],
         },
       ],
     },
@@ -694,10 +731,13 @@ export default defineGkdApp({
           matchDelay: 1000,
           matches: [
             '[text$="的蚂蚁森林"][id$="textView_title"]',
-            'Button + Button[text=""][visibleToUser=true]',
+            'Button + Button[text="" || text="加好友"][visibleToUser=true]',
           ],
           fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23279949',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23279949',
+            'https://i.gkd.li/i/24278939', // pk好友
+          ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
