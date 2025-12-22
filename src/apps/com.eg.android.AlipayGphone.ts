@@ -771,69 +771,56 @@ export default defineGkdApp({
     },
     {
       key: 32,
-      name: '🙋‍♂️扫码加好友-辅助② (❗概率误触)',
-      desc: '进用户主页->点击 加好友,②返回键',
+      name: '🙋‍♂️加好友-辅助② (❗概率误触)',
+      desc: '用户主页-> ①加好友 ③返回键',
+      fastQuery: true,
       enable: false,
+      activityIds: [
+        'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity', //A
+        'com.alipay.mobile.socialcontactsdk.contact.ui.FriendVerifyNewActivity_', //B
+      ],
       rules: [
         {
           key: 1,
           name: '用户主页-加好友',
           actionCd: 1500,
-          actionMaximum: 2,
+          actionMaximum: 1,
           resetMatch: 'match',
-          matches: [
-            'ViewGroup[childCount=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
-          ],
-          snapshotUrls: ['https://i.gkd.li/i/23280044'],
-          activityIds:
-            'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
+          matches:
+            '[childCount=7] > ViewGroup[index=6][index=parent.childCount.minus(1)] > View',
+          snapshotUrls: 'https://i.gkd.li/i/23280044', //A
         },
         {
           key: 2,
-          preKeys: [1],
+          name: 'x掉捎话弹窗',
+          actionCd: 1500,
+          matches:
+            '[text="给Ta捎句话吧"] - * > [id$="closeButton"] > [text=""][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23280089', //B
+            'https://i.gkd.li/i/23280173', //A
+          ],
+        },
+        {
+          key: 3,
+          preKeys: [1, 2],
           name: '加好友后-返回键',
           action: 'back',
-          matchDelay: 500,
-          matches: [
-            'ViewGroup[childCount>=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
-          ],
-          snapshotUrls: 'https://i.gkd.li/i/23280202', // 含免验证直接通过的,按返回键
-          activityIds:
-            'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
-        },
-      ],
-    },
-    {
-      key: 33,
-      name: '🙋‍♂️扫码加好友-辅助③',
-      desc: '①x掉捎话弹窗 ②返回键',
-      enable: false,
-      activityIds: [
-        'com.alipay.mobile.socialcontactsdk.contact.ui.FriendVerifyNewActivity_',
-        'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
-      ],
-      rules: [
-        {
-          key: 1,
-          name: 'x掉捎话弹窗',
-          matches: [
-            '[text="给Ta捎句话吧"] - * > [id$="closeButton"] > [text=""][visibleToUser=true]',
-          ],
-          snapshotUrls: [
-            'https://i.gkd.li/i/23280089',
-            'https://i.gkd.li/i/23280173',
-          ],
+          actionDelay: 500,
+          actionMaximum: 1,
+          resetMatch: 'match',
+          matches:
+            '[childCount>=7] > ViewGroup[index=parent.childCount.minus(1)] > View',
+          snapshotUrls: 'https://i.gkd.li/i/23280202', //A 含免验证直接通过的
         },
         {
-          key: 2,
-          preKeys: [1],
-          name: '返回键',
+          key: 4,
+          name: '误进发红包页-返回键',
           action: 'back',
-          matchDelay: 500,
-          matches: [
-            'ViewGroup[childCount>=7] > ViewGroup[index=parent.childCount.minus(1)] > View[visibleToUser=true]',
-          ],
-          snapshotUrls: 'https://i.gkd.li/i/23280150',
+          matches: '[text="发红包"][id$="title_bar_title"]',
+          snapshotUrls: 'https://i.gkd.li/i/24288073',
+          activityIds:
+            'com.alipay.android.phone.discovery.envelope.cube.UnifyFormCubeActivity',
         },
       ],
     },

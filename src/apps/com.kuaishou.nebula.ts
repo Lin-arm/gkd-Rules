@@ -1085,12 +1085,13 @@ export default defineGkdApp({
     {
       key: 42,
       name: '逛街赚金币-自动领💰,退',
-      desc: '①领金币(需冻结ks) ③返回键 ④弹窗-放弃',
+      desc: '①领金币(❗需冻结ks) ③返回键 ④弹窗-放弃',
       activityIds: 'com.yxcorp.gifshow.ad.rn.AdKwaiRnActivity',
       fastQuery: true,
       rules: [
         {
           key: 1,
+          name: '点击打开快手',
           actionDelay: 1500,
           matches:
             '@[text^="+"][text$="0"] + [text="打开快手"][visibleToUser=true]',
@@ -1099,14 +1100,18 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1], // 先点key1,再点key2 就会领两样金币
+          name: '点击签到',
           matches:
             '@[text^="+"][text$="0"] + [text="点击领取"][visibleToUser=true]',
-          // snapshotUrls: 'https://i.gkd.li/i/23582148',
         },
         {
           key: 3,
-          preKeys: [2],
+          // preKeys: [2],
+          name: '返回键',
           action: 'back',
+          actionMaximum: 2,
+          actionCd: 2500,
+          resetMatch: 'app',
           excludeMatches: '@[text!="+10"] + [text="浏览领取"]', // 若是10金币,直接退出
           matches: '[text="明天签到"]',
           snapshotUrls: 'https://i.gkd.li/i/23582306',
@@ -1114,6 +1119,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
+          name: '退出(弹窗)-放弃',
           matches:
             '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22658647',
