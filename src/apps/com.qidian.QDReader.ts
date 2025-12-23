@@ -59,5 +59,71 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 4,
+      name: '🧧发现-红包广场-抢月包',
+      desc: '点击 抢(❗用前请到开发者选项关闭那3个动画)', //章节卡不抢
+      enable: false,
+      actionCd: 200,
+      activityIds: [
+        'com.qidian.QDReader.ui.activity.MainGroupActivity',
+        '.flutter.HongBaoSquareActivity',
+      ],
+      rules: [
+        {
+          key: 1, //先抢点币过万的
+          matches:
+            'ImageView[desc$="万\\n点\\n抢"][desc.length=7][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23291716', //起点422
+        },
+        {
+          key: 2,
+          matches: 'ImageView[desc$="万\\n点\\n抢"][visibleToUser=true]',
+        },
+        {
+          key: 3,
+          matches: 'ImageView[desc$="点\\n抢"][visibleToUser=true]',
+        },
+      ],
+    },
+    {
+      key: 5,
+      name: '🧧抢月包-投月票',
+      desc: '弹窗-点击 马上抢',
+      enable: false,
+      rules: [
+        {
+          actionCd: 50,
+          matches: ['[vid="getHongbaoTv"][visibleToUser=true]'],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23299140',
+          activityIds: [
+            'com.qidian.QDReader.ui.activity.MainGroupActivity',
+            '.flutter.HongBaoSquareActivity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 6,
+      name: '🧧抢月包-已抢完弹窗-x掉',
+      desc: '弹窗-已抢完-x掉',
+      enable: false,
+      rules: [
+        {
+          actionCd: 10,
+          matches: [
+            '[text="已抢完"]',
+            '[vid="btnHongbaoClose"][visibleToUser=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/23291755',
+          activityIds: [
+            'com.qidian.QDReader.ui.activity.MainGroupActivity',
+            '.flutter.HongBaoSquareActivity',
+          ],
+        },
+      ],
+    },
   ],
 });
