@@ -137,16 +137,17 @@ export default defineGkdApp({
       name: '📺脚本❗刷广告-重启快极-进任务中心',
       desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
       enable: false,
-      fastQuery: true,
       activityIds: 'com.yxcorp.gifshow.HomeActivity',
       rules: [
         {
           key: 1,
+          fastQuery: true,
           matches: '[vid="redFloat"][clickable=true]', //视频页-点击红包浮窗
           snapshotUrls: 'https://i.gkd.li/i/23989148',
         },
         {
           key: 2,
+          fastQuery: true,
           matches: [
             '[vid="nasa_groot_view_pager"]',
             '[id="android:id/content"] >5 ImageView + ViewGroup[width>120 && width<140][height>120 && height<140]',
@@ -159,7 +160,7 @@ export default defineGkdApp({
         {
           key: 3, //误入其他任务页-返回
           action: 'back',
-          matches: ['[text="推荐小说" || text="赚饲料"]'],
+          matches: ['[text="推荐小说" || text="赚饲料"]'], //❗开了快速查找不生效
           snapshotUrls: [
             'https://i.gkd.li/i/22658578', //小说
             'https://i.gkd.li/i/22908125', //养鸭
