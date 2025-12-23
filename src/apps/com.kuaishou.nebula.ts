@@ -156,6 +156,19 @@ export default defineGkdApp({
             'https://i.gkd.li/i/24194816',
           ],
         },
+        {
+          key: 3, //误入其他任务页-返回
+          action: 'back',
+          matches: ['[text="推荐小说" || text="赚饲料"]'],
+          snapshotUrls: [
+            'https://i.gkd.li/i/22658578', //小说
+            'https://i.gkd.li/i/22908125', //养鸭
+          ],
+          activityIds: [
+            'com.kuaishou.novel.home.NovelHomeActivity',
+            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+          ],
+        },
       ],
     },
     {
@@ -1130,8 +1143,10 @@ export default defineGkdApp({
       key: 43,
       name: '💤睡觉-领补贴',
       desc: '点击看广告领补贴',
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
+          key: 1,
           matchDelay: 1000,
           actionMaximum: 1,
           resetMatch: 'app',
@@ -1141,7 +1156,15 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23290616',
             'https://i.gkd.li/i/23290617',
           ],
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 2,
+          action: 'back',
+          actionDelay: 1500,
+          matches: '[text="已睡觉" || text="已起床"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24309580', //已起床
+          ],
         },
       ],
     },
