@@ -73,16 +73,18 @@ export default defineGkdApp({
         {
           key: 1, //先抢点币过万的
           matches:
-            'ImageView[desc$="万\\n点\\n抢"][desc.length=7][visibleToUser=true]',
+            'ImageView[desc$="万\\\\n点\\\\n抢"][desc.length=7][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23291716', //起点422
         },
         {
           key: 2,
-          matches: 'ImageView[desc$="万\\n点\\n抢"][visibleToUser=true]',
+          matches: 'ImageView[desc$="万\\\\n点\\\\n抢"][visibleToUser=true]',
         },
         {
           key: 3,
-          matches: 'ImageView[desc$="点\\n抢"][visibleToUser=true]',
+          matches: 'ImageView[desc$="点\\\\n抢"][visibleToUser=true]', //未编译的在线订阅用 \\\\n
+          // matches: 'ImageView[desc$="点\\n抢"][visibleToUser=true]',  //直接复制到GKD本地订阅用 \\n
+          // matches: 'ImageView[desc$="点\n抢"][visibleToUser=true]',   //快照选择器用 \n
         },
       ],
     },
