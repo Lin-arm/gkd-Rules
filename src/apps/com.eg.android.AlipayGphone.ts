@@ -506,10 +506,11 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          matches: [
-            '[text^="提醒TA来收"] + [text="浇水送祝福"][visibleToUser=true]',
+          matches: '[text="浇水送祝福"][clickable=true][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22973598',
+            'https://i.gkd.li/i/24337752',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/22973598',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
         },
