@@ -95,7 +95,7 @@ export default defineGkdApp({
     },
     {
       key: 6,
-      name: '📺脚本❗刷视频-误入页面-返回键', //保持在刷视频页
+      name: '🦜脚本刷视频-误入页面-返回键', //保持在刷视频页
       desc: '仅在用脚本自动刷视频时打开,其余时间🈲用',
       enable: false,
       fastQuery: true,
@@ -134,20 +134,19 @@ export default defineGkdApp({
     },
     {
       key: 7,
-      name: '📺脚本❗刷广告-重启快极-进任务中心',
+      name: '🦜脚本刷广告-进任务中心',
       desc: '仅在用脚本自动看广告时打开,其余时间🈲用',
       enable: false,
+      fastQuery: true,
       activityIds: 'com.yxcorp.gifshow.HomeActivity',
       rules: [
         {
           key: 1,
-          fastQuery: true,
-          matches: '[vid="redFloat"][clickable=true]', //视频页-点击红包浮窗
+          matches: '[vid="redFloat"][clickable=true]', //视频页-点击红包浮窗 (配合脚本重启快极后用)
           snapshotUrls: 'https://i.gkd.li/i/23989148',
         },
         {
           key: 2,
-          fastQuery: true,
           matches: [
             '[vid="nasa_groot_view_pager"]',
             '[id="android:id/content"] >5 ImageView + ViewGroup[width>120 && width<140][height>120 && height<140]',
@@ -157,18 +156,37 @@ export default defineGkdApp({
             'https://i.gkd.li/i/24194816',
           ],
         },
+
+        // 以下为自动看广告时,误入其他页面后用的返回键
         {
-          key: 3, //误入其他任务页-返回
+          key: 11,
           action: 'back',
-          matches: ['[text="推荐小说" || text="赚饲料"]'], //❗开了快速查找不生效
-          snapshotUrls: [
-            'https://i.gkd.li/i/22658578', //小说
-            'https://i.gkd.li/i/22908125', //养鸭
-          ],
-          activityIds: [
-            'com.kuaishou.novel.home.NovelHomeActivity',
-            'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
-          ],
+          matches: '[text="推荐小说"][id$="book_module_title"]',
+          snapshotUrls: 'https://i.gkd.li/i/22658578', //小说
+          activityIds: 'com.kuaishou.novel.home.NovelHomeActivity',
+        },
+        {
+          key: 12,
+          action: 'back',
+          matches: '[text="赚饲料"]',
+          fastQuery: false, //这条子规则内禁用快查询,否则真机不生效
+          snapshotUrls: 'https://i.gkd.li/i/22908125', //养鸭
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 13,
+          action: 'back',
+          matches: '[vid="tab_text"][text^="作品"]',
+          snapshotUrls: 'https://i.gkd.li/i/24336755', //直播-用户主页
+          activityIds:
+            'com.yxcorp.gifshow.profile.activity.UserProfileActivity',
+        },
+        {
+          key: 14,
+          action: 'back',
+          matches: '[text="现金明细"]',
+          snapshotUrls: 'https://i.gkd.li/i/24337097', //我的收益页
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
       ],
     },
@@ -245,11 +263,13 @@ export default defineGkdApp({
       rules: [
         {
           actionCd: 3500,
-          matches: '[vid="retry_btn"][text="点击重试"][clickable=true]',
+          matches:
+            '[vid="retry_btn" && text="点击重试" || text^="点我刷新"][clickable=true]',
           fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/24195125',
             'https://i.gkd.li/i/23907716',
+            'https://i.gkd.li/i/24337119', //任务页-列表空白-点我刷新
           ],
           activityIds: [
             'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
@@ -267,7 +287,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          actionDelay: 500,
+          actionDelay: 700,
           matches:
             '[text="立即领取"][id$="task_item_button"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22658578',
@@ -553,13 +573,17 @@ export default defineGkdApp({
           name: '直播中途结束-返回键',
           action: 'back',
           actionCd: 15000,
-          matches: ['[text="直播已结束"][visibleToUser=true]'],
-          snapshotUrls: 'https://i.gkd.li/i/23006131',
+          matches:
+            '[text="直播已结束" || text^="直播涉及违规"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23006131',
+            'https://i.gkd.li/i/24337020', //违规被关
+          ],
         },
         {
           key: 3,
           name: '直播中途结束-弹窗放弃',
-          matches: ['[text="换一个"] -2 [text="放弃奖励"][visibleToUser=true]'],
+          matches: '[text="换一个"] -2 [text="放弃奖励"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23421843',
         },
       ],
@@ -675,8 +699,8 @@ export default defineGkdApp({
         {
           key: 2,
           matches:
-            '[vid="red_packet_container_view"] +2 ImageView[vid="close_view"][clickable=true][focusable=true]',
-          // snapshotUrls: 'https://i.gkd.li/i/23654976', // (参考快手)口令红包 未中奖
+            '[id$="red_packet_container_view"] +2 ImageView[vid="close_view"][clickable=true][focusable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24337184', //口令红包 未中奖
         },
       ],
     },

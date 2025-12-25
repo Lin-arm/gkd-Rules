@@ -94,9 +94,14 @@ export default defineGkdApp({
       rules: [
         {
           actionCd: 50,
+          excludeMatches: '[text*="验证"][focusable=true][visibleToUser=true]', // 排除验证弹窗
           matches: ['[vid="getHongbaoTv"][visibleToUser=true]'],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23299140',
+          // excludeSnapshotUrls: [
+          //   'https://i.gkd.li/i/23562885',
+          //   'https://i.gkd.li/i/23610102', // 422 验证弹窗
+          // ],
           activityIds: [
             'com.qidian.QDReader.ui.activity.MainGroupActivity',
             '.flutter.HongBaoSquareActivity',
