@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '每日福利-看完广告-知道了',
+      name: '📆每日福利-看完广告-知道了',
       desc: '点击知道了',
       rules: [
         {
@@ -19,7 +19,7 @@ export default defineGkdApp({
     },
     {
       key: 2,
-      name: '每日福利-自动看广告',
+      name: '📆每日福利-自动看广告',
       desc: '点击去完成(❗配合QD模块用)',
       enable: false,
       rules: [
@@ -43,7 +43,7 @@ export default defineGkdApp({
     },
     {
       key: 3,
-      name: '每日福利-阅读得积分-领取',
+      name: '📆每日福利-阅读得积分-领取',
       desc: '点击领积分(❗遮挡可开shizuku强制点击)',
       activityIds: '.ui.activity.QDBrowserActivity',
       rules: [
@@ -83,6 +83,25 @@ export default defineGkdApp({
         {
           key: 3,
           matches: 'ImageView[desc$="点\\n抢"][visibleToUser=true]',
+        },
+      ],
+    },
+    {
+      key: 401,
+      name: '🧧发现-红包广场-抢月包(测试)',
+      desc: '点击 已抢完 (测试用,真抢时请关闭)',
+      enable: false,
+      rules: [
+        {
+          actionCd: 200,
+          actionMaximum: 8,
+          resetMatch: 'match',
+          matches: 'ImageView[desc$="点\\n已抢完"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24323139',
+          activityIds: [
+            'com.qidian.QDReader.ui.activity.MainGroupActivity',
+            '.flutter.HongBaoSquareActivity',
+          ],
         },
       ],
     },
@@ -127,6 +146,19 @@ export default defineGkdApp({
             'com.qidian.QDReader.ui.activity.MainGroupActivity',
             '.flutter.HongBaoSquareActivity',
           ],
+        },
+      ],
+    },
+    {
+      key: 7,
+      name: '📖阅读页-任务弹窗-放弃',
+      desc: '退出时弹窗-不领任务',
+      rules: [
+        {
+          matches: '[vid="btnLeave"][text="急迫离开"][clickable=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/24338232', //阅读满30秒,领取2点章节卡
+          activityIds: '.ui.activity.QDReaderActivity',
         },
       ],
     },

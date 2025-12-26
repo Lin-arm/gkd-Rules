@@ -8,6 +8,7 @@ export default defineGkdApp({
       key: 1,
       name: '快极🤳看广告to京东-跳回',
       desc: '点击跳转回快极',
+      enable: false,
       rules: [
         {
           actionDelay: 1500,

@@ -8,6 +8,7 @@ export default defineGkdApp({
       key: 1,
       name: '快极-任务页弹窗-取消',
       desc: '添加小组件到桌面-取消',
+      enable: false,
       rules: [
         {
           matches: [
