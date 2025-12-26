@@ -51,12 +51,10 @@ git fetch upstream
 
 # 4. 切换到你的 main 分支
 git checkout main
+
 # 从上游最新代码创建第一个功能分支`feature-1`
 # git checkout -b feature-1 upstream/main
 # git push origin feature-1
-
-# git checkout -b feature-2 upstream/main
-# git push origin feature-2
 
 
 # 5. 强制合并上游更新（这会覆盖你的本地更改）
