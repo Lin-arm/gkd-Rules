@@ -428,8 +428,10 @@ export default defineGkdApp({
         {
           key: 1,
           matches: [
-            'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8,9) @ImageView[width>94 && width<106][height>94 && height<106][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+            // 'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8,9) @ImageView[width>94 && width<106][height>94 && height<106][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+            '[index=parent.childCount.minus(1)] > @ImageView[width>94 && width<106][height>94 && height<106][top>1000 && top<1800] <<n [vid="krn_content_container"]',
           ],
+          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/23450509',
             'https://i.gkd.li/i/23450530',

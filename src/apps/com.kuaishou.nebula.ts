@@ -682,30 +682,28 @@ export default defineGkdApp({
       name: '📡直播间-红包弹窗-x掉',
       desc: '①天降红包 ②团购红包 ③主播新人券 ④双11券',
       activityIds: [
-        'com.yxcorp.gifshow.detail.PhotoDetailActivity',
-        'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
-        'com.kuaishou.live.core.basic.activity.LivePlayActivity',
-        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+        'com.yxcorp.gifshow.detail.PhotoDetailActivity', //A
+        'com.kuaishou.live.core.basic.activity.LivePlayActivity', //B
+        'com.kuaishou.live.core.basic.activity.LiveSlideActivity', //C
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity', //D
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2', //E
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity', //F
       ],
       rules: [
         {
           key: 1,
           matches: [
-            'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8,9) @ImageView[width>94 && width<106][height>94 && height<106][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+            // 'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8,9) @ImageView[width>94 && width<106][height>94 && height<106][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+            '[index=parent.childCount.minus(1)] > @ImageView[width>94 && width<106][height>94 && height<106][top>1000 && top<1800] <<n [vid="krn_content_container"]',
           ],
+          fastQuery: true,
           snapshotUrls: [
-            'https://i.gkd.li/i/22660173', //天降红包
-            'https://i.gkd.li/i/22699956',
-            'https://i.gkd.li/i/22705915',
-            'https://i.gkd.li/i/22781366',
-            'https://i.gkd.li/i/23011158',
-            'https://i.gkd.li/i/23141501',
-            'https://i.gkd.li/i/23141694',
-            'https://i.gkd.li/i/23143270',
-            'https://i.gkd.li/i/23290583',
-            'https://i.gkd.li/i/23906987', // >9
+            'https://i.gkd.li/i/22699956', //A 团购红包
+            'https://i.gkd.li/i/22781366', //B 天降红包
+            'https://i.gkd.li/i/23011158', //F 主播新人券
+            'https://i.gkd.li/i/23143270', //E 主播新人券
+            'https://i.gkd.li/i/23290583', //A 获得直播惊喜券(双11)
+            'https://i.gkd.li/i/23906987', //C >9 直播惊喜券
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/22988215', //  < [index=parent.childCount.minus(1)]
         },
