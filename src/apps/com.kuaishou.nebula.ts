@@ -693,10 +693,10 @@ export default defineGkdApp({
         {
           key: 1,
           matches: [
-            'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8,9) @ImageView[width=104][height=104 || height=103][visibleToUser=true] < [index=parent.childCount.minus(1)]',
+            'FrameLayout[vid="krn_content_container"] >(4,5,6,7,8,9) @ImageView[width>94 && width<106][height>94 && height<106][visibleToUser=true] < [index=parent.childCount.minus(1)]',
           ],
           snapshotUrls: [
-            'https://i.gkd.li/i/22660173',
+            'https://i.gkd.li/i/22660173', //天降红包
             'https://i.gkd.li/i/22699956',
             'https://i.gkd.li/i/22705915',
             'https://i.gkd.li/i/22781366',
