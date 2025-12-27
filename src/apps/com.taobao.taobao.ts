@@ -44,7 +44,8 @@ export default defineGkdApp({
       rules: [
         {
           matches: [
-            'Button[text="" || text="关闭"][width=107 || width=108][height>=107 && height<=110][clickable=true][focusable=true]',
+            // 'Button[text="" || text="关闭"][width=107 || width=108][height>=107 && height<=110][clickable=true][focusable=true]',
+            '[name$="TextView" || name$="Button"][text="" || text="关闭"][width=107 || width=108][height>=107 && height<=110][clickable=true || focusable=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/23300544', //恭喜获得施肥大礼包
@@ -52,6 +53,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23468858', //恭喜领到大量肥料
             'https://i.gkd.li/i/23413567', //明日7点后记得来领
             'https://i.gkd.li/i/23581433', //明日7点后记得来领
+            'https://i.gkd.li/i/24353133', //浏览精选商品
           ],
           activityIds: [
             'com.taobao.themis.container.app.TMSActivity',
