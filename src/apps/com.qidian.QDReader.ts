@@ -73,7 +73,7 @@ export default defineGkdApp({
       ],
       rules: [
         {
-          key: 1, //先抢点币过万的
+          key: 1, //先抢点币过10万的
           matches:
             'ImageView[desc$="万\\n点\\n抢"][desc.length=7][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23291716', //起点422
@@ -90,7 +90,7 @@ export default defineGkdApp({
     },
     {
       key: 401,
-      name: '🧧发现-红包广场-抢月包(测试)',
+      name: '🐞发现-红包广场-抢月包(测试)',
       desc: '点击 已抢完 (测试用,真抢时请关闭)',
       enable: false,
       rules: [
