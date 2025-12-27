@@ -193,7 +193,7 @@ export default defineGkdApp({
     {
       key: 8,
       name: '任务页-弹窗-X掉',
-      desc: '添加组件,去绑卡,邀好友 弹窗',
+      desc: '组件,绑卡,邀好友,瓜分,...',
       activityIds: [
         'com.yxcorp.gifshow.HomeActivity', // A
         'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', // B
@@ -226,6 +226,15 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/23588323', //看视频赚金币 领奖弹窗
             // 'https://i.gkd.li/i/23606147', //快手的
+          ],
+        },
+        {
+          key: 3,
+          matches:
+            '[childCount=1] > ImageView[width>95 && width<106][height>95 && height<106][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24352727', //A 2025年度回忆
+            'https://i.gkd.li/i/24352736', //A h5回测dtk
           ],
         },
       ],
@@ -417,8 +426,12 @@ export default defineGkdApp({
           name: 'xx下载页-返回键',
           action: 'back',
           actionDelay: 1000,
-          matches: '[text^="下载" && text$="立得奖励"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/23431442',
+          matches:
+            '[text^="下载" && text$="立得奖励" || text="快影"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23431442',
+            'https://i.gkd.li/i/24352704', //快影
+          ],
           activityIds: ['com.kwai.kds.krn.api.page.KwaiRnActivity'],
         },
       ],
@@ -764,6 +777,17 @@ export default defineGkdApp({
           matches:
             '[id="com.kuaishou.nebula.live_audience_plugin:id/live_voice_party_audience_being_invited_bottom_panel_close"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/24203582',
+        },
+        {
+          key: 7,
+          name: '商品列表',
+          action: 'back',
+          matches:
+            '@[clickable=true][focusable=true] >(1,2) [text="订单" || text="购物车"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24352654',
+            'https://i.gkd.li/i/24352662',
+          ],
         },
       ],
     },
