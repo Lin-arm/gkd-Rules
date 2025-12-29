@@ -17,7 +17,7 @@
 
 ---
 
-&emsp;&emsp;目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/gkd-Rules/issues)提交快照文件或链接,我将尽力适配。
+&emsp;&emsp;目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)`,`起点读书` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/gkd-Rules/issues)提交快照文件或链接,我将尽力适配。
 
 另外 订阅后请进`应用规则`里，再逐个进app里斟酌是否需要关闭某条规则, 本订阅的规则大部分默认是开着的。
 
