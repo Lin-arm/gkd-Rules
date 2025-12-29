@@ -45,6 +45,40 @@ export default defineGkdApp({
     },
     {
       key: 3,
+      name: '📆每日福利-自动抽奖',
+      desc: '点击 抽奖(❗配合QD模块用)',
+      enable: false,
+      order: 2,
+      activityIds: '.ui.activity.QDBrowserActivity',
+      rules: [
+        {
+          key: 1,
+          name: '去抽奖',
+          matches: '[text="抽奖机会 ×1"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24369707',
+        },
+        {
+          key: 2,
+          name: '弹窗-抽奖',
+          actionCd: 1500,
+          matches:
+            '[text="福利中心"] >n [text="抽奖" || text$="抽奖机会+1"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24369401', //抽奖
+            'https://i.gkd.li/i/24369418', //做任务抽奖机会+1
+          ],
+        },
+        {
+          key: 3,
+          name: '抽完奖-x掉',
+          matches:
+            '[text="明天再来"] +3 [clickable=true][childCount=1][index=parent.childCount.minus(1)]',
+          snapshotUrls: 'https://i.gkd.li/i/24369440',
+        },
+      ],
+    },
+    {
+      key: 4,
       name: '📆每日福利-阅读得积分-领取',
       desc: '点击领积分(❗遮挡可开shizuku强制点击)',
       activityIds: '.ui.activity.QDBrowserActivity',
@@ -62,7 +96,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 4,
+      key: 5,
       name: '🧧发现-红包广场-抢月包',
       desc: '点击 抢(❗用前请到开发者选项关闭那3个动画)', //章节卡不抢
       enable: false,
@@ -89,7 +123,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 401,
+      key: 6,
       name: '🐞发现-红包广场-抢月包(测试)',
       desc: '点击 已抢完 (测试用,真抢时请关闭)',
       enable: false,
@@ -108,7 +142,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 5,
+      key: 7,
       name: '🧧抢月包-投月票',
       desc: '弹窗-点击 马上抢',
       enable: false,
@@ -131,7 +165,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 6,
+      key: 8,
       name: '🧧抢月包-已抢完弹窗-x掉',
       desc: '弹窗-已抢完-x掉',
       enable: false,
@@ -152,7 +186,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 7,
+      key: 9,
       name: '📖阅读页-任务弹窗-放弃',
       desc: '退出时弹窗-不领任务',
       rules: [
