@@ -230,12 +230,14 @@ export default defineGkdApp({
         },
         {
           key: 3,
-          matches:
-            '[childCount=1] > ImageView[width>95 && width<106][height>95 && height<106][visibleToUser=true]',
+          matches: [
+            '[childCount=1] > ImageView[width>95 && width<106][height>95 && height<106][top>300][visibleToUser=true]',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/24352727', //A 2025年度回忆
             'https://i.gkd.li/i/24352736', //A h5回测dtk
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/24357473', //视频页 top>300
         },
       ],
     },
@@ -1208,8 +1210,9 @@ export default defineGkdApp({
           key: 2,
           action: 'back',
           actionDelay: 1500,
-          matches: '[text="已睡觉" || text="已起床"][visibleToUser=true]',
+          matches: '[text="已入睡" || text="已起床"][visibleToUser=true]',
           snapshotUrls: [
+            'https://i.gkd.li/i/24368949', //已入睡
             'https://i.gkd.li/i/24309580', //已起床
           ],
         },

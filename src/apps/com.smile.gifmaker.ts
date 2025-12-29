@@ -877,15 +877,26 @@ export default defineGkdApp({
       key: 35,
       name: '💤睡觉-领补贴',
       desc: '点击看广告领补贴',
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
+          key: 1,
           matchDelay: 1000,
           actionMaximum: 1,
           resetMatch: 'app',
           matches:
             '[text$="领睡觉补贴" || text$="领起床补贴"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23420482',
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 2,
+          action: 'back',
+          actionDelay: 1500,
+          matches: '[text="已入睡" || text="已起床"][visibleToUser=true]',
+          // snapshotUrls: [
+          //   'https://i.gkd.li/i/24368949', //已入睡
+          //   'https://i.gkd.li/i/24309580', //已起床
+          // ],
         },
       ],
     },
