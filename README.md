@@ -17,16 +17,16 @@
 
 ---
 
-&emsp;&emsp;目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/gkd-Rules/issues)提交快照文件或链接,我将尽力适配。
+&emsp;&emsp;目前主要研究 `ks`,`ks极速版`,`zfb(蚂蚁森林)`,`起点读书` 等应用的规则, 如有遇到失效规则, 请到 [Issues](https://github.com/Lin-arm/gkd-Rules/issues)提交快照文件或链接,我将尽力适配。
 
 另外 订阅后请进`应用规则`里，再逐个进app里斟酌是否需要关闭某条规则, 本订阅的规则大部分默认是开着的。
 
 > 本订阅仅供学习交流使用，请勿做非法用途
 
 
-- 当前版本: v32
+- 当前版本: v33
 
-- 当前订阅文件已适配 17 个应用，共有 157 应用规则组，0 全局规则组
+- 当前订阅文件已适配 17 个应用，共有 159 应用规则组，0 全局规则组
 
 - 具体有多小众请查看 [适配 APP 列表](./dist/README.md)
 
@@ -34,7 +34,7 @@
 
 复制以下任意一个链接到 GKD 即可使用本订阅规则
 
-- npmmirror源（国内镜像，推荐大陆用户使用）
+- jsdelivr源（国内镜像，推荐大陆用户使用）
 
 ```txt
 https://fastly.jsdelivr.net/gh/Lin-arm/gkd-Rules@main/dist/gkd.json5
