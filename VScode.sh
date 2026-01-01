@@ -51,6 +51,8 @@ git fetch upstream
 
 # 4. 切换到你的 main 分支
 git checkout main
+# 强制删除分支`feature-1`
+# git branch -D feature-1
 
 # 从上游最新代码创建第一个功能分支`feature-1`
 # git checkout -b feature-1 upstream/main
@@ -62,4 +64,5 @@ git reset --hard upstream/main
 
 # 6. 强制推送到你的 Fork
 git push --force origin main
+# git push --force origin feature-1
 

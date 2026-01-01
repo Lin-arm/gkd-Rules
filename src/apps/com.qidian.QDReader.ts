@@ -96,13 +96,28 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 501,
+      name: '🧧发现-自动进红包广场',
+      desc: '点击 红包广场(❗用前请到开发者选项关闭那3个动画)',
+      enable: false,
+      rules: [
+        {
+          actionCd: 200,
+          matches: '@[clickable=true] > [text="红包广场"][visibleToUser=true]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/24399266', //起点422
+          activityIds: '.ui.activity.MainGroupActivity',
+        },
+      ],
+    },
+    {
       key: 5,
       name: '🧧发现-红包广场-抢月包',
-      desc: '点击 抢(❗用前请到开发者选项关闭那3个动画)', //章节卡不抢
+      desc: '点击 抢(章节卡不抢)', // 若是手动从红包广场进来, activity没变, 此规则可能不触发. 需手动下拉刷新, 或通过gkd自动进红包广场.
       enable: false,
       actionCd: 200,
       activityIds: [
-        'com.qidian.QDReader.ui.activity.MainGroupActivity',
+        '.ui.activity.MainGroupActivity',
         '.flutter.HongBaoSquareActivity',
       ],
       rules: [
@@ -129,13 +144,13 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          actionCd: 200,
-          actionMaximum: 8,
-          resetMatch: 'match',
-          matches: 'ImageView[desc$="点\\n已抢完"][visibleToUser=true]',
+          actionCd: 300,
+          actionMaximum: 3,
+          matches:
+            'ImageView[desc$="点\\n已抢完"][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/24323139',
           activityIds: [
-            'com.qidian.QDReader.ui.activity.MainGroupActivity',
+            '.ui.activity.MainGroupActivity',
             '.flutter.HongBaoSquareActivity',
           ],
         },
@@ -144,13 +159,16 @@ export default defineGkdApp({
     {
       key: 7,
       name: '🧧抢月包-投月票',
-      desc: '弹窗-点击 马上抢',
+      desc: '弹窗-点击 开',
       enable: false,
       rules: [
         {
-          actionCd: 50,
+          actionCd: 100,
+          actionDelay: 120, //加个延时,点太快了可能不妥
           excludeMatches: '[text*="验证"][focusable=true][visibleToUser=true]', // 排除验证弹窗
-          matches: ['[vid="getHongbaoTv"][visibleToUser=true]'],
+          matches: [
+            '@[clickable=true] > [vid="getHongbaoTv"][visibleToUser=true]',
+          ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23299140',
           // excludeSnapshotUrls: [
@@ -158,7 +176,7 @@ export default defineGkdApp({
           //   'https://i.gkd.li/i/23610102', // 422 验证弹窗
           // ],
           activityIds: [
-            'com.qidian.QDReader.ui.activity.MainGroupActivity',
+            '.ui.activity.MainGroupActivity',
             '.flutter.HongBaoSquareActivity',
           ],
         },
@@ -171,7 +189,7 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          actionCd: 10,
+          actionCd: 100,
           matches: [
             '[text="已抢完"]',
             '[vid="btnHongbaoClose"][visibleToUser=true]',
