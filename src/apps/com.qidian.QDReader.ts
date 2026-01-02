@@ -26,7 +26,6 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          order: 2,
           actionCd: 1700, // 配合QD模块,免看广告领奖励 使用
           excludeMatches: '[text*="验证"][focusable=true][visibleToUser=true]', // 排除验证弹窗(遇则停)
           matches: '[id="video"] >(1,2) [text="去完成"][visibleToUser=true]',
@@ -49,7 +48,6 @@ export default defineGkdApp({
       name: '📆每日福利-自动抽奖',
       desc: '点击 抽奖(❗配合QD模块用)',
       enable: false,
-      priorityActionMaximum: 7,
       activityIds: '.ui.activity.QDBrowserActivity',
       rules: [
         {
