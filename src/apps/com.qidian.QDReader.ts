@@ -10,7 +10,9 @@ export default defineGkdApp({
       desc: '点击知道了',
       rules: [
         {
-          matches: 'TextView[text="知道了"][visibleToUser=true]',
+          matches:
+            '@TextView[text="知道了"][visibleToUser=true] <<n [vid="webViewContainer"]',
+          fastQuery: true,
           snapshotUrls: [
             'https://i.gkd.li/i/22909666', //422
             'https://i.gkd.li/i/24339296', //428
@@ -112,27 +114,30 @@ export default defineGkdApp({
     {
       key: 5,
       name: '🧧发现-红包广场-抢月包',
-      desc: '点击 抢(章节卡不抢)', // 若是手动从红包广场进来, activity没变, 此规则可能不触发. 需手动下拉刷新, 或通过gkd自动进红包广场.
+      desc: '点击 抢(章节卡不抢)(可能关了,手动抢好一点)', // 若是手动从红包广场进来, activity没变, 此规则可能不触发. 需手动下拉刷新, 或通过gkd自动进红包广场.
       enable: false,
-      actionCd: 200,
+      actionCd: 300,
+      actionMaximum: 3,
       activityIds: [
         '.ui.activity.MainGroupActivity',
         '.flutter.HongBaoSquareActivity',
       ],
       rules: [
+        // {
+        //   key: 1, //先抢点币过10万的
+        //   matches:
+        //     'ImageView[desc$="万\\n点\\n抢"][desc.length=7][visibleToUser=true]',
+        // },
         {
-          key: 1, //先抢点币过10万的
+          key: 2,
           matches:
-            'ImageView[desc$="万\\n点\\n抢"][desc.length=7][visibleToUser=true]',
+            'ImageView[desc$="万\\n点\\n抢"][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23291716', //起点422
         },
         {
-          key: 2,
-          matches: 'ImageView[desc$="万\\n点\\n抢"][visibleToUser=true]',
-        },
-        {
           key: 3,
-          matches: 'ImageView[desc$="点\\n抢"][visibleToUser=true]',
+          matches:
+            'ImageView[desc$="点\\n抢"][clickable=true][visibleToUser=true]',
         },
       ],
     },
@@ -205,7 +210,7 @@ export default defineGkdApp({
     {
       key: 9,
       name: '📖阅读页-任务弹窗-放弃',
-      desc: '退出时弹窗-不领任务',
+      desc: '退出阅读时弹窗-不领任务',
       rules: [
         {
           matches: '[vid="btnLeave"][text="急迫离开"][clickable=true]',
