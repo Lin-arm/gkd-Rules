@@ -10,9 +10,7 @@ export default defineGkdApp({
       desc: '点击知道了',
       rules: [
         {
-          matches:
-            '@TextView[text="知道了"][visibleToUser=true] <<n [vid="webViewContainer"]',
-          fastQuery: true,
+          matches: 'TextView[text="知道了"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/22909666', //422
             'https://i.gkd.li/i/24339296', //428
