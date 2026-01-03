@@ -796,6 +796,7 @@ export default defineGkdApp({
       name: '📡直播间-清晰度-高清',
       desc: '设清晰度为 流畅or高清',
       fastQuery: true,
+      matchRoot: true,
       activityIds: [
         'com.yxcorp.gifshow.detail.PhotoDetailActivity',
         'com.kuaishou.live.core.basic.activity.LiveSlideActivity',
@@ -814,8 +815,8 @@ export default defineGkdApp({
           matches:
             '@[clickable=true][focusable=true] > [text="清晰度" || text="自动"]',
           snapshotUrls: [
-            'https://i.gkd.li/i/23607208',
-            'https://i.gkd.li/i/23642513',
+            'https://i.gkd.li/i/23607208', //清晰度
+            'https://i.gkd.li/i/23642513', //自动
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23908016',
         },
@@ -823,12 +824,8 @@ export default defineGkdApp({
           key: 2,
           preKeys: [1],
           matches:
-            '[index=parent.childCount.minus(2)] > [text="流畅" || text="高清"][visibleToUser=true]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/22660590',
-            'https://i.gkd.li/i/22705855',
-            'https://i.gkd.li/i/22705866',
-          ],
+            '@[index=parent.childCount.minus(2)][clickable=true] > [text="流畅" || text="高清"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/22705855',
         },
       ],
     },
