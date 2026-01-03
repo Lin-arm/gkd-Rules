@@ -792,7 +792,8 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          matches: 'TextView[text="知道了"][visibleToUser=true]',
+          matches:
+            '@[clickable=true] >(1,2) TextView[text="知道了"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23382865',
             'https://i.gkd.li/i/23419122',
