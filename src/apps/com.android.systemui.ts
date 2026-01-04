@@ -12,7 +12,7 @@ export default defineGkdApp({
         {
           matches: [
             '[vid="dialog_title" || id="android:id/message"][text*="自动精灵"]',
-            '[text="立即开始"][visibleToUser=true]',
+            '[text="立即开始"][clickable=true]',
           ],
           fastQuery: true,
           snapshotUrls: [
@@ -31,7 +31,7 @@ export default defineGkdApp({
         {
           matches: [
             '[vid="dialog_title" || id="android:id/message"][text*="GKD"]',
-            '[text="立即开始"][visibleToUser=true]',
+            '[text="立即开始"][clickable=true]',
           ],
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23415064',
@@ -39,8 +39,24 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '瞬译-获取屏幕内容-允许',
+      desc: '弹窗-点击 立即开始',
+      rules: [
+        {
+          matches: [
+            '[vid="dialog_title" || id="android:id/message"][text*="瞬译"]',
+            '[text="立即开始"][clickable=true]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/24421941',
+          activityIds: '.media.MediaProjectionPermissionActivity',
+        },
+      ],
+    },
     // {
-    //   key: 3,
+    //   key: 301,
     //   name: '插数据线连接电脑-USB提示-返回键',
     //   desc: '(真我📱)USB用于xxx -返回键',
     //   enable: false,
