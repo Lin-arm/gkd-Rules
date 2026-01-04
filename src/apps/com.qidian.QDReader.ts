@@ -46,15 +46,20 @@ export default defineGkdApp({
     {
       key: 3,
       name: '📆每日福利-自动抽奖',
-      desc: '点击 抽奖(❗配合QD模块用)',
+      desc: '点击 抽奖(❗配合QD模块用)(起点422)',
       enable: false,
       activityIds: '.ui.activity.QDBrowserActivity',
       rules: [
         {
           key: 1,
           name: '去抽奖',
-          matches: '[text="抽奖机会 ×1"][clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/24369707',
+          matches:
+            '[text="抽奖机会 ×1" || text="做任务可抽奖"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24369707', //422
+            'https://i.gkd.li/i/24421774', //422
+            // 'https://i.gkd.li/i/23561866', //420
+          ],
         },
         {
           key: 2,
@@ -73,6 +78,40 @@ export default defineGkdApp({
           matches:
             '[text="明天再来"] +3 [clickable=true][childCount=1][index=parent.childCount.minus(1)]',
           snapshotUrls: 'https://i.gkd.li/i/24369440',
+        },
+      ],
+    },
+    {
+      key: 301,
+      name: '📆每日福利-周日碎片兑换',
+      desc: '自动兑换20点章节卡 (起点422)',
+      enable: false,
+      activityIds: '.ui.activity.QDBrowserActivity',
+      rules: [
+        {
+          key: 1,
+          name: '弹窗-30张碎片兑换',
+          matches: '[text="30张碎片兑换"] + [text="兑换"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24421862', //422
+          ],
+        },
+        {
+          key: 2,
+          preKeys: [1],
+          name: '弹窗-确认兑换',
+          matches: '[text="取消"] + [text="兑换"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24421890',
+        },
+        {
+          key: 3,
+          preKeys: [1, 2],
+          name: '兑换完-x掉',
+          matches: [
+            '[text="15张碎片兑换"] + [text="碎片不足"]',
+            '[text="兑换章节卡"] - [text=""][clickable=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/24421899',
         },
       ],
     },
