@@ -630,8 +630,10 @@ export default defineGkdApp({
           key: 1,
           action: 'back',
           actionCd: 3000,
+          matchTime: 65000, //65秒后休眠
           matches: 'TextView[text="已领取"][vid="neo_count_down_text"]',
           snapshotUrls: ['https://i.gkd.li/i/22705740'],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/24432424', //逛街领金币-直播 82秒会出现一次"已领取"
         },
         {
           key: 2, // 去金币购 看的3次直播
