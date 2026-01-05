@@ -53,23 +53,26 @@ export default defineGkdApp({
         {
           key: 1,
           name: '去抽奖',
+          actionMaximum: 1,
+          resetMatch: 'match',
           matches:
-            '[text="抽奖机会 ×1" || text="做任务可抽奖"][clickable=true]',
+            '[text^="抽奖机会" || text="做任务可抽奖"][text!$="×0"][clickable=true]',
           snapshotUrls: [
-            'https://i.gkd.li/i/24369707', //422
             'https://i.gkd.li/i/24421774', //422
+            'https://i.gkd.li/i/24426825', //422 签到详情页
             // 'https://i.gkd.li/i/23561866', //420
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/24426902', //抽奖机会 ×0
         },
         {
           key: 2,
           name: '弹窗-抽奖',
           actionCd: 1500,
           matches:
-            '[text="福利中心"] >n [text="抽奖" || text$="抽奖机会+1"][clickable=true]',
+            '[text="福利中心" || text="签到详情"] >n [text="抽奖" || text$="抽奖机会+1"][clickable=true]',
           snapshotUrls: [
-            'https://i.gkd.li/i/24369401', //抽奖
             'https://i.gkd.li/i/24369418', //做任务抽奖机会+1
+            'https://i.gkd.li/i/24426793', //抽奖
           ],
         },
         {
