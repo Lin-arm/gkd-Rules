@@ -66,12 +66,14 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①用活力值兑换',
           matches:
             '[text$="兑1次抽奖机会"] < * + * > [text="确认兑换"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23013746',
         },
         {
           key: 2,
+          name: '②用饲料兑换',
           matches:
             '[text^="消耗90g饲料"] + * > [text="确认兑换"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23238643',
@@ -137,7 +139,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '开宝箱',
+          name: '①开宝箱',
           actionCd: 3000,
           matches:
             '[text="恭喜获得奖励"] +(2,3) [text^="立即开宝箱"][visibleToUser=true]',
@@ -148,7 +150,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          name: '立即兑换奖励-x掉',
+          name: '②立即兑换奖励-x掉',
           preKeys: [1],
           matches: '[text="立即兑换奖励"] + [text=""][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22983810',
@@ -162,7 +164,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '领10g食材',
+          name: '①领10g食材',
           matches: '[text="领10g食材"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23450712',
           activityIds:
@@ -170,7 +172,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          name: '已领取-返回键',
+          name: '②已领取-返回键',
           action: 'back',
           matches:
             '[text="领取每日限量食材"] + [text="已领取"][visibleToUser=true]',
@@ -204,11 +206,13 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①确认发送',
           matches: '[text="亲密度+1"] + [text="确认发送"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22938526',
         },
         {
           key: 2,
+          name: '②x掉',
           matches: '[text$="传话内容"] < * +2 TextView[visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22938583',
         },
@@ -596,7 +600,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '丰收礼包or恭喜获得-x掉',
+          name: '①丰收礼包or恭喜获得-x掉',
           matches: [
             '[text*="丰收礼包" || text^="恭喜获得"] +(4,5) [text="关闭"][visibleToUser=true]',
           ],
@@ -610,7 +614,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
-          name: '去快手逛逛-x掉',
+          name: '③去快手逛逛-x掉',
           matches:
             'Image[width=866] <<2 * + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
           snapshotUrls: [
@@ -620,7 +624,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
-          name: '去玩小游戏-x掉',
+          name: '④去玩小游戏-x掉',
           matches: [
             '[text^="还差"][text$="次领肥料"]',
             'Image[width=812] + Button[text="关闭"][index=parent.childCount.minus(1)][visibleToUser=true]',
@@ -657,6 +661,7 @@ export default defineGkdApp({
       rules: [
         {
           actionCd: 500,
+          matchRoot: true,
           matches:
             'TextView[text=""][(width>75 && width<85 && height>75 && height<85) || (width>30 && width<40 && height>30 && height<40)]',
           snapshotUrls: [
@@ -676,7 +681,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '扫码界面',
+          name: '①扫码界面',
           action: 'none', // 前置条件，防 key 2 误触
           matches:
             '[text="扫码"][id$="scan_bottom_view_text"][visibleToUser=true]',
@@ -687,7 +692,7 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
-          name: '用户森林主页-加好友',
+          name: '②用户森林主页-加好友',
           matchDelay: 1000,
           matches: [
             '[text$="的蚂蚁森林"][id$="textView_title"]',
@@ -716,7 +721,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '用户主页-加好友',
+          name: '①用户主页-加好友',
           actionCd: 1500,
           actionMaximum: 1,
           resetMatch: 'match',
@@ -726,7 +731,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          name: 'x掉捎话弹窗',
+          name: '②x掉捎话弹窗',
           actionCd: 1500,
           matches:
             '[text="给Ta捎句话吧"] - * > [id$="closeButton"] > [text=""][visibleToUser=true]',
@@ -738,7 +743,7 @@ export default defineGkdApp({
         {
           key: 3,
           preKeys: [1, 2],
-          name: '加好友后-返回键',
+          name: '③加好友后-返回键',
           action: 'back',
           actionDelay: 500,
           actionMaximum: 1,
@@ -749,7 +754,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
-          name: '误进发红包页-返回键',
+          name: '④误进发红包页-返回键',
           action: 'back',
           matches: '[text="发红包"][id$="title_bar_title"]',
           snapshotUrls: 'https://i.gkd.li/i/24288073',

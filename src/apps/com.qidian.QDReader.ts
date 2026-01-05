@@ -52,7 +52,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '去抽奖',
+          name: '①去抽奖',
           actionMaximum: 1,
           resetMatch: 'match',
           matches:
@@ -66,7 +66,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          name: '弹窗-抽奖',
+          name: '②弹窗-抽奖',
           actionCd: 1500,
           matches:
             '[text="福利中心" || text="签到详情"] >n [text="抽奖" || text$="抽奖机会+1"][clickable=true]',
@@ -77,7 +77,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
-          name: '抽完奖-x掉',
+          name: '③抽完奖-x掉',
           matches:
             '[text="明天再来"] +3 [clickable=true][childCount=1][index=parent.childCount.minus(1)]',
           snapshotUrls: 'https://i.gkd.li/i/24369440',
@@ -93,7 +93,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '弹窗-30张碎片兑换',
+          name: '①弹窗-30张碎片兑换',
           matches: '[text="30张碎片兑换"] + [text="兑换"][clickable=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/24421862', //422
@@ -102,14 +102,14 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
-          name: '弹窗-确认兑换',
+          name: '②弹窗-确认兑换',
           matches: '[text="取消"] + [text="兑换"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/24421890',
         },
         {
           key: 3,
           preKeys: [1, 2],
-          name: '兑换完-x掉',
+          name: '③兑换完-x掉',
           matches: [
             '[text="15张碎片兑换"] + [text="碎片不足"]',
             '[text="兑换章节卡"] - [text=""][clickable=true]',
@@ -164,18 +164,21 @@ export default defineGkdApp({
       ],
       rules: [
         // {
-        //   key: 1, //先抢点币过10万的
+        //   key: 1,
+        //   name: '①抢点币过10万的',
         //   matches:
         //     'ImageView[desc$="万\\n点\\n抢"][desc.length=7][visibleToUser=true]',
         // },
         {
           key: 2,
+          name: '②抢万点币的',
           matches:
             'ImageView[desc$="万\\n点\\n抢"][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23291716', //起点422
         },
         {
           key: 3,
+          name: '③抢点币的',
           matches:
             'ImageView[desc$="点\\n抢"][clickable=true][visibleToUser=true]',
         },

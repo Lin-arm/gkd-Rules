@@ -626,6 +626,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①领饲料球',
           matchDelay: 3000,
           actionMaximum: 1,
           resetMatch: 'match',
@@ -652,6 +653,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
+          name: '③6秒喂1次鸭',
           actionMaximum: 120,
           matchDelay: 2000,
           actionCd: 6000,
@@ -675,16 +677,19 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①去签到',
           excludeMatches:
-            '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
+            '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0) || text="今日饲料雨收获"][visibleToUser=true]', //饲料雨
           matches: 'Button[text="去签到"][left>782][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/24083685',
         },
         {
           key: 2,
+          name: '②领奖or去搜索or观看',
           matchDelay: 500,
+          forcedTime: 5000,
           excludeMatches:
-            '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
+            '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0) || text="今日饲料雨收获"][visibleToUser=true]', //饲料雨
           matches: [
             '[text$="3次" || text^="搜索并" || text="看精彩广告"] <<2 * + [text="领奖励" || text="去搜索" || text="去观看"][left>782][visibleToUser=true]',
           ],
@@ -692,8 +697,9 @@ export default defineGkdApp({
           excludeSnapshotUrls: 'https://i.gkd.li/i/23563084', // [left=782]
         },
         {
-          key: 3, // ③误进直播间-返回键
+          key: 3,
           preKeys: [2],
+          name: '③误进直播间-返回键',
           action: 'back',
           matches:
             '[id="com.smile.gifmaker.live_audience_plugin:id/live_slide_container"]',
@@ -704,8 +710,9 @@ export default defineGkdApp({
           ],
         },
         {
-          key: 4, // ④误进看视频页-返回键
+          key: 4,
           preKeys: [2],
+          name: '④误进看视频页-返回键',
           action: 'back',
           matches: '[vid="nasa_slide_play_view_pager_layout"]',
           fastQuery: true,
@@ -857,6 +864,8 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①点击打开快极',
+          actionDelay: 1500,
           matches:
             '@[text^="+"][text$="0"] + [text="打开极速版"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/24353048',
@@ -864,18 +873,24 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1], // 先点key1,再点key2 就会领两样金币
+          name: '②点击签到',
           matches:
             '@[text^="+"][text$="0"] + [text="点击领取"][visibleToUser=true]',
         },
         {
           key: 3,
+          name: '③返回键',
           action: 'back',
+          actionMaximum: 2,
+          actionCd: 2500,
+          resetMatch: 'app',
           excludeMatches: '@[text!="+10"] + [text="浏览领取"]', // 若是10金币,直接退出
           matches: '[text="明天签到"]',
           // snapshotUrls: 'https://i.gkd.li/i/23582306',
         },
         {
           key: 4,
+          name: '④退出(弹窗)-放弃',
           matches:
             '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23382590',
@@ -961,25 +976,28 @@ export default defineGkdApp({
     {
       key: 38,
       name: '🧍‍♂️用户资料页-拉黑',
-      desc: '❗②弹窗拉黑 ③确认 ④已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
+      desc: '❗①弹窗拉黑 ②确认 ③已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
       enable: false,
       fastQuery: true,
       activityIds: 'com.yxcorp.gifshow.profile.activity.UserProfileActivity',
       rules: [
         {
-          key: 2,
+          key: 1,
+          name: '①弹窗拉黑',
           matches: '[vid="bottom_operation_item_text"][text="拉黑"]',
           // snapshotUrls: 'https://i.gkd.li/i/23910599',
         },
         {
-          key: 3,
-          preKeys: [2],
+          key: 2,
+          preKeys: [1],
+          name: '②确认拉黑',
           matches: '[vid="positive"][text="确认拉黑"][clickable=true]',
           // snapshotUrls: 'https://i.gkd.li/i/23910626',
         },
         {
-          key: 4, //已拉黑-返回键
-          preKeys: [3],
+          key: 3,
+          preKeys: [2],
+          name: '③已拉黑-返回',
           action: 'back',
           matches: '[vid="tv_empty_desc"][text="已拉黑"]',
           // snapshotUrls: 'https://i.gkd.li/i/23910639',

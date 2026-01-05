@@ -477,11 +477,13 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①开宝箱',
           matches: '[text^="点可领"][text$="金币"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23427892',
         },
         {
           key: 2,
+          name: '②(弹窗)去看广告',
           // preKeys: [1],
           // matchDelay: 3500,
           matches:
@@ -585,7 +587,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          name: '直播中途结束-返回键',
+          name: '②直播中途结束-返回键',
           action: 'back',
           actionCd: 15000,
           matches:
@@ -597,7 +599,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
-          name: '直播中途结束-弹窗放弃',
+          name: '③直播中途结束-弹窗放弃',
           matches: '[text="换一个"] -2 [text="放弃奖励"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23421843',
         },
@@ -734,7 +736,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '主播争霸赛-返回',
+          name: '①主播争霸赛-返回',
           action: 'back',
           actionCd: 2000,
           matches: [
@@ -745,42 +747,42 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          name: '主播拍了拍我-返回',
+          name: '②主播拍了拍我-返回',
           action: 'back',
           matches: '[text^="主播拍了拍我"][visibleToUser=true]',
           // snapshotUrls: 'https://i.gkd.li/i/24127641', //参考快手
         },
         {
           key: 3,
-          name: '招工弹窗-x',
+          name: '③招工弹窗-x',
           matches:
             '@ImageView[visibleToUser=true] < * - [text$="为您推荐优选职位"]',
           snapshotUrls: 'https://i.gkd.li/i/23211116',
         },
         {
           key: 4,
-          name: '预约直播弹窗-x',
+          name: '④预约直播弹窗-x',
           matches:
             '@ImageView[width=52][height=52] <<2 * <2 * <2 * < [vid="krn_content_container"]',
           snapshotUrls: 'https://i.gkd.li/i/23235749',
         },
         {
           key: 5,
-          name: '右侧边栏-关闭',
+          name: '⑤右侧边栏-关闭',
           matches:
             '[vid="photo_feed_side_bar_close_view"][clickable=true][focusable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23300668',
         },
         {
           key: 6,
-          name: '邀请加入语音派对-x',
+          name: '⑥邀请加入语音派对-x',
           matches:
             '[id="com.kuaishou.nebula.live_audience_plugin:id/live_voice_party_audience_being_invited_bottom_panel_close"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/24203582',
         },
         {
           key: 7,
-          name: '商品列表',
+          name: '⑦商品列表',
           action: 'back',
           matches:
             '@[clickable=true][focusable=true] >(1,2) [text="订单" || text="购物车"][visibleToUser=true]',
@@ -905,6 +907,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①领饲料球',
           matchDelay: 3000,
           actionMaximum: 1,
           resetMatch: 'match',
@@ -926,6 +929,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
+          name: '③6秒喂1次鸭',
           actionMaximum: 120,
           actionCd: 6000,
           excludeMatches:
@@ -955,6 +959,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①去签到',
           excludeMatches:
             '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0) || text="今日饲料雨收获"][visibleToUser=true]', //饲料雨
           matches: 'Button[text="去签到"][left>781][visibleToUser=true]',
@@ -962,6 +967,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          name: '②领奖or去搜索or观看',
           matchDelay: 500,
           forcedTime: 5000,
           excludeMatches:
@@ -976,8 +982,9 @@ export default defineGkdApp({
           excludeSnapshotUrls: 'https://i.gkd.li/i/23558030', // [left=781]
         },
         {
-          key: 3, // ③误进直播间-返回键
+          key: 3,
           preKeys: [2],
+          name: '③误进直播间-返回键',
           action: 'back',
           matches:
             '[id="com.kuaishou.nebula.live_audience_plugin:id/live_slide_container"]',
@@ -988,8 +995,9 @@ export default defineGkdApp({
           ],
         },
         {
-          key: 4, // ④误进看视频页-返回键
+          key: 4,
           preKeys: [2],
+          name: '④误进看视频页-返回键',
           action: 'back',
           matches: '[vid="nasa_slide_play_view_pager_layout"]',
           fastQuery: true,
@@ -1151,7 +1159,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '点击打开快手',
+          name: '①点击打开快手',
           actionDelay: 1500,
           matches:
             '@[text^="+"][text$="0"] + [text="打开快手"][visibleToUser=true]',
@@ -1160,14 +1168,14 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1], // 先点key1,再点key2 就会领两样金币
-          name: '点击签到',
+          name: '②点击签到',
           matches:
             '@[text^="+"][text$="0"] + [text="点击领取"][visibleToUser=true]',
         },
         {
           key: 3,
           // preKeys: [2],
-          name: '返回键',
+          name: '③返回键',
           action: 'back',
           actionMaximum: 2,
           actionCd: 2500,
@@ -1179,7 +1187,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
-          name: '退出(弹窗)-放弃',
+          name: '④退出(弹窗)-放弃',
           matches:
             '[text="继续浏览可获得奖励"] +3 [text="放弃"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/22658647',
@@ -1300,25 +1308,28 @@ export default defineGkdApp({
     {
       key: 47,
       name: '🧍‍♂️用户资料页-拉黑',
-      desc: '❗②弹窗拉黑 ③确认 ④已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
+      desc: '❗①弹窗拉黑 ②确认 ③已拉黑-返回', //遇到广告用户,或者ks偷偷给你关注的广告用户,可以拉黑
       enable: false,
       fastQuery: true,
       activityIds: 'com.yxcorp.gifshow.profile.activity.UserProfileActivity',
       rules: [
         {
           key: 1,
+          name: '①弹窗拉黑',
           matches: '[vid="bottom_operation_item_text"][text="拉黑"]',
           snapshotUrls: 'https://i.gkd.li/i/23910599',
         },
         {
           key: 2,
           preKeys: [1],
+          name: '②确认拉黑',
           matches: '[vid="positive"][text="确认拉黑"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23910626',
         },
         {
-          key: 3, //已拉黑-返回键
+          key: 3,
           preKeys: [2],
+          name: '③已拉黑-返回',
           action: 'back',
           matches: '[vid="tv_empty_desc"][text="已拉黑"]',
           snapshotUrls: 'https://i.gkd.li/i/23910639',

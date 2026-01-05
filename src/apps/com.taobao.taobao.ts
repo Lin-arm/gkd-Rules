@@ -16,6 +16,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          name: '①施满n次肥-领取',
           matches: '[text$="肥料 领取"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23240421',
@@ -24,6 +25,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
+          name: '②兔兔挖肥料-领取',
           matches: '[text^="兔兔挖肥料"][text$="可领取"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23263684',
@@ -32,6 +34,7 @@ export default defineGkdApp({
         },
         {
           key: 3,
+          name: '③右边肥料袋-领取',
           matches: '[text$="肥料，点击领取"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23393987',
         },
