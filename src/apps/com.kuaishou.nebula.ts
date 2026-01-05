@@ -188,6 +188,13 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/24337097', //我的收益页
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         },
+        {
+          key: 15,
+          action: 'back',
+          matches: 'WebView[text="快手App邀请好友"]',
+          snapshotUrls: 'https://i.gkd.li/i/24431766', //邀请好友
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
       ],
     },
     {
