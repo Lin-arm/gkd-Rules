@@ -851,13 +851,14 @@ export default defineGkdApp({
           excludeMatches:
             '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
           matches: [
-            'Button[text="立即签到" || text="明天来喂鸭" || text^="继续喂" || text="愉快收下" || text^="领今日奖励"][visibleToUser=true]',
+            'Button[text="立即签到" || text="明天来喂鸭" || text^="继续喂" || text="愉快收下" || text^="领今日奖励" || text="看广告翻10倍"][visibleToUser=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/22871644', //每日签到
             'https://i.gkd.li/i/22672386',
             'https://i.gkd.li/i/22691480',
             'https://i.gkd.li/i/22907925', //饲料雨End
+            'https://i.gkd.li/i/24448092', //饲料雨End 翻10倍
             'https://i.gkd.li/i/22783039', //抓鸭签到
             'https://i.gkd.li/i/23422233', //抓鸭签到
             'https://i.gkd.li/i/24035024', //继续喂鸭
