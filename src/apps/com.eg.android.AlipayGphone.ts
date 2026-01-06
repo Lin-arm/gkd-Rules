@@ -763,5 +763,20 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 33,
+      name: '首页-弹窗-x掉',
+      desc: '同步名下其他账号银行卡',
+      rules: [
+        {
+          matches:
+            '[index=parent.childCount.minus(1)] > @View[width>100 && width<114][height>100 && height<114][left>450][top>1400] <<n [id="android:id/content"]',
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/24447913',
+          exampleUrls: 'https://e.gkd.li/87040b65-05e5-4ecc-8109-9a8a158af9b3',
+          activityIds: '.AlipayLogin',
+        },
+      ],
+    },
   ],
 });
