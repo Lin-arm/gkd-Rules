@@ -271,6 +271,7 @@ export default defineGkdApp({
           name: '①去捐步',
           actionMaximum: 1, // 易误触key4
           resetMatch: 'match',
+          actionDelay: 300,
           excludeMatches: '[text="今日已完成捐步"]',
           matches:
             'View[index=parent.childCount.minus(1)] > [text="去捐步数"][visibleToUser=true]',
@@ -475,38 +476,37 @@ export default defineGkdApp({
       key: 24,
       name: '🌲森林-集市-弹窗-x掉',
       desc: '①首购红包 ②膨胀红包 ③专享补贴 ④添加首页',
-      fastQuery: true,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
           key: 1,
-          name: '首购红包-x掉',
+          name: '①首购红包-x掉',
           matches: [
             '[text="天猫森林集市"]',
             '[text="点击领取"] <7 * + TextView[text=""][visibleToUser=true]',
           ],
+          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23394640',
         },
         {
           key: 2,
-          name: '膨胀红包-x掉',
+          name: '②膨胀红包-x掉',
           matches: [
             '[text="天猫森林集市"]',
             '[text="立即膨胀"] + * > Image[text=""][visibleToUser=true]',
           ],
+          fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/23394780',
         },
         {
           key: 3,
-          name: '专享补贴or添加首页-放弃',
-          action: 'clickCenter',
+          name: '③专享补贴or添加首页-放弃',
           matches: [
-            '[text="天猫森林集市"]',
             '[text$="可用" || text="后失效"] + TextView[text="残忍放弃"][index=parent.childCount.minus(2)]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/24157391', //专享补贴
-            'https://i.gkd.li/i/24278961', //添加小程序到首页 (真机不生效,试试clickCenter坐标点击)
+            'https://i.gkd.li/i/24278961', //添加小程序到首页 (若用快速查询则真机不生效)
           ],
         },
       ],

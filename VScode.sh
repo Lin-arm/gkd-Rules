@@ -12,7 +12,7 @@
 
 # 检查gkd规则语法
 pnpm exec tsx scripts/check.ts
-# 生成汇总规则
+# 生成汇总规则(建议留到 github-Actions 那里运行'build_release')
 # pnpm exec tsx scripts/build.ts
 
 
