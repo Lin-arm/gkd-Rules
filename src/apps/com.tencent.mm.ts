@@ -56,9 +56,14 @@ export default defineGkdApp({
       rules: [
         {
           matches: ['[desc^="已完成"] -2 ImageView[visibleToUser=true]'],
-          snapshotUrls: 'https://i.gkd.li/i/22947257',
-          activityIds:
+          snapshotUrls: [
+            'https://i.gkd.li/i/22947257',
+            'https://i.gkd.li/i/24450981', //七猫免费小说
+          ],
+          activityIds: [
             '.plugin.sns.ad.landingpage.ui.activity.DynamicCanvasPageUI',
+            '.plugin.appbrand.ui.AppBrandUI00',
+          ],
         },
       ],
     },
