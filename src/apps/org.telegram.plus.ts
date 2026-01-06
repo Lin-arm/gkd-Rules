@@ -11,9 +11,10 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          matches: '@[clickable=true] > [text="保存到相册"]',
+          matches: '@[clickable=true][left>350] > [text="保存到相册"]',
           fastQuery: true,
           snapshotUrls: 'https://i.gkd.li/i/24337783',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/24450853', // [left=83]
           activityIds: 'org.telegram.ui.LaunchActivity',
         },
       ],
