@@ -800,6 +800,14 @@ export default defineGkdApp({
             'https://i.gkd.li/i/24352662',
           ],
         },
+        {
+          key: 8,
+          name: '⑧送票助我上人气榜',
+          action: 'back',
+          matches:
+            '[focusable=true][top>2000][index=parent.childCount.minus(1)] > [text^="点击免费送出"]',
+          snapshotUrls: 'https://i.gkd.li/i/24455158',
+        },
       ],
     },
     {
