@@ -1301,17 +1301,34 @@ export default defineGkdApp({
       key: 46,
       name: '🍚饭点-领补贴',
       desc: '①饭补 ②弹窗 ③待补签 ④左下角看广告',
+      actionCd: 5000,
+      activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
       rules: [
         {
-          actionCd: 5000,
-          anyMatches: [
-            '[text="看广告领饭补"][visibleToUser=true]',
+          key: 1,
+          name: '①中部-领饭补',
+          matches:
+            '[text="看广告领饭补" || text^="领取饭补" && text$="金币"][clickable=true]',
+          snapshotUrls: ['https://i.gkd.li/i/24454732'],
+        },
+        {
+          key: 2,
+          name: '②弹窗',
+          matches:
             '[text="看视频最高可得"] +2 [text="金币"][visibleToUser=true]',
-            '[text^="+" || text$="金币"] + [text$="待补签"][visibleToUser=true]',
-            '[text="领金币"] <3 * + @TextView[text="看广告"] + Image',
-          ],
+        },
+        {
+          key: 3,
+          name: '③上部-待补签',
+          matches:
+            '[text^="+" && text$="金币"] + [text$="待补签"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23381525',
-          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+        },
+        {
+          key: 4,
+          name: '④左下角-看广告',
+          matches:
+            '@[clickable=true][left=0] > TextView[text="看广告"][top>1800]',
         },
       ],
     },
