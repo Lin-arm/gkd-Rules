@@ -51,10 +51,12 @@ export default defineGkdApp({
     },
     {
       key: 4,
-      name: '🧩抖快-看完30s视频广告-x掉',
-      desc: '出现 已完成-x掉',
+      name: '🧩抖快-看完广告-x掉',
+      desc: '①已完成 ②已获得',
       rules: [
         {
+          key: 1,
+          name: '①已完成-x掉',
           matches: ['[desc^="已完成"] -2 ImageView[visibleToUser=true]'],
           snapshotUrls: [
             'https://i.gkd.li/i/22947257',
@@ -65,20 +67,26 @@ export default defineGkdApp({
             '.plugin.appbrand.ui.AppBrandUI00',
           ],
         },
-      ],
-    },
-    {
-      key: 5,
-      name: '🧩短视频广告-已获得奖励-x掉',
-      desc: '出现 已获得奖励-x掉',
-      rules: [
         {
+          key: 2,
+          name: '②已获得奖励-x掉',
           matches: [
             'TextView[text="已获得奖励"]',
             '@LinearLayout[clickable=true][focusable=true][index=0] + FrameLayout[desc="浮窗"]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/24204085',
           activityIds: '.plugin.finder.ui.FinderShareFeedRelUI',
+        },
+        {
+          key: 3,
+          name: '③已获得奖励-关闭',
+          matches: [
+            'TextView[text="已获得奖励"]',
+            'TextView[text="关闭"][top<200]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/24545151', //微粒贷
+          activityIds: '.plugin.appbrand.ui.AppBrandUI00',
         },
       ],
     },
