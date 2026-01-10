@@ -475,7 +475,7 @@ export default defineGkdApp({
     {
       key: 24,
       name: '🌲森林-集市-弹窗-x掉',
-      desc: '①首购红包 ②膨胀红包 ③专享补贴 ④添加首页',
+      desc: '①首购红包 ②膨胀红包 ③专享补贴,添加首页 ④天猫年货节',
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
       rules: [
         {
@@ -508,6 +508,16 @@ export default defineGkdApp({
             'https://i.gkd.li/i/24157391', //专享补贴
             'https://i.gkd.li/i/24278961', //添加小程序到首页 (若用快速查询则真机不生效)
           ],
+        },
+        {
+          key: 4,
+          name: '④天猫年货节-x掉',
+          matches: [
+            '[text="天猫森林集市"]',
+            '@TextView[top>1500][width>100 && width<116] - * > [index=parent.childCount.minus(1)][text="点击领取"]',
+          ],
+          fastQuery: true,
+          snapshotUrls: 'https://i.gkd.li/i/24544970',
         },
       ],
     },
