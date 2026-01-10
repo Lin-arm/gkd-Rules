@@ -859,24 +859,26 @@ export default defineGkdApp({
           excludeMatches:
             '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
           matches: [
-            'Button[text="立即签到" || text="明天来喂鸭" || text^="继续喂" || text="愉快收下" || text^="领今日奖励" || text="看广告翻10倍"][visibleToUser=true]',
+            // '@Button[text="立即签到" || text="明天来喂鸭" || text^="继续喂" || text="愉快收下" || text="看广告翻10倍" || text^="领今日奖励"][clickable=true] <<n * - [id="app"] <<n [vid="webView"]',
+            'Button[text="立即签到" || text="明天来喂鸭" || text^="继续喂" || text="愉快收下" || text="看广告翻10倍" || text^="领今日奖励"][clickable=true]',
           ],
           snapshotUrls: [
-            'https://i.gkd.li/i/22871644', //每日签到
-            'https://i.gkd.li/i/22672386',
-            'https://i.gkd.li/i/22691480',
-            'https://i.gkd.li/i/22907925', //饲料雨End
-            'https://i.gkd.li/i/24448092', //饲料雨End 翻10倍
-            'https://i.gkd.li/i/22783039', //抓鸭签到
-            'https://i.gkd.li/i/23422233', //抓鸭签到
+            'https://i.gkd.li/i/22871644', //今日签到 (有点慢)
+            'https://i.gkd.li/i/22672386', //明天来喂鸭
+            'https://i.gkd.li/i/22691480', //继续喂养
             'https://i.gkd.li/i/24035024', //继续喂鸭
+            'https://i.gkd.li/i/22907925', //饲料雨End 愉快收下
+            'https://i.gkd.li/i/24448092', //饲料雨End 翻10倍
+            'https://i.gkd.li/i/22783039', //抓鸭签到 领今日奖励
+            'https://i.gkd.li/i/23422233', //抓鸭签到
           ],
         },
         {
-          key: 2, //每日签到-已签到-x掉
+          key: 2,
           preKeys: [1],
+          name: '②已签到-x掉',
           matches: [
-            'Image[width=76 || width=77][height=77 || height=78][clickable=true][visibleToUser=true]',
+            'Image[width>70 && width<85][height>70 || height<85][clickable=true][visibleToUser=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/22871789',
@@ -885,16 +887,32 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23642766',
           ],
         },
+        // {
+        //   key: 5,
+        //   name: '⑤抓鸭签到',
+        //   actionMaximum: 1,
+        //   resetMatch: 'app',
+        //   excludeMatches: '[text="饲料雨即将来袭" || (text^="剩余" && text$="秒" && left=0)][visibleToUser=true]', //饲料雨
+        //   matches: '@Button[text^="领今日奖励"][clickable=true] <<n * -3 [text^="已连签"][text$="天"] <<n [text="签到领奖励"] -n * <<2 [id="app"] <<n [vid="webView"]',
+        //   fastQuery: true,
+        //   snapshotUrls: [
+        //     'https://i.gkd.li/i/22783039', //抓鸭签到 领今日奖励
+        //     'https://i.gkd.li/i/23422233', //抓鸭签到
+        //   ],
+        // },
         {
-          key: 6, //抓鸭签到返回
+          key: 6,
+          name: '⑥抓鸭签到-返回',
+          preKeys: [1],
           action: 'back',
           excludeMatches: '[text="今日步数"]',
+          // matches: '@[text="签到领奖励"] -n * <<2 [id="app"] <<n [vid="webView"]',
           matches:
-            'Button[text^="待领取" || text^="已领取"][visibleToUser=true]',
+            'Button[text^="待领取" || text^="已领取"][clickable=true][visibleToUser=true]',
           snapshotUrls: [
-            'https://i.gkd.li/i/22783122',
-            'https://i.gkd.li/i/23141489',
-            'https://i.gkd.li/i/23422249',
+            'https://i.gkd.li/i/22783122', //待领取
+            'https://i.gkd.li/i/23141489', //已领取
+            'https://i.gkd.li/i/23422249', //待领取x2
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/24194609',
         },
