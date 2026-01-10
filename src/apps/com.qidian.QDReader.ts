@@ -93,6 +93,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
+          actionMaximum: 1,
           name: '①弹窗-30张碎片兑换',
           matches: '[text="30张碎片兑换"] + [text="兑换"][clickable=true]',
           snapshotUrls: [
