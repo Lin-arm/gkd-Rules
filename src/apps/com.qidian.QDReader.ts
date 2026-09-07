@@ -152,10 +152,11 @@ export default defineGkdApp({
       fastQuery: true,
       actionMaximum: 1,
       resetMatch: 'app',
+      scopeKeys: 17, // 关联 key17 功能类-听书自动设置定时, 防止被其前置条件的触发记录顶掉,导致无法触发第二段
       activityIds: '.ui.activity.MainGroupActivity', //首页
       rules: [
         {
-          key: 1,
+          key: 10,
           name: '①在阅读页停留5秒以上',
           action: 'none',
           actionDelay: 5000, //起码停留5秒
@@ -169,7 +170,7 @@ export default defineGkdApp({
         // 满足领积分的时间梯度: 5, 15, 30, 60, 120 分钟
         {
           key: 20,
-          preKeys: [1],
+          preKeys: [1, 10], // 其中 key1 是 key17 内的子规则
           name: '②阅读时长5~14分钟',
           action: 'none',
           matches:
@@ -177,7 +178,7 @@ export default defineGkdApp({
         },
         {
           key: 21,
-          preKeys: [1],
+          preKeys: [1, 10],
           name: '②阅读时长15~29分钟',
           action: 'none',
           matches:
@@ -185,7 +186,7 @@ export default defineGkdApp({
         },
         {
           key: 22,
-          preKeys: [1],
+          preKeys: [1, 10],
           name: '②阅读时长30~59分钟',
           action: 'none',
           matches:
@@ -194,7 +195,7 @@ export default defineGkdApp({
         },
         {
           key: 23,
-          preKeys: [1],
+          preKeys: [1, 10],
           name: '②阅读时长60~119分钟',
           action: 'none',
           matches:
@@ -202,7 +203,7 @@ export default defineGkdApp({
         },
         {
           key: 24,
-          preKeys: [1],
+          preKeys: [1, 10],
           name: '②阅读时长大于119分钟',
           action: 'none',
           matches: '[text="分钟"] - [vid="tvTipNum"][text.toInt()>119]',
@@ -464,7 +465,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '①出现听书按钮',
+          name: '①前置条件-出现听书按钮',
           action: 'none', // 无操作,仅作为前置条件
           activityIds: '.ui.activity.QDReaderActivity',
           matches: '[vid="ivAudioB"][visibleToUser=true]',
