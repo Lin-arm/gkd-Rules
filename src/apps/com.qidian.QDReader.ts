@@ -591,5 +591,80 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 19,
+      name: '功能类-书友圈帖子自动点赞+回复😍😋😎',
+      desc: '(混今日贡献点用) 进帖子后, ①点[赞] ②点击[回复框] ③点击工具栏[表情] ④依次点击3种[表情] ⑤[发表]评论 ⑥[退出]帖子',
+      enable: false,
+      fastQuery: true,
+      actionCd: 5000,
+      actionDelay: 300, // 别操作太快
+      actionMaximum: 1,
+      resetMatch: 'match',
+      activityIds: [
+        '.ui.activity.CirclePostCommentDeliverActivity',
+        '.ui.activity.CirclePostDetailActivity',
+      ],
+      rules: [
+        {
+          key: 10,
+          name: '①点击[赞]',
+          matches: '@[vid="layoutLike"][index=3] >2 [vid="favorCount"]',
+          snapshotUrls: 'https://i.gkd.li/i/31912200',
+        },
+        {
+          key: 20,
+          preKeys: [10],
+          name: '②点击[回复框]',
+          actionDelay: 500, // 要等key10 点击完
+          matches: '[vid="layoutBottomInput"]',
+          snapshotUrls: 'https://i.gkd.li/i/31912200',
+        },
+        {
+          key: 30,
+          preKeys: [20],
+          name: '③点击工具栏[表情]',
+          matches: '[vid="emoji_icon"]',
+          snapshotUrls: 'https://i.gkd.li/i/31912202',
+        },
+        {
+          key: 40,
+          preKeys: [30],
+          name: '④点击[表情2]😍',
+          matches:
+            '@[clickable=true][index=1] > [vid="emoji_image"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/31912203',
+        },
+        {
+          key: 41, //快照参考 key40 的
+          preKeys: [40],
+          name: '④点击[表情17]😋',
+          matches:
+            '@[clickable=true][index=16] > [vid="emoji_image"][visibleToUser=true]',
+        },
+        {
+          key: 42, //快照参考 key40 的
+          preKeys: [41],
+          name: '④点击[表情4]😎',
+          matches:
+            '@[clickable=true][index=3] > [vid="emoji_image"][visibleToUser=true]',
+        },
+        {
+          key: 50,
+          preKeys: [42],
+          name: '⑤点击[发表]评论',
+          matches: '[text="发表评论"] +n [text="发表"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/31912204',
+        },
+        {
+          key: 60,
+          preKeys: [50],
+          name: '⑥点击[退出]帖子详情',
+          matches:
+            '@[vid="mFollowBackIv"] + [visibleToUser=true] >2 [text="帖子详情"]',
+          snapshotUrls: 'https://i.gkd.li/i/31912206',
+        },
+      ],
+    },
   ],
 });
