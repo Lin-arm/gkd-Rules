@@ -614,6 +614,14 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/31912202',
         },
         {
+          key: 31,
+          preKeys: [20],
+          name: '③发言需粉丝值-x掉',
+          matches:
+            '@[vid="closeBtn"] - [visibleToUser=true] >3 [text="作者设置了发言粉丝值"]',
+          snapshotUrls: 'https://i.gkd.li/i/32060836',
+        },
+        {
           key: 40,
           preKeys: [30],
           name: '④点击[表情2]😍',
@@ -644,7 +652,7 @@ export default defineGkdApp({
         },
         {
           key: 60,
-          preKeys: [50],
+          preKeys: [31, 50],
           name: '⑥点击[退出]帖子详情',
           matches:
             '@[vid="mFollowBackIv"] + [visibleToUser=true] >2 [text="帖子详情"]',
