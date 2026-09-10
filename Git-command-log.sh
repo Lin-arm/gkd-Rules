@@ -9,12 +9,6 @@ cd subscription-template
 npm install
 
 
-# 检查gkd规则语法
-pnpm exec tsx scripts/check.ts
-# 生成汇总规则(建议留到 github-Actions 那里运行'build_release')
-# pnpm exec tsx scripts/build.ts
-
-
 
 # 暂存所有改动
 git add .
@@ -84,6 +78,11 @@ git reset --hard f8e9d7c
 
 
 
+
+# 检查gkd规则语法
+pnpm exec tsx scripts/check.ts
+# 生成汇总规则(建议留到 github-Actions 那里运行'build_release')
+# pnpm exec tsx scripts/build.ts
 
 
 # 从远程 origin 的 main 分支拉取代码，自动执行合并（merge）
