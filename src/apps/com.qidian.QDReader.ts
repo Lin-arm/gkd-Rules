@@ -511,43 +511,29 @@ export default defineGkdApp({
       enable: false,
       fastQuery: true,
       order: 3,
-      matchDelay: 5000, //延迟5秒匹配,等其他自动签到啥的规则先执行
+      // matchDelay: 5000, //延迟5秒匹配,等其他自动签到啥的规则先执行
       actionMaximum: 1,
       resetMatch: 'app',
       activityIds: '.ui.activity.MainGroupActivity',
       rules: [
         {
-          key: 0,
-          name: '前置条件-阅读小于5分钟', //其实应该限制每天只触发1次的,但gkd没这个功能
-          action: 'none',
-          actionDelay: 500,
-          matches:
-            '[vid="tvTipStart"][text="今日暂无阅读时长" || parent.getChild(1).text.toInt()<5]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/31865741', // 无阅读时长
-            'https://i.gkd.li/i/31865742', // 3分钟
-          ],
-        },
-        // {
-        //   key: 10,
-        //   preKeys: [0],
-        //   name: '①点击第一本[更多]',
-        //   matches: '[vid="cv_content"][index=0] >2 [vid="ivMore"][visibleToUser=true]', //或者仅置顶1本书,就用这个
-        //   snapshotUrls: [
-        //     'https://i.gkd.li/i/31840578',
-        //     'https://i.gkd.li/i/31840584',
-        //   ],
-        // },
-        {
           key: 11,
-          preKeys: [0],
           name: '①点击指定书名的[更多]',
-          actionMaximumKey: 10,
+          actionDelay: 500,
+          excludeMatches: [
+            '[vid="tvTipNum"][text.toInt()>5]', //排除 阅读大于5分钟 (防止后续多次触发)
+            '[vid="button_text_id"][text="签到"]', //排除 未签到的 (让自动签到规则先执行)
+          ],
           matches:
             '@[vid="ivMore"] <<n [vid="cv_content"] >(1,3) [vid="tvBookName"][text="观山！"]', //自定义仅需修改书名即可,当前为《观山！》
           snapshotUrls: [
-            'https://i.gkd.li/i/31840578', // 图墙模式书架
-            'https://i.gkd.li/i/31840584', // 列表模式书架
+            'https://i.gkd.li/i/31840578', // 图墙模式书架 11分钟(需排除)
+            'https://i.gkd.li/i/31865741', // 列表模式书架 无阅读时长
+            'https://i.gkd.li/i/31865742', // 列表模式书架 3分钟
+          ],
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/31840584', // 列表模式书架 11分钟
+            'https://i.gkd.li/i/22634962', // 未签到的
           ],
         },
 
