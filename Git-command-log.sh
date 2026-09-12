@@ -117,9 +117,14 @@ git remote add upstream https://github.com/Lin-arm/GKD_subscription.git
 git fetch upstream
 # 安全把上游 main 合并到你的本地 (变基模式)
 git rebase upstream/main
+# 把上游分支的PR#42拉取并生成本地分支 pr-42
+git fetch upstream pull/42/head:pr-42
 
 # 4. 切换到你的 main 分支, (不要用main分支提交AIsouler/GKD_subscription的PR)
 git checkout main
+# 将pr-42分支合并到当前分支
+git merge pr-42
+
 # 查看本地分支及其最后一次提交信息
 git branch -v
 # 强制删除分支`feature-1`
