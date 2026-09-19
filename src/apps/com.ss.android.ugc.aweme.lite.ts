@@ -13,12 +13,14 @@ export default defineGkdApp({
           name: '①点击[x]掉',
           fastQuery: true,
           forcedTime: 3600000, // 1小时内主动查询，避免睡死
-          matches: '@ImageView[clickable=true] - [text^="链接已复制"]',
+          matches:
+            '@ImageView[clickable=true] - [text^="链接已复制" || text^="链接复制成功"]',
           snapshotUrls: [
             'https://i.gkd.li/i/22944102',
             'https://i.gkd.li/i/25076821',
             'https://i.gkd.li/i/27101825',
             'https://i.gkd.li/i/30147372',
+            'https://i.gkd.li/i/32419317', // 链接复制成功
           ],
           exampleUrls: 'https://e.gkd.li/4466ef1e-e38f-4d1c-b548-7d0585c4d79d',
           activityIds: [
