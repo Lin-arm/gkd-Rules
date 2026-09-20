@@ -26,7 +26,7 @@ git commit -m "fix: 123云盘 全屏广告-弹窗广告 (#1788)"
 git commit -m "fix: 123云盘 全屏广告-弹窗广告 (#1788)
 >
 > close #1788"
-# 后续在github提PR时可填   resolves #1788   关联issue
+# 后续在github提PR时可填   `resolves #1788` 或  `Relates to #206`   关联issue
 
 # 输入多行提交信息(不写"号,按回车键换行,标题和正文之间留空一行)
 git commit -m "perf: 优化
