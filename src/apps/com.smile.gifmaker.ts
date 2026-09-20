@@ -953,19 +953,25 @@ export default defineGkdApp({
     },
     {
       key: 28,
-      name: '🔍搜索页-自动点击搜索',
-      desc: '1.5秒后点击搜索',
+      name: '🔍搜索页-自动[搜索]',
+      desc: '进页面1.5秒后点击[搜索]',
       rules: [
         {
+          fastQuery: true,
+          actionCd: 4000,
+          actionDelay: 1500,
+          forcedTime: 3500, // 防睡死
           actionMaximum: 1,
           resetMatch: 'match',
-          actionDelay: 1500,
-          actionCd: 4000,
           matches: [
-            '[text="搜索"][vid="right_button" || vid="right_tv"][visibleToUser=true]',
+            '[vid="tab_text"][text="搜索发现"]',
+            '[text="搜索"][vid="right_button" || vid="right_tv"][clickable=true]',
           ],
-          fastQuery: true,
-          snapshotUrls: 'https://i.gkd.li/i/23419424',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23419424',
+            'https://i.gkd.li/i/32434379',
+          ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/32434341', // 已在搜索结果页面
           activityIds: 'com.yxcorp.plugin.search.SearchActivity',
         },
       ],
