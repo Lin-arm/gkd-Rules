@@ -8,7 +8,7 @@
 <!-- [![SVG Banners](https://svg-banners.vercel.app/api?type=luminance&text1=个人自用订阅&width=800&height=200)](https://github.com/Lin-arm/gkd-Rules) -->
 <!-- [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=GKD个人自用订阅%20🦜&text2=🧧gkd-Rules&height=350)](https://github.com/Lin-arm/gkd-Rules) -->
 
-[![Release](https://img.shields.io/badge/发行版-v106-firebrick)](https://github.com/Lin-arm/gkd-Rules/releases/latest)
+[![Release](https://img.shields.io/badge/发行版-v107-firebrick)](https://github.com/Lin-arm/gkd-Rules/releases/latest)
 [![已适配应用](https://img.shields.io/badge/已适配应用-31-brightgreen)](./dist/README.md#应用规则)
 [![全局规则组](https://img.shields.io/badge/全局规则组-0-blueviolet)](./dist/README.md#全局规则)
 [![应用规则组](https://img.shields.io/badge/应用规则组-187-orange)](./dist/README.md#应用规则)
@@ -48,7 +48,7 @@
 
 </details>
 
-<!-- - 当前版本: v106 -->
+<!-- - 当前版本: v107 -->
 
 <!-- - 当前订阅文件已适配 31 个应用，共有 187 应用规则组，0 全局规则组 -->
 
