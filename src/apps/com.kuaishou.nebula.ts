@@ -802,11 +802,13 @@ export default defineGkdApp({
         {
           key: 2,
           matches:
-            '@[clickable=true] - * > [text="看广告得金币"] +3 [text^="单日最高"]',
+            '@[clickable=true] - * > [text^="单日最高" || getChild(0).text^="单日最高"] -n [visibleToUser=true][text="看广告得金币"]',
           snapshotUrls: [
             'https://i.gkd.li/i/22883404', // A
             'https://i.gkd.li/i/22882988', // C
             'https://i.gkd.li/i/22907324', // B
+            'https://i.gkd.li/i/32433082', // D
+            'https://i.gkd.li/i/32433125', // D
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/23585391', //倒计时结束继续领金币
@@ -841,12 +843,13 @@ export default defineGkdApp({
           forcedTime: 30000,
           matchRoot: true,
           matches:
-            '@Button[text^="点可领"][text$="金币"][clickable=true][parent.getChild(0).name$="Image"] <<(2,3) [index=parent.childCount.minus(1)][id=null] <n [index>=parent.childCount.minus(2)][childCount>3] <n View <<3 [vid="webView"]',
+            '@Button[text^="点可领" || text^="点击领"][text$="金币"][clickable=true][parent.getChild(0).name$="Image"] <<n [index=parent.childCount.minus(1)][id=null] <n [index>=parent.childCount.minus(2)][childCount>3] <n View <<3 [vid="webView"]',
           snapshotUrls: [
             'https://i.gkd.li/i/23427892',
             'https://i.gkd.li/i/25236905',
             'https://i.gkd.li/i/27550426',
             'https://i.gkd.li/i/29641467',
+            'https://i.gkd.li/i/32433125', // 点击领
           ],
         },
         {
@@ -1446,10 +1449,11 @@ export default defineGkdApp({
         {
           key: 2,
           matches:
-            '@TextView[text="去搜索"][clickable=true] - [childCount<6] > [text="搜索赚金币" || text^="搜索浏览"]',
+            '@[text="去搜索"][clickable=true] - [childCount<6] > [text="搜索赚金币" || text^="搜索浏览"]',
           snapshotUrls: [
             'https://i.gkd.li/i/24992823',
             'https://i.gkd.li/i/30748333',
+            'https://i.gkd.li/i/32433125',
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/30772120', // 有倒计时, [childCount=8]
           activityIds: [
