@@ -7,7 +7,7 @@ export default defineGkdApp({
     {
       key: 0,
       name: '📢说明',
-      desc: '(点击查看详情) 目前在用的快手版本: 🔸v12.10.10.39116 ,大部分规则都是从`快手极速版`那里搬过来的,如遇失效或误触请截取快照拿到github反馈.🟢相关脚本已在自动精灵app上传,请到脚本市场搜`🐦快手_自动刷视频`',
+      desc: '(点击查看详情) 目前在用的快手版本: 🔸v14.7.20.49696  🔸v12.10.10.39116 ,大部分规则都是从`快手极速版`那里搬过来的,如遇失效或误触请截取快照拿到github反馈.🟢相关脚本已在自动精灵app上传,请到脚本市场搜`🐦快手_自动刷视频`',
       enable: false,
       rules: [],
     },
@@ -260,63 +260,103 @@ export default defineGkdApp({
       key: 7,
       name: '🤳看广告-已看完-退出',
       desc: '已成功领取奖励',
+      fastQuery: true,
+      activityIds: [
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.plugin.search.SearchActivity',
+      ],
       rules: [
         {
+          key: 1,
           actionDelay: 1500,
-          forcedTime: 31000,
-          matches: [
+          forcedTime: 60000,
+          matches:
             '@[id$="video_countdown_end_icon"] - [text^="已成功"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23382541',
+        },
+        {
+          key: 2,
+          matches: [
+            '[vid="ad_download_text"][text="立即下载"]',
+            '[id="com.kuaishou.nebula.commercial_neo:id/video_close_icon"][clickable=true]',
           ],
-          fastQuery: true,
-          snapshotUrls: ['https://i.gkd.li/i/23382541'],
-          activityIds: [
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-            'com.yxcorp.plugin.search.SearchActivity',
-          ],
+          // snapshotUrls: 'https://i.gkd.li/i/24279152',
+        },
+        {
+          key: 3,
+          name: '③出现弹窗阻碍_x掉',
+          matches: 'ImageView + ImageView[vid="close"]',
+          // snapshotUrls: [
+          //   'https://i.gkd.li/i/29641806',
+          //   'https://i.gkd.li/i/29736686',
+          // ],
         },
       ],
     },
     {
       key: 8,
-      name: '🤳看广告-退出弹窗-下载领奖-放弃',
-      desc: '弹窗-下载并体验20秒-放弃奖励',
+      name: '🤳看广告-额外获取xx金币',
+      desc: '含跳转app,不含下载app',
+      enable: false,
+      fastQuery: true,
+      actionDelay: 1500,
+      activityIds: [
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.yxcorp.plugin.search.SearchActivity',
+      ],
       rules: [
         {
-          actionDelay: 1500,
-          matches: [
-            '[text^="下载并体验"] < * +2 * > [text="放弃奖励"][id$="award_video_close_dialog_abandon_button"][visibleToUser=true]',
-          ],
-          fastQuery: true,
+          key: 1,
+          name: '①[放弃]需下载app的任务',
+          matches:
+            '[text^="下载并体验"] < * +2 * > [text="放弃奖励"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/23387069',
-          activityIds: [
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-            'com.yxcorp.plugin.search.SearchActivity',
-          ],
+        },
+        {
+          key: 2,
+          name: '②x掉需下载app的任务',
+          forcedTime: 3600000,
+          matches:
+            '@[clickable=true][desc="close_view"] +2 [text^="下载并体验"]',
+          // snapshotUrls: 'https://i.gkd.li/i/27400869',
+        },
+        {
+          key: 3,
+          name: '③点击[额外]获取金币',
+          actionCd: 14500,
+          resetMatch: 'app', // 对 actionCd 也生效
+          matches:
+            '@[clickable=true] >(1,2,3) [text*="额外"][!(text*="下载" || text*="付费" || text*="买入" || text*="订购")]',
+          snapshotUrls: 'https://i.gkd.li/i/23394927',
         },
       ],
     },
     {
       key: 9,
-      name: '🤳看广告-额外获取xx金币',
-      desc: '点击额外获取xx金币(跳转app)',
-      enable: false,
+      name: '🤳看广告-黑了就不看',
+      desc: '只可领1金币时直接退出',
+      fastQuery: true,
+      activityIds: [
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+        'com.yxcorp.plugin.search.SearchActivity',
+      ],
       rules: [
         {
-          actionDelay: 1500,
-          excludeMatches: '[vid="ad_download_text"][text^="i 下载"]',
-          anyMatches: [
-            '[vid="ad_download_text"][text^="点击额外获取" || text^="i 打开并体验"][text$="金币"][visibleToUser=true]',
-            '[text^="打开并体验" && text$="额外得" || text="点击额外获取"]', //13.2.10.9610
-          ],
-          fastQuery: true,
-          snapshotUrls: ['https://i.gkd.li/i/23394927'],
-          activityIds: [
-            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-            'com.yxcorp.plugin.search.SearchActivity',
-          ],
+          key: 1,
+          name: '①可领1金币-点击x掉',
+          matches:
+            '@ImageView[clickable=true][width<84] - [text$="可领取1金币"]',
+          snapshotUrls: 'https://i.gkd.li/i/32434117',
+        },
+        {
+          key: 2,
+          name: '②确认退出',
+          matches:
+            'ImageView < @[desc="close_view"] + [visibleToUser=true] > [text="1金币"]',
+          snapshotUrls: 'https://i.gkd.li/i/32434121',
         },
       ],
     },
@@ -332,11 +372,13 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '①点击返回',
-          matchDelay: 3500,
-          matches: [
-            '[vid="title_tv"][text="登录" || text="拼多多" || text="支付宝" || text="渠道五" || text="气象通" || text$="广告平台" || text="腾讯优量汇" || text="‎" || text="集惠购"] + [vid="left_btn"][clickable=true]',
-          ],
+          name: '①刚切回快极app-返回键',
+          matchTime: 3000, // 刚刚切回快手app的3秒内有效
+          actionDelay: 500,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          matches:
+            '[vid="title_root"] > [vid="left_btn"][desc="返回"][clickable=true][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23439913',
             'https://i.gkd.li/i/23439943',
@@ -344,21 +386,39 @@ export default defineGkdApp({
             'https://i.gkd.li/i/25017254', //气象通
             'https://i.gkd.li/i/25017298', //广告平台
             'https://i.gkd.li/i/25069169', //腾讯优量汇
-            'https://i.gkd.li/i/25069229', // text="‎"
+            'https://i.gkd.li/i/25069229',
             'https://i.gkd.li/i/25077842', //集惠购
           ],
+          // excludeSnapshotUrls: 'https://i.gkd.li/i/26376188', //加 [desc="返回"] 排除, GKD捉不到 activityId 时会误触
         },
         {
-          key: 2, //等待时间过长(9秒), 直接返回
-          matchDelay: 3500,
-          actionDelay: 9000,
-          matches: '[vid="left_btn"][clickable=true][visibleToUser=true]', //返回
+          key: 2,
+          name: '②待4.5秒后-返回键',
+          matchDelay: 3000,
+          actionDelay: 4500,
+          matches:
+            '[vid="title_root"] > [vid="left_btn"][desc="返回"][clickable=true][visibleToUser=true]', //返回
           snapshotUrls: [
             'https://i.gkd.li/i/25018347', // ksH5
             'https://i.gkd.li/i/23689657',
             'https://i.gkd.li/i/25017691', //应用名称：趣享天天
             'https://i.gkd.li/i/25017117', //未加载
           ],
+        },
+        {
+          key: 3,
+          name: '③xx下载页-返回键',
+          action: 'back',
+          actionDelay: 1000,
+          matches:
+            '[text^="下载" && text$="立得奖励" || text="快影" || text="券和福利" || text*="喜番"][visibleToUser=true]',
+          // snapshotUrls: [
+          //   'https://i.gkd.li/i/23431442',
+          //   'https://i.gkd.li/i/24352704', //快影
+          //   'https://i.gkd.li/i/25002586', //ks年货节
+          //   'https://i.gkd.li/i/30867792', //喜番
+          // ],
+          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
         },
         {
           key: 5,
@@ -372,19 +432,24 @@ export default defineGkdApp({
     {
       key: 11,
       name: '🤳看广告-自动看广告',
-      desc: '任务列表-3.5秒点进去看广告',
+      desc: '点击[领福利]',
       rules: [
         {
           actionCd: 10000,
           matchDelay: 3500,
+          forcedTime: 15000,
           matches:
-            '@[clickable=true] - * > [text="看广告得金币"] +3 [text^="单日最高"]',
-          snapshotUrls: 'https://i.gkd.li/i/23420409',
+            '@[clickable=true] - * > [text^="单日最高" || getChild(0).text^="单日最高"] -n [visibleToUser=true][text="看广告得金币"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23420409',
+            'https://i.gkd.li/i/32434026',
+          ],
           activityIds: [
             'com.yxcorp.gifshow.HomeActivity',
             'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
             'com.gifshow.kuaishou.floatwidget.activity.GrowthYodaWebViewActivity',
             'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+            'com.kuaishou.growth.pendant.coin.task.widget.click.GrowthKSYodaWebViewActivity',
           ],
         },
       ],
@@ -398,21 +463,24 @@ export default defineGkdApp({
         'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
         'com.gifshow.kuaishou.floatwidget.activity.GrowthYodaWebViewActivity',
         'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
+        'com.kuaishou.growth.pendant.coin.task.widget.click.GrowthKSYodaWebViewActivity',
       ],
       rules: [
         {
           key: 1,
           name: '①开宝箱',
-          forcedTime: 15000,
-          fastQuery: true,
+          forcedTime: 30000,
           matches:
-            '@Button[text^="点可领"][text$="金币"][clickable=true] - Image < [index=parent.childCount.minus(1)] <n [childCount>15] <n View <<3 [vid="webView"]',
-          snapshotUrls: 'https://i.gkd.li/i/23420409',
+            'Button[clickable=true][text^="点可领" || text^="点击领"][text$="金币"][parent.getChild(0).name$="Image"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23420409',
+            'https://i.gkd.li/i/32434026',
+          ],
         },
         {
           key: 2,
           name: '②(弹窗)去看广告',
-          matches: 'Button[text^="去看广告得"][text$="金币"][clickable=true]',
+          matches: 'Button[clickable=true][text^="去看广告得"][text$="金币"]',
         },
       ],
     },
