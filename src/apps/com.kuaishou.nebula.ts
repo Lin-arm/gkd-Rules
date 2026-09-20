@@ -1879,12 +1879,14 @@ export default defineGkdApp({
           key: 1,
           name: '①x掉',
           anyMatches: [
-            'ImageView < @[clickable=true][width<134][height<134] - [text="优惠券即将到期"]',
+            'ImageView < @[clickable=true][width<134][height<134] <n [childCount>4] > [text="优惠券即将到期" || text*="券待领"]',
             '[text="优惠券即将到期"] - @[name$="View"][clickable=true][width<80] < View <2 View <3 WebView < * < * < [vid="web_view_container"]',
           ],
           exampleUrls: 'https://e.gkd.li/a5083e28-4cf6-454a-b37f-12cc06781c9a',
           snapshotUrls: [
             'https://i.gkd.li/i/26527978',
+            'https://i.gkd.li/i/32433266', // 券待领
+
             'https://i.gkd.li/i/25730266',
             'https://i.gkd.li/i/26159736',
           ],
