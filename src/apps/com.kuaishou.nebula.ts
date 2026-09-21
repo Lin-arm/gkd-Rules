@@ -1161,9 +1161,11 @@ export default defineGkdApp({
           key: 8,
           name: '⑧送礼弹窗-[返回键]',
           action: 'back',
+          excludeMatches: '[vid="swipe"][visibleToUser=true]',
           matches:
             '@[vid="webView"][visibleToUser=true] -2 [vid="webview_overlay"]',
           snapshotUrls: 'https://i.gkd.li/i/29973172',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/32452124',
         },
       ],
     },
