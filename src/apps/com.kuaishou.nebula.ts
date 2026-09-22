@@ -843,7 +843,7 @@ export default defineGkdApp({
           forcedTime: 30000,
           matchRoot: true,
           matches:
-            '@Button[text^="点可领" || text^="点击领"][text$="金币"][clickable=true][parent.getChild(0).name$="Image"] <<n [index=parent.childCount.minus(1)][id=null] <n [index>=parent.childCount.minus(2)][childCount>3] <n View <<3 [vid="webView"]',
+            'Button[clickable=true][text^="点可领" || text^="点击领"][text$="金币"][parent.getChild(0).name$="Image"]',
           snapshotUrls: [
             'https://i.gkd.li/i/23427892',
             'https://i.gkd.li/i/25236905',
