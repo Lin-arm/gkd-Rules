@@ -240,8 +240,11 @@ export default defineGkdApp({
           actionMaximum: 1, //易重复点击 key2
           resetMatch: 'match',
           matches:
-            '[text^="今日可兑换公益金还剩"] - Button[text="立即捐步"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/22931136',
+            '[text^="今日可兑换公益金还剩"] - Button[clickable=true][text*="立即捐步"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/32519584',
+            'https://i.gkd.li/i/32519415',
+          ],
         },
         {
           key: 3,
@@ -255,6 +258,7 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/22931262',
             'https://i.gkd.li/i/23978873', // key2 双击了才会进的页面
+            'https://i.gkd.li/i/32519619',
           ],
         },
         {
