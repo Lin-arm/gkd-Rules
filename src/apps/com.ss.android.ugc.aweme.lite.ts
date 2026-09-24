@@ -211,11 +211,12 @@ export default defineGkdApp({
             'com.ss.android.ugc.aweme.detail.ui.DetailActivity',
           ],
           matches:
-            '([text$="广告 展开" || text$="广告 收起"][vid="desc"][visibleToUser=true]) || ([text="应用" || text="购物" || text="小游戏" || text="咨询" || text="子薇剧场" || text="预约"][text.length<6][index=1][visibleToUser=true])',
+            '([text$="广告 展开" || text$="广告 收起" || text$="广告 "][vid="desc"][visibleToUser=true]) || ([text="应用" || text="购物" || text="小游戏" || text="咨询" || text="子薇剧场" || text="预约"][text.length<6][index=1][visibleToUser=true])',
           snapshotUrls: [
             'https://i.gkd.li/i/29214101', // [text$="广告 展开"][vid="desc"]
             'https://i.gkd.li/i/29579093', // [text$="广告 展开"][vid="desc"]
             'https://i.gkd.li/i/29686900', // [text$="广告 收起"][vid="desc"]
+            'https://i.gkd.li/i/32619091', // [text$="广告 "][vid="desc"]
 
             // 选择器参数大部分参考以下抖音快照:
             // 'https://i.gkd.li/i/21142589', //应用
