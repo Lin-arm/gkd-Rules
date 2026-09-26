@@ -50,9 +50,9 @@
     "./dist"
   ],
   "dependencies": {
-    "@commitlint/cli": "20.5.3",
-    "@commitlint/config-conventional": "20.5.3",
-    "@commitlint/types": "20.5.0",
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "@commitlint/types": "21.2.3",
     "@eslint/js": "10.0.1",
     "@gkd-kit/api": "0.9.3",
     "@gkd-kit/define": "0.0.1",
@@ -61,11 +61,11 @@
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-unused-imports": "4.4.1",
     "json5": "2.2.3",
-    "lint-staged": "16.4.0",
+    "lint-staged": "17.6.0",
     "prettier": "3.9.6",
     "simple-git-hooks": "2.14.0",
     "tsx": "4.23.13",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "typescript-eslint": "8.69.0"
   },
   "volta": {
