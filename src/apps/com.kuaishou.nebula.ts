@@ -499,8 +499,11 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
           matches:
-            '[text="领金币"] < @[clickable=true] -n [text*="待领"][text*="金币"]',
-          snapshotUrls: 'https://i.gkd.li/i/31456916',
+            '[text*="待领"][text*="金币"] +n @[clickable=true] >(1,2) [text="领金币" || text="一键领取"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/31456916',
+            'https://i.gkd.li/i/32702024',
+          ],
         },
         {
           key: 1,
