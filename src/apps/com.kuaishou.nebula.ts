@@ -165,14 +165,13 @@ export default defineGkdApp({
         {
           key: 1,
           action: 'back',
-          matches: [
-            '[vid="design_bottom_sheet" || (vid="tab_text" && text*="评论") || vid="profile_feed_title" || vid="find_friend_btn" || vid="webView"][visibleToUser=true]',
-          ],
+          matches:
+            '([vid="design_bottom_sheet" || vid="profile_feed_title" || vid="find_friend_btn" || vid="webView"][visibleToUser=true]) || ([vid="tab_text"][text*="评论"][visibleToUser=true])',
           snapshotUrls: [
             'https://i.gkd.li/i/23777882', //视频页-分享(下方弹窗)
             'https://i.gkd.li/i/23777756', //视频页-评论区
-            'https://i.gkd.li/i/23777346', //视频页-她的作品(右侧边栏)
-            // 'https://i.gkd.li/i/25071878', //长按视频
+            'https://i.gkd.li/i/32702751', //视频页-她的作品(右侧边栏)
+            'https://i.gkd.li/i/32702594', //长按视频
             'https://i.gkd.li/i/25146300', //朋友-动态页
             'https://i.gkd.li/i/22883404', //其他 webView (任务中心)
           ],
@@ -190,6 +189,7 @@ export default defineGkdApp({
           key: 3,
           name: '③误进横屏-返回键',
           action: 'back',
+          matchRoot: true,
           matches: '[parent=null][width>height]',
           // snapshotUrls: 'https://i.gkd.li/i/25143597', //(参考快手)进入横屏
         },
@@ -221,6 +221,7 @@ export default defineGkdApp({
           key: 444, //进入非视频页,直接返回
           name: '⑥进入非视频界面-返回键',
           action: 'back',
+          matchRoot: true,
           matches: '[parent=null]', //所有界面都存在的 根节点
           excludeActivityIds: 'com.yxcorp.gifshow.HomeActivity',
           activityIds: [],
