@@ -21,6 +21,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/27101825',
             'https://i.gkd.li/i/30147372',
             'https://i.gkd.li/i/32419317', // 链接复制成功
+            'https://i.gkd.li/i/32701210',
           ],
           exampleUrls: 'https://e.gkd.li/4466ef1e-e38f-4d1c-b548-7d0585c4d79d',
           activityIds: [
@@ -28,6 +29,7 @@ export default defineGkdApp({
             'com.ss.android.ugc.aweme.main.MainActivity',
             'com.ss.android.ugc.aweme.detail.ultra.ui.UltraDetailActivity',
             'com.bytedance.ies.ugc.aweme.photos.detail.flow.page.FlowPageActivity',
+            'com.ss.android.ugc.aweme.playlet.videodetail.PlayletVideoPlayActivity',
           ],
         },
       ],
