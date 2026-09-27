@@ -58,17 +58,20 @@ export default defineGkdApp({
         {
           key: 1,
           action: 'back',
-          matches: [
-            '[vid="design_bottom_sheet" || (vid="tab_text" && text*="评论") || vid="profile_feed_title" || vid="kcube_tab_strip" || vid="user_name_info_layout" || (vid="tabs" && getChild(0).getChild(0).desc="消息") || vid="webView"][visibleToUser=true]',
-          ],
+          matches:
+            '([vid="design_bottom_sheet" || vid="profile_feed_title" || vid="kcube_tab_strip" || vid="user_name_info_layout" || vid="webView"][visibleToUser=true]) || ([vid="tab_text"][text*="评论"][visibleToUser=true]) || ([vid="tabs"][getChild(0).getChild(0).desc="消息"][visibleToUser=true])', // 1️⃣ || 2️⃣ || 3️⃣
           snapshotUrls: [
+            // 1️⃣
             'https://i.gkd.li/i/25143290', //视频页-分享(下方弹窗)
-            'https://i.gkd.li/i/25143296', //视频页-评论区
             'https://i.gkd.li/i/25143327', //视频页-她的作品(右侧边栏)
             'https://i.gkd.li/i/25143392', //首页-顶部频道栏
             'https://i.gkd.li/i/25143478', //我-用户资料
-            'https://i.gkd.li/i/25143535', //消息页
             // 'https://i.gkd.li/i/22883404', //(参考快极)其他 webView (任务中心)
+
+            // 2️⃣
+            'https://i.gkd.li/i/25143296', //视频页-评论区
+            // 3️⃣
+            'https://i.gkd.li/i/25143535', //消息页
           ],
         },
         {
@@ -84,13 +87,20 @@ export default defineGkdApp({
           key: 3,
           name: '③误进横屏-返回键',
           action: 'back',
+          matchRoot: true,
           matches: '[parent=null][width>height]',
           snapshotUrls: 'https://i.gkd.li/i/25143597', //进入横屏
+        },
+        {
+          key: 4,
+          matches: '[text*="免流" || text*="离线"] -n [vid="btn_close"]',
+          snapshotUrls: 'https://i.gkd.li/i/32706162',
         },
         {
           key: 444, //进入非视频页,直接返回
           name: '④进入非视频界面-返回键',
           action: 'back',
+          matchRoot: true,
           matches: '[parent=null]',
           excludeActivityIds: 'com.yxcorp.gifshow.HomeActivity',
           activityIds: [],
