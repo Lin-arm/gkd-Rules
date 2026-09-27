@@ -374,13 +374,6 @@ export default defineGkdApp({
           ],
           snapshotUrls: 'https://i.gkd.li/i/25995937', //快手短剧
         },
-        {
-          key: 57,
-          activityIds:
-            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
-          matches: '[text^="谢谢参与"] + [text="知道了"]',
-          snapshotUrls: 'https://i.gkd.li/i/26160549', //谢谢参与，下次再试试吧
-        },
       ],
     },
     {
@@ -525,38 +518,47 @@ export default defineGkdApp({
     {
       key: 10,
       name: '⛳任务页-❗网络错误',
-      desc: '任务页加载出错 点击[重试/刷新]',
+      desc: '页面加载出错or已无可看的广告, 点击[重试/刷新/知道了]',
       fastQuery: true,
       actionMaximum: 2, // 仅重试2次
       activityIds: [
-        'com.yxcorp.gifshow.ad.webview.AdYodaActivity',
-        'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
-        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity',
-        'com.gifshow.kuaishou.floatwidget.activity.GrowthYodaWebViewActivity',
-        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+        'com.yxcorp.gifshow.ad.webview.AdYodaActivity', //A
+        'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity', //B
+        'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity', //C
+        'com.gifshow.kuaishou.floatwidget.activity.GrowthYodaWebViewActivity', //D
+        'com.gifshow.kuaishou.floatwidget.interceptactivity.GrowthInterceptWebViewActivity', //E
       ],
       rules: [
         {
           key: 1,
           actionCd: 1500,
-          matches:
-            '[vid="retry_btn" && text="点击重试" || text^="点我刷新"][clickable=true]',
+          matches: '[text*="网络"] + [text="点击重试"][clickable=true]',
           snapshotUrls: [
-            'https://i.gkd.li/i/24994235',
-            'https://i.gkd.li/i/24195125',
-            'https://i.gkd.li/i/23907716',
-            'https://i.gkd.li/i/24337119', //任务页-列表空白-点我刷新
-            'https://i.gkd.li/i/24963623',
-            'https://i.gkd.li/i/30649294',
+            'https://i.gkd.li/i/24994235', //A
+            'https://i.gkd.li/i/24195125', //B
+            'https://i.gkd.li/i/30649294', //C
+            'https://i.gkd.li/i/24963623', //D
+            'https://i.gkd.li/i/23907716', //E
           ],
+          exampleUrls: 'https://e.gkd.li/c5a23228-1fdb-4c1e-86b6-ccb4e67a377e',
         },
         {
           key: 2,
-          matches: [
-            '[text="网络设置方法"]',
-            '[vid="positive"][text="知道了"][clickable=true]',
-          ],
-          snapshotUrls: 'https://i.gkd.li/i/24963673',
+          matches: '[text="网络设置方法"] - [vid="close"]',
+          snapshotUrls: 'https://i.gkd.li/i/24963673', //D
+        },
+        {
+          key: 3,
+          matches: '[clickable=true][text="点我刷新，精彩继续"]',
+          snapshotUrls: 'https://i.gkd.li/i/24337119', //E
+        },
+        {
+          key: 10,
+          activityIds:
+            'com.yxcorp.gifshow.ad.neo.videov2.award.AwardVideoPlayActivityV2',
+          matches: '[text^="谢谢参与"] + [text="知道了"]',
+          snapshotUrls: 'https://i.gkd.li/i/32705754', //谢谢参与，下次再试试吧
+          exampleUrls: 'https://e.gkd.li/80c8cd55-686e-45f7-93f8-ab2a9a37baf4',
         },
       ],
     },
