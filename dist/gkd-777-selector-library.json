@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "cf1bc15a-4815-4e6a-8598-863753b6260a",
+      "name": "1️⃣有非随机id的节点",
+      "selector": "[id!=null][vid.length>3 || vid=null]",
+      "description": "可从搜索里结果里找支持id快查的节点",
+      "tags": ["Lin-arm自用"],
+      "scope": "global"
+    },
+    {
+      "id": "b4e8994f-e978-4ef9-8a83-208712188a72",
+      "name": "2️⃣内含文字的节点",
+      "selector": "[text.length>0 || desc.length>0]",
+      "description": "查找含有文字的节点",
+      "tags": ["Lin-arm自用"],
+      "scope": "global"
+    },
+    {
+      "id": "bb97edd0-a942-493a-a366-678c867ce4f2",
+      "name": "3️⃣末尾子节点",
+      "selector": "[index=parent.childCount.minus(1)]",
+      "description": "查找所有末尾节点",
+      "tags": ["Lin-arm自用"],
+      "scope": "global"
+    }
+  ]
+}
