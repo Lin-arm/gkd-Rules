@@ -97,35 +97,42 @@ export default defineGkdApp({
     {
       key: 301,
       name: '📆每日福利-周日碎片兑换',
-      desc: '自动兑换20点章节卡 (起点422)',
+      desc: '自动兑换20点/15点章节卡 (起点422~428)',
       enable: false,
       activityIds: '.ui.activity.QDBrowserActivity',
       rules: [
         {
           key: 1,
           actionMaximum: 1,
-          name: '①弹窗-30张碎片兑换',
-          matches: '[text="30张碎片兑换"] + [text="兑换"][clickable=true]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/24421862', //422
-          ],
+          name: '①点击[兑换]20点章节卡',
+          matches: '[text="30张碎片兑换"] + [clickable=true][text="兑换"]',
+          snapshotUrls: 'https://i.gkd.li/i/24421862', //422
         },
         {
           key: 2,
-          preKeys: [1],
-          name: '②弹窗-确认兑换',
-          matches: '[text="取消"] + [text="兑换"][clickable=true]',
+          actionMaximum: 1,
+          name: '①点击[兑换]15点章节卡',
+          matches:
+            'TextView[text$="张碎片可兑换"][!(text^="30")] +n View > [text="20张碎片兑换"] + [clickable=true][text="兑换"]',
+          snapshotUrls: 'https://i.gkd.li/i/32706522', //428
+        },
+        {
+          key: 20,
+          preKeys: [1, 2],
+          name: '②确认[兑换]',
+          matches: '[text="取消"] + [clickable=true][text="兑换"]',
           snapshotUrls: 'https://i.gkd.li/i/24421890',
         },
         {
-          key: 3,
-          preKeys: [1, 2],
-          name: '③兑换完-x掉',
-          matches: [
-            '[text="15张碎片兑换"] + [text="碎片不足"]',
-            '[text="兑换章节卡"] - [text=""][clickable=true]',
+          key: 30,
+          preKeys: [1, 2, 20],
+          name: '③碎片不足-点击x掉',
+          matches:
+            '@[text=""] < [index=0] +n View >(1,2) [text="15张碎片兑换"] + [visibleToUser=true][text="碎片不足"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24421899',
+            'https://i.gkd.li/i/32706527',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/24421899',
         },
       ],
     },
