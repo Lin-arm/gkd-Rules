@@ -442,6 +442,13 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/31462077',
         },
         {
+          key: 5,
+          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
+          matches:
+            'ImageView < * < @[clickable=true][width<134] < [visibleToUser=true] - ViewGroup > [text="获得提现福利"]',
+          snapshotUrls: 'https://i.gkd.li/i/32744899',
+        },
+        {
           key: 10,
           order: 2, //迟点匹配,让key18 任务页-自动开宝箱 先
           matches:
