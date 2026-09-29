@@ -17,7 +17,7 @@ jobs:
       ${{ github.event.head_commit.message!='chore(actions): check_format_lint' }}
     steps:
       - name: 检出仓库代码
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: 配置 Node.js 运行环境
         uses: actions/setup-node@v5
