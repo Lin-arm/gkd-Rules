@@ -70,9 +70,9 @@
   },
   "volta": {
     "node": "24.21.0",
-    "pnpm": "10.33.0"
+    "pnpm": "10.34.6"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.34.6",
   "engines": {
     "node": ">=22"
   },
