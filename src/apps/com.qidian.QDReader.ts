@@ -549,8 +549,7 @@ export default defineGkdApp({
           key: 20,
           preKeys: [10, 11],
           name: '②点击[投推荐票]',
-          matches:
-            '@[clickable=true] > [vid="bubbleTj"] + [text="投推荐票"][visibleToUser=true]',
+          matches: '[vid="layoutTjp"][childCount=3]',
           snapshotUrls: 'https://i.gkd.li/i/31840586',
         },
         {
@@ -558,9 +557,10 @@ export default defineGkdApp({
           preKeys: [10, 11],
           name: '②已无推荐票-按[返回键]',
           action: 'back',
-          actionDelay: 1500, // ⚠️必须等节点加载完
+          actionDelay: 1800, // ⚠️必须等节点加载完
           actionMaximumKey: 20,
-          matches: '[vid="ivTjp"] + [text="投推荐票"][visibleToUser=true]',
+          excludeMatches: '[vid="layoutTjp"][childCount=3]',
+          matches: '[vid="layoutTjp"][childCount=2]',
           snapshotUrls: 'https://i.gkd.li/i/31841241',
         },
 
