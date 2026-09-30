@@ -891,13 +891,14 @@ export default defineGkdApp({
             'com.alipay.mobile.wallet.promo.ui.page.AppDetailsActivity',
           ],
           matches:
-            '@[desc="返回"] + RelativeLayout >(1,5) [text="正在跳转" || text^="闲鱼" || text="薅羊毛赚话费"]',
+            '@[desc="返回"] + RelativeLayout >(1,5) [text="正在跳转" || text^="闲鱼" || text="薅羊毛赚话费" || text="高德地图"]',
           snapshotUrls: [
             'https://i.gkd.li/i/26655913', // 淘宝
             'https://i.gkd.li/i/26737562', // 一淘
             'https://i.gkd.li/i/26738164', // 闲鱼
             'https://i.gkd.li/i/26833985', // 淘宝
             'https://i.gkd.li/i/28634806', // 闲鱼
+            'https://i.gkd.li/i/32866928', // 高德地图
           ],
           exampleUrls: 'https://e.gkd.li/3020bb78-324e-46f6-8d32-60296ea83d4b',
         },
