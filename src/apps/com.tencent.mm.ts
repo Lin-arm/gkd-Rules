@@ -163,10 +163,12 @@ export default defineGkdApp({
           matches: 'TextView[text="跳过"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/22950301',
+            'https://i.gkd.li/i/32969391',
             'https://i.gkd.li/i/12785183',
           ],
           activityIds: [
             '.plugin.appbrand.ui.AppBrandUI', //掐头去尾 通配
+            '.plugin.appbrand.ui.AppBrandPluginUI',
             '.plugin.appbrand.launching.AppBrandLaunchProxyUI',
           ],
         },
