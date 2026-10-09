@@ -969,5 +969,23 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 39,
+      name: '其他-自动[退出]账号绑定',
+      desc: '新村跳转一淘app任务, 该手机号的tb账号被冻结时用',
+      enable: false,
+      rules: [
+        {
+          fastQuery: true,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          activityIds: 'com.ali.user.open.ucc.webview.UccWebViewActivity',
+          matches:
+            '@[id="com.ali.user.mobile.security.ui:id/aliuser_back"] + [text="账号绑定"]',
+          snapshotUrls: 'https://i.gkd.li/i/33255636',
+          exampleUrls: 'https://e.gkd.li/95b7563b-260f-4391-a110-e03b7cf59f32',
+        },
+      ],
+    },
   ],
 });
