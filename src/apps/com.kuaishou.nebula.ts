@@ -737,13 +737,14 @@ export default defineGkdApp({
           action: 'back',
           actionDelay: 1000,
           matches:
-            '[text^="下载" && text$="立得奖励" || text="快影" || text="券和福利" || text*="喜番"][visibleToUser=true]',
+            '[text*="快影" || text="券和福利" || text*="喜番"][!(text*="并登录")][visibleToUser=true]',
           snapshotUrls: [
-            'https://i.gkd.li/i/23431442',
+            'https://i.gkd.li/i/23431442', //下载快影立得奖励
             'https://i.gkd.li/i/24352704', //快影
             'https://i.gkd.li/i/25002586', //ks年货节
             'https://i.gkd.li/i/30867792', //喜番
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/33389566', //任务页,下载喜番短剧并登录
           activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
         },
         {
