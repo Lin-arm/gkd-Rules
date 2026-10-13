@@ -1109,7 +1109,7 @@ export default defineGkdApp({
           action: 'back',
           actionCd: 2000,
           matches:
-            '[vid="krn_content_container" || id$="ultron_container"] >n [text="黑马榜" || text^="主播拍了拍我" || text$="助我上榜" || (text*="看了这么久" && text*="关注") || ((text="订单" || text="购物车") && parent.childCount=2)][visibleToUser=true]',
+            '[vid="krn_content_container" || id$="ultron_container"] >n [text="黑马榜" || text^="主播拍了拍我" || text$="助我上榜" || text*="看了这么久" || text="购物车" || text="订单"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/22982128', // 主播争霸赛
             // 'https://i.gkd.li/i/24127641', // (参考快手) 主播拍了拍我
