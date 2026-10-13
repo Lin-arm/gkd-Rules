@@ -12,10 +12,7 @@ export default defineGkdApp({
         {
           fastQuery: true,
           matchRoot: true,
-          matchDelay: 1000,
-          actionDelay: 300,
-          actionMaximum: 1,
-          resetMatch: 'app',
+          actionCd: 2000,
           matches:
             '[text="签到"] - @View[childCount=3][getChild(0).name$="Image"] <<(30-n) [desc="WVUCWebView"] <<(10-n) [id="android:id/content"]',
           snapshotUrls: [
