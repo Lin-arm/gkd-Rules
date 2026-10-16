@@ -155,7 +155,7 @@ export default defineGkdApp({
     {
       key: 401,
       name: '功能类-退出阅读后去领积分',
-      desc: '配合 自动[领积分] 规则使用',
+      desc: '(⚠️前提必须在QD模块启用"旧版每日导读") 配合 自动[领积分] 规则使用',
       enable: false,
       fastQuery: true,
       actionMaximum: 1,
@@ -200,6 +200,7 @@ export default defineGkdApp({
           matches:
             '[text="分钟"] - [vid="tvTipNum"][text.toInt()>29 && text.toInt()<60]',
           snapshotUrls: 'https://i.gkd.li/i/30868046', // 第二段 全都参考该快照
+          excludeSnapshotUrls: 'https://i.gkd.li/i/33532939', // 起点474, 未启用"旧版每日导读", 无法判断阅读时长
         },
         {
           key: 23,
