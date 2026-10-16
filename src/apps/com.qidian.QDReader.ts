@@ -23,7 +23,7 @@ export default defineGkdApp({
     {
       key: 2,
       name: '📆每日福利-自动去看广告',
-      desc: '点击[去完成](❗配合QD模块用)',
+      desc: '点击[去完成] (❗配合QD模块用)',
       enable: false,
       rules: [
         {
@@ -31,19 +31,20 @@ export default defineGkdApp({
           // excludeMatches: '[text*="验证"][focusable=true][visibleToUser=true]', // 排除验证弹窗(遇则停)
           // matches: '[id="video"] >(1,2) [text="去完成"][visibleToUser=true]',
           matches:
-            'WebView[!((getChild(childCount.minus(1)).id*="tcaptcha" && getChild(childCount.minus(1)).visibleToUser=true) || getChild(childCount.minus(2)).id*="tcaptcha")] >2 [id="video"] >(1,2) [text="去完成"]',
+            'WebView[!((getChild(childCount.minus(1)).id*="tcaptcha" && getChild(childCount.minus(1)).visibleToUser=true) || getChild(childCount.minus(2)).id*="tcaptcha")] >2 [id="video"] >(1,2) [clickable=true][text="去完成"]',
           snapshotUrls: [
             'https://i.gkd.li/i/23290942', // 422
             'https://i.gkd.li/i/23565148', // 422 有隐藏的验证弹窗 [id*="tcaptcha"][visibleToUser=false]
             'https://i.gkd.li/i/23561866', // 420
             'https://i.gkd.li/i/23561912', // 428
-            'https://i.gkd.li/i/26500210', // 422 [text="去完成"]被遮挡,但是[clickable=true]
+            'https://i.gkd.li/i/33532174', // 480 [text="去完成"]被遮挡,但是[clickable=true]
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/23562885', // 加 [id="video"] 限制
             'https://i.gkd.li/i/23610102', // 422 验证弹窗
             'https://i.gkd.li/i/26336514', // 428 验证弹窗 (个别手机出了验证弹窗还继续点击[去完成])
           ],
+          exampleUrls: 'https://e.gkd.li/cafa9644-b808-46cd-a6bd-d54b6f1e89d9',
           activityIds: '.ui.activity.QDBrowserActivity',
         },
       ],
