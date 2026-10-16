@@ -155,7 +155,7 @@ export default defineGkdApp({
     {
       key: 401,
       name: '功能类-退出阅读后去领积分',
-      desc: '(⚠️前提必须在QD模块启用"旧版每日导读") 配合 自动[领积分] 规则使用',
+      desc: '(⚠️前提必须用QD模块拦截"书架顶部广告") 配合 自动[领积分] 规则使用',
       enable: false,
       fastQuery: true,
       actionMaximum: 1,
@@ -200,7 +200,7 @@ export default defineGkdApp({
           matches:
             '[text="分钟"] - [vid="tvTipNum"][text.toInt()>29 && text.toInt()<60]',
           snapshotUrls: 'https://i.gkd.li/i/30868046', // 第二段 全都参考该快照
-          excludeSnapshotUrls: 'https://i.gkd.li/i/33532939', // 起点474, 未启用"旧版每日导读", 无法判断阅读时长
+          excludeSnapshotUrls: 'https://i.gkd.li/i/33532939', // 起点474, 未拦截"书架顶部广告", 无法判断阅读时长
         },
         {
           key: 23,
@@ -539,7 +539,7 @@ export default defineGkdApp({
     {
       key: 18,
       name: '功能类-自动[投推荐票]给《观山！》',
-      desc: '(⚠️可复制到本地修改key10自定义书名; 建议配合QD模块启用"旧版每日导读"使用) ①点击[更多] ②点击[投推荐票] ③选择[全部] ④点击[投票]',
+      desc: '(⚠️可复制到本地修改key10自定义书名; 建议配合QD模块拦截"书架顶部广告"使用) ①点击[更多] ②点击[投推荐票] ③选择[全部] ④点击[投票]',
       enable: false,
       fastQuery: true,
       order: 3,
@@ -562,7 +562,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/31840578', // 图墙模式书架 11分钟(需排除)
             'https://i.gkd.li/i/31865741', // 列表模式书架 无阅读时长
             'https://i.gkd.li/i/31865742', // 列表模式书架 3分钟
-            'https://i.gkd.li/i/33532939', // 起点474, 未启用"旧版每日导读", 无法使用 阅读时长 的限制
+            'https://i.gkd.li/i/33532939', // 起点474, 未拦截"书架顶部广告", 无法使用 阅读时长 的限制
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/31840584', // 列表模式书架 11分钟
