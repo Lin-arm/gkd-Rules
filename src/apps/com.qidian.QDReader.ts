@@ -515,7 +515,7 @@ export default defineGkdApp({
     {
       key: 18,
       name: '功能类-自动[投推荐票]给《观山！》',
-      desc: '(⚠️可复制到本地修改key11自定义书名) ①点击[更多] ②点击[投推荐票] ③选择[全部] ④点击[投票]',
+      desc: '(⚠️可复制到本地修改key10自定义书名; 建议配合QD模块启用"旧版每日导读"使用) ①点击[更多] ②点击[投推荐票] ③选择[全部] ④点击[投票]',
       enable: false,
       fastQuery: true,
       order: 3,
@@ -525,7 +525,7 @@ export default defineGkdApp({
       activityIds: '.ui.activity.MainGroupActivity',
       rules: [
         {
-          key: 11,
+          key: 10,
           name: '①点击指定书名的[更多]',
           actionDelay: 500,
           excludeMatches: [
@@ -538,24 +538,26 @@ export default defineGkdApp({
             'https://i.gkd.li/i/31840578', // 图墙模式书架 11分钟(需排除)
             'https://i.gkd.li/i/31865741', // 列表模式书架 无阅读时长
             'https://i.gkd.li/i/31865742', // 列表模式书架 3分钟
+            'https://i.gkd.li/i/33532939', // 起点474, 未启用"旧版每日导读", 无法使用 阅读时长 的限制
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/31840584', // 列表模式书架 11分钟
             'https://i.gkd.li/i/22634962', // 未签到的
+            'https://i.gkd.li/i/33534248', // 起点480 未签到的
           ],
         },
 
         // 第二段
         {
           key: 20,
-          preKeys: [10, 11],
+          preKeys: [10],
           name: '②点击[投推荐票]',
           matches: '[vid="layoutTjp"][childCount=3]',
           snapshotUrls: 'https://i.gkd.li/i/31840586',
         },
         {
           key: 21,
-          preKeys: [10, 11],
+          preKeys: [10],
           name: '②已无推荐票-按[返回键]',
           action: 'back',
           actionDelay: 1800, // ⚠️必须等节点加载完
@@ -573,6 +575,14 @@ export default defineGkdApp({
           matches: '@[clickable=true] >2 [text="全部"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/31840589',
         },
+        {
+          key: 31,
+          preKeys: [20],
+          name: '③选择[全部票]',
+          activityIds: '.ui.modules.interact.InteractActionDialogFlutter',
+          matches: '[clickable=true][desc="全部票"]',
+          snapshotUrls: 'https://i.gkd.li/i/33533436', //起点474
+        },
 
         // 第四段
         {
@@ -582,6 +592,14 @@ export default defineGkdApp({
           matches:
             '@[clickable=true] >2 [text^="投"][text$="票"][visibleToUser=true][index=0]',
           snapshotUrls: 'https://i.gkd.li/i/31840591',
+        },
+        {
+          key: 41,
+          preKeys: [31],
+          name: '④点击[投票]2',
+          activityIds: '.ui.modules.interact.InteractActionDialogFlutter',
+          matches: '[clickable=true][desc^="投"][desc$="票"]',
+          snapshotUrls: 'https://i.gkd.li/i/33533617',
         },
       ],
     },
