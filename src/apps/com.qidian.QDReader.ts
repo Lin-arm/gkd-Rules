@@ -557,7 +557,7 @@ export default defineGkdApp({
             '[vid="button_text_id"][text="签到"]', //排除 未签到的 (让自动签到规则先执行)
           ],
           matches:
-            '@[vid="ivMore"] <<n [vid="cv_content"] >(1,3) [vid="tvBookName"][text="观山！"]', //自定义仅需修改书名即可,当前为《观山！》
+            '@[vid="ivMore"] <<n [vid="cv_content"] >(1,3) [vid="tvBookName"][text="观山！"][visibleToUser=true]', //自定义仅需修改书名即可,当前为《观山！》
           snapshotUrls: [
             'https://i.gkd.li/i/31840578', // 图墙模式书架 11分钟(需排除)
             'https://i.gkd.li/i/31865741', // 列表模式书架 无阅读时长
@@ -568,6 +568,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/31840584', // 列表模式书架 11分钟
             'https://i.gkd.li/i/22634962', // 未签到的
             'https://i.gkd.li/i/33534248', // 起点480 未签到的
+            'https://i.gkd.li/i/33630474', // 排除 [visibleToUser=false]
           ],
         },
 
