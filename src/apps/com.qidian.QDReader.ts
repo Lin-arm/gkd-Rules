@@ -491,7 +491,10 @@ export default defineGkdApp({
       fastQuery: true,
       // actionMaximum: 1,
       actionCd: 10000,
-      activityIds: '.ui.modules.listening.playpage.AudioPlayActivity',
+      activityIds: [
+        '.ui.modules.listening.playpage.AudioPlayActivity',
+        '.ui.modules.listening.playpage.AudioPlayOldActivity',
+      ],
       rules: [
         {
           key: 1,
@@ -509,7 +512,10 @@ export default defineGkdApp({
           name: '②点击[定时]',
           actionDelay: 500,
           matches: '@[clickable=true] > [vid="tvTime"][text="定时"]',
-          snapshotUrls: 'https://i.gkd.li/i/31701986',
+          snapshotUrls: [
+            'https://i.gkd.li/i/31701986',
+            'https://i.gkd.li/i/33880392',
+          ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/31701990', //已设有定时
           exampleUrls: 'https://e.gkd.li/dee13020-74f1-44a5-9e6d-9b7ba67b0cd1',
         },
