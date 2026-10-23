@@ -65,5 +65,20 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 4,
+      name: '功能类-[允许]台铃智能打开蓝牙',
+      desc: '点击[允许] (⚠️建议配合[台铃智能]的规则使用)',
+      enable: false,
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.bluetooth.RequestPermissionHelperActivity',
+          matches: ['[text*="台铃智能"][text*="打开蓝牙"]', '[text="允许"]'],
+          snapshotUrls: 'https://i.gkd.li/i/33883105',
+          exampleUrls: 'https://e.gkd.li/5b3442d1-3bb5-42e3-b1b2-83121090710f',
+        },
+      ],
+    },
   ],
 });
