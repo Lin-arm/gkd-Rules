@@ -410,6 +410,7 @@ export default defineGkdApp({
           key: 2,
           preKeys: [1],
           name: '②点击[领福利]',
+          actionDelay: 500, //防止触发太快而点击无效
           matches: '[vid="btnCheckIn" || vid="newBtnCheckIn"][clickable=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/23210761', //起点428, btnCheckIn
@@ -547,7 +548,7 @@ export default defineGkdApp({
       enable: false,
       fastQuery: true,
       order: 3,
-      // matchDelay: 5000, //延迟5秒匹配,等其他自动签到啥的规则先执行
+      matchDelay: 5000, //延迟5秒匹配,等其他自动签到啥的规则先执行
       actionMaximum: 1,
       resetMatch: 'app',
       activityIds: '.ui.activity.MainGroupActivity',
