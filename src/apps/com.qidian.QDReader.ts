@@ -243,8 +243,11 @@ export default defineGkdApp({
           preKeys: [20, 21, 22, 23, 24],
           name: '③进入每日福利页',
           resetMatch: 'match',
-          matches: '@[vid="btnCheckIn"] >2 [text="领福利" || text="签到"]',
-          snapshotUrls: 'https://i.gkd.li/i/22634962',
+          matches: '[vid="btnCheckIn" || vid="newBtnCheckIn"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22634962', //起点428
+            'https://i.gkd.li/i/33876754', //起点482
+          ],
         },
       ],
     },
@@ -397,15 +400,21 @@ export default defineGkdApp({
           actionDelay: 500, //防止节点未更新而导致误触
           excludeMatches: '[vid="tvTipNum"][text="--"][visibleToUser=true]',
           matches: '@[vid="btnCheckIn"] >2 [text="签到"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/22634962',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22634962', //起点428
+            'https://i.gkd.li/i/33878350', //起点482
+          ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/23211622', // 未加载完?
         },
         {
           key: 2,
           preKeys: [1],
           name: '②点击[领福利]',
-          matches: '@[vid="btnCheckIn"] >2 [text="领福利"]',
-          snapshotUrls: 'https://i.gkd.li/i/23210761', // 已签到, 点击[领福利]
+          matches: '[vid="btnCheckIn" || vid="newBtnCheckIn"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/23210761', //起点428, btnCheckIn
+            'https://i.gkd.li/i/33876754', //起点482, newBtnCheckIn
+          ],
         },
       ],
     },
