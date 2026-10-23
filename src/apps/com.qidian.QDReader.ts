@@ -100,6 +100,7 @@ export default defineGkdApp({
       name: '📆每日福利-周日碎片兑换',
       desc: '自动兑换20点/15点章节卡 (起点422~428)',
       enable: false,
+      resetMatch: 'app',
       activityIds: '.ui.activity.QDBrowserActivity',
       rules: [
         {
@@ -134,6 +135,24 @@ export default defineGkdApp({
             'https://i.gkd.li/i/24421899',
             'https://i.gkd.li/i/32706527',
           ],
+        },
+      ],
+    },
+    {
+      key: 302,
+      name: '📆每日福利-天降福利弹窗',
+      desc: '点击[去浏览] (❗配合QD模块用)(起点482)',
+      enable: false,
+      rules: [
+        {
+          fastQuery: true,
+          actionMaximum: 2,
+          resetMatch: 'app',
+          activityIds: '.ui.activity.QDBrowserActivity',
+          matches:
+            '@TextView[text="去浏览"] <n View <2 View[getChild(0).text="天降福利"] <2 [text="福利中心"] < WebView < FrameLayout < [vid="webViewContainer"]',
+          exampleUrls: 'https://e.gkd.li/9219d30f-c664-4674-8baa-07a6e614774c',
+          snapshotUrls: 'https://i.gkd.li/i/33875186',
         },
       ],
     },
@@ -271,36 +290,6 @@ export default defineGkdApp({
         },
       ],
     },
-    // {
-    //   key: 6,
-    //   name: '🐞发现-红包广场-抢月包(测试)',
-    //   desc: '点击 已抢完 (测试用,真抢时请关闭)',
-    //   enable: false,
-    //   fastQuery: true,
-    //   matchRoot: true,
-    //   rules: [
-    //     {
-    //       key: 0,
-    //       name: '初进Activity时间点🔴🟡🟢',
-    //       action: 'none',
-    //       actionMaximum: 1,
-    //       matches: '[parent=null]', // 根节点
-    //     },
-    //     {
-    //       key: 1,
-    //       actionCd: 300,
-    //       actionMaximum: 3,
-    //       matches:
-    //         '@ImageView[desc$="点\\n已抢完"][clickable=true] <6 View <n ScrollView <3 View[childCount=3] <4 View[childCount=4] <<5 [id="android:id/content"]',
-    //       snapshotUrls: 'https://i.gkd.li/i/24323139',
-    //       exampleUrls: 'https://e.gkd.li/4b8f7243-aff9-42d3-bfdf-772c1088e7c2',
-    //       activityIds: [
-    //         '.ui.activity.MainGroupActivity',
-    //         '.flutter.HongBaoSquareActivity',
-    //       ],
-    //     },
-    //   ],
-    // },
     {
       key: 7,
       name: '🧧抢月包-弹窗-投月票',
