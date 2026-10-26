@@ -637,27 +637,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 2801,
-      name: '🐟福气鱼塘-自动[再钓一次]',
-      desc: '弹窗-点击[再钓一次]',
-      enable: false,
-      rules: [
-        {
-          fastQuery: true,
-          activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
-          matches:
-            '@Button[text*="再钓" || text$="收下"] < View <(3,4) Dialog < View < View < View <2 [childCount>1] < WebView <<(3,4) [id="com.alipay.multiplatform.phone.xriver_integration:id/h5_pc_container"]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/27361306', // 再钓一次 <<4
-            'https://i.gkd.li/i/27361308', // 开心收下
-            'https://i.gkd.li/i/27361734', // 再钓一次 <<3
-            'https://i.gkd.li/i/31866485', // 再钓一次
-          ],
-        },
-      ],
-    },
-    {
       key: 29,
       name: '🎮小游戏-申请发消息-取消',
       desc: '①保持以上选择 ②点击[取消] ③直接拒绝',
