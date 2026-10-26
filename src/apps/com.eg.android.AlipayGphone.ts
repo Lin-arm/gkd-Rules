@@ -703,29 +703,48 @@ export default defineGkdApp({
     {
       key: 30,
       name: '🎮小游戏-弹窗',
-      desc: '①限时活动弹窗or小浮窗-x掉 ③游戏更新-确定',
+      desc: '①限时活动弹窗or小浮窗-x掉 ⑨游戏更新-确定',
       fastQuery: true,
-      activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$',
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'match',
+      activityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
       rules: [
+        // {
+        //   key: 1,
+        //   name: '①展开贴边小浮窗',
+        //   matches: '@TextView[left<30][width<150] < View < WebView < WebView <2 [desc^="https:"] < FrameLayout <2 [id="android:id/content"]',
+        //   snapshotUrls: 'https://i.gkd.li/i/33904330',
+        // },
         {
-          key: 1,
-          name: '①限时活动弹窗or小浮窗-x掉',
-          actionCd: 500,
-          matchRoot: true,
-          forcedTime: 3500,
+          key: 2,
+          // preKeys: [1],
+          name: '②坐标点击x掉小浮窗',
+          forcedTime: 10000,
+          position: {
+            left: 'width * 0.4719',
+            top: 'height * 0.8777',
+          },
           matches:
-            '@TextView[id=null][clickable=true][(width>75 && width<85 && height>75 && height<85) || (width>30 && width<40 && height>30 && height<40)] <<8 WebView <<4 FrameLayout[id=null] <(1,2) [id="android:id/content"]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/24094533', //大弹窗
-            'https://i.gkd.li/i/24094570', //小浮窗
-          ],
-          excludeActivityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$App01',
-          excludeSnapshotUrls: 'https://i.gkd.li/i/24961422', //误触 淘宝闪购界面
+            '@TextView[left<30][width>150] < View < WebView < WebView <2 [desc^="https:"] < FrameLayout <2 [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/33904331',
         },
         {
           key: 3,
-          name: '③游戏更新-确定',
+          name: '③坐标点击x掉活动弹窗',
+          forcedTime: 10000,
+          actionDelay: 1000, //待弹窗完全加载
+          position: {
+            left: 'width * 0.9168',
+            top: 'height * -0.0018',
+          },
+          matches: '@View >5 [visibleToUser=true][text="规则入口图标"]',
+          snapshotUrls: 'https://i.gkd.li/i/33972475',
+        },
+        {
+          key: 9,
+          name: '⑨游戏更新-确定',
           matches: [
             '[text^="游戏有新版本"]',
             'Button[text="确定"][clickable=true]',
