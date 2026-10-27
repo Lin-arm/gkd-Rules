@@ -9,7 +9,7 @@ export default defineGkdApp({
     {
       key: 0,
       name: '📢说明',
-      desc: '(点击查看详情) 🔵目前在本人用的支付宝版本有一个: 🔸v10.8.56.2300 ,如果你用其他版本的支付宝,估计有些规则不生效,如遇失效或误触请截取快照拿到github反馈. 🔵另外,这些规则大都是在模块(芝麻糊、芝麻粒-tk等)不做这些任务的时候,用gkd来减少手动操作的,如果模块能做的任务,请关掉这些任务对应的gkd规则,开多了会费电. ',
+      desc: '(点击查看详情) 🔵目前在本人用的支付宝版本有两个: 🔸v10.8.66.8000 🔸v10.8.56.2300 ,如果你用其他版本的支付宝,估计有些规则不生效,如遇失效或误触请截取快照拿到github反馈. 🔵另外,这些规则大都是在模块(sen、芝麻糊、芝麻粒-tk等)不做这些任务的时候,用gkd来减少手动操作的,如果模块能做的任务,请关掉这些任务对应的gkd规则,开多了会费电. ',
       enable: false,
       rules: [
         {
@@ -556,6 +556,29 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 2502,
+      name: '⛪新村-已玩15s小游戏',
+      desc: '产速奖励已发放, 点击右上角[x]掉小游戏',
+      rules: [
+        {
+          fastQuery: true,
+          matchDelay: 14000, //14秒后开始匹配
+          forcedTime: 5000,
+          actionMaximum: 1,
+          resetMatch: 'match',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
+          matches:
+            '[text="已发放"] - [text="产速奖励"] < View <2 View < View < View < WebView < WebView <2 FrameLayout < RelativeLayout - [id$="nebulax_root_view"] >8 @[desc="关闭"] > [text="" || text=""]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/34000122',
+            'https://i.gkd.li/i/34000930',
+          ],
+          exampleUrls: 'https://e.gkd.li/3c670c7a-9017-4c22-a278-7ba2eeadddaa',
+        },
+      ],
+    },
+    {
       key: 2501,
       name: '⛪新村-成功出摊-返回',
       desc: '随机摆摊成功-返回新村',
@@ -682,7 +705,7 @@ export default defineGkdApp({
     {
       key: 30,
       name: '🎮小游戏-弹窗',
-      desc: '①限时活动弹窗or小浮窗-x掉 ⑨游戏更新-确定',
+      desc: '②x掉小浮窗 ③x掉活动弹窗 ⑨游戏更新-确定',
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
@@ -706,8 +729,12 @@ export default defineGkdApp({
             top: 'height * 0.8777',
           },
           matches:
-            '@TextView[left<30][width>150] < View < WebView < WebView <2 [desc^="https:"] < FrameLayout <2 [id="android:id/content"]',
-          snapshotUrls: 'https://i.gkd.li/i/33904331',
+            '@TextView[left<30][width>150] < View < WebView < WebView <2 [desc^="https:"] < FrameLayout <(2,3) [id="android:id/content"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/33904331',
+            'https://i.gkd.li/i/34000122',
+          ],
+          exampleUrls: 'https://e.gkd.li/3c670c7a-9017-4c22-a278-7ba2eeadddaa',
         },
         {
           key: 3,
@@ -720,6 +747,7 @@ export default defineGkdApp({
           },
           matches: '@View >5 [visibleToUser=true][text="规则入口图标"]',
           snapshotUrls: 'https://i.gkd.li/i/33972475',
+          exampleUrls: 'https://e.gkd.li/df177d9c-d2a3-460b-ae80-580abe2a2531',
         },
         {
           key: 9,
