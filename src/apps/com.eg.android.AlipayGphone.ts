@@ -761,6 +761,76 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 3001,
+      name: '🎮小游戏-半自动浏览15s广告',
+      desc: '①等待手动点进子广告(看示例图) ②15s后[退出]某牌奶茶外卖页 ③坐标点击右上角[关闭]',
+      fastQuery: true,
+      scopeKeys: [37],
+      actionMaximum: 1,
+      resetMatch: 'match',
+      rules: [
+        {
+          key: 10,
+          name: '①待手动点进子广告',
+          matchRoot: true,
+          // matchDelay: 10000, //等待小游戏启动耗时
+          action: 'none',
+          actionDelay: 5000, //防抖动
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
+          matches: '[parent=null]',
+          snapshotUrls: 'https://i.gkd.li/i/34015537',
+          exampleUrls: 'https://e.gkd.li/d73d6e16-85c2-4545-a7ff-6ac50d17df05',
+        },
+        {
+          key: 20,
+          preKeys: [10],
+          name: '②15s后[退出]某牌奶茶外卖页',
+          actionDelay: 15000,
+          forcedTime: 17000, //防睡死
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$App',
+          matches: '@[clickable=true][desc="返回"] >2 [text=""]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/34011450', //乐乐茶
+            'https://i.gkd.li/i/34011513', //瑞幸咖啡
+            'https://i.gkd.li/i/34056091', //霸王茶姬
+            'https://i.gkd.li/i/34055811', //NOWWA挪瓦咖啡
+          ],
+          exampleUrls: 'https://e.gkd.li/643561fa-b050-4466-ab44-893773a585af',
+        },
+        {
+          key: 21,
+          preKeys: [20],
+          name: '②再点1次左上角[退出]',
+          actionDelay: 500,
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$App',
+          matches: '@[clickable=true][desc="返回"] >2 [text=""]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/34011454',
+            'https://i.gkd.li/i/34056294',
+          ],
+          exampleUrls: 'https://e.gkd.li/f3fea493-2ccb-42b8-949f-36435f12eaac',
+        },
+        {
+          key: 30,
+          preKeys: [20, 21],
+          name: '③坐标点击右上角[关闭]',
+          actionDelay: 500,
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
+          position: {
+            left: 'width * 0.6429',
+            top: 'height * 0.6119',
+          },
+          matches: '@[childCount=3][width<300] > [desc="更多"] > [text=""]',
+          snapshotUrls: 'https://i.gkd.li/i/34011467',
+          exampleUrls: 'https://e.gkd.li/231e5312-e0aa-4d11-af4b-5b26f41d523e',
+        },
+      ],
+    },
+    {
       key: 31,
       name: '🙋‍♂️扫森林码加好友-辅助①',
       desc: '扫出森林主页->点击 加好友',
