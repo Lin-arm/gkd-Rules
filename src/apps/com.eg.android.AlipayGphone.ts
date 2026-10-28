@@ -975,6 +975,7 @@ export default defineGkdApp({
       name: '其它-[退出]中转页',
       desc: '在别的 界面/app 做完任务后切回支付宝中转页',
       fastQuery: true,
+      scopeKeys: [3001],
       actionCd: 300,
       resetMatch: 'app',
       rules: [
@@ -1025,7 +1026,7 @@ export default defineGkdApp({
         },
         {
           key: 4,
-          preKeys: [3],
+          preKeys: [3, 10], //关联key3001 的子key10
           name: '④游戏福利节-点击[返回]',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
