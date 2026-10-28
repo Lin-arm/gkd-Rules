@@ -784,7 +784,7 @@ export default defineGkdApp({
         },
         {
           key: 20,
-          preKeys: [10],
+          preKeys: [3, 10], //关联key37 的子key3
           name: '②15s后[退出]某牌奶茶外卖页',
           actionDelay: 15000,
           forcedTime: 17000, //防睡死
