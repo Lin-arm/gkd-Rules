@@ -34,6 +34,8 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/30858145',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -45,6 +47,8 @@ export default defineGkdApp({
       fastQuery: true,
       forcedTime: 60000,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -85,6 +89,8 @@ export default defineGkdApp({
           forcedTime: 60000,
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
           matches:
             '@Button[text="确认兑换"] <(1,2) View <n View[childCount>2] <<(3,4) View[index=parent.childCount.minus(1)] <n View[parent.name$="WebView"] <<5 [id="com.alipay.multiplatform.phone.xriver_integration:id/h5_pc_container"]',
           snapshotUrls: [
@@ -109,6 +115,8 @@ export default defineGkdApp({
           exampleUrls: 'https://e.gkd.li/b094f34c-bff0-4a6c-97b9-56194041e52a',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -120,6 +128,8 @@ export default defineGkdApp({
       matchRoot: true,
       forcedTime: 60000,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -162,6 +172,8 @@ export default defineGkdApp({
       enable: false,
       order: NO_FAST_QUERY,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -220,6 +232,8 @@ export default defineGkdApp({
       desc: '①去捐步 ②立即捐步 ③知道了(返回键) ④x掉',
       order: NO_FAST_QUERY,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -298,6 +312,8 @@ export default defineGkdApp({
           exampleUrls: 'https://e.gkd.li/3f69adda-7804-41a9-8a70-099e2c7acbd6',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -308,6 +324,8 @@ export default defineGkdApp({
       fastQuery: true,
       matchRoot: true,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -350,6 +368,8 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -369,6 +389,8 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -392,6 +414,8 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -402,6 +426,8 @@ export default defineGkdApp({
       fastQuery: true,
       order: NO_FAST_QUERY,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -470,6 +496,8 @@ export default defineGkdApp({
       fastQuery: true,
       matchRoot: true,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -552,6 +580,8 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -595,6 +625,8 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -604,6 +636,8 @@ export default defineGkdApp({
       desc: '①点击[立即领肥] ②弹窗-点击[立即领取]',
       fastQuery: true,
       activityIds: 'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+      excludeActivityIds:
+        'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
       rules: [
         {
           key: 1,
@@ -642,6 +676,8 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
           matches:
             '@Button[text="关闭"][clickable=true] <n View < View < View < View <2 View < WebView[!(text="蚂蚁森林")] < WebView <2 FrameLayout - * >3 [text="松开刷新"]',
           snapshotUrls: [
@@ -861,6 +897,8 @@ export default defineGkdApp({
           ],
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
         },
       ],
     },
@@ -987,6 +1025,8 @@ export default defineGkdApp({
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
             'com.alipay.mobile.wallet.promo.ui.page.AppDetailsActivity',
           ],
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
           matches:
             '@[desc="返回"] + RelativeLayout >(1,5) [text="正在跳转" || text^="闲鱼" || text="薅羊毛赚话费" || text="高德地图"]',
           snapshotUrls: [
@@ -1030,6 +1070,8 @@ export default defineGkdApp({
           name: '④游戏福利节-点击[返回]',
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
           matches: '@[desc="返回"] + RelativeLayout >(1,5) [text="游戏福利节"]',
           snapshotUrls: 'https://i.gkd.li/i/27359350',
         },
@@ -1052,6 +1094,8 @@ export default defineGkdApp({
             'com.alipay.android.living.activity.LivingDetailActivity',
             'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
           ],
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
           matches:
             '[text="访问被拒绝" || text^="人气太旺啦"] -2 RelativeLayout >3 @[clickable=true][desc="返回"] > [text=""]',
           exampleUrls: 'https://e.gkd.li/c1ddb8bf-084b-4109-b777-96c02858d266',
