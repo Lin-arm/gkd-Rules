@@ -825,13 +825,16 @@ export default defineGkdApp({
           actionDelay: 15000,
           forcedTime: 17000, //防睡死
           activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$App',
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity', //通配
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
           matches: '@[clickable=true][desc="返回"] >2 [text=""]',
           snapshotUrls: [
             'https://i.gkd.li/i/34011450', //乐乐茶
             'https://i.gkd.li/i/34011513', //瑞幸咖啡
             'https://i.gkd.li/i/34056091', //霸王茶姬
             'https://i.gkd.li/i/34055811', //NOWWA挪瓦咖啡
+            'https://i.gkd.li/i/34166740',
           ],
           exampleUrls: 'https://e.gkd.li/643561fa-b050-4466-ab44-893773a585af',
         },
@@ -841,7 +844,9 @@ export default defineGkdApp({
           name: '②再点1次左上角[退出]',
           actionDelay: 500,
           activityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$App',
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity', //通配
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
           matches: '@[clickable=true][desc="返回"] >2 [text=""]',
           snapshotUrls: [
             'https://i.gkd.li/i/34011454',
@@ -861,7 +866,10 @@ export default defineGkdApp({
             top: 'height * 0.6119',
           },
           matches: '@[childCount=3][width<300] > [desc="更多"] > [text=""]',
-          snapshotUrls: 'https://i.gkd.li/i/34011467',
+          snapshotUrls: [
+            'https://i.gkd.li/i/34011467',
+            'https://i.gkd.li/i/34166925',
+          ],
           exampleUrls: 'https://e.gkd.li/231e5312-e0aa-4d11-af4b-5b26f41d523e',
         },
       ],
