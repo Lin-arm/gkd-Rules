@@ -828,13 +828,21 @@ export default defineGkdApp({
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity', //通配
           excludeActivityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
-          matches: '@[clickable=true][desc="返回"] >2 [text=""]',
+          // excludeMatches: '[text^="蚂蚁" || text^="支付宝"]',
+          matches: [
+            '[id="com.alipay.multiplatform.phone.xriver_integration:id/textView_title"][text=null || text="商品详情"]',
+            '@[clickable=true][desc="返回"] >2 [text=""]',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/34011450', //乐乐茶
             'https://i.gkd.li/i/34011513', //瑞幸咖啡
             'https://i.gkd.li/i/34056091', //霸王茶姬
             'https://i.gkd.li/i/34055811', //NOWWA挪瓦咖啡
             'https://i.gkd.li/i/34166740',
+          ],
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/34190672', //蚂蚁森林
+            'https://i.gkd.li/i/34190837', //支付宝·芭芭农场
           ],
           exampleUrls: 'https://e.gkd.li/643561fa-b050-4466-ab44-893773a585af',
         },
@@ -847,7 +855,10 @@ export default defineGkdApp({
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity', //通配
           excludeActivityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
-          matches: '@[clickable=true][desc="返回"] >2 [text=""]',
+          matches: [
+            '[id="com.alipay.multiplatform.phone.xriver_integration:id/textView_title"][text=null || text="商品详情"]',
+            '@[clickable=true][desc="返回"] >2 [text=""]',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/34011454',
             'https://i.gkd.li/i/34056294',
