@@ -599,10 +599,11 @@ export default defineGkdApp({
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
           matches:
-            '[text="已发放"] - [text="产速奖励"] < View <2 View < View < View < WebView < WebView <2 FrameLayout < RelativeLayout - [id$="nebulax_root_view"] >8 @[desc="关闭"] > [text="" || text=""]',
+            '[text="已发放"] - [text="产速奖励" || text="抽奖机会"] < View <2 View < View < View < WebView < WebView <2 FrameLayout < RelativeLayout - [id$="nebulax_root_view"] >8 @[desc="关闭"] > [text="" || text=""]',
           snapshotUrls: [
             'https://i.gkd.li/i/34000122',
             'https://i.gkd.li/i/34000930',
+            'https://i.gkd.li/i/34191866',
           ],
           exampleUrls: 'https://e.gkd.li/3c670c7a-9017-4c22-a278-7ba2eeadddaa',
         },
