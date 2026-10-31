@@ -742,7 +742,7 @@ export default defineGkdApp({
     {
       key: 30,
       name: '🎮小游戏-弹窗',
-      desc: '②x掉小浮窗 ③x掉活动弹窗 ⑨游戏更新-确定',
+      desc: '⑦x掉小浮窗 ⑧x掉活动弹窗 ⑨游戏更新-确定',
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
@@ -757,9 +757,9 @@ export default defineGkdApp({
         //   snapshotUrls: 'https://i.gkd.li/i/33904330',
         // },
         {
-          key: 2,
+          key: 7,
           // preKeys: [1],
-          name: '②坐标点击x掉小浮窗',
+          name: '⑦坐标点击x掉小浮窗',
           forcedTime: 10000,
           position: {
             left: 'width * 0.4719',
@@ -774,8 +774,8 @@ export default defineGkdApp({
           exampleUrls: 'https://e.gkd.li/3c670c7a-9017-4c22-a278-7ba2eeadddaa',
         },
         {
-          key: 3,
-          name: '③坐标点击x掉活动弹窗',
+          key: 8,
+          name: '⑧坐标点击x掉活动弹窗',
           forcedTime: 10000,
           actionDelay: 1000, //待弹窗完全加载
           position: {
@@ -802,7 +802,7 @@ export default defineGkdApp({
       name: '🎮小游戏-半自动浏览15s广告',
       desc: '①等待手动点进子广告(看示例图) ②15s后[退出]某牌奶茶外卖页 ③坐标点击右上角[关闭]',
       fastQuery: true,
-      scopeKeys: [37],
+      scopeKeys: [30, 37],
       actionMaximum: 1,
       resetMatch: 'match',
       rules: [
@@ -821,7 +821,7 @@ export default defineGkdApp({
         },
         {
           key: 20,
-          preKeys: [3, 10], //关联key37 的子key3
+          preKeys: [3, 7, 8, 10], //关联key37 的子key3 ; 还有 key30 的子key7,key8
           name: '②15s后[退出]某牌奶茶外卖页',
           actionDelay: 15000,
           forcedTime: 17000, //防睡死
