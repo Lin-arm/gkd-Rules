@@ -141,7 +141,7 @@ export default defineGkdApp({
     {
       key: 302,
       name: '📆每日福利-天降福利弹窗',
-      desc: '点击[去浏览] (❗配合QD模块用)(起点482)',
+      desc: '点击[去浏览/去完成] (❗配合QD模块用)(起点482)',
       enable: false,
       rules: [
         {
@@ -150,9 +150,12 @@ export default defineGkdApp({
           resetMatch: 'app',
           activityIds: '.ui.activity.QDBrowserActivity',
           matches:
-            '@TextView[text="去浏览"] <n View <2 View[getChild(0).text="天降福利"] <2 [text="福利中心"] < WebView < FrameLayout < [vid="webViewContainer"]',
+            '@TextView[text="去浏览" || text="去完成"] <n View <2 View[getChild(0).text="天降福利"] <2 [text="福利中心"] < WebView < FrameLayout < [vid="webViewContainer"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/33875186', //去浏览
+            'https://i.gkd.li/i/34250748', //去完成
+          ],
           exampleUrls: 'https://e.gkd.li/9219d30f-c664-4674-8baa-07a6e614774c',
-          snapshotUrls: 'https://i.gkd.li/i/33875186',
         },
       ],
     },
