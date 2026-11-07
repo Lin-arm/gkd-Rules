@@ -790,10 +790,13 @@ export default defineGkdApp({
           key: 9,
           name: '⑨游戏更新-确定',
           matches: [
-            '[text^="游戏有新版本"]',
-            'Button[text="确定"][clickable=true]',
+            '[text*="新版本" || text*="更新"]',
+            '[text="确定"][clickable=true]',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/24822192',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24822192',
+            'https://i.gkd.li/i/34523741',
+          ],
         },
       ],
     },
