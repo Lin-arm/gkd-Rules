@@ -257,10 +257,11 @@ export default defineGkdApp({
           activityIds:
             '.plugin.finder.feed.ui.FinderLiveVisitorWithoutAffinityUI',
           matches:
-            'ImageView[width<95] < @[clickable=true] < FrameLayout <4 [index=0][childCount=4] + ViewGroup >2 [text="已获得奖励"]',
+            'ImageView[width<95] < @[clickable=true] < FrameLayout[index=parent.childCount.minus(1)] <(3,4) [index=0][childCount>2] + ViewGroup >2 [text="已获得奖励"]',
           snapshotUrls: [
             'https://i.gkd.li/i/33367687',
             'https://i.gkd.li/i/33367443',
+            'https://i.gkd.li/i/34519105',
           ],
           exampleUrls: 'https://e.gkd.li/00a82942-dca2-4bca-8c85-2ac094a993c5',
         },
