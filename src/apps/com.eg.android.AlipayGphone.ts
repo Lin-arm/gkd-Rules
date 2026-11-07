@@ -799,8 +799,8 @@ export default defineGkdApp({
     },
     {
       key: 3001,
-      name: '🎮小游戏-半自动浏览15s广告',
-      desc: '①等待手动点进子广告(看示例图) ②15s后[退出]某牌奶茶外卖页 ③坐标点击右上角[关闭]',
+      name: '🎮小游戏-半自动浏览15s/30s广告',
+      desc: '①等待手动点进子广告(看示例图) ②15s/30s后[退出]广告页 ③坐标点击右上角[关闭]',
       fastQuery: true,
       scopeKeys: [30, 37],
       actionMaximum: 1,
@@ -829,28 +829,52 @@ export default defineGkdApp({
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity', //通配
           excludeActivityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
-          // excludeMatches: '[text^="蚂蚁" || text^="支付宝"]',
+          excludeMatches:
+            '[id="com.alipay.multiplatform.phone.xriver_integration:id/frameLayout_homeButton"][desc="返回首页"]', //0️⃣
           matches: [
-            '[id="com.alipay.multiplatform.phone.xriver_integration:id/textView_title"][text=null || text="商品详情"]',
-            '@[clickable=true][desc="返回"] >2 [text=""]',
+            '[id="com.alipay.multiplatform.phone.xriver_integration:id/textView_title"][text=null || text="商品详情"]', //1️⃣
+            '@[clickable=true][desc="返回"] >2 [text=""]', //2️⃣
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/34011450', //乐乐茶
-            'https://i.gkd.li/i/34011513', //瑞幸咖啡
+            'https://i.gkd.li/i/34011513', //瑞幸咖啡,被0️⃣误排除了
             'https://i.gkd.li/i/34056091', //霸王茶姬
             'https://i.gkd.li/i/34055811', //NOWWA挪瓦咖啡
             'https://i.gkd.li/i/34166740',
           ],
           excludeSnapshotUrls: [
-            'https://i.gkd.li/i/34190672', //蚂蚁森林
-            'https://i.gkd.li/i/34190837', //支付宝·芭芭农场
+            'https://i.gkd.li/i/34190672', //蚂蚁森林, 用1️⃣排除
+            'https://i.gkd.li/i/34190837', //支付宝·芭芭农场, 用1️⃣排除
+            'https://i.gkd.li/i/34519309', //需看30秒的广告, 用0️⃣排除
           ],
           exampleUrls: 'https://e.gkd.li/643561fa-b050-4466-ab44-893773a585af',
         },
         {
           key: 21,
-          preKeys: [20],
-          name: '②再点1次左上角[退出]',
+          preKeys: [3, 7, 8, 10],
+          name: '②30s后[退出]某牌奶茶外卖页',
+          actionMaximumKey: 20,
+          actionDelay: 30000,
+          forcedTime: 32000, //防睡死
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity', //通配
+          excludeActivityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
+          matches: [
+            '[id="com.alipay.multiplatform.phone.xriver_integration:id/frameLayout_homeButton"][desc="返回首页"]',
+            '[id="com.alipay.multiplatform.phone.xriver_integration:id/textView_title"][text=null || text="商品详情"]', //1️⃣
+            '@[clickable=true][desc="返回"] >2 [text=""]', //2️⃣
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/34011513', //瑞幸咖啡,被key20的0️⃣误排除了
+            'https://i.gkd.li/i/34519309', //需看30秒的广告
+          ],
+          exampleUrls: 'https://e.gkd.li/643561fa-b050-4466-ab44-893773a585af',
+        },
+        {
+          key: 30,
+          preKeys: [20, 21],
+          name: '③再点1次左上角[退出]',
           actionDelay: 500,
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity', //通配
@@ -867,9 +891,9 @@ export default defineGkdApp({
           exampleUrls: 'https://e.gkd.li/f3fea493-2ccb-42b8-949f-36435f12eaac',
         },
         {
-          key: 30,
-          preKeys: [20, 21],
-          name: '③坐标点击右上角[关闭]',
+          key: 40,
+          preKeys: [20, 21, 30],
+          name: '④坐标点击右上角[关闭]',
           actionDelay: 500,
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
