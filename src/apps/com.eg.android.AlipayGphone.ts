@@ -816,8 +816,14 @@ export default defineGkdApp({
           activityIds:
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
           matches: '[parent=null]',
-          snapshotUrls: 'https://i.gkd.li/i/34015537',
-          exampleUrls: 'https://e.gkd.li/d73d6e16-85c2-4545-a7ff-6ac50d17df05',
+          snapshotUrls: [
+            'https://i.gkd.li/i/34015537', //15秒广告
+            'https://i.gkd.li/i/34519314', //30秒广告
+          ],
+          exampleUrls: [
+            'https://e.gkd.li/d73d6e16-85c2-4545-a7ff-6ac50d17df05',
+            'https://e.gkd.li/df361918-7d28-48d4-9919-123ea8254a0c',
+          ],
         },
         {
           key: 20,
