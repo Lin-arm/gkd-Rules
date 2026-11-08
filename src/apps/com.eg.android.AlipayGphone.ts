@@ -747,7 +747,7 @@ export default defineGkdApp({
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
-      resetMatch: 'match',
+      // resetMatch: 'match',
       activityIds:
         'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$XRiverLite',
       rules: [
