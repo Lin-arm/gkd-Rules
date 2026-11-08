@@ -1148,8 +1148,6 @@ export default defineGkdApp({
             'com.alipay.android.living.activity.LivingDetailActivity',
             'com.alipay.android.phone.xriver.bundlex.CSGAPushActivity',
           ],
-          excludeActivityIds:
-            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$', //排除小程序、小游戏的, 防止阻塞
           matches:
             '[text="访问被拒绝" || text^="人气太旺啦"] -2 RelativeLayout >3 @[clickable=true][desc="返回"] > [text=""]',
           exampleUrls: 'https://e.gkd.li/c1ddb8bf-084b-4109-b777-96c02858d266',
@@ -1160,6 +1158,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/25199767',
             'https://i.gkd.li/i/25485052',
             'https://i.gkd.li/i/31456112',
+            'https://i.gkd.li/i/34539245', // .XRiverActivity$App01 界面
           ],
         },
       ],
