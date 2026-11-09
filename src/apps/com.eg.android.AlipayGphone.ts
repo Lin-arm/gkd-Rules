@@ -1181,5 +1181,28 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 40,
+      name: '功能类-多选时自动[勾选]垃圾消息',
+      desc: '关键词:[送你/请你/有AI传话/你的小鸡]',
+      enable: false,
+      rules: [
+        {
+          fastQuery: true,
+          actionCd: 300,
+          // actionDelay: 100,
+          // action: 'clickCenter', //用clickNode点击的 CheckBox 能勾选中,但后续删除无效; 现已换成点击 [id$="chat_msg_layout"]
+          activityIds: 'com.alipay.mobile.chatapp.ui.PersonalChatMsgActivity_',
+          matches:
+            'CheckBox[checked=false] < [id="com.alipay.mobile.chatapp:id/chat_msg_checkbox_fl"] <n @[id="com.alipay.mobile.chatapp:id/chat_msg_layout"][visibleToUser=true] >n [text*="送你" || text*="请你" || text*="有AI传话" || text*="你的小鸡"][text.length<20]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/34544908', //送你; 有AI传话
+            'https://i.gkd.li/i/34544910', //请你; 送你
+            'https://i.gkd.li/i/34562288', //你的小鸡
+          ],
+          exampleUrls: 'https://e.gkd.li/1d7200b4-8e84-4cd2-958e-54ef217ce678',
+        },
+      ],
+    },
   ],
 });
