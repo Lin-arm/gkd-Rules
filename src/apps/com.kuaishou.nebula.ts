@@ -411,42 +411,40 @@ export default defineGkdApp({
             left: 'width * 1.0276',
             top: 'width * -0.06',
           },
-          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
           matches:
             '@[childCount=4][height>width && height<1300] >3 [text="限时邀1位好友立得现金"]',
-          snapshotUrls: 'https://i.gkd.li/i/31456749',
+          snapshotUrls: [
+            'https://i.gkd.li/i/31456749', //E
+            'https://i.gkd.li/i/31456749', //A
+          ],
         },
         {
           key: 2,
-          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
           matches:
             'ImageView < * < @[clickable=true] - [height>500 && height<1600] > [text="任务完成奖励"]',
-          snapshotUrls: 'https://i.gkd.li/i/31457089',
+          snapshotUrls: 'https://i.gkd.li/i/31457089', //E
         },
         {
           key: 3,
-          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
           matches:
             'ImageView < * < @[clickable=true] +(1,2) [height>500 && height<1600] >(1,2) [text="上周收益" || text="金币已到账"]',
           snapshotUrls: [
-            'https://i.gkd.li/i/31458494',
-            'https://i.gkd.li/i/31458801',
+            'https://i.gkd.li/i/31458494', //E
+            'https://i.gkd.li/i/31458801', //E
           ],
         },
         {
           key: 4,
           name: '点击[离开]',
-          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
           matches:
             '@[text="离开"] < ViewGroup[childCount=1] -n [visibleToUser=true] > [text="真的要离开吗"]',
-          snapshotUrls: 'https://i.gkd.li/i/31462077',
+          snapshotUrls: 'https://i.gkd.li/i/31462077', //E
         },
         {
           key: 5,
-          activityIds: 'com.kwai.kds.krn.api.page.KwaiRnActivity',
           matches:
             'ImageView < * < @[clickable=true][width<134] < [visibleToUser=true] - ViewGroup > [text="获得提现福利"]',
-          snapshotUrls: 'https://i.gkd.li/i/32744899',
+          snapshotUrls: 'https://i.gkd.li/i/32744899', //E
         },
         {
           key: 10,
