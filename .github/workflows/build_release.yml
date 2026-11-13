@@ -92,6 +92,14 @@ jobs:
         run: |
           cp dist/gkd.json5 dist/gkd-rules-offline-id777-v${{ env.VERSION }}.json5
 
+      - name: 组装发行版说明
+        run: |
+          {
+            cat dist/CHANGELOG.md
+            printf '\n\n---\n\n'
+            cat .github/release-extra.md
+          } > dist/RELEASE_NOTES.md
+
       - name: 创建 GitHub 发布版本
         if: ${{ steps.commit.outcome == 'success' }}
         uses: softprops/action-gh-release@v3
@@ -100,8 +108,7 @@ jobs:
         with:
           tag_name: v${{ env.VERSION }}
           name: v${{ env.VERSION }}
-          body_path: ./dist/CHANGELOG.md
+          body_path: ./dist/RELEASE_NOTES.md
           generate_release_notes: true
-          append_body: true
           files: |
             dist/gkd-rules-offline-id777-v${{ env.VERSION }}.json5
