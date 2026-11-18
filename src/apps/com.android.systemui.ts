@@ -129,5 +129,35 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 7,
+      name: '功能类-自动[右滑]清掉通话录音通知',
+      desc: '(⚠️仅适配 MIUI 13) 下拉通知栏后[右滑]清掉该通知',
+      enable: false,
+      rules: [
+        {
+          fastQuery: true,
+          actionDelay: 1000, //等界面稳定
+          actionMaximum: 1,
+          resetMatch: 'app',
+          swipeArg: {
+            //从左往右滑动
+            start: {
+              left: 'width * 0.2',
+              top: 'height * 0.5',
+            },
+            end: {
+              left: 'width * 0.8',
+              top: 'height * 0.5',
+            },
+            duration: 200,
+          },
+          matches:
+            '[text$="通话录音已完成"] <2 LinearLayout <2 FrameLayout < [vid="expanded"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/35028500',
+          exampleUrls: 'https://e.gkd.li/82046735-3d9d-4470-b8a5-e8b0f0402735',
+        },
+      ],
+    },
   ],
 });
