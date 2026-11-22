@@ -4,7 +4,7 @@
     {
       "id": "cf1bc15a-4815-4e6a-8598-863753b6260a",
       "name": "1️⃣有非随机id的节点",
-      "selector": "[_id=0] >n [id!=null][!(id.at(-4)=\"/\" || id.at(-3)=\"/\" || id.at(-2)=\"/\")]",
+      "selector": "[_id=0] >n [id!=null][!(id.at(-4)=\"/\" || id.at(-3)=\"/\" || id.at(-2)=\"/\" || id=\"\")]",
       "description": "可从搜索里结果里找支持id快查的节点, 可编辑 _id 在指定节点内查找",
       "tags": ["Lin-arm自用"],
       "scope": "global"
