@@ -200,7 +200,7 @@ export default defineGkdApp({
     {
       key: 3,
       name: '🧩小程序-看完30s广告-x掉',
-      desc: '①已完成 ②已获得',
+      desc: '(⚠️偶尔失效,gkd捉不到广告节点) ①已完成 ②已获得',
       fastQuery: true,
       forcedTime: 60000, // 60秒内一直主动参与屏幕查询
       rules: [
@@ -239,16 +239,18 @@ export default defineGkdApp({
           key: 3,
           name: '③已获得奖励-关闭',
           matches:
-            '@[text="关闭"] <<3 [index=parent.childCount.minus(1)] - FrameLayout >3 [text="已获得奖励"]',
+            '@[text="关闭"] < [visibleToUser=true] <2 [index=parent.childCount.minus(1)] - FrameLayout >3 [text="已获得奖励"]',
           snapshotUrls: [
             'https://i.gkd.li/i/24545151', //微粒贷
             'https://i.gkd.li/i/30338756', //小游戏
-            'https://i.gkd.li/i/30339852', //小游戏  ⚠️在该小游戏界面已禁止使用无障碍模拟点击了, 无论 clickNode 还是 clickCenter 都不生效
+            'https://i.gkd.li/i/30339852', //小游戏  ⚠️在该小游戏界面已禁止使用无障碍模拟点击了, 无论 clickNode 还是 clickCenter 都不生效 (存疑)
+            'https://i.gkd.li/i/35255348', //小游戏
           ],
           exampleUrls: 'https://e.gkd.li/1ec650be-9fa6-413f-88a5-f8118e836fa6',
           activityIds: [
             '.plugin.appbrand.ui.AppBrandUI',
             '.plugin.appbrand.ui.AppBrandPluginUI',
+            '.plugin.appbrand.ipc.AppBrandProcessProxyUI',
           ],
         },
         {
@@ -270,6 +272,7 @@ export default defineGkdApp({
           name: '⑤已获得奖励-按[返回键]',
           action: 'back', //子key3不生效时的补救
           actionDelay: 500,
+          actionCdKey: 3,
           matches:
             '@[text="已获得奖励"] < [childCount=1] + [visibleToUser=true] >2 [text="广告"]',
           snapshotUrls: [
@@ -280,6 +283,7 @@ export default defineGkdApp({
           activityIds: [
             '.plugin.appbrand.ui.AppBrandUI',
             '.plugin.appbrand.ui.AppBrandPluginUI',
+            '.plugin.appbrand.ipc.AppBrandProcessProxyUI',
           ],
         },
       ],
