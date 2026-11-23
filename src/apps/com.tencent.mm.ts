@@ -432,56 +432,61 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          name: '①点击[广告](上面的)',
-          matches: [
-            '@FrameLayout[clickable=true][visibleToUser=true][index=parent.childCount.minus(2)][top>getPrev(4).bottom] -n ImageView[desc="头像"] <<3 FrameLayout[index<parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
-            // [top>getPrev(4).bottom] 用于避免评论区顶部的遮挡[广告], 在上滑浏览评论时, [广告]可能会被遮挡在顶部
-            // FrameLayout[index<parent.childCount.minus(1)] 整个广告框不是末尾节点, 如此应该可让后续坐标点击时 ②[关闭该广告]、③[直接关闭] 出现在 ①[广告] 的下方, 而不是出现在上方
-            // 后续第二段、第三段的相对坐标用的都是第一段的选择器
-          ],
+          name: '①点击[广告]A',
+          matches:
+            '@FrameLayout[clickable=true][visibleToUser=true][top>getPrev(4).bottom.minus(30)][right>getPrev(4).right.minus(100)] -n ImageView[desc="头像"] <<3 FrameLayout[index<parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
+          /**
+           * [top>getPrev(4).bottom.minus(30)] 用于避免评论区顶部的完全遮挡住[广告], 在上滑浏览评论时, [广告]可能会被遮挡在顶部
+           * FrameLayout[index<parent.childCount.minus(1)] 整个广告框不是末尾节点, 如此应该可让后续坐标点击时 ②[关闭该广告]、③[直接关闭] 出现在 ①[广告] 的下方, 而不是出现在上方
+           * 后续第二段、第三段的相对坐标用的都是第一段的选择器
+           */
           snapshotUrls: [
             'https://i.gkd.li/i/24834498',
             'https://i.gkd.li/i/24834499',
+            'https://i.gkd.li/i/35262190',
+            'https://i.gkd.li/i/35263402', // [top>getPrev(4).bottom.minus(30)]
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/24835207', // 输入法遮挡 [visibleToUser=true]
+            'https://i.gkd.li/i/35262964', // 误触图片评论, 用 [right>getPrev(4).right.minus(100)] 排除
           ],
         },
         {
           key: 2,
-          name: '①点击[广告](下面的)',
-          matches: [
-            '@FrameLayout[clickable=true][visibleToUser=true][index=parent.childCount.minus(2)] -n ImageView[desc="头像"] <<3 FrameLayout[index=parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
-            // FrameLayout[index=parent.childCount.minus(1)] 整个广告框属于末尾节点, 如此可让 ②[关闭该广告]、③[直接关闭] 出现在 ①[广告] 的上方
-          ],
-          snapshotUrls: ['https://i.gkd.li/i/24834498'],
+          name: '①点击[广告]B',
+          matches:
+            '@FrameLayout[clickable=true][visibleToUser=true][right>getPrev(4).right.minus(100)] -n ImageView[desc="头像"] <<3 FrameLayout[index=parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
+          // FrameLayout[index=parent.childCount.minus(1)] 整个广告框属于末尾节点, 如此可让 ②[关闭该广告]、③[直接关闭] 出现在 ①[广告] 的上方
         },
 
         // 第二段
         {
           key: 25,
-          preKeys: [1, 2],
-          name: '②点击下方的[关闭该广告]的坐标',
+          preKeys: [1],
+          name: '②坐标点击[关闭该广告]A',
           position: {
             //点击出现在[广告]下方的[关闭该广告]
             left: 'width * -0.7469',
             top: 'width * 2.4259',
           },
           matches:
-            '@FrameLayout[clickable=true][visibleToUser=true][index=parent.childCount.minus(2)][top>getPrev(4).bottom] -n ImageView[desc="头像"] <<3 FrameLayout[index<parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
-          snapshotUrls: ['https://i.gkd.li/i/24834568'],
+            '@FrameLayout[clickable=true][visibleToUser=true][top>getPrev(4).bottom.minus(30)][right>getPrev(4).right.minus(100)] -n ImageView[desc="头像"] <<3 FrameLayout[index<parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24834568',
+            'https://i.gkd.li/i/35262192',
+          ],
         },
         {
           key: 26,
-          preKeys: [1, 2],
-          name: '②点击上方的[关闭该广告]的坐标',
+          preKeys: [2],
+          name: '②坐标点击[关闭该广告]B',
           position: {
             //点击出现在[广告]上方的[关闭该广告]
             left: 'width * -0.7469',
             top: 'width * -1.2901',
           },
           matches:
-            '@FrameLayout[clickable=true][visibleToUser=true][index=parent.childCount.minus(2)] -n ImageView[desc="头像"] <<3 FrameLayout[index=parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
+            '@FrameLayout[clickable=true][visibleToUser=true][right>getPrev(4).right.minus(100)] -n ImageView[desc="头像"] <<3 FrameLayout[index=parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
           snapshotUrls: [
             'https://i.gkd.li/i/25476021',
             'https://i.gkd.li/i/24835410',
@@ -491,35 +496,38 @@ export default defineGkdApp({
         // 第三段
         {
           key: 50,
-          preKeys: [25, 26],
-          name: '③点击下方[直接关闭]的坐标',
+          preKeys: [25],
+          name: '③坐标点击[直接关闭]A',
           position: {
             //点击出现在[广告]下方的[直接关闭]
             left: 'width * 0.1296',
             top: 'width * 1.1728',
           },
           matches:
-            '@FrameLayout[clickable=true][visibleToUser=true][index=parent.childCount.minus(2)][top>getPrev(4).bottom] -n ImageView[desc="头像"] <<3 FrameLayout[index<parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
-          snapshotUrls: ['https://i.gkd.li/i/24834571'],
+            '@FrameLayout[clickable=true][visibleToUser=true][top>getPrev(4).bottom.minus(30)][right>getPrev(4).right.minus(100)] -n ImageView[desc="头像"] <<3 FrameLayout[index<parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24834571',
+            'https://i.gkd.li/i/35262195',
+          ],
         },
         {
           key: 51,
-          preKeys: [25, 26],
-          name: '③点击上方的[直接关闭]的坐标',
+          preKeys: [26],
+          name: '③坐标点击[直接关闭]B',
           position: {
             //点击出现在[广告]上方的[直接关闭]
             left: 'width * 0.1296',
             top: 'width * -2.5247',
           },
           matches:
-            '@FrameLayout[clickable=true][visibleToUser=true][index=parent.childCount.minus(2)] -n ImageView[desc="头像"] <<3 FrameLayout[index=parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
+            '@FrameLayout[clickable=true][visibleToUser=true][right>getPrev(4).right.minus(100)] -n ImageView[desc="头像"] <<3 FrameLayout[index=parent.childCount.minus(1)] <n RecyclerView <<3 FrameLayout - FrameLayout[index=0] >3 TextView[text^="评论"][left<200]',
           snapshotUrls: ['https://i.gkd.li/i/25476022'],
         },
 
         // 第四段: 因误触出现的页面-返回
         {
           key: 100,
-          preKeys: [1, 2, 25, 26, 50, 51],
+          preKeys: [25, 26, 50, 51],
           name: '④误触-返回评论区',
           // action: 'back',
           anyMatches: [
@@ -542,7 +550,7 @@ export default defineGkdApp({
         },
         {
           key: 101,
-          preKeys: [1, 2, 25, 26, 50, 51],
+          preKeys: [25, 26, 50, 51],
           name: '④误触输入框-返回键',
           action: 'back',
           matches:
