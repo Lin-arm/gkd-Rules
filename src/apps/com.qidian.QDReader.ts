@@ -393,13 +393,13 @@ export default defineGkdApp({
       desc: '①点击[签到] ②进福利中心(❗配合QD模块用)',
       enable: false,
       fastQuery: true,
-      actionMaximum: 1,
       resetMatch: 'app',
       activityIds: '.ui.activity.MainGroupActivity',
       rules: [
         {
-          key: 1,
+          key: 1501,
           name: '①点击[签到]',
+          actionMaximum: 1,
           actionDelay: 500, //防止节点未更新而导致误触
           excludeMatches: '[vid="tvTipNum"][text="--"][visibleToUser=true]',
           matches: '@[vid="btnCheckIn"] >2 [text="签到"][visibleToUser=true]',
@@ -410,9 +410,10 @@ export default defineGkdApp({
           excludeSnapshotUrls: 'https://i.gkd.li/i/23211622', // 未加载完?
         },
         {
-          key: 2,
-          preKeys: [1],
+          key: 1502,
+          preKeys: [1501, 1502], // 第一次点击可能无效
           name: '②点击[领福利]',
+          actionMaximum: 2,
           actionDelay: 500, //防止触发太快而点击无效
           matches: '[vid="btnCheckIn" || vid="newBtnCheckIn"][clickable=true]',
           snapshotUrls: [
@@ -551,6 +552,7 @@ export default defineGkdApp({
       enable: false,
       fastQuery: true,
       order: 3,
+      scopeKeys: [15],
       matchDelay: 5000, //延迟5秒匹配,等其他自动签到啥的规则先执行
       actionMaximum: 1,
       resetMatch: 'app',
@@ -559,6 +561,7 @@ export default defineGkdApp({
         {
           key: 10,
           name: '①点击指定书名的[更多]',
+          actionCdKey: 1502,
           actionDelay: 500,
           excludeMatches: [
             '[vid="tvTipNum"][text.toInt()>5]', //排除 阅读大于5分钟 (防止后续多次触发)
